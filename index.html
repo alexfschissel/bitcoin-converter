@@ -382,7 +382,6 @@
     }
 
     .affiliate-logo {
-        font-size: 48px;
         margin-bottom: 15px;
         height: 80px;
         display: flex;
@@ -392,10 +391,11 @@
         z-index: 1;
     }
 
-    .affiliate-logo svg {
-        width: 70px;
-        height: 70px;
-        display: block;
+    .affiliate-logo-img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
     }
 
     .affiliate-name {
@@ -570,11 +570,6 @@
             height: 60px;
         }
 
-        .affiliate-logo svg {
-            width: 50px;
-            height: 50px;
-        }
-
         .header-actions {
             flex-direction: column;
             gap: 10px;
@@ -697,10 +692,6 @@
             <div class="stat-number" id="volume24h">—</div>
             <div class="stat-label">Volume 24h</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-number" id="supply">—</div>
-            <div class="stat-label">Oferta em Circulação</div>
-        </div>
     </section>
 
     <!-- CONVERTER -->
@@ -744,9 +735,9 @@
             <!-- KAST -->
             <div class="affiliate-card">
                 <div class="affiliate-logo">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="#F7931A" rx="30"/>
-                        <text x="100" y="130" font-size="120" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">K</text>
+                    <svg class="affiliate-logo-img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="256" height="256" fill="#FFB81C" rx="40"/>
+                        <path d="M 75 85 L 75 170 L 95 170 L 95 140 L 130 170 L 155 170 L 115 140 L 155 85 L 130 85 L 95 115 L 95 85 Z M 160 85 L 160 170 L 180 170 L 180 85 Z" fill="white"/>
                     </svg>
                 </div>
                 <div class="affiliate-name">KAST</div>
@@ -757,9 +748,10 @@
             <!-- BYBIT -->
             <div class="affiliate-card">
                 <div class="affiliate-logo">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="#F0B90B" rx="30"/>
-                        <path d="M 60 100 L 100 50 L 140 100 M 60 100 L 100 150 L 140 100" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg class="affiliate-logo-img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="256" height="256" fill="#1a1a1a" rx="40"/>
+                        <text x="40" y="180" font-size="100" font-weight="bold" fill="white" font-family="Arial">BYBIT</text>
+                        <rect x="175" y="70" width="25" height="80" fill="#FFB81C"/>
                     </svg>
                 </div>
                 <div class="affiliate-name">Bybit</div>
@@ -770,10 +762,15 @@
             <!-- LEDGER -->
             <div class="affiliate-card">
                 <div class="affiliate-logo">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="#000" rx="30"/>
-                        <rect x="50" y="40" width="100" height="120" fill="none" stroke="#F7931A" stroke-width="6" rx="8"/>
-                        <circle cx="100" cy="100" r="18" fill="#F7931A"/>
+                    <svg class="affiliate-logo-img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="256" height="256" fill="#1a1a1a" rx="40"/>
+                        <g fill="none" stroke="white" stroke-width="12" stroke-linecap="round">
+                            <path d="M 70 70 L 95 70 L 95 95"/>
+                            <path d="M 160 70 L 185 70 L 185 95"/>
+                            <path d="M 70 160 L 95 160 L 95 185"/>
+                            <path d="M 160 160 L 185 160 L 185 185"/>
+                            <circle cx="128" cy="128" r="20" fill="white"/>
+                        </g>
                     </svg>
                 </div>
                 <div class="affiliate-name">Ledger</div>
@@ -784,9 +781,14 @@
             <!-- BINANCE -->
             <div class="affiliate-card">
                 <div class="affiliate-logo">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="200" height="200" fill="#F3BA2F" rx="30"/>
-                        <path d="M 70 100 L 100 60 L 130 100 M 70 100 L 100 140 L 130 100 M 100 60 V 140" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg class="affiliate-logo-img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="256" height="256" fill="#F3BA2F" rx="40"/>
+                        <g fill="#1a1a1a">
+                            <path d="M 128 80 L 155 105 L 128 130 L 100 105 Z"/>
+                            <path d="M 70 128 L 97 105 L 125 128 L 97 150 Z"/>
+                            <path d="M 155 128 L 183 105 L 210 128 L 183 150 Z"/>
+                            <path d="M 128 180 L 155 155 L 128 130 L 100 155 Z"/>
+                        </g>
                     </svg>
                 </div>
                 <div class="affiliate-name">Binance</div>
@@ -797,13 +799,14 @@
             <!-- APRENDA SOBRE -->
             <div class="affiliate-card">
                 <div class="affiliate-logo">
-                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="35" y="35" width="130" height="130" fill="#F7931A" rx="12"/>
-                        <line x1="50" y1="55" x2="150" y2="55" stroke="white" stroke-width="8" stroke-linecap="round"/>
-                        <line x1="50" y1="75" x2="150" y2="75" stroke="white" stroke-width="6" opacity="0.8" stroke-linecap="round"/>
-                        <line x1="50" y1="95" x2="150" y2="95" stroke="white" stroke-width="6" opacity="0.8" stroke-linecap="round"/>
-                        <line x1="50" y1="115" x2="150" y2="115" stroke="white" stroke-width="6" opacity="0.8" stroke-linecap="round"/>
-                        <line x1="50" y1="135" x2="100" y2="135" stroke="white" stroke-width="6" opacity="0.8" stroke-linecap="round"/>
+                    <svg class="affiliate-logo-img" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="50" width="156" height="156" fill="#FFB81C" rx="20"/>
+                        <g fill="white" opacity="0.9">
+                            <line x1="70" y1="80" x2="185" y2="80" stroke="white" stroke-width="12" stroke-linecap="round"/>
+                            <line x1="70" y1="115" x2="185" y2="115" stroke="white" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="70" y1="145" x2="185" y2="145" stroke="white" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="70" y1="175" x2="140" y2="175" stroke="white" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+                        </g>
                     </svg>
                 </div>
                 <div class="affiliate-name">Aprenda Sobre</div>
