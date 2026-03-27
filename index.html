@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Converter - Preço em Tempo Real</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        padding: 40px;
+        text-align: center;
+    }
+    
+    h1 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 28px;
+    }
+    
+    .logo {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+    
+    .price-display {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .price-display h2 {
+        font-size: 16px;
+        opacity: 0.9;
+        margin-bottom: 10px;
+    }
+    
+    .price {
+        font-size: 48px;
+        font-weight: bold;
+        word-break: break-word;
+    }
+    
+    .update-time {
+        font-size: 12px;
+        opacity: 0.8;
+        margin-top: 10px;
+    }
+    
+    .converter-section {
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    
+    .converter-section h3 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .input-group input {
+        flex: 1;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+    
+    .input-group input:focus {
+        outline: none;
+        border-color: #667eea;
+    }
+    
+    .input-group select {
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+    
+    .converter-btn {
+        width: 100%;
+        padding: 12px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .converter-btn:hover {
+        background: #764ba2;
+    }
+    
+    .result {
+        background: white;
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 15px;
+        border: 2px solid #667eea;
+    }
+    
+    .result.hidden {
+        display: none;
+    }
+    
+    .affiliate-section {
+        background: #fff3cd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        border-left: 4px solid #ffc107;
+    }
+    
+    .affiliate-section h3 {
+        color: #856404;
+        margin-bottom: 15px;
+    }
+    
+    .affiliate-link {
+        display: block;
+        background: white;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #667eea;
+        font-weight: bold;
+        transition: all 0.3s;
+        border: 2px solid #667eea;
+    }
+    
+    .affiliate-link:hover {
+        background: #667eea;
+        color: white;
+    }
+    
+    .footer {
+        text-align: center;
+        color: #999;
+        font-size: 12px;
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+    }
+    
+    .ad-space {
+        background: #f0f0f0;
+        border: 2px dashed #ddd;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        text-align: center;
+        color: #999;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .loading {
+        color: #999;
+        font-style: italic;
+    }
+    
+    .error {
+        color: #d32f2f;
+        background: #ffebee;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+    
+    @media (max-width: 600px) {
+        .container {
+            padding: 20px;
+        }
+        
+        .price {
+            font-size: 32px;
+        }
+        
+        h1 {
+            font-size: 20px;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <div class="logo">₿</div>
+        <h1>Bitcoin Converter</h1>
+
+```
+    <div class="price-display">
+        <h2>Preço atual do Bitcoin</h2>
+        <div class="price" id="btcPrice">
+            <span class="loading">Carregando...</span>
+        </div>
+        <div class="update-time">
+            Última atualização: <span id="updateTime">—</span>
+        </div>
+    </div>
+    
+    <div class="ad-space">
+        <p>Espaço para publicidade (Google AdSense)</p>
+    </div>
+    
+    <div class="converter-section">
+        <h3>💱 Conversor Minimalista</h3>
+        
+        <div class="input-group">
+            <input type="number" id="btcInput" placeholder="Quantidade de BTC" value="1" min="0" step="0.00000001">
+        </div>
+        
+        <div class="input-group">
+            <select id="currencySelect">
+                <option value="BRL">BRL (Real)</option>
+                <option value="USD">USD (Dólar)</option>
+                <option value="EUR">EUR (Euro)</option>
+                <option value="GBP">GBP (Libra)</option>
+                <option value="JPY">JPY (Iene)</option>
+                <option value="AUD">AUD (Dólar Australiano)</option>
+                <option value="CAD">CAD (Dólar Canadense)</option>
+            </select>
+        </div>
+        
+        <button class="converter-btn" onclick="converter()">Converter</button>
+        
+        <div class="result hidden" id="result">
+            <strong id="resultText"></strong>
+        </div>
+    </div>
+    
+    <div class="affiliate-section">
+        <h3>🔗 Compre Bitcoin com Segurança</h3>
+        <a href="https://www.binance.com/pt-BR/activity/referral/ref/" class="affiliate-link" target="_blank">
+            → Abrir conta Binance (ganhe desconto)
+        </a>
+        <a href="https://coinbase.com/join/" class="affiliate-link" target="_blank">
+            → Coinbase (ganhe R$10)
+        </a>
+        <a href="https://www.hotbit.io/invite/" class="affiliate-link" target="_blank">
+            → Hotbit (exchange confiável)
+        </a>
+        <a href="#" class="affiliate-link" target="_blank">
+            → Seu Link de Afiliado (coloque aqui)
+        </a>
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 Bitcoin Converter | Política | Contato</p>
+        <p style="margin-top: 10px;">Este site usa links de afiliado. Nós recebemos comissão se você comprar.</p>
+    </div>
+</div>
+
+<script>
+    const API_URL = 'https://api.coingecko.com/api/v3';
+    
+    async function updatePrice() {
+        try {
+            const response = await fetch(`${API_URL}/simple/price?ids=bitcoin&vs_currencies=brl,usd,eur,gbp,jpy,aud,cad&include_market_cap=false&include_24hr_vol=false&include_24hr_change=true&include_last_updated_at=true`);
+            const data = await response.json();
+            const btcData = data.bitcoin;
+            
+            const brlPrice = btcData.brl.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
+            document.getElementById('btcPrice').innerHTML = brlPrice;
+            
+            window.btcPrices = btcData;
+            window.lastUpdate = new Date();
+            
+            const timeString = window.lastUpdate.toLocaleTimeString('pt-BR');
+            document.getElementById('updateTime').textContent = timeString;
+            
+            if (document.getElementById('btcInput').value) {
+                converter();
+            }
+        } catch (error) {
+            console.error('Erro ao buscar preço:', error);
+            document.getElementById('btcPrice').innerHTML = '<span class="error">Erro ao carregar preço</span>';
+        }
+    }
+    
+    function converter() {
+        const btcAmount = parseFloat(document.getElementById('btcInput').value) || 0;
+        const currency = document.getElementById('currencySelect').value.toLowerCase();
+        
+        if (!window.btcPrices || !window.btcPrices[currency]) {
+            alert('Moeda não disponível');
+            return;
+        }
+        
+        const pricePerBtc = window.btcPrices[currency];
+        const total = (btcAmount * pricePerBtc).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: currency.toUpperCase()
+        });
+        
+        const resultText = `${btcAmount} BTC = ${total}`;
+        document.getElementById('resultText').textContent = resultText;
+        document.getElementById('result').classList.remove('hidden');
+    }
+    
+    document.getElementById('btcInput').addEventListener('input', converter);
+    document.getElementById('currencySelect').addEventListener('change', converter);
+    
+    updatePrice();
+    setInterval(updatePrice, 30000);
+</script>
+```
+
+</body>
+</html>
