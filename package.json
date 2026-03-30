@@ -1,0 +1,29 @@
+{
+  "name": "bitcoin-converter",
+  "version": "1.0.0",
+  "description": "Conversor Bitcoin em tempo real com alertas premium por WhatsApp",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "next start",
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "stripe": "^13.0.0",
+    "twilio": "^4.0.0",
+    "@supabase/supabase-js": "^2.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  },
+  "keywords": [
+    "bitcoin",
+    "conversor",
+    "alertas",
+    "whatsapp",
+    "crypto"
+  ],
+  "author": "",
+  "license": "MIT"
+}
