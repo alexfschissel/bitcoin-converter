@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Conversor Bitcoin em tempo real com alertas premium por WhatsApp",
   "main": "index.html",
-  "type": "module",
   "scripts": {
     "build": "echo 'Static build'"
   },
@@ -15,9 +14,7 @@
   "keywords": [
     "bitcoin",
     "conversor",
-    "alertas",
-    "whatsapp",
-    "crypto"
+    "alertas"
   ],
   "author": "",
   "license": "MIT"
