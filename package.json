@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "description": "Conversor Bitcoin em tempo real com alertas premium por WhatsApp",
   "main": "index.html",
+  "type": "module",
   "scripts": {
-    "build": "echo 'Build complete'"
+    "build": "echo 'Static build'"
   },
   "dependencies": {
     "stripe": "^14.0.0",
     "@supabase/supabase-js": "^2.0.0"
   },
-  "engines": {
-    "node": "20.x"
-  },
+  "devDependencies": {},
   "keywords": [
     "bitcoin",
     "conversor",
