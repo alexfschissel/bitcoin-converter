@@ -1,17 +1,1 @@
-{
-  "name": "bitcoin-converter",
-  "version": "1.0.0",
-  "description": "Conversor Bitcoin com alertas premium",
-  "main": "index.html",
-  "scripts": {
-    "build": "echo 'Static build'"
-  },
-  "dependencies": {
-    "stripe": "^14.0.0",
-    "@supabase/supabase-js": "^2.0.0",
-    "twilio": "^4.0.0"
-  },
-  "keywords": ["bitcoin", "alertas"],
-  "author": "",
-  "license": "MIT"
-}
+{"name":"bitcoin-converter","version":"1.0.0","scripts":{"build":"echo build"},"dependencies":{"stripe":"^14.0.0"}}
