@@ -1,60 +1,88 @@
-// api/create-payment.js
+import Stripe from ‘stripe’;
+import { createClient } from ‘@supabase/supabase-js’;
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const { supabase } = require('./supabase-client');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const supabase = createClient(
+process.env.SUPABASE_URL,
+process.env.SUPABASE_KEY
+);
 
 export default async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+// CORS
+res.setHeader(‘Access-Control-Allow-Origin’, ‘*’);
+res.setHeader(‘Access-Control-Allow-Methods’, ‘POST, OPTIONS’);
+res.setHeader(‘Access-Control-Allow-Headers’, ‘Content-Type’);
 
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+if (req.method === ‘OPTIONS’) {
+return res.status(200).end();
+}
+
+if (req.method !== ‘POST’) {
+return res.status(405).json({ error: ‘Method not allowed’ });
+}
+
+try {
+const { amount, email, whatsapp, alertAbove, alertBelow } = req.body;
+
+```
+// Validar dados
+if (!amount || !email || !whatsapp || !alertAbove || !alertBelow) {
+  return res.status(400).json({ error: 'Dados incompletos' });
+}
+
+// Criar Payment Intent no Stripe
+const paymentIntent = await stripe.paymentIntents.create({
+  amount: amount, // em centavos
+  currency: 'brl',
+  description: `Bitcoin Agora Premium - ${email}`,
+  metadata: {
+    email,
+    whatsapp,
+    alertAbove: alertAbove.toString(),
+    alertBelow: alertBelow.toString()
+  }
+});
+
+console.log(`✅ Payment Intent criado: ${paymentIntent.id}`);
+
+// Salvar no Supabase
+const { data: subscriber, error: dbError } = await supabase
+  .from('premium_subscribers')
+  .insert([
+    {
+      email,
+      whatsapp_number: whatsapp,
+      alert_above: alertAbove,
+      alert_below: alertBelow,
+      payment_intent_id: paymentIntent.id,
+      status: 'pending_payment',
+      is_active: false,
+      created_at: new Date().toISOString()
     }
+  ])
+  .select();
 
-    try {
-        const { amount, email, whatsapp, alertAbove, alertBelow } = req.body;
+if (dbError) {
+  console.error('❌ Erro Supabase:', dbError);
+  return res.status(400).json({ error: 'Erro ao salvar no banco' });
+}
 
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount: amount,
-            currency: 'brl',
-            metadata: {
-                email,
-                whatsapp,
-                alertAbove,
-                alertBelow
-            }
-        });
+console.log(`✅ Subscriber salvo: ${subscriber[0].id}`);
 
-        const { data: subscriber, error: dbError } = await supabase
-            .from('premium_subscribers')
-            .insert([
-                {
-                    email,
-                    whatsapp_number: whatsapp,
-                    alert_above: alertAbove,
-                    alert_below: alertBelow,
-                    payment_intent_id: paymentIntent.id,
-                    status: 'pending_payment',
-                    price_when_created: null,
-                    is_active: false,
-                    created_at: new Date()
-                }
-            ])
-            .select();
+// Retornar client secret para o frontend
+return res.status(200).json({
+  success: true,
+  clientSecret: paymentIntent.client_secret,
+  paymentIntentId: paymentIntent.id,
+  subscriberId: subscriber[0].id
+});
+```
 
-        if (dbError) {
-            console.error('Erro ao salvar:', dbError);
-            return res.status(400).json({ error: 'Erro ao processar' });
-        }
-
-        return res.status(200).json({
-            clientSecret: paymentIntent.client_secret,
-            subscriberId: subscriber[0]?.id
-        });
-
-    } catch (error) {
-        console.error('Erro Stripe:', error);
-        return res.status(500).json({ error: error.message });
-    }
+} catch (error) {
+console.error(‘❌ Erro:’, error.message);
+return res.status(500).json({
+success: false,
+error: error.message
+});
+}
 }
