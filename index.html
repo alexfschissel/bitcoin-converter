@@ -12,12 +12,6 @@
 <meta name="keywords" content="bitcoin, conversor, preço, BTC, USD, real, alertas">
 <meta name="robots" content="index, follow">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Bitcoin Agora - Conversor em Tempo Real">
-<meta property="og:description" content="Conversor Bitcoin com alertas automáticos por WhatsApp">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://bitcoin-converter-ten.vercel.app">
-
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
@@ -77,7 +71,6 @@
         color: var(--bitcoin-orange);
     }
 
-    /* ===== PREÇO ===== */
     .price-display {
         background: linear-gradient(135deg, rgba(247, 147, 26, 0.15) 0%, rgba(255, 107, 53, 0.08) 100%);
         border: 2px solid var(--bitcoin-orange);
@@ -106,7 +99,6 @@
         margin-bottom: 20px;
     }
 
-    /* ===== STATS ===== */
     .stats-section {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -136,7 +128,6 @@
         letter-spacing: 1px;
     }
 
-    /* ===== CONVERSOR ===== */
     .converter-section {
         background: rgba(30, 35, 60, 0.6);
         border: 2px solid rgba(247, 147, 26, 0.3);
@@ -173,7 +164,7 @@
         font-weight: 600;
     }
 
-    .converter-input {
+    .converter-input, .converter-select {
         padding: 14px 16px;
         border: 2px solid rgba(247, 147, 26, 0.3);
         border-radius: 10px;
@@ -184,24 +175,13 @@
         transition: all 0.3s ease;
     }
 
-    .converter-input:focus {
+    .converter-input:focus, .converter-select:focus {
         outline: none;
         border-color: var(--bitcoin-orange);
         background: rgba(255, 255, 255, 0.08);
         box-shadow: 0 0 20px rgba(247, 147, 26, 0.2);
     }
 
-    .converter-select {
-        padding: 14px 16px;
-        border: 2px solid rgba(247, 147, 26, 0.3);
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        font-size: 16px;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    /* ===== AFILIADOS ===== */
     .affiliates-section {
         background: rgba(30, 35, 60, 0.6);
         border: 2px solid rgba(247, 147, 26, 0.3);
@@ -277,7 +257,6 @@
         box-shadow: 0 15px 40px rgba(247, 147, 26, 0.4);
     }
 
-    /* ===== PREMIUM SECTION ===== */
     .premium-section {
         background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
         border: 2px solid rgba(76, 175, 80, 0.3);
@@ -348,7 +327,6 @@
         box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
     }
 
-    /* ===== ADSENSE ===== */
     .adsense-section {
         background: rgba(30, 35, 60, 0.6);
         border: 2px dashed rgba(247, 147, 26, 0.3);
@@ -367,7 +345,6 @@
         font-size: 14px;
     }
 
-    /* ===== TABS ===== */
     .tabs {
         display: flex;
         gap: 10px;
@@ -615,7 +592,6 @@
 
     <!-- ADSENSE -->
     <section class="adsense-section">
-        <!-- Google AdSense será inserido aqui -->
         <div class="adsense-placeholder">
             📺 Espaço para Publicidade<br>
             (Google AdSense será inserido aqui)
@@ -629,7 +605,7 @@
             <div class="affiliate-card">
                 <div class="affiliate-icon">🔐</div>
                 <div class="affiliate-name">KAST</div>
-                <div class="affiliate-description">Melhor cartão de criptomoedas</div>
+                <div class="affiliate-description">Carteira segura para suas criptomoedas</div>
                 <a href="https://go.kast.xyz/VqVO/N137G56K" target="_blank" class="affiliate-btn">Acessar</a>
             </div>
 
@@ -656,8 +632,8 @@
 
             <div class="affiliate-card">
                 <div class="affiliate-icon">📚</div>
-                <div class="affiliate-name">Aprenda mais Sobre BTC</div>
-                <div class="affiliate-description">E-book Bitcoin para Iniciantes</div>
+                <div class="affiliate-name">Hotmart</div>
+                <div class="affiliate-description">Plataforma de produtos digitais</div>
                 <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="affiliate-btn">Acessar</a>
             </div>
         </div>
@@ -764,11 +740,11 @@
     </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
     // ===== CONFIG =====
     const API_URL = 'https://api.coingecko.com/api/v3';
-    const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_STRIPE_KEY'; // Mude aqui
+    const STRIPE_PUBLIC_KEY = 'pk_test_51TGnF5RoTlB1iZhj8XUJzO0CT4u6VSGbzi4ao9OltCl43CK4ja4hssXDDQfGzGlVW15F9XDDlYW2YSui1PsAnFs6005StCmNNL';
+    
     const stripe = Stripe(STRIPE_PUBLIC_KEY);
     const elements = stripe.elements();
     const cardElement = elements.create('card');
@@ -794,10 +770,8 @@
             document.getElementById('updateTime').textContent = 
                 new Date().toLocaleTimeString('pt-BR');
 
-            // Converter
             convertCurrency();
 
-            // Stats
             if (btcData.usd_market_cap) {
                 document.getElementById('marketCap').textContent = 'US$' + 
                     (btcData.usd_market_cap / 1e9).toFixed(0) + 'B';
@@ -828,8 +802,6 @@
 
         const result = btcAmount * currentPrice;
 
-        // Aqui você precisa buscar a taxa cambial para a moeda selecionada
-        // Por enquanto, mostrar só em USD
         if (currency === 'usd') {
             document.getElementById('conversionResult').textContent = 
                 '$' + result.toLocaleString('en-US', {minimumFractionDigits: 2});
