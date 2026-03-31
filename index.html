@@ -24,25 +24,21 @@
         background: #0f1419 !important;
         color: #e2e8f0;
         line-height: 1.6;
-        margin: 0;
-        padding: 0;
     }
     
     /* HEADER */
     header {
-        background: #0f1419 !important;
+        background: #0f1419;
         border-bottom: 1px solid rgba(248, 153, 26, 0.15);
-        padding: 20px 0;
+        padding: 16px 20px;
         position: sticky;
         top: 0;
         z-index: 1000;
-        backdrop-filter: blur(10px);
     }
     
     .header-content {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -52,7 +48,6 @@
         font-size: 24px;
         font-weight: 800;
         color: #f8991a;
-        letter-spacing: -0.5px;
     }
     
     .lang {
@@ -61,21 +56,16 @@
     }
     
     .lang button {
-        padding: 8px 16px;
+        padding: 8px 14px;
         background: rgba(248, 153, 26, 0.1);
         border: 1px solid rgba(248, 153, 26, 0.3);
         color: #94a3b8;
         border-radius: 6px;
         cursor: pointer;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
         transition: all 0.3s;
         font-family: 'Inter', sans-serif;
-    }
-    
-    .lang button:hover {
-        border-color: #f8991a;
-        color: #f8991a;
     }
     
     .lang button.active {
@@ -84,34 +74,57 @@
         border-color: #f8991a;
     }
     
-    /* MAIN CONTENT */
-    main {
-        max-width: 1200px;
+    /* LAYOUT COM SIDEBAR */
+    .main-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 24px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 60px 20px;
+        padding: 40px 20px;
     }
     
-    /* HERO SECTION */
+    .main-content {
+        min-width: 0;
+    }
+    
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    /* ADSENSE SIDEBAR */
+    .adsense-box {
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 80px;
+    }
+    
+    /* HERO */
     .hero {
         text-align: center;
-        margin-bottom: 80px;
+        margin-bottom: 40px;
     }
     
     .hero h1 {
         font-size: 48px;
         font-weight: 800;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         color: #f8991a;
-        letter-spacing: -1px;
     }
     
     .hero p {
-        font-size: 18px;
+        font-size: 16px;
         color: #94a3b8;
-        margin-bottom: 32px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
     }
     
     /* PRICE CARD */
@@ -119,56 +132,88 @@
         background: #1a2332;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 12px;
-        padding: 48px 32px;
-        text-align: center;
-        margin-bottom: 60px;
+        padding: 40px;
+        margin-bottom: 40px;
     }
     
     .price-label {
-        font-size: 14px;
+        font-size: 13px;
         color: #94a3b8;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         font-weight: 600;
     }
     
+    .price-main {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    
     .price-usd {
-        font-size: 64px;
+        font-size: 56px;
         font-weight: 800;
         color: #f8991a;
-        margin-bottom: 16px;
     }
     
     .price-brl {
-        font-size: 32px;
+        font-size: 28px;
         color: #cbd5e1;
         font-weight: 600;
     }
     
-    /* ADSENSE CONTAINER */
-    .adsense-container {
-        background: #1a2332;
+    /* STATS GRID */
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+    
+    .stat-box {
+        background: rgba(248, 153, 26, 0.05);
         border: 1px solid rgba(248, 153, 26, 0.2);
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 60px;
-        text-align: center;
-        min-height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        border-radius: 8px;
+        padding: 16px;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+    
+    .stat-value {
+        font-size: 20px;
+        font-weight: 700;
+        color: #f8991a;
+    }
+    
+    .stat-change {
+        font-size: 13px;
+        margin-top: 6px;
+    }
+    
+    .stat-change.positive {
+        color: #4ade80;
+    }
+    
+    .stat-change.negative {
+        color: #ef4444;
     }
     
     /* SECTION */
     .section {
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
     
     .section-title {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 700;
-        margin-bottom: 32px;
+        margin-bottom: 24px;
         color: #f1f5f9;
     }
     
@@ -176,14 +221,14 @@
         background: #1a2332;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 12px;
-        padding: 40px;
+        padding: 32px;
     }
     
     .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-bottom: 24px;
+        gap: 20px;
+        margin-bottom: 20px;
     }
     
     .form-group {
@@ -192,7 +237,7 @@
     }
     
     .form-label {
-        font-size: 14px;
+        font-size: 13px;
         color: #94a3b8;
         text-transform: uppercase;
         letter-spacing: 0.5px;
@@ -201,7 +246,7 @@
     }
     
     .form-input {
-        padding: 12px 16px;
+        padding: 12px 14px;
         background: #0f1419;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 8px;
@@ -222,60 +267,44 @@
         background: rgba(248, 153, 26, 0.1);
         border: 1px solid rgba(248, 153, 26, 0.3);
         border-radius: 8px;
-        padding: 24px;
+        padding: 20px;
         text-align: center;
-        margin-top: 24px;
-    }
-    
-    .result-label {
-        font-size: 12px;
-        color: #94a3b8;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
+        margin-top: 20px;
     }
     
     .result-value {
-        font-size: 40px;
+        font-size: 36px;
         font-weight: 800;
         color: #f8991a;
     }
     
-    /* WHAT IS BITCOIN SECTION */
-    .what-is-bitcoin {
-        background: #1a2332;
-        border: 1px solid rgba(248, 153, 26, 0.2);
-        border-radius: 12px;
-        padding: 60px 40px;
-        margin-bottom: 60px;
-    }
-    
+    /* BITCOIN CARDS */
     .bitcoin-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 32px;
-        margin-top: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
     }
     
     .bitcoin-card {
-        text-align: center;
-        animation: slideUp 0.6s ease-out forwards;
-        opacity: 0;
-        background: rgba(248, 153, 26, 0.05);
-        padding: 30px;
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 12px;
-        border: 1px solid rgba(248, 153, 26, 0.1);
+        padding: 28px;
+        text-align: center;
+        animation: slideUp 0.5s ease-out forwards;
+        opacity: 0;
     }
     
-    .bitcoin-card:nth-child(1) { animation-delay: 0.1s; }
-    .bitcoin-card:nth-child(2) { animation-delay: 0.2s; }
-    .bitcoin-card:nth-child(3) { animation-delay: 0.3s; }
-    .bitcoin-card:nth-child(4) { animation-delay: 0.4s; }
+    .bitcoin-card:nth-child(1) { animation-delay: 0.05s; }
+    .bitcoin-card:nth-child(2) { animation-delay: 0.1s; }
+    .bitcoin-card:nth-child(3) { animation-delay: 0.15s; }
+    .bitcoin-card:nth-child(4) { animation-delay: 0.2s; }
     
     @keyframes slideUp {
         from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
         }
         to {
             opacity: 1;
@@ -284,84 +313,84 @@
     }
     
     .bitcoin-icon {
-        font-size: 56px;
-        margin-bottom: 16px;
+        font-size: 48px;
+        margin-bottom: 12px;
         display: inline-block;
         animation: float 3s ease-in-out infinite;
     }
     
     .bitcoin-card:nth-child(1) .bitcoin-icon { animation-delay: 0s; }
-    .bitcoin-card:nth-child(2) .bitcoin-icon { animation-delay: 0.5s; }
-    .bitcoin-card:nth-child(3) .bitcoin-icon { animation-delay: 1s; }
-    .bitcoin-card:nth-child(4) .bitcoin-icon { animation-delay: 1.5s; }
+    .bitcoin-card:nth-child(2) .bitcoin-icon { animation-delay: 0.4s; }
+    .bitcoin-card:nth-child(3) .bitcoin-icon { animation-delay: 0.8s; }
+    .bitcoin-card:nth-child(4) .bitcoin-icon { animation-delay: 1.2s; }
     
     @keyframes float {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-8px); }
     }
     
     .bitcoin-card h3 {
-        font-size: 20px;
-        font-weight: 700;
-        color: #f8991a;
-        margin-bottom: 12px;
-    }
-    
-    .bitcoin-card p {
-        font-size: 14px;
-        color: #94a3b8;
-        line-height: 1.6;
-    }
-    
-    /* PARTNERS */
-    .partners-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 24px;
-    }
-    
-    .partner-card {
-        background: #1a2332;
-        border: 1px solid rgba(248, 153, 26, 0.2);
-        border-radius: 12px;
-        padding: 32px;
-        text-align: center;
-        transition: all 0.3s;
-    }
-    
-    .partner-card:hover {
-        border-color: #f8991a;
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(248, 153, 26, 0.1);
-    }
-    
-    .partner-icon {
-        font-size: 48px;
-        margin-bottom: 16px;
-    }
-    
-    .partner-name {
         font-size: 18px;
         font-weight: 700;
         color: #f8991a;
         margin-bottom: 8px;
     }
     
-    .partner-desc {
-        font-size: 14px;
+    .bitcoin-card p {
+        font-size: 13px;
         color: #94a3b8;
-        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    
+    /* PARTNERS */
+    .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+    }
+    
+    .partner-card {
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
+        border-radius: 12px;
+        padding: 28px;
+        text-align: center;
+        transition: all 0.3s;
+    }
+    
+    .partner-card:hover {
+        border-color: #f8991a;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(248, 153, 26, 0.1);
+    }
+    
+    .partner-icon {
+        font-size: 40px;
+        margin-bottom: 12px;
+    }
+    
+    .partner-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #f8991a;
+        margin-bottom: 6px;
+    }
+    
+    .partner-desc {
+        font-size: 13px;
+        color: #94a3b8;
+        margin-bottom: 16px;
     }
     
     .btn {
         display: inline-block;
-        padding: 12px 24px;
+        padding: 10px 20px;
         background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%);
         color: #0f1419;
         text-decoration: none;
         border-radius: 8px;
         font-weight: 600;
-        font-size: 14px;
+        font-size: 13px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         border: none;
@@ -372,54 +401,46 @@
     
     .btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 24px rgba(248, 153, 26, 0.3);
+        box-shadow: 0 8px 20px rgba(248, 153, 26, 0.25);
     }
     
-    /* PREMIUM SECTION */
+    /* PREMIUM */
     .premium-card {
         background: #1a2332;
         border: 1px solid rgba(76, 175, 80, 0.2);
         border-radius: 12px;
-        padding: 48px 40px;
-        text-align: center;
+        padding: 40px;
     }
     
     .premium-title {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: 700;
         color: #4ade80;
         margin-bottom: 8px;
     }
     
-    .premium-subtitle {
-        font-size: 16px;
-        color: #94a3b8;
-        margin-bottom: 24px;
-    }
-    
     .premium-price {
-        font-size: 56px;
+        font-size: 48px;
         font-weight: 800;
         color: #f8991a;
-        margin-bottom: 32px;
+        margin-bottom: 28px;
     }
     
     .tabs {
         display: flex;
-        gap: 16px;
-        justify-content: center;
-        margin-bottom: 32px;
+        gap: 12px;
+        margin-bottom: 24px;
         border-bottom: 1px solid rgba(248, 153, 26, 0.1);
-        padding-bottom: 16px;
+        padding-bottom: 12px;
         flex-wrap: wrap;
     }
     
     .tab-btn {
-        padding: 12px 20px;
+        padding: 10px 16px;
         background: transparent;
         border: none;
         color: #94a3b8;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
         cursor: pointer;
         border-bottom: 2px solid transparent;
@@ -434,27 +455,19 @@
         border-bottom-color: #f8991a;
     }
     
-    .tab-content {
-        display: none;
-    }
-    
-    .tab-content.show {
-        display: block;
-    }
+    .tab-content { display: none; }
+    .tab-content.show { display: block; }
     
     .message {
-        padding: 16px;
+        padding: 12px;
         border-radius: 8px;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         display: none;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 500;
     }
     
-    .message.show {
-        display: block;
-    }
-    
+    .message.show { display: block; }
     .message.success {
         background: rgba(76, 175, 80, 0.15);
         border: 1px solid rgba(76, 175, 80, 0.3);
@@ -468,19 +481,29 @@
     }
     
     .StripeElement {
-        padding: 12px 16px;
+        padding: 12px 14px;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 8px;
         background: #0f1419;
         margin-top: 8px;
     }
     
+    @media (max-width: 1024px) {
+        .main-wrapper {
+            grid-template-columns: 1fr;
+        }
+        
+        .adsense-box {
+            position: static;
+            min-height: 250px;
+        }
+    }
+    
     @media (max-width: 768px) {
         .form-row { grid-template-columns: 1fr; }
-        .hero h1 { font-size: 32px; }
-        .section-title { font-size: 24px; }
-        .price-usd { font-size: 48px; }
-        .tabs { flex-direction: column; }
+        .hero h1 { font-size: 36px; }
+        .section-title { font-size: 22px; }
+        .price-usd { font-size: 42px; }
     }
 </style>
 ```
@@ -492,200 +515,204 @@
             <div class="logo">₿ Bitcoin Agora</div>
             <div class="lang">
                 <button class="active" onclick="setLang('pt')">PT-BR</button>
-                <button onclick="setLang('en')">ENGLISH</button>
-                <button onclick="setLang('es')">SPANISH</button>
+                <button onclick="setLang('en')">EN</button>
+                <button onclick="setLang('es')">ES</button>
             </div>
         </div>
     </header>
 
 ```
-<main>
-    <!-- HERO -->
-    <section class="hero">
-        <h1 id="t-hero">Bitcoin em Tempo Real</h1>
-        <p id="t-hero-sub">Conversor preciso, alertas inteligentes, parceiras confiáveis</p>
-    </section>
+<div class="main-wrapper">
+    <div class="main-content">
+        <!-- HERO -->
+        <section class="hero">
+            <h1 id="t-hero">Bitcoin em Tempo Real</h1>
+            <p id="t-hero-sub">Conversor preciso • Alertas inteligentes • Parceiras confiáveis</p>
+        </section>
 
-    <!-- PREÇO -->
-    <section class="price-card">
-        <div class="price-label" id="t-price-label">Preço Atual</div>
-        <div class="price-usd" id="price-usd">$0</div>
-        <div class="price-brl" id="price-brl">R$0</div>
-    </section>
-
-    <!-- ADSENSE 1 -->
-    <div class="adsense-container">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
-    <!-- CONVERSOR -->
-    <section class="section">
-        <h2 class="section-title" id="t-converter">Conversor Bitcoin</h2>
-        <div class="converter-card">
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label" id="t-amount">Quantidade Bitcoin</label>
-                    <input type="number" class="form-input" id="btcAmount" placeholder="1.0" step="0.0001" value="1">
+        <!-- PREÇO E STATS -->
+        <section class="price-card">
+            <div class="price-label" id="t-price-label">Preço Atual</div>
+            <div class="price-main">
+                <div class="price-usd" id="price-usd">$0</div>
+                <div class="price-brl" id="price-brl">R$0</div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label" id="t-change">Mudança 24h</div>
+                    <div class="stat-value" id="change24h">0%</div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" id="t-currency">Moeda</label>
-                    <select class="form-input" id="currency" onchange="convertCurrency()">
-                        <option value="usd">USD - Dólar</option>
-                        <option value="brl">BRL - Real</option>
-                    </select>
+                <div class="stat-box">
+                    <div class="stat-label" id="t-cap">Market Cap</div>
+                    <div class="stat-value" id="marketCap">$0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label" id="t-vol">Volume 24h</div>
+                    <div class="stat-value" id="volume24h">$0</div>
                 </div>
             </div>
-            <div class="result-box">
-                <div class="result-label" id="t-result">Resultado</div>
-                <div class="result-value" id="result">$0</div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- O QUE É BITCOIN -->
-    <section class="section">
-        <h2 class="section-title" id="t-what-is">O que é Bitcoin?</h2>
-        <div class="what-is-bitcoin">
+        <!-- CONVERSOR -->
+        <section class="section">
+            <h2 class="section-title" id="t-converter">Conversor Bitcoin</h2>
+            <div class="converter-card">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" id="t-amount">Quantidade Bitcoin</label>
+                        <input type="number" class="form-input" id="btcAmount" placeholder="1.0" step="0.0001" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" id="t-currency">Moeda</label>
+                        <select class="form-input" id="currency" onchange="convertCurrency()">
+                            <option value="usd">USD - Dólar</option>
+                            <option value="brl">BRL - Real</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <div class="result-value" id="result">$0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- O QUE É BITCOIN -->
+        <section class="section">
+            <h2 class="section-title" id="t-what-is">O que é Bitcoin?</h2>
             <div class="bitcoin-grid">
                 <div class="bitcoin-card">
                     <div class="bitcoin-icon">🔐</div>
                     <h3 id="t-secure">Segurança</h3>
-                    <p id="t-secure-desc">Transações criptografadas e imutáveis</p>
+                    <p id="t-secure-desc">Transações criptografadas</p>
                 </div>
                 <div class="bitcoin-card">
                     <div class="bitcoin-icon">🌍</div>
                     <h3 id="t-global">Global</h3>
-                    <p id="t-global-desc">Funciona em qualquer país do mundo</p>
+                    <p id="t-global-desc">Funciona em qualquer país</p>
                 </div>
                 <div class="bitcoin-card">
                     <div class="bitcoin-icon">⚡</div>
                     <h3 id="t-fast">Rápido</h3>
-                    <p id="t-fast-desc">Transferências em minutos, não em dias</p>
+                    <p id="t-fast-desc">Transferências em minutos</p>
                 </div>
                 <div class="bitcoin-card">
                     <div class="bitcoin-icon">💰</div>
                     <h3 id="t-value">Valor</h3>
-                    <p id="t-value-desc">Ativo digital com valor crescente</p>
+                    <p id="t-value-desc">Ativo com valor crescente</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ADSENSE 2 -->
-    <div class="adsense-container">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="9876543210" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <!-- PARCEIRAS -->
+        <section class="section">
+            <h2 class="section-title" id="t-partners">Nossas Parceiras</h2>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-icon">🔐</div>
+                    <div class="partner-name" id="kast-name">Melhor Cartão</div>
+                    <div class="partner-desc" id="kast-desc">Carteira segura</div>
+                    <a href="https://go.kast.xyz/VqVO/N137G56K" target="_blank" class="btn">Acessar</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-icon">📈</div>
+                    <div class="partner-name">Bybit</div>
+                    <div class="partner-desc" id="bybit-desc">Exchange Trading</div>
+                    <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank" class="btn">Acessar</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-icon">🛡️</div>
+                    <div class="partner-name">Ledger</div>
+                    <div class="partner-desc" id="ledger-desc">Hardware Wallet</div>
+                    <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank" class="btn">Acessar</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-icon">💰</div>
+                    <div class="partner-name">Binance</div>
+                    <div class="partner-desc" id="binance-desc">Maior Exchange</div>
+                    <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI" target="_blank" class="btn">Acessar</a>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-icon">📚</div>
+                    <div class="partner-name" id="ebook-name">E-book</div>
+                    <div class="partner-desc" id="ebook-desc">Aprenda Bitcoin</div>
+                    <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="btn">Acessar</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREMIUM -->
+        <section class="section">
+            <div class="premium-card">
+                <div class="premium-title" id="t-premium">Alertas Premium</div>
+                <div class="premium-price">R$ 2,99<span style="font-size: 18px; color: #94a3b8;">/mês</span></div>
+
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('dados')">1. Dados</button>
+                    <button class="tab-btn" onclick="switchTab('alertas')">2. Alertas</button>
+                    <button class="tab-btn" onclick="switchTab('pagamento')">3. Pagamento</button>
+                </div>
+
+                <div id="message" class="message"></div>
+
+                <div id="dados-tab" class="tab-content show">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">WhatsApp</label>
+                            <input type="tel" class="form-input" id="whatsapp" placeholder="+55 11 99999999">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" id="email" placeholder="seu@email.com">
+                        </div>
+                    </div>
+                    <button class="btn" onclick="goAlertas()" style="width: 100%;">Continuar</button>
+                </div>
+
+                <div id="alertas-tab" class="tab-content">
+                    <div class="result-box" style="background: rgba(33, 150, 243, 0.1); border-color: rgba(33, 150, 243, 0.3); color: #93c5fd; margin-bottom: 16px;">
+                        <strong>Preço: $<span id="currentPrice">0</span></strong>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Alerta SUBIR</label>
+                            <input type="number" class="form-input" id="above" placeholder="70000" step="100">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Alerta CAIR</label>
+                            <input type="number" class="form-input" id="below" placeholder="55000" step="100">
+                        </div>
+                    </div>
+                    <button class="btn" onclick="goPagamento()" style="width: 100%;">Continuar</button>
+                </div>
+
+                <div id="pagamento-tab" class="tab-content">
+                    <div class="result-box" style="background: rgba(76, 175, 80, 0.1); border-color: rgba(76, 175, 80, 0.3); color: #86efac; margin-bottom: 16px;">
+                        <strong>Premium por 30 dias</strong>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Cartão</label>
+                        <div id="card-element" class="StripeElement"></div>
+                    </div>
+                    <button class="btn" id="payBtn" onclick="pay()" style="width: 100%; margin-top: 16px;">Pagar R$ 2,99</button>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- PARCEIRAS -->
-    <section class="section">
-        <h2 class="section-title" id="t-partners">Nossas Parceiras</h2>
-        <div class="partners-grid">
-            <div class="partner-card">
-                <div class="partner-icon">🔐</div>
-                <div class="partner-name" id="kast-name">Melhor Cartão</div>
-                <div class="partner-desc" id="kast-desc">Carteira segura</div>
-                <a href="https://go.kast.xyz/VqVO/N137G56K" target="_blank" class="btn">Acessar</a>
-            </div>
-            <div class="partner-card">
-                <div class="partner-icon">📈</div>
-                <div class="partner-name">Bybit</div>
-                <div class="partner-desc" id="bybit-desc">Exchange Trading</div>
-                <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank" class="btn">Acessar</a>
-            </div>
-            <div class="partner-card">
-                <div class="partner-icon">🛡️</div>
-                <div class="partner-name">Ledger</div>
-                <div class="partner-desc" id="ledger-desc">Hardware Wallet</div>
-                <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank" class="btn">Acessar</a>
-            </div>
-            <div class="partner-card">
-                <div class="partner-icon">💰</div>
-                <div class="partner-name">Binance</div>
-                <div class="partner-desc" id="binance-desc">Maior Exchange</div>
-                <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI" target="_blank" class="btn">Acessar</a>
-            </div>
-            <div class="partner-card">
-                <div class="partner-icon">📚</div>
-                <div class="partner-name" id="ebook-name">E-book</div>
-                <div class="partner-desc" id="ebook-desc">Aprenda Bitcoin</div>
-                <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="btn">Acessar</a>
-            </div>
+    <!-- SIDEBAR COM ADSENSE -->
+    <div class="sidebar">
+        <div class="adsense-box">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="vertical" data-full-width-responsive="false" style="max-width: 300px;"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
-    </section>
-
-    <!-- ADSENSE 3 -->
-    <div class="adsense-container">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-
-    <!-- PREMIUM -->
-    <section class="section">
-        <div class="premium-card">
-            <div class="premium-title" id="t-premium">Alertas Premium</div>
-            <div class="premium-subtitle" id="t-premium-sub">Notificações automáticas no WhatsApp</div>
-            <div class="premium-price">R$ 2,99<span style="font-size: 24px; color: #94a3b8;">/mês</span></div>
-
-            <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('dados')">1. Dados</button>
-                <button class="tab-btn" onclick="switchTab('alertas')">2. Alertas</button>
-                <button class="tab-btn" onclick="switchTab('pagamento')">3. Pagamento</button>
-            </div>
-
-            <div id="message" class="message"></div>
-
-            <div id="dados-tab" class="tab-content show">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">WhatsApp</label>
-                        <input type="tel" class="form-input" id="whatsapp" placeholder="+55 11 99999999">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-input" id="email" placeholder="seu@email.com">
-                    </div>
-                </div>
-                <button class="btn" onclick="goAlertas()" style="width: 100%;">Continuar</button>
-            </div>
-
-            <div id="alertas-tab" class="tab-content">
-                <div class="result-box" style="background: rgba(33, 150, 243, 0.1); border-color: rgba(33, 150, 243, 0.3); color: #93c5fd; margin-bottom: 24px;">
-                    <strong>Preço Atual: $<span id="currentPrice">0</span></strong>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Alerta SUBIR para</label>
-                        <input type="number" class="form-input" id="above" placeholder="70000" step="100">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Alerta CAIR para</label>
-                        <input type="number" class="form-input" id="below" placeholder="55000" step="100">
-                    </div>
-                </div>
-                <button class="btn" onclick="goPagamento()" style="width: 100%;">Continuar</button>
-            </div>
-
-            <div id="pagamento-tab" class="tab-content">
-                <div class="result-box" style="background: rgba(76, 175, 80, 0.1); border-color: rgba(76, 175, 80, 0.3); color: #86efac; margin-bottom: 24px;">
-                    <strong>Você ativará o sistema premium por 30 dias</strong>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Dados do Cartão</label>
-                    <div id="card-element" class="StripeElement"></div>
-                </div>
-                <button class="btn" id="payBtn" onclick="pay()" style="width: 100%;">Pagar R$ 2,99 com Stripe</button>
-            </div>
-        </div>
-    </section>
-</main>
+</div>
 
 <script>
     const trans = {
-        pt: {'t-hero':'Bitcoin em Tempo Real','t-hero-sub':'Conversor preciso, alertas inteligentes, parceiras confiáveis','t-price-label':'Preço Atual','t-converter':'Conversor Bitcoin','t-amount':'Quantidade Bitcoin','t-currency':'Moeda','t-result':'Resultado','t-what-is':'O que é Bitcoin?','t-secure':'Segurança','t-secure-desc':'Transações criptografadas e imutáveis','t-global':'Global','t-global-desc':'Funciona em qualquer país do mundo','t-fast':'Rápido','t-fast-desc':'Transferências em minutos, não em dias','t-value':'Valor','t-value-desc':'Ativo digital com valor crescente','t-partners':'Nossas Parceiras','kast-name':'Melhor Cartão de Criptomoedas','kast-desc':'Carteira segura para suas criptomoedas','bybit-desc':'Exchange de trading de criptomoedas','ledger-desc':'Hardware wallet para segurança máxima','binance-desc':'Maior exchange de criptomoedas do mundo','ebook-name':'E-book','ebook-desc':'Aprenda mais sobre Bitcoin','t-premium':'Alertas Premium Bitcoin','t-premium-sub':'Notificações automáticas no WhatsApp'},
-        en: {'t-hero':'Bitcoin in Real Time','t-hero-sub':'Accurate converter, intelligent alerts, trusted partners','t-price-label':'Current Price','t-converter':'Bitcoin Converter','t-amount':'Bitcoin Amount','t-currency':'Currency','t-result':'Result','t-what-is':'What is Bitcoin?','t-secure':'Security','t-secure-desc':'Encrypted and immutable transactions','t-global':'Global','t-global-desc':'Works in any country in the world','t-fast':'Fast','t-fast-desc':'Transfers in minutes, not days','t-value':'Value','t-value-desc':'Digital asset with growing value','t-partners':'Our Partners','kast-name':'Best Crypto Card','kast-desc':'Secure wallet for your cryptocurrencies','bybit-desc':'Cryptocurrency trading exchange','ledger-desc':'Hardware wallet for maximum security','binance-desc':'Worlds largest cryptocurrency exchange','ebook-name':'E-book','ebook-desc':'Learn more about Bitcoin','t-premium':'Bitcoin Premium Alerts','t-premium-sub':'Automatic WhatsApp notifications'},
-        es: {'t-hero':'Bitcoin en Tiempo Real','t-hero-sub':'Convertidor preciso, alertas inteligentes, socios confiables','t-price-label':'Precio Actual','t-converter':'Convertidor Bitcoin','t-amount':'Cantidad Bitcoin','t-currency':'Moneda','t-result':'Resultado','t-what-is':'¿Qué es Bitcoin?','t-secure':'Seguridad','t-secure-desc':'Transacciones encriptadas e inmutables','t-global':'Global','t-global-desc':'Funciona en cualquier país del mundo','t-fast':'Rápido','t-fast-desc':'Transferencias en minutos, no en días','t-value':'Valor','t-value-desc':'Activo digital con valor creciente','t-partners':'Nuestros Socios','kast-name':'Mejor Tarjeta Cripto','kast-desc':'Billetera segura para tus criptomonedas','bybit-desc':'Exchange de trading de criptomonedas','ledger-desc':'Billetera física para máxima seguridad','binance-desc':'Mayor exchange de criptomonedas del mundo','ebook-name':'E-book','ebook-desc':'Aprende más sobre Bitcoin','t-premium':'Alertas Premium Bitcoin','t-premium-sub':'Notificaciones automáticas de WhatsApp'}
+        pt: {'t-hero':'Bitcoin em Tempo Real','t-hero-sub':'Conversor preciso • Alertas inteligentes • Parceiras confiáveis','t-price-label':'Preço Atual','t-change':'Mudança 24h','t-cap':'Market Cap','t-vol':'Volume 24h','t-converter':'Conversor Bitcoin','t-amount':'Quantidade Bitcoin','t-currency':'Moeda','t-what-is':'O que é Bitcoin?','t-secure':'Segurança','t-secure-desc':'Transações criptografadas','t-global':'Global','t-global-desc':'Funciona em qualquer país','t-fast':'Rápido','t-fast-desc':'Transferências em minutos','t-value':'Valor','t-value-desc':'Ativo com valor crescente','t-partners':'Nossas Parceiras','kast-name':'Melhor Cartão de Criptomoedas','kast-desc':'Carteira segura para suas criptomoedas','bybit-desc':'Exchange de trading','ledger-desc':'Hardware wallet','binance-desc':'Maior exchange','ebook-name':'E-book','ebook-desc':'Aprenda Bitcoin','t-premium':'Alertas Premium Bitcoin'},
+        en: {'t-hero':'Bitcoin in Real Time','t-hero-sub':'Accurate converter • Intelligent alerts • Trusted partners','t-price-label':'Current Price','t-change':'24h Change','t-cap':'Market Cap','t-vol':'24h Volume','t-converter':'Bitcoin Converter','t-amount':'Bitcoin Amount','t-currency':'Currency','t-what-is':'What is Bitcoin?','t-secure':'Security','t-secure-desc':'Encrypted transactions','t-global':'Global','t-global-desc':'Works in any country','t-fast':'Fast','t-fast-desc':'Transfers in minutes','t-value':'Value','t-value-desc':'Asset with growing value','t-partners':'Our Partners','kast-name':'Best Crypto Card','kast-desc':'Secure wallet for cryptocurrencies','bybit-desc':'Trading exchange','ledger-desc':'Hardware wallet','binance-desc':'Top exchange','ebook-name':'E-book','ebook-desc':'Learn Bitcoin','t-premium':'Bitcoin Premium Alerts'},
+        es: {'t-hero':'Bitcoin en Tiempo Real','t-hero-sub':'Convertidor preciso • Alertas inteligentes • Socios confiables','t-price-label':'Precio Actual','t-change':'Cambio 24h','t-cap':'Capitalización','t-vol':'Volumen 24h','t-converter':'Convertidor Bitcoin','t-amount':'Cantidad Bitcoin','t-currency':'Moneda','t-what-is':'¿Qué es Bitcoin?','t-secure':'Seguridad','t-secure-desc':'Transacciones encriptadas','t-global':'Global','t-global-desc':'Funciona en cualquier país','t-fast':'Rápido','t-fast-desc':'Transferencias en minutos','t-value':'Valor','t-value-desc':'Activo con valor creciente','t-partners':'Nuestros Socios','kast-name':'Mejor Tarjeta Cripto','kast-desc':'Billetera segura para criptomonedas','bybit-desc':'Exchange de trading','ledger-desc':'Billetera física','binance-desc':'Mayor exchange','ebook-name':'E-book','ebook-desc':'Aprende Bitcoin','t-premium':'Alertas Premium Bitcoin'}
     };
 
     let currentPrice = 0;
@@ -706,12 +733,22 @@
 
     async function updatePrice() {
         try {
-            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl');
+            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true');
             const data = await res.json();
-            currentPrice = data.bitcoin.usd;
+            const btc = data.bitcoin;
+            currentPrice = btc.usd;
             document.getElementById('price-usd').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
-            document.getElementById('price-brl').textContent = 'R$' + data.bitcoin.brl.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
+            document.getElementById('price-brl').textContent = 'R$' + btc.brl.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
             document.getElementById('currentPrice').textContent = currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
+            
+            const change = btc.usd_24h_change;
+            const changeEl = document.getElementById('change24h');
+            changeEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+            changeEl.parentElement.className = 'stat-box';
+            
+            document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
+            document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
+            
             convertCurrency();
         } catch (e) { console.error(e); }
     }
