@@ -9,21 +9,22 @@
     <meta name="description" content="Conversor Bitcoin em tempo real com alertas premium por WhatsApp">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://js.stripe.com/v3/"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069537322097109" crossorigin="anonymous"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
 ```
     body { 
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        background: linear-gradient(180deg, #0f1419 0%, #1a202c 100%);
+        background: #0f1419;
         color: #e2e8f0;
         line-height: 1.6;
     }
     
     /* HEADER */
     header {
-        background: rgba(15, 20, 25, 0.95);
-        border-bottom: 1px solid rgba(248, 153, 26, 0.1);
+        background: #0f1419;
+        border-bottom: 1px solid rgba(248, 153, 26, 0.15);
         padding: 20px 0;
         position: sticky;
         top: 0;
@@ -93,10 +94,7 @@
         font-size: 48px;
         font-weight: 800;
         margin-bottom: 16px;
-        background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #f8991a;
         letter-spacing: -1px;
     }
     
@@ -111,7 +109,7 @@
     
     /* PRICE CARD */
     .price-card {
-        background: linear-gradient(135deg, rgba(248, 153, 26, 0.05) 0%, rgba(251, 176, 64, 0.05) 100%);
+        background: #1a2332;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 12px;
         padding: 48px 32px;
@@ -143,7 +141,21 @@
         font-weight: 600;
     }
     
-    /* CONVERTER SECTION */
+    /* ADSENSE CONTAINER */
+    .adsense-container {
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 60px;
+        text-align: center;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* SECTION */
     .section {
         margin-bottom: 60px;
     }
@@ -156,7 +168,7 @@
     }
     
     .converter-card {
-        background: linear-gradient(135deg, rgba(248, 153, 26, 0.05) 0%, rgba(30, 41, 59, 0.5) 100%);
+        background: #1a2332;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 12px;
         padding: 40px;
@@ -186,7 +198,7 @@
     
     .form-input {
         padding: 12px 16px;
-        background: rgba(15, 20, 25, 0.6);
+        background: #0f1419;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 8px;
         color: #e2e8f0;
@@ -198,7 +210,7 @@
     .form-input:focus {
         outline: none;
         border-color: #f8991a;
-        background: rgba(15, 20, 25, 0.8);
+        background: #1a2332;
         box-shadow: 0 0 0 3px rgba(248, 153, 26, 0.1);
     }
     
@@ -226,7 +238,76 @@
         font-feature-settings: "tnum";
     }
     
-    /* PARTNERS SECTION */
+    /* WHAT IS BITCOIN SECTION */
+    .what-is-bitcoin {
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
+        border-radius: 12px;
+        padding: 60px 40px;
+        margin-bottom: 60px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .bitcoin-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+        margin-top: 40px;
+    }
+    
+    .bitcoin-card {
+        text-align: center;
+        animation: slideUp 0.6s ease-out forwards;
+        opacity: 0;
+    }
+    
+    .bitcoin-card:nth-child(1) { animation-delay: 0.1s; }
+    .bitcoin-card:nth-child(2) { animation-delay: 0.2s; }
+    .bitcoin-card:nth-child(3) { animation-delay: 0.3s; }
+    .bitcoin-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .bitcoin-icon {
+        font-size: 56px;
+        margin-bottom: 16px;
+        display: inline-block;
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .bitcoin-card:nth-child(1) .bitcoin-icon { animation-delay: 0s; }
+    .bitcoin-card:nth-child(2) .bitcoin-icon { animation-delay: 0.5s; }
+    .bitcoin-card:nth-child(3) .bitcoin-icon { animation-delay: 1s; }
+    .bitcoin-card:nth-child(4) .bitcoin-icon { animation-delay: 1.5s; }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .bitcoin-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #f8991a;
+        margin-bottom: 12px;
+    }
+    
+    .bitcoin-card p {
+        font-size: 14px;
+        color: #94a3b8;
+        line-height: 1.6;
+    }
+    
+    /* PARTNERS */
     .partners-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -234,7 +315,7 @@
     }
     
     .partner-card {
-        background: linear-gradient(135deg, rgba(248, 153, 26, 0.05) 0%, rgba(30, 41, 59, 0.5) 100%);
+        background: #1a2332;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 12px;
         padding: 32px;
@@ -291,7 +372,7 @@
     
     /* PREMIUM SECTION */
     .premium-card {
-        background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(30, 41, 59, 0.5) 100%);
+        background: #1a2332;
         border: 1px solid rgba(76, 175, 80, 0.2);
         border-radius: 12px;
         padding: 48px 40px;
@@ -326,6 +407,7 @@
         margin-bottom: 32px;
         border-bottom: 1px solid rgba(248, 153, 26, 0.1);
         padding-bottom: 16px;
+        flex-wrap: wrap;
     }
     
     .tab-btn {
@@ -385,22 +467,16 @@
         padding: 12px 16px;
         border: 1px solid rgba(248, 153, 26, 0.2);
         border-radius: 8px;
-        background: rgba(15, 20, 25, 0.6);
+        background: #0f1419;
         margin-top: 8px;
     }
     
     @media (max-width: 768px) {
-        .form-row {
-            grid-template-columns: 1fr;
-        }
-        
-        .hero h1 {
-            font-size: 32px;
-        }
-        
-        .section-title {
-            font-size: 24px;
-        }
+        .form-row { grid-template-columns: 1fr; }
+        .hero h1 { font-size: 32px; }
+        .section-title { font-size: 24px; }
+        .price-usd { font-size: 48px; }
+        .tabs { flex-direction: column; }
     }
 </style>
 ```
@@ -433,6 +509,12 @@
         <div class="price-brl" id="price-brl">R$0</div>
     </section>
 
+    <!-- ADSENSE 1 -->
+    <div class="adsense-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
     <!-- CONVERSOR -->
     <section class="section">
         <h2 class="section-title" id="t-converter">Conversor Bitcoin</h2>
@@ -456,6 +538,41 @@
             </div>
         </div>
     </section>
+
+    <!-- O QUE É BITCOIN -->
+    <section class="section">
+        <div class="what-is-bitcoin">
+            <h2 class="section-title" id="t-what-is">O que é Bitcoin?</h2>
+            <div class="bitcoin-grid">
+                <div class="bitcoin-card">
+                    <div class="bitcoin-icon">🔐</div>
+                    <h3 id="t-secure">Segurança</h3>
+                    <p id="t-secure-desc">Transações criptografadas e imutáveis</p>
+                </div>
+                <div class="bitcoin-card">
+                    <div class="bitcoin-icon">🌍</div>
+                    <h3 id="t-global">Global</h3>
+                    <p id="t-global-desc">Funciona em qualquer país do mundo</p>
+                </div>
+                <div class="bitcoin-card">
+                    <div class="bitcoin-icon">⚡</div>
+                    <h3 id="t-fast">Rápido</h3>
+                    <p id="t-fast-desc">Transferências em minutos, não em dias</p>
+                </div>
+                <div class="bitcoin-card">
+                    <div class="bitcoin-icon">💰</div>
+                    <h3 id="t-value">Valor</h3>
+                    <p id="t-value-desc">Ativo digital com valor crescente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADSENSE 2 -->
+    <div class="adsense-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="9876543210" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <!-- PARCEIRAS -->
     <section class="section">
@@ -494,6 +611,12 @@
         </div>
     </section>
 
+    <!-- ADSENSE 3 -->
+    <div class="adsense-container">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="5555555555" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
     <!-- PREMIUM -->
     <section class="section">
         <div class="premium-card">
@@ -520,7 +643,7 @@
                         <input type="email" class="form-input" id="email" placeholder="seu@email.com">
                     </div>
                 </div>
-                <button class="btn" onclick="goAlertas()">Continuar</button>
+                <button class="btn" onclick="goAlertas()" style="width: 100%;">Continuar</button>
             </div>
 
             <div id="alertas-tab" class="tab-content">
@@ -537,7 +660,7 @@
                         <input type="number" class="form-input" id="below" placeholder="55000" step="100">
                     </div>
                 </div>
-                <button class="btn" onclick="goPagamento()">Continuar</button>
+                <button class="btn" onclick="goPagamento()" style="width: 100%;">Continuar</button>
             </div>
 
             <div id="pagamento-tab" class="tab-content">
@@ -556,9 +679,9 @@
 
 <script>
     const trans = {
-        pt: {'t-hero':'Bitcoin em Tempo Real','t-hero-sub':'Conversor preciso, alertas inteligentes, parceiras confiáveis','t-price-label':'Preço Atual','t-converter':'Conversor Bitcoin','t-amount':'Quantidade Bitcoin','t-currency':'Moeda','t-result':'Resultado','t-partners':'Nossas Parceiras','kast-name':'Melhor Cartão de Criptomoedas','kast-desc':'Carteira segura para suas criptomoedas','bybit-desc':'Exchange de trading de criptomoedas','ledger-desc':'Hardware wallet para segurança máxima','binance-desc':'Maior exchange de criptomoedas do mundo','ebook-name':'E-book','ebook-desc':'Aprenda mais sobre Bitcoin','t-premium':'Alertas Premium Bitcoin','t-premium-sub':'Notificações automáticas no WhatsApp'},
-        en: {'t-hero':'Bitcoin in Real Time','t-hero-sub':'Accurate converter, intelligent alerts, trusted partners','t-price-label':'Current Price','t-converter':'Bitcoin Converter','t-amount':'Bitcoin Amount','t-currency':'Currency','t-result':'Result','t-partners':'Our Partners','kast-name':'Best Crypto Card','kast-desc':'Secure wallet for your cryptocurrencies','bybit-desc':'Cryptocurrency trading exchange','ledger-desc':'Hardware wallet for maximum security','binance-desc':'Worlds largest cryptocurrency exchange','ebook-name':'E-book','ebook-desc':'Learn more about Bitcoin','t-premium':'Bitcoin Premium Alerts','t-premium-sub':'Automatic WhatsApp notifications'},
-        es: {'t-hero':'Bitcoin en Tiempo Real','t-hero-sub':'Convertidor preciso, alertas inteligentes, socios confiables','t-price-label':'Precio Actual','t-converter':'Convertidor Bitcoin','t-amount':'Cantidad Bitcoin','t-currency':'Moneda','t-result':'Resultado','t-partners':'Nuestros Socios','kast-name':'Mejor Tarjeta Cripto','kast-desc':'Billetera segura para tus criptomonedas','bybit-desc':'Exchange de trading de criptomonedas','ledger-desc':'Billetera física para máxima seguridad','binance-desc':'Mayor exchange de criptomonedas del mundo','ebook-name':'E-book','ebook-desc':'Aprende más sobre Bitcoin','t-premium':'Alertas Premium Bitcoin','t-premium-sub':'Notificaciones automáticas de WhatsApp'}
+        pt: {'t-hero':'Bitcoin em Tempo Real','t-hero-sub':'Conversor preciso, alertas inteligentes, parceiras confiáveis','t-price-label':'Preço Atual','t-converter':'Conversor Bitcoin','t-amount':'Quantidade Bitcoin','t-currency':'Moeda','t-result':'Resultado','t-what-is':'O que é Bitcoin?','t-secure':'Segurança','t-secure-desc':'Transações criptografadas e imutáveis','t-global':'Global','t-global-desc':'Funciona em qualquer país do mundo','t-fast':'Rápido','t-fast-desc':'Transferências em minutos, não em dias','t-value':'Valor','t-value-desc':'Ativo digital com valor crescente','t-partners':'Nossas Parceiras','kast-name':'Melhor Cartão de Criptomoedas','kast-desc':'Carteira segura para suas criptomoedas','bybit-desc':'Exchange de trading de criptomoedas','ledger-desc':'Hardware wallet para segurança máxima','binance-desc':'Maior exchange de criptomoedas do mundo','ebook-name':'E-book','ebook-desc':'Aprenda mais sobre Bitcoin','t-premium':'Alertas Premium Bitcoin','t-premium-sub':'Notificações automáticas no WhatsApp'},
+        en: {'t-hero':'Bitcoin in Real Time','t-hero-sub':'Accurate converter, intelligent alerts, trusted partners','t-price-label':'Current Price','t-converter':'Bitcoin Converter','t-amount':'Bitcoin Amount','t-currency':'Currency','t-result':'Result','t-what-is':'What is Bitcoin?','t-secure':'Security','t-secure-desc':'Encrypted and immutable transactions','t-global':'Global','t-global-desc':'Works in any country in the world','t-fast':'Fast','t-fast-desc':'Transfers in minutes, not days','t-value':'Value','t-value-desc':'Digital asset with growing value','t-partners':'Our Partners','kast-name':'Best Crypto Card','kast-desc':'Secure wallet for your cryptocurrencies','bybit-desc':'Cryptocurrency trading exchange','ledger-desc':'Hardware wallet for maximum security','binance-desc':'Worlds largest cryptocurrency exchange','ebook-name':'E-book','ebook-desc':'Learn more about Bitcoin','t-premium':'Bitcoin Premium Alerts','t-premium-sub':'Automatic WhatsApp notifications'},
+        es: {'t-hero':'Bitcoin en Tiempo Real','t-hero-sub':'Convertidor preciso, alertas inteligentes, socios confiables','t-price-label':'Precio Actual','t-converter':'Convertidor Bitcoin','t-amount':'Cantidad Bitcoin','t-currency':'Moneda','t-result':'Resultado','t-what-is':'¿Qué es Bitcoin?','t-secure':'Seguridad','t-secure-desc':'Transacciones encriptadas e inmutables','t-global':'Global','t-global-desc':'Funciona en cualquier país del mundo','t-fast':'Rápido','t-fast-desc':'Transferencias en minutos, no en días','t-value':'Valor','t-value-desc':'Activo digital con valor creciente','t-partners':'Nuestros Socios','kast-name':'Mejor Tarjeta Cripto','kast-desc':'Billetera segura para tus criptomonedas','bybit-desc':'Exchange de trading de criptomonedas','ledger-desc':'Billetera física para máxima seguridad','binance-desc':'Mayor exchange de criptomonedas del mundo','ebook-name':'E-book','ebook-desc':'Aprende más sobre Bitcoin','t-premium':'Alertas Premium Bitcoin','t-premium-sub':'Notificaciones automáticas de WhatsApp'}
     };
 
     let currentPrice = 0;
@@ -645,7 +768,7 @@
                 payment_method: { card: cardElement, billing_details: { email: document.getElementById('email').value } }
             });
             if (error) showMsg('Erro: ' + error.message, 'error');
-            else if (paymentIntent.status === 'succeeded') showMsg('Pagamento confirmado!', 'success');
+            else if (paymentIntent.status === 'succeeded') showMsg('Sucesso!', 'success');
         } catch (e) { showMsg('Erro: ' + e.message, 'error'); }
         finally { btn.disabled = false; }
     }
