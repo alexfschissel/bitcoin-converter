@@ -1,439 +1,1039 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Agora - Conversor em Tempo Real com Alertas Premium</title>
-    
-    <meta name="google-adsense-account" content="ca-pub-9069537322097109">
-    <meta name="description" content="Conversor Bitcoin em tempo real. Acompanhe o preço do BTC em USD e Real. Alertas premium por WhatsApp.">
-    <meta name="keywords" content="bitcoin, conversor, preço, BTC, USD, real, alertas">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-gold: #FFB81C;
-            --bitcoin-dark: #0a0e27;
-            --accent: #FF6B35;
-            --success: #4CAF50;
-        }
+```
+<meta name="google-adsense-account" content="ca-pub-9069537322097109">
+<meta name="description" content="Conversor Bitcoin em tempo real. Acompanhe o preço do BTC em USD e Real. Alertas premium por WhatsApp.">
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--bitcoin-dark) 0%, #1a1f3a 100%);
-            color: #fff;
-            min-height: 100vh;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bitcoin-orange: #F7931A;
+        --bitcoin-gold: #FFB81C;
+        --bitcoin-dark: #0a0e27;
+        --accent: #FF6B35;
+        --success: #4CAF50;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, var(--bitcoin-dark) 0%, #1a1f3a 100%);
+        color: #fff;
+        min-height: 100vh;
+    }
+
+    header {
+        background: rgba(10, 14, 39, 0.95);
+        border-bottom: 3px solid var(--bitcoin-orange);
+        padding: 12px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--bitcoin-orange);
+    }
+
+    .language-selector {
+        display: flex;
+        gap: 8px;
+    }
+
+    .lang-btn {
+        padding: 8px 12px;
+        background: rgba(247, 147, 26, 0.2);
+        color: #aaa;
+        border: 2px solid rgba(247, 147, 26, 0.3);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+    }
+
+    .lang-btn.active {
+        background: var(--bitcoin-orange);
+        color: #fff;
+        border-color: var(--bitcoin-orange);
+    }
+
+    .lang-btn:hover {
+        border-color: var(--bitcoin-orange);
+    }
+
+    .price-display {
+        background: linear-gradient(135deg, rgba(247, 147, 26, 0.15) 0%, rgba(255, 107, 53, 0.08) 100%);
+        border: 2px solid var(--bitcoin-orange);
+        border-radius: 20px;
+        padding: 50px 30px;
+        text-align: center;
+        margin: 50px 0;
+        animation: glow 3s infinite;
+    }
+
+    @keyframes glow {
+        0%, 100% { box-shadow: 0 20px 60px rgba(247, 147, 26, 0.15); }
+        50% { box-shadow: 0 20px 80px rgba(247, 147, 26, 0.25); }
+    }
+
+    .price-main {
+        font-size: 72px;
+        font-weight: 800;
+        color: var(--bitcoin-orange);
+        margin-bottom: 15px;
+    }
+
+    .price-secondary {
+        font-size: 32px;
+        color: var(--bitcoin-gold);
+        margin-bottom: 20px;
+    }
+
+    .stats-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        margin: 50px 0;
+    }
+
+    .stat-card {
+        background: rgba(247, 147, 26, 0.1);
+        border: 1px solid rgba(247, 147, 26, 0.3);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--bitcoin-orange);
+        margin-bottom: 8px;
+    }
+
+    .stat-label {
+        font-size: 12px;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .converter-section {
+        background: rgba(30, 35, 60, 0.6);
+        border: 2px solid rgba(247, 147, 26, 0.3);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 50px 0;
+    }
+
+    .converter-section h2 {
+        color: var(--bitcoin-orange);
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .converter-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .converter-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .converter-label {
+        font-size: 13px;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .converter-input, .converter-select {
+        padding: 14px 16px;
+        border: 2px solid rgba(247, 147, 26, 0.3);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s ease;
+    }
+
+    .converter-input:focus, .converter-select:focus {
+        outline: none;
+        border-color: var(--bitcoin-orange);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 20px rgba(247, 147, 26, 0.2);
+    }
+
+    .affiliates-section {
+        background: rgba(30, 35, 60, 0.6);
+        border: 2px solid rgba(247, 147, 26, 0.3);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 50px 0;
+    }
+
+    .affiliates-section h2 {
+        color: var(--bitcoin-orange);
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .affiliates-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .affiliate-card {
+        background: rgba(20, 25, 50, 0.8);
+        border: 2px solid rgba(247, 147, 26, 0.2);
+        border-radius: 12px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .affiliate-card:hover {
+        border-color: var(--bitcoin-orange);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(247, 147, 26, 0.2);
+    }
+
+    .affiliate-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .affiliate-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--bitcoin-orange);
+        margin-bottom: 10px;
+    }
+
+    .affiliate-description {
+        font-size: 12px;
+        color: #aaa;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    .affiliate-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background: linear-gradient(135deg, var(--bitcoin-orange) 0%, var(--accent) 100%);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(247, 147, 26, 0.3);
+    }
+
+    .affiliate-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(247, 147, 26, 0.4);
+    }
+
+    .premium-section {
+        background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+        border: 2px solid rgba(76, 175, 80, 0.3);
+        border-radius: 20px;
+        padding: 40px;
+        margin: 50px 0;
+        text-align: center;
+    }
+
+    .premium-section h2 {
+        color: var(--success);
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .premium-price {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--bitcoin-orange);
+        margin: 20px 0;
+    }
+
+    .premium-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+        text-align: left;
+    }
+
+    .premium-feature {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 3px solid var(--success);
+    }
+
+    .premium-feature h3 {
+        color: var(--success);
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .premium-feature p {
+        color: #aaa;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid rgba(247, 147, 26, 0.3);
+    }
+
+    .tab-btn {
+        padding: 12px 20px;
+        background: transparent;
+        border: none;
+        color: #aaa;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+    }
+
+    .tab-btn.active {
+        color: var(--bitcoin-orange);
+        border-bottom-color: var(--bitcoin-orange);
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.show {
+        display: block;
+    }
+
+    .message {
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        display: none;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+
+    .message.show {
+        display: block;
+    }
+
+    .message.success {
+        background: rgba(76, 175, 80, 0.2);
+        border: 2px solid var(--success);
+        color: var(--success);
+    }
+
+    .message.error {
+        background: rgba(255, 107, 53, 0.2);
+        border: 2px solid var(--accent);
+        color: var(--accent);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 13px;
+        color: #aaa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid rgba(247, 147, 26, 0.3);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        font-size: 16px;
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: var(--bitcoin-orange);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 20px rgba(247, 147, 26, 0.2);
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .StripeElement {
+        padding: 14px 16px;
+        border: 2px solid rgba(247, 147, 26, 0.3);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        margin-top: 8px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, var(--bitcoin-orange) 0%, var(--accent) 100%);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(247, 147, 26, 0.3);
+    }
+
+    .submit-btn:hover:not(:disabled) {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(247, 147, 26, 0.4);
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .coming-soon {
+        background: rgba(255, 193, 7, 0.1);
+        border: 2px solid rgba(255, 193, 7, 0.3);
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 30px;
+        color: #FFC107;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
         header {
-            background: rgba(10, 14, 39, 0.95);
-            border-bottom: 3px solid var(--bitcoin-orange);
-            padding: 12px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--bitcoin-orange);
-        }
-
-        .price-display {
-            background: linear-gradient(135deg, rgba(247, 147, 26, 0.15) 0%, rgba(255, 107, 53, 0.08) 100%);
-            border: 2px solid var(--bitcoin-orange);
-            border-radius: 20px;
-            padding: 50px 30px;
-            text-align: center;
-            margin: 50px 0;
-            animation: glow 3s infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 20px 60px rgba(247, 147, 26, 0.15); }
-            50% { box-shadow: 0 20px 80px rgba(247, 147, 26, 0.25); }
+            flex-direction: column;
+            gap: 10px;
         }
 
         .price-main {
-            font-size: 72px;
-            font-weight: 800;
-            color: var(--bitcoin-orange);
-            margin-bottom: 15px;
-        }
-
-        .price-secondary {
-            font-size: 32px;
-            color: var(--bitcoin-gold);
-            margin-bottom: 20px;
-        }
-
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 50px 0;
-        }
-
-        .stat-card {
-            background: rgba(247, 147, 26, 0.1);
-            border: 1px solid rgba(247, 147, 26, 0.3);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--bitcoin-orange);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .converter-section {
-            background: rgba(30, 35, 60, 0.6);
-            border: 2px solid rgba(247, 147, 26, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 50px 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .converter-section h2 {
-            color: var(--bitcoin-orange);
-            margin-bottom: 30px;
-            text-align: center;
+            font-size: 48px;
         }
 
         .converter-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr;
         }
 
-        .converter-group {
-            display: flex;
-            flex-direction: column;
+        .form-row {
+            grid-template-columns: 1fr;
         }
 
-        .converter-label {
-            font-size: 13px;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            font-weight: 600;
+        .premium-price {
+            font-size: 36px;
         }
+    }
+</style>
+```
 
-        .converter-input, .converter-select {
-            padding: 14px 16px;
-            border: 2px solid rgba(247, 147, 26, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">₿ Bitcoin Agora</div>
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="changeLanguage('pt')">PT-BR</button>
+            <button class="lang-btn" onclick="changeLanguage('en')">ENGLISH</button>
+            <button class="lang-btn" onclick="changeLanguage('es')">ESPAÑOL</button>
+        </div>
+    </header>
 
-        .converter-input:focus, .converter-select:focus {
-            outline: none;
-            border-color: var(--bitcoin-orange);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(247, 147, 26, 0.2);
-        }
+```
+<!-- MAIN CONTENT -->
+<main class="container">
+    <!-- PREÇO -->
+    <section class="price-display">
+        <div style="font-size: 14px; color: #aaa; margin-bottom: 15px;" data-lang-key="current-price">PREÇO ATUAL DO BITCOIN</div>
+        <div class="price-main" id="priceUSD">$—</div>
+        <div class="price-secondary" id="priceBRL">R$—</div>
+        <div style="font-size: 12px; color: #888; margin-top: 15px;"><span data-lang-key="last-update">Última atualização</span>: <span id="updateTime">—</span></div>
+    </section>
 
-        .affiliates-section {
-            background: rgba(30, 35, 60, 0.6);
-            border: 2px solid rgba(247, 147, 26, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 50px 0;
-        }
+    <!-- STATS -->
+    <section class="stats-section">
+        <div class="stat-card">
+            <div class="stat-number" id="change24h">—</div>
+            <div class="stat-label" data-lang-key="change-24h">Mudança 24h</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="marketCap">—</div>
+            <div class="stat-label" data-lang-key="market-cap">Market Cap</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="volume24h">—</div>
+            <div class="stat-label" data-lang-key="volume-24h">Volume 24h</div>
+        </div>
+    </section>
 
-        .affiliates-section h2 {
-            color: var(--bitcoin-orange);
-            margin-bottom: 30px;
-            text-align: center;
-        }
+    <!-- CONVERSOR -->
+    <section class="converter-section">
+        <h2 data-lang-key="converter-title">💱 Conversor Bitcoin</h2>
+        <div class="converter-form">
+            <div class="converter-group">
+                <label class="converter-label" data-lang-key="btc-amount">Quantidade Bitcoin</label>
+                <input type="number" class="converter-input" id="btcAmount" placeholder="1" step="0.0001" value="1">
+            </div>
+            <div class="converter-group">
+                <label class="converter-label" data-lang-key="convert-to">Converter para</label>
+                <select class="converter-select" id="convertCurrency">
+                    <option value="usd">USD 🇺🇸</option>
+                    <option value="brl">Real 🇧🇷</option>
+                    <option value="eur">Euro 🇪🇺</option>
+                    <option value="gbp">Libra 🇬🇧</option>
+                </select>
+            </div>
+        </div>
+        <div style="text-align: center; padding: 20px; background: rgba(20, 25, 50, 0.6); border-radius: 12px;">
+            <div style="font-size: 12px; color: #aaa; margin-bottom: 10px;" data-lang-key="result">RESULTADO:</div>
+            <div style="font-size: 32px; font-weight: 700; color: var(--bitcoin-gold);" id="conversionResult">—</div>
+        </div>
+    </section>
 
-        .affiliates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .affiliate-card {
-            background: rgba(20, 25, 50, 0.8);
-            border: 2px solid rgba(247, 147, 26, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .affiliate-card:hover {
-            border-color: var(--bitcoin-orange);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(247, 147, 26, 0.2);
-        }
-
-        .affiliate-icon {
-< truncated lines 220-703 >
-                        <input type="number" class="form-input" id="alertBelow" placeholder="Ex: 55000" step="100">
-                        <small style="color: #888; font-size: 11px; margin-top: 5px; display: block;">📉 Valor menor que o preço atual</small>
-                    </div>
-                </div>
-
-                <button class="submit-btn" onclick="goToPayment()" style="margin-top: 20px;">
-                    Continuar →
-                </button>
+    <!-- AFILIADOS -->
+    <section class="affiliates-section">
+        <h2 data-lang-key="partners">🤝 Nossas Parceiras</h2>
+        <div class="affiliates-grid">
+            <div class="affiliate-card">
+                <div class="affiliate-icon">🔐</div>
+                <div class="affiliate-name" data-lang-key="kast-name">Melhor Cartão de Criptomoedas</div>
+                <div class="affiliate-description" data-lang-key="kast-desc">Carteira segura para suas criptomoedas</div>
+                <a href="https://go.kast.xyz/VqVO/N137G56K" target="_blank" class="affiliate-btn" data-lang-key="access">Acessar</a>
             </div>
 
-            <!-- TAB 3: PAGAMENTO -->
-            <div id="pagamento-tab" class="tab-content">
-                <div style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-                    <strong style="color: var(--success);">✅ Você está prestes a ativar o sistema premium</strong><br>
-                    <small style="color: #aaa;">Próxima cobrança em 30 dias</small>
+            <div class="affiliate-card">
+                <div class="affiliate-icon">📈</div>
+                <div class="affiliate-name">Bybit</div>
+                <div class="affiliate-description" data-lang-key="bybit-desc">Exchange de trading de criptomoedas</div>
+                <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank" class="affiliate-btn" data-lang-key="access">Acessar</a>
+            </div>
+
+            <div class="affiliate-card">
+                <div class="affiliate-icon">🛡️</div>
+                <div class="affiliate-name">Ledger</div>
+                <div class="affiliate-description" data-lang-key="ledger-desc">Hardware wallet para segurança máxima</div>
+                <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank" class="affiliate-btn" data-lang-key="access">Acessar</a>
+            </div>
+
+            <div class="affiliate-card">
+                <div class="affiliate-icon">💰</div>
+                <div class="affiliate-name">Binance</div>
+                <div class="affiliate-description" data-lang-key="binance-desc">Maior exchange de criptomoedas do mundo</div>
+                <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=default" target="_blank" class="affiliate-btn" data-lang-key="access">Acessar</a>
+            </div>
+
+            <div class="affiliate-card">
+                <div class="affiliate-icon">📚</div>
+                <div class="affiliate-name" data-lang-key="ebook-name">E-book</div>
+                <div class="affiliate-description" data-lang-key="ebook-desc">Aprenda mais sobre Bitcoin</div>
+                <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="affiliate-btn" data-lang-key="access">Acessar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM SECTION -->
+    <section class="premium-section">
+        <h2 data-lang-key="premium-title">🔔 Alertas Premium Bitcoin</h2>
+        <p style="color: #aaa; margin-bottom: 10px;" data-lang-key="premium-subtitle">Receba notificações automáticas no WhatsApp</p>
+        
+        <div class="premium-price">R$ 2,99<span style="font-size: 24px; color: #aaa;"><span data-lang-key="per-month">/mês</span></span></div>
+
+        <div class="premium-features">
+            <div class="premium-feature">
+                <h3 data-lang-key="feature1-title">📱 Alertas WhatsApp</h3>
+                <p data-lang-key="feature1-desc">Notificações em tempo real quando o preço atinge seus valores</p>
+            </div>
+            <div class="premium-feature">
+                <h3 data-lang-key="feature2-title">🔄 Alertas Ilimitados</h3>
+                <p data-lang-key="feature2-desc">Crie quantos alertas quiser e edite sem custo adicional</p>
+            </div>
+            <div class="premium-feature">
+                <h3 data-lang-key="feature3-title">⏰ 24/7 Monitoramento</h3>
+                <p data-lang-key="feature3-desc">Sistema monitora o Bitcoin 24 horas por dia, 7 dias por semana</p>
+            </div>
+            <div class="premium-feature">
+                <h3 data-lang-key="feature4-title">✏️ Editar Anytime</h3>
+                <p data-lang-key="feature4-desc">Altere seus alertas sempre que quiser durante o mês</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('dados')" data-lang-key="tab1">1️⃣ Seus Dados</button>
+            <button class="tab-btn" onclick="switchTab('alertas')" data-lang-key="tab2">2️⃣ Alertas</button>
+            <button class="tab-btn" onclick="switchTab('pagamento')" data-lang-key="tab3">3️⃣ Pagamento</button>
+        </div>
+
+        <div id="message" class="message"></div>
+
+        <!-- TAB 1: DADOS -->
+        <div id="dados-tab" class="tab-content show">
+            <div class="form-group">
+                <label class="form-label" data-lang-key="whatsapp-label">Seu Número WhatsApp</label>
+                <input type="tel" class="form-input" id="whatsappNumber" placeholder="+55 11 9 9999-9999">
+                <small style="color: #888; font-size: 11px; margin-top: 5px; display: block;" data-lang-key="whatsapp-hint">Com código do país</small>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-lang-key="email-label">Email</label>
+                <input type="email" class="form-input" id="userEmail" placeholder="seu@email.com">
+            </div>
+
+            <button class="submit-btn" onclick="goToAlertas()" data-lang-key="continue">Continuar →</button>
+        </div>
+
+        <!-- TAB 2: ALERTAS -->
+        <div id="alertas-tab" class="tab-content">
+            <div style="background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                <strong style="color: #2196F3;"><span data-lang-key="current-price-label">Preço Atual</span>: $<span id="currentPriceAlerts">—</span></strong>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label" data-lang-key="alert-above">Alerta 1 - Quando SUBIR para</label>
+                    <input type="number" class="form-input" id="alertAbove" placeholder="Ex: 70000" step="100">
+                    <small style="color: #888; font-size: 11px; margin-top: 5px; display: block;">📈 <span data-lang-key="alert-above-hint">Valor maior que o preço atual</span></small>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Dados do Cartão</label>
-                    <div id="card-element" class="StripeElement"></div>
-                </div>
-
-                <button class="submit-btn" id="payBtn" onclick="processPayment()" style="margin-top: 20px;">
-                    Pagar R$ 2,99 com Stripe 💳
-                </button>
-
-                <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
-                    💳 Pagamento seguro via Stripe<br>
-                    🔒 Seu cartão não é armazenado
+                    <label class="form-label" data-lang-key="alert-below">Alerta 2 - Quando CAIR para</label>
+                    <input type="number" class="form-input" id="alertBelow" placeholder="Ex: 55000" step="100">
+                    <small style="color: #888; font-size: 11px; margin-top: 5px; display: block;">📉 <span data-lang-key="alert-below-hint">Valor menor que o preço atual</span></small>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <script>
-        // ===== CONFIG =====
-        const API_URL = 'https://api.coingecko.com/api/v3';
-        const STRIPE_PUBLIC_KEY = 'pk_test_51TGnF5RoTlB1iZhj8XUJzO0CT4u6VSGbzi4ao9OltCl43CK4ja4hssXDDQfGzGlVW15F9XDDlYW2YSui1PsAnFs6005StCmNNL';
+            <button class="submit-btn" onclick="goToPayment()" data-lang-key="continue">Continuar →</button>
+        </div>
+
+        <!-- TAB 3: PAGAMENTO -->
+        <div id="pagamento-tab" class="tab-content">
+            <div style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                <strong style="color: var(--success);" data-lang-key="payment-confirm">✅ Você está prestes a ativar o sistema premium</strong><br>
+                <small style="color: #aaa;" data-lang-key="next-billing">Próxima cobrança em 30 dias</small>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" data-lang-key="card-data">Dados do Cartão</label>
+                <div id="card-element" class="StripeElement"></div>
+            </div>
+
+            <button class="submit-btn" id="payBtn" onclick="processPayment()" data-lang-key="pay-btn">Pagar R$ 2,99 com Stripe 💳</button>
+
+            <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
+                💳 <span data-lang-key="secure-payment">Pagamento seguro via Stripe</span><br>
+                🔒 <span data-lang-key="card-safe">Seu cartão não é armazenado</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // ===== TRANSLATIONS =====
+    const translations = {
+        pt: {
+            "current-price": "PREÇO ATUAL DO BITCOIN",
+            "last-update": "Última atualização",
+            "change-24h": "Mudança 24h",
+            "market-cap": "Market Cap",
+            "volume-24h": "Volume 24h",
+            "converter-title": "💱 Conversor Bitcoin",
+            "btc-amount": "Quantidade Bitcoin",
+            "convert-to": "Converter para",
+            "result": "RESULTADO:",
+            "partners": "🤝 Nossas Parceiras",
+            "kast-name": "Melhor Cartão de Criptomoedas",
+            "kast-desc": "Carteira segura para suas criptomoedas",
+            "bybit-desc": "Exchange de trading de criptomoedas",
+            "ledger-desc": "Hardware wallet para segurança máxima",
+            "binance-desc": "Maior exchange de criptomoedas do mundo",
+            "ebook-name": "E-book",
+            "ebook-desc": "Aprenda mais sobre Bitcoin",
+            "access": "Acessar",
+            "premium-title": "🔔 Alertas Premium Bitcoin",
+            "premium-subtitle": "Receba notificações automáticas no WhatsApp",
+            "per-month": "/mês",
+            "feature1-title": "📱 Alertas WhatsApp",
+            "feature1-desc": "Notificações em tempo real quando o preço atinge seus valores",
+            "feature2-title": "🔄 Alertas Ilimitados",
+            "feature2-desc": "Crie quantos alertas quiser e edite sem custo adicional",
+            "feature3-title": "⏰ 24/7 Monitoramento",
+            "feature3-desc": "Sistema monitora o Bitcoin 24 horas por dia, 7 dias por semana",
+            "feature4-title": "✏️ Editar Anytime",
+            "feature4-desc": "Altere seus alertas sempre que quiser durante o mês",
+            "tab1": "1️⃣ Seus Dados",
+            "tab2": "2️⃣ Alertas",
+            "tab3": "3️⃣ Pagamento",
+            "whatsapp-label": "Seu Número WhatsApp",
+            "whatsapp-hint": "Com código do país",
+            "email-label": "Email",
+            "continue": "Continuar →",
+            "current-price-label": "Preço Atual",
+            "alert-above": "Alerta 1 - Quando SUBIR para",
+            "alert-above-hint": "Valor maior que o preço atual",
+            "alert-below": "Alerta 2 - Quando CAIR para",
+            "alert-below-hint": "Valor menor que o preço atual",
+            "payment-confirm": "✅ Você está prestes a ativar o sistema premium",
+            "next-billing": "Próxima cobrança em 30 dias",
+            "card-data": "Dados do Cartão",
+            "pay-btn": "Pagar R$ 2,99 com Stripe 💳",
+            "secure-payment": "Pagamento seguro via Stripe",
+            "card-safe": "Seu cartão não é armazenado"
+        },
+        en: {
+            "current-price": "CURRENT BITCOIN PRICE",
+            "last-update": "Last update",
+            "change-24h": "24h Change",
+            "market-cap": "Market Cap",
+            "volume-24h": "24h Volume",
+            "converter-title": "💱 Bitcoin Converter",
+            "btc-amount": "Bitcoin Amount",
+            "convert-to": "Convert to",
+            "result": "RESULT:",
+            "partners": "🤝 Our Partners",
+            "kast-name": "Best Crypto Card",
+            "kast-desc": "Secure wallet for your cryptocurrencies",
+            "bybit-desc": "Cryptocurrency trading exchange",
+            "ledger-desc": "Hardware wallet for maximum security",
+            "binance-desc": "World's largest cryptocurrency exchange",
+            "ebook-name": "E-book",
+            "ebook-desc": "Learn more about Bitcoin",
+            "access": "Access",
+            "premium-title": "🔔 Bitcoin Premium Alerts",
+            "premium-subtitle": "Receive automatic WhatsApp notifications",
+            "per-month": "/month",
+            "feature1-title": "📱 WhatsApp Alerts",
+            "feature1-desc": "Real-time notifications when price reaches your values",
+            "feature2-title": "🔄 Unlimited Alerts",
+            "feature2-desc": "Create as many alerts as you want and edit at no extra cost",
+            "feature3-title": "⏰ 24/7 Monitoring",
+            "feature3-desc": "System monitors Bitcoin 24 hours a day, 7 days a week",
+            "feature4-title": "✏️ Edit Anytime",
+            "feature4-desc": "Change your alerts anytime during the month",
+            "tab1": "1️⃣ Your Data",
+            "tab2": "2️⃣ Alerts",
+            "tab3": "3️⃣ Payment",
+            "whatsapp-label": "Your WhatsApp Number",
+            "whatsapp-hint": "With country code",
+            "email-label": "Email",
+            "continue": "Continue →",
+            "current-price-label": "Current Price",
+            "alert-above": "Alert 1 - When it RISES to",
+            "alert-above-hint": "Value greater than current price",
+            "alert-below": "Alert 2 - When it FALLS to",
+            "alert-below-hint": "Value less than current price",
+            "payment-confirm": "✅ You are about to activate the premium system",
+            "next-billing": "Next billing in 30 days",
+            "card-data": "Card Details",
+            "pay-btn": "Pay R$ 2.99 with Stripe 💳",
+            "secure-payment": "Secure payment via Stripe",
+            "card-safe": "Your card is not stored"
+        },
+        es: {
+            "current-price": "PRECIO ACTUAL DE BITCOIN",
+            "last-update": "Última actualización",
+            "change-24h": "Cambio 24h",
+            "market-cap": "Capitalización",
+            "volume-24h": "Volumen 24h",
+            "converter-title": "💱 Convertidor Bitcoin",
+            "btc-amount": "Cantidad Bitcoin",
+            "convert-to": "Convertir a",
+            "result": "RESULTADO:",
+            "partners": "🤝 Nuestros Socios",
+            "kast-name": "Mejor Tarjeta de Criptomonedas",
+            "kast-desc": "Billetera segura para tus criptomonedas",
+            "bybit-desc": "Exchange de trading de criptomonedas",
+            "ledger-desc": "Billetera física para máxima seguridad",
+            "binance-desc": "Mayor exchange de criptomonedas del mundo",
+            "ebook-name": "E-book",
+            "ebook-desc": "Aprende más sobre Bitcoin",
+            "access": "Acceder",
+            "premium-title": "🔔 Alertas Premium Bitcoin",
+            "premium-subtitle": "Recibe notificaciones automáticas de WhatsApp",
+            "per-month": "/mes",
+            "feature1-title": "📱 Alertas WhatsApp",
+            "feature1-desc": "Notificaciones en tiempo real cuando el precio alcanza tus valores",
+            "feature2-title": "🔄 Alertas Ilimitadas",
+            "feature2-desc": "Crea tantas alertas como quieras y edita sin costo adicional",
+            "feature3-title": "⏰ Monitoreo 24/7",
+            "feature3-desc": "El sistema monitorea Bitcoin 24 horas al día, 7 días a la semana",
+            "feature4-title": "✏️ Editar en Cualquier Momento",
+            "feature4-desc": "Cambia tus alertas cuando quieras durante el mes",
+            "tab1": "1️⃣ Tus Datos",
+            "tab2": "2️⃣ Alertas",
+            "tab3": "3️⃣ Pago",
+            "whatsapp-label": "Tu Número de WhatsApp",
+            "whatsapp-hint": "Con código de país",
+            "email-label": "Correo Electrónico",
+            "continue": "Continuar →",
+            "current-price-label": "Precio Actual",
+            "alert-above": "Alerta 1 - Cuando SUBA a",
+            "alert-above-hint": "Valor mayor que el precio actual",
+            "alert-below": "Alerta 2 - Cuando BAJE a",
+            "alert-below-hint": "Valor menor que el precio actual",
+            "payment-confirm": "✅ Estás a punto de activar el sistema premium",
+            "next-billing": "Próxima facturación en 30 días",
+            "card-data": "Datos de la Tarjeta",
+            "pay-btn": "Pagar R$ 2,99 con Stripe 💳",
+            "secure-payment": "Pago seguro a través de Stripe",
+            "card-safe": "Tu tarjeta no se almacena"
+        }
+    };
+
+    // ===== LANGUAGE SYSTEM =====
+    let currentLang = 'pt';
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
         
-        const stripe = Stripe(STRIPE_PUBLIC_KEY);
-        const elements = stripe.elements();
-        const cardElement = elements.create('card');
-        cardElement.mount('#card-element');
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.dataset.langKey;
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+    }
 
-        let currentPrice = 0;
+    // ===== STRIPE CONFIG =====
+    const API_URL = 'https://api.coingecko.com/api/v3';
+    const STRIPE_PUBLIC_KEY = 'pk_test_51TGnF5RoTlB1iZhj8XUJzO0CT4u6VSGbzi4ao9OltCl43CK4ja4hssXDDQfGzGlVW15F9XDDlYW2YSui1PsAnFs6005StCmNNL';
+    
+    const stripe = Stripe(STRIPE_PUBLIC_KEY);
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
 
-        // ===== ATUALIZAR PREÇO =====
-        async function updatePrice() {
-            try {
-                const response = await fetch(`${API_URL}/simple/price?ids=bitcoin&vs_currencies=usd,brl&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
-                const data = await response.json();
-                const btcData = data.bitcoin;
+    let currentPrice = 0;
 
-                currentPrice = btcData.usd;
+    // ===== UPDATE PRICE =====
+    async function updatePrice() {
+        try {
+            const response = await fetch(`${API_URL}/simple/price?ids=bitcoin&vs_currencies=usd,brl&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
+            const data = await response.json();
+            const btcData = data.bitcoin;
 
-                document.getElementById('priceUSD').textContent = 
-                    '$' + currentPrice.toLocaleString('en-US', {minimumFractionDigits: 0});
-                document.getElementById('priceBRL').textContent = 
-                    'R$' + btcData.brl.toLocaleString('pt-BR', {minimumFractionDigits: 0});
-                document.getElementById('currentPriceAlerts').textContent = 
-                    currentPrice.toLocaleString('en-US', {minimumFractionDigits: 2});
-                document.getElementById('updateTime').textContent = 
-                    new Date().toLocaleTimeString('pt-BR');
+            currentPrice = btcData.usd;
 
-                convertCurrency();
+            document.getElementById('priceUSD').textContent = 
+                '$' + currentPrice.toLocaleString('en-US', {minimumFractionDigits: 0});
+            document.getElementById('priceBRL').textContent = 
+                'R$' + btcData.brl.toLocaleString('pt-BR', {minimumFractionDigits: 0});
+            document.getElementById('currentPriceAlerts').textContent = 
+                currentPrice.toLocaleString('en-US', {minimumFractionDigits: 2});
+            document.getElementById('updateTime').textContent = 
+                new Date().toLocaleTimeString('pt-BR');
 
-                if (btcData.usd_market_cap) {
-                    document.getElementById('marketCap').textContent = 'US$' + 
-                        (btcData.usd_market_cap / 1e9).toFixed(0) + 'B';
+            convertCurrency();
+
+            if (btcData.usd_market_cap) {
+                document.getElementById('marketCap').textContent = 'US$' + 
+                    (btcData.usd_market_cap / 1e9).toFixed(0) + 'B';
+            }
+            if (btcData.usd_24h_vol) {
+                document.getElementById('volume24h').textContent = 'US$' + 
+                    (btcData.usd_24h_vol / 1e9).toFixed(1) + 'B';
+            }
+            const change = btcData.usd_24h_change;
+            const changeEl = document.getElementById('change24h');
+            changeEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+            changeEl.style.color = change >= 0 ? '#4CAF50' : '#FF6B35';
+
+        } catch (error) {
+            console.error('Erro:', error);
+        }
+    }
+
+    // ===== CONVERTER =====
+    function convertCurrency() {
+        const btcAmount = parseFloat(document.getElementById('btcAmount').value) || 0;
+        if (btcAmount <= 0) {
+            document.getElementById('conversionResult').textContent = '—';
+            return;
+        }
+        const result = btcAmount * currentPrice;
+        document.getElementById('conversionResult').textContent = 
+            '$' + result.toLocaleString('en-US', {minimumFractionDigits: 2});
+    }
+
+    // ===== TABS =====
+    function switchTab(tab) {
+        document.getElementById('dados-tab').classList.remove('show');
+        document.getElementById('alertas-tab').classList.remove('show');
+        document.getElementById('pagamento-tab').classList.remove('show');
+
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+        if (tab === 'dados') {
+            document.getElementById('dados-tab').classList.add('show');
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        } else if (tab === 'alertas') {
+            document.getElementById('alertas-tab').classList.add('show');
+            document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        } else if (tab === 'pagamento') {
+            document.getElementById('pagamento-tab').classList.add('show');
+            document.querySelectorAll('.tab-btn')[2].classList.add('active');
+        }
+    }
+
+    function goToAlertas() {
+        const whatsapp = document.getElementById('whatsappNumber').value;
+        const email = document.getElementById('userEmail').value;
+
+        if (!whatsapp || !email) {
+            showMessage('Preencha todos os campos', 'error');
+            return;
+        }
+
+        switchTab('alertas');
+    }
+
+    function goToPayment() {
+        const above = parseFloat(document.getElementById('alertAbove').value);
+        const below = parseFloat(document.getElementById('alertBelow').value);
+
+        if (!above || !below) {
+            showMessage('Preencha os dois alertas', 'error');
+            return;
+        }
+
+        if (above <= currentPrice || below >= currentPrice) {
+            showMessage('❌ Alert acima deve ser maior e abaixo deve ser menor que preço atual', 'error');
+            return;
+        }
+
+        switchTab('pagamento');
+    }
+
+    async function processPayment() {
+        const whatsapp = document.getElementById('whatsappNumber').value;
+        const email = document.getElementById('userEmail').value;
+        const above = parseFloat(document.getElementById('alertAbove').value);
+        const below = parseFloat(document.getElementById('alertBelow').value);
+
+        const payBtn = document.getElementById('payBtn');
+        payBtn.disabled = true;
+
+        try {
+            const response = await fetch('/api/create-payment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    amount: 299,
+                    email,
+                    whatsapp,
+                    alertAbove: above,
+                    alertBelow: below
+                })
+            });
+
+            const data = await response.json();
+            const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
+                payment_method: {
+                    card: cardElement,
+                    billing_details: { email }
                 }
-                if (btcData.usd_24h_vol) {
-                    document.getElementById('volume24h').textContent = 'US$' + 
-                        (btcData.usd_24h_vol / 1e9).toFixed(1) + 'B';
-                }
-                const change = btcData.usd_24h_change;
-                const changeEl = document.getElementById('change24h');
-                changeEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-                changeEl.style.color = change >= 0 ? '#4CAF50' : '#FF6B35';
+            });
 
-            } catch (error) {
-                console.error('Erro:', error);
-            }
-        }
-
-        // ===== CONVERSOR =====
-        function convertCurrency() {
-            const btcAmount = parseFloat(document.getElementById('btcAmount').value) || 0;
-            const currency = document.getElementById('convertCurrency').value;
-
-            if (btcAmount <= 0) {
-                document.getElementById('conversionResult').textContent = '—';
-                return;
-            }
-
-            const result = btcAmount * currentPrice;
-
-            if (currency === 'usd') {
-                document.getElementById('conversionResult').textContent = 
-                    '$' + result.toLocaleString('en-US', {minimumFractionDigits: 2});
-            } else {
-                document.getElementById('conversionResult').textContent = 
-                    result.toLocaleString('en-US', {minimumFractionDigits: 2}) + ' ' + currency.toUpperCase();
-            }
-        }
-
-        // ===== TROCAR ABA =====
-        function switchTab(tab) {
-            document.getElementById('dados-tab').classList.remove('show');
-            document.getElementById('alertas-tab').classList.remove('show');
-            document.getElementById('pagamento-tab').classList.remove('show');
-
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
-            if (tab === 'dados') {
-                document.getElementById('dados-tab').classList.add('show');
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-            } else if (tab === 'alertas') {
-                document.getElementById('alertas-tab').classList.add('show');
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-            } else if (tab === 'pagamento') {
-                document.getElementById('pagamento-tab').classList.add('show');
-                document.querySelectorAll('.tab-btn')[2].classList.add('active');
-            }
-        }
-
-        function goToAlertas() {
-            const whatsapp = document.getElementById('whatsappNumber').value;
-            const email = document.getElementById('userEmail').value;
-
-            if (!whatsapp || !email) {
-                showMessage('Preencha todos os campos', 'error');
-                return;
-            }
-
-            switchTab('alertas');
-        }
-
-        function goToPayment() {
-            const above = parseFloat(document.getElementById('alertAbove').value);
-            const below = parseFloat(document.getElementById('alertBelow').value);
-
-            if (!above || !below) {
-                showMessage('Preencha os dois alertas', 'error');
-                return;
-            }
-
-            if (above <= currentPrice || below >= currentPrice) {
-                showMessage('❌ Alert acima deve ser maior e abaixo deve ser menor que preço atual', 'error');
-                return;
-            }
-
-            switchTab('pagamento');
-        }
-
-        async function processPayment() {
-            const whatsapp = document.getElementById('whatsappNumber').value;
-            const email = document.getElementById('userEmail').value;
-            const above = parseFloat(document.getElementById('alertAbove').value);
-            const below = parseFloat(document.getElementById('alertBelow').value);
-
-            const payBtn = document.getElementById('payBtn');
-            payBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/create-payment-intent', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        amount: 299,
-                        email,
-                        whatsapp,
-                        alertAbove: above,
-                        alertBelow: below
-                    })
-                });
-
-                const data = await response.json();
-                const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
-                    payment_method: {
-                        card: cardElement,
-                        billing_details: { email }
-                    }
-                });
-
-                if (error) {
-                    showMessage(`Erro: ${error.message}`, 'error');
-                } else if (paymentIntent.status === 'succeeded') {
-                    localStorage.setItem('userWhatsapp', whatsapp);
-                    localStorage.setItem('userEmail', email);
-                    showMessage('✅ Pagamento confirmado! Você será redirecionado...', 'success');
-                    setTimeout(() => {
-                        window.location.href = '/dashboard-alertas-inteligente.html';
-                    }, 2000);
-                }
-            } catch (error) {
+            if (error) {
                 showMessage(`Erro: ${error.message}`, 'error');
-            } finally {
-                payBtn.disabled = false;
+            } else if (paymentIntent.status === 'succeeded') {
+                localStorage.setItem('userWhatsapp', whatsapp);
+                localStorage.setItem('userEmail', email);
+                showMessage('✅ Pagamento confirmado! Você será redirecionado...', 'success');
+                setTimeout(() => {
+                    window.location.href = '/dashboard-alertas-inteligente.html';
+                }, 2000);
             }
+        } catch (error) {
+            showMessage(`Erro: ${error.message}`, 'error');
+        } finally {
+            payBtn.disabled = false;
         }
+    }
 
-        function showMessage(text, type) {
-            const msg = document.getElementById('message');
-            msg.textContent = text;
-            msg.className = `message show ${type}`;
+    function showMessage(text, type) {
+        const msg = document.getElementById('message');
+        msg.textContent = text;
+        msg.className = `message show ${type}`;
 
-            setTimeout(() => {
-                msg.classList.remove('show');
-            }, 5000);
-        }
+        setTimeout(() => {
+            msg.classList.remove('show');
+        }, 5000);
+    }
 
-        // ===== INICIALIZAR =====
-        updatePrice();
-        setInterval(updatePrice, 30000);
-        document.getElementById('btcAmount').addEventListener('input', convertCurrency);
-        document.getElementById('convertCurrency').addEventListener('change', convertCurrency);
-    </script>
+    // ===== INIT =====
+    updatePrice();
+    setInterval(updatePrice, 30000);
+    document.getElementById('btcAmount').addEventListener('input', convertCurrency);
+</script>
+```
+
 </body>
 </html>
