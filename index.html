@@ -359,18 +359,34 @@
         color: #f8991a;
     }
     
-    /* ========== TIRINHAS + ADSENSE ========== */
-    .content-with-ads {
-        display: grid;
-        grid-template-columns: 1fr 320px;
-        gap: 24px;
-        align-items: start;
+    /* ========== ADSENSE HORIZONTAL ========== */
+    .adsense-horizontal {
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
+        border-radius: 12px;
+        padding: 16px;
+        text-align: center;
+        margin: 40px 0;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
-    @media (max-width: 1024px) {
-        .content-with-ads {
-            grid-template-columns: 1fr;
-        }
+    .adsense-label-h {
+        font-size: 11px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+    
+    /* ========== TIRINHAS + ADSENSE ========== */
+    .content-with-ads {
+        display: block;
+        width: 100%;
     }
     
     .tirinhas-grid {
@@ -726,9 +742,7 @@
         <div class="header-content">
             <div class="logo">₿ Bitcoin Agora</div>
             <div class="lang">
-                <button class="active" onclick="setLang('pt')">PT-BR</button>
-                <button onclick="setLang('en')">EN</button>
-                <button onclick="setLang('es')">ES</button>
+                <button class="active" onclick="setLang('pt')">PT</button>
             </div>
         </div>
     </header>
@@ -768,6 +782,15 @@
 
 <!-- MAIN CONTENT -->
 <div class="main-wrapper">
+    <!-- ADSENSE HORIZONTAL 1 -->
+    <section class="section">
+        <div class="adsense-horizontal">
+            <div class="adsense-label-h">Publicidade</div>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </section>
+
     <!-- CONVERSOR -->
     <section class="section">
         <h2 class="section-title">Conversor Bitcoin</h2>
@@ -809,15 +832,15 @@
             <div>
                 <div class="tirinhas-grid">
                     <div class="tirinha-card">
-                        <img src="/imagens/tirinha-1.jpg" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
+                        <img src="./imagens/tirinha-1.jpg" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
                         <div class="tirinha-title">📖 Quadros 1-4: O Começo</div>
                     </div>
                     <div class="tirinha-card">
-                        <img src="/imagens/tirinha-2.jpg" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
+                        <img src="./imagens/tirinha-2.jpg" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
                         <div class="tirinha-title">🚀 Quadros 5-8: A Solução</div>
                     </div>
                     <div class="tirinha-card">
-                        <img src="/imagens/tirinha-3.jpg" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
+                        <img src="./imagens/tirinha-3.jpg" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
                         <div class="tirinha-title">🔐 Quadros 9-12: A Segurança</div>
                     </div>
                 </div>
@@ -831,15 +854,14 @@
                     <p class="ebook-desc">Descubra como funcionam as transações, como minar Bitcoin, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.</p>
                     <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="ebook-button">🚀 Comprar E-book Agora</a>
                 </div>
+
+                <!-- ADSENSE HORIZONTAL 2 -->
+                <div class="adsense-horizontal" style="margin-top: 40px;">
+                    <div class="adsense-label-h">Publicidade</div>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="9876543210" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
             </div>
-            
-            <!-- ADSENSE SIDEBAR -->
-            <div class="adsense-box">
-                <div class="adsense-label">Publicidade</div>
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="vertical" data-full-width-responsive="false"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-        </div>
     </section>
 
     <!-- PARCEIRAS -->
