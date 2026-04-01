@@ -326,7 +326,7 @@
         font-weight: 600;
     }
     
-    .form-input {
+    .form-input, .form-select {
         padding: 12px;
         background: #0f1419;
         border: 1px solid rgba(248, 153, 26, 0.2);
@@ -337,7 +337,7 @@
         transition: all 0.3s;
     }
     
-    .form-input:focus {
+    .form-input:focus, .form-select:focus {
         outline: none;
         border-color: #f8991a;
         background: #1a2332;
@@ -359,7 +359,20 @@
         color: #f8991a;
     }
     
-    /* ========== TIRINHA GRID ========== */
+    /* ========== TIRINHAS + ADSENSE ========== */
+    .content-with-ads {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 24px;
+        align-items: start;
+    }
+    
+    @media (max-width: 1024px) {
+        .content-with-ads {
+            grid-template-columns: 1fr;
+        }
+    }
+    
     .tirinhas-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -406,6 +419,99 @@
         color: #cbd5e1;
         text-align: center;
         border-top: 1px solid rgba(248, 153, 26, 0.1);
+    }
+    
+    /* ========== ADSENSE BOX ========== */
+    .adsense-box {
+        background: #1a2332;
+        border: 1px solid rgba(248, 153, 26, 0.2);
+        border-radius: 12px;
+        padding: 16px;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 100px;
+    }
+    
+    .adsense-label {
+        font-size: 11px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        font-weight: 600;
+    }
+    
+    /* ========== CTA EBOOK ========== */
+    .cta-ebook {
+        background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%);
+        border: 3px solid #f8991a;
+        border-radius: 12px;
+        padding: 40px 24px;
+        text-align: center;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(248, 153, 26, 0.3);
+    }
+    
+    .ebook-icon {
+        font-size: 56px;
+        margin-bottom: 16px;
+        animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .ebook-title {
+        font-size: clamp(24px, 5vw, 32px);
+        font-weight: 800;
+        color: #0f1419;
+        margin-bottom: 8px;
+    }
+    
+    .ebook-subtitle {
+        font-size: 16px;
+        color: #1a2332;
+        margin-bottom: 16px;
+        font-weight: 600;
+    }
+    
+    .ebook-desc {
+        font-size: 14px;
+        color: #1a2332;
+        margin-bottom: 24px;
+        line-height: 1.6;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .ebook-button {
+        display: inline-block;
+        padding: 16px 40px;
+        background: #0f1419;
+        color: #f8991a;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border: 3px solid #0f1419;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .ebook-button:hover {
+        background: transparent;
+        color: #0f1419;
+        box-shadow: inset 0 0 0 3px #0f1419;
     }
     
     /* ========== PARTNERS ========== */
@@ -600,6 +706,15 @@
             padding: 8px 12px;
             font-size: 11px;
         }
+        
+        .cta-ebook {
+            padding: 24px 16px;
+        }
+        
+        .adsense-box {
+            position: static;
+            min-height: 300px;
+        }
     }
 </style>
 ```
@@ -660,40 +775,71 @@
             <div class="form-row">
                 <div class="form-group">
                     <label class="form-label">Quantidade Bitcoin</label>
-                    <input type="number" class="form-input" id="btcAmount" placeholder="1.0" step="0.0001" value="1">
+                    <input type="number" class="form-input" id="btcAmount" placeholder="1.0" step="0.0001" value="1" onchange="convertCurrency()" oninput="convertCurrency()">
                 </div>
                 <div class="form-group">
                     <label class="form-label">Moeda</label>
-                    <select class="form-input" id="currency" onchange="convertCurrency()">
-                        <option value="usd">USD - Dólar</option>
-                        <option value="brl">BRL - Real</option>
+                    <select class="form-select" id="currency" onchange="convertCurrency()">
+                        <option value="usd">USD - Dólar Americano</option>
+                        <option value="eur">EUR - Euro</option>
+                        <option value="gbp">GBP - Libra Esterlina</option>
+                        <option value="jpy">JPY - Iene Japonês</option>
+                        <option value="aud">AUD - Dólar Australiano</option>
+                        <option value="cad">CAD - Dólar Canadense</option>
+                        <option value="chf">CHF - Franco Suíço</option>
+                        <option value="cny">CNY - Yuan Chinês</option>
+                        <option value="inr">INR - Rúpia Indiana</option>
+                        <option value="brl">BRL - Real Brasileiro</option>
+                        <option value="mxn">MXN - Peso Mexicano</option>
+                        <option value="zar">ZAR - Rand Sul-Africano</option>
                     </select>
                 </div>
             </div>
             <div class="result-box">
+                <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Valor Convertido</div>
                 <div class="result-value" id="result">$0</div>
             </div>
         </div>
     </section>
 
-    <!-- TIRINHAS -->
+    <!-- TIRINHAS + ADSENSE -->
     <section class="section">
         <h2 class="section-title">O que é Bitcoin? - A Tirinha Completa</h2>
-        <div class="tirinhas-grid">
-            <div class="tirinha-card">
-                <img src="/imagens/tirinha-1.jpg" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
-                <div class="tirinha-title">📖 Quadros 1-4: O Começo</div>
+        <div class="content-with-ads">
+            <div>
+                <div class="tirinhas-grid">
+                    <div class="tirinha-card">
+                        <img src="/imagens/tirinha-1.jpg" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
+                        <div class="tirinha-title">📖 Quadros 1-4: O Começo</div>
+                    </div>
+                    <div class="tirinha-card">
+                        <img src="/imagens/tirinha-2.jpg" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
+                        <div class="tirinha-title">🚀 Quadros 5-8: A Solução</div>
+                    </div>
+                    <div class="tirinha-card">
+                        <img src="/imagens/tirinha-3.jpg" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
+                        <div class="tirinha-title">🔐 Quadros 9-12: A Segurança</div>
+                    </div>
+                </div>
+                <p style="text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 40px; font-weight: 500;">✨ A história completa de Bitcoin em 12 quadros animados!</p>
+                
+                <!-- CTA EBOOK -->
+                <div class="cta-ebook">
+                    <div class="ebook-icon">📚</div>
+                    <h3 class="ebook-title">Quer Aprender Mais?</h3>
+                    <p class="ebook-subtitle">Compre nosso E-book Bitcoin para Iniciantes</p>
+                    <p class="ebook-desc">Descubra como funcionam as transações, como minar Bitcoin, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.</p>
+                    <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="ebook-button">🚀 Comprar E-book Agora</a>
+                </div>
             </div>
-            <div class="tirinha-card">
-                <img src="/imagens/tirinha-2.jpg" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
-                <div class="tirinha-title">🚀 Quadros 5-8: A Solução</div>
-            </div>
-            <div class="tirinha-card">
-                <img src="/imagens/tirinha-3.jpg" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
-                <div class="tirinha-title">🔐 Quadros 9-12: A Segurança</div>
+            
+            <!-- ADSENSE SIDEBAR -->
+            <div class="adsense-box">
+                <div class="adsense-label">Publicidade</div>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
-        <p style="text-align: center; color: #94a3b8; font-size: 14px; margin-top: 24px; font-weight: 500;">✨ A história completa de Bitcoin em 12 quadros animados!</p>
     </section>
 
     <!-- PARCEIRAS -->
@@ -793,13 +939,8 @@
 </div>
 
 <script>
-    const trans = {
-        pt: {},
-        en: {},
-        es: {}
-    };
-
     let currentPrice = 0;
+    let pricesByMoeda = {};
     const STRIPE_KEY = 'pk_test_51TGnF5RoTlB1iZhj8XUJzO0CT4u6VSGbzi4ao9OltCl43CK4ja4hssXDDQfGzGlVW15F9XDDlYW2YSui1PsAnFs6005StCmNNL';
     const stripe = Stripe(STRIPE_KEY);
     const elements = stripe.elements();
@@ -813,10 +954,13 @@
 
     async function updatePrice() {
         try {
-            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true');
+            const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar';
+            const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
             const data = await res.json();
             const btc = data.bitcoin;
+            
             currentPrice = btc.usd;
+            pricesByMoeda = btc;
             
             document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
             document.getElementById('hero-price-brl').textContent = 'R$' + btc.brl.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
@@ -828,17 +972,23 @@
             document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
             
             convertCurrency();
-        } catch (e) { console.error(e); }
+        } catch (e) { console.error('Erro ao atualizar preço:', e); }
     }
 
     function convertCurrency() {
         const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
-        if (amount <= 0) { 
+        const moeda = document.getElementById('currency').value.toLowerCase();
+        
+        if (amount <= 0 || !pricesByMoeda[moeda]) { 
             document.getElementById('result').textContent = '$0'; 
             return; 
         }
-        const result = amount * currentPrice;
-        document.getElementById('result').textContent = '$' + result.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        
+        const resultado = amount * pricesByMoeda[moeda];
+        const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R' };
+        const simbolo = simbolos[moeda] || moeda.toUpperCase();
+        
+        document.getElementById('result').textContent = simbolo + ' ' + resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
     }
 
     function switchTab(tab) {
@@ -904,7 +1054,6 @@
 
     updatePrice();
     setInterval(updatePrice, 30000);
-    document.getElementById('btcAmount').addEventListener('input', convertCurrency);
 </script>
 ```
 
