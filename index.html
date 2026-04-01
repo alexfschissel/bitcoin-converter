@@ -743,6 +743,8 @@
             <div class="logo">₿ Bitcoin Agora</div>
             <div class="lang">
                 <button class="active" onclick="setLang('pt')">PT</button>
+                <button onclick="setLang('en')">EN</button>
+                <button onclick="setLang('es')">ES</button>
             </div>
         </div>
     </header>
@@ -1010,7 +1012,14 @@
         const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R' };
         const simbolo = simbolos[moeda] || moeda.toUpperCase();
         
-        document.getElementById('result').textContent = simbolo + ' ' + resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        let formatted;
+        if (moeda === 'brl') {
+            formatted = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        } else {
+            formatted = resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        }
+        
+        document.getElementById('result').textContent = simbolo + ' ' + formatted;
     }
 
     function switchTab(tab) {
