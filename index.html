@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin em Tempo Real - Seu Guia Completo</title>
-    <meta name="description" content="Acompanhe o preço do Bitcoin em tempo real, converta valores e descubra planos de alerta premium.">
+    <title data-lang-pt="Bitcoin Agora - Preço, Alertas e Notícias" data-lang-en="Bitcoin Now - Price, Alerts & News" data-lang-es="Bitcoin Ahora - Precio, Alertas y Noticias">Bitcoin Agora - Preço, Alertas e Notícias</title>
+    <meta name="description" content="Acompanhe o preço do Bitcoin em tempo real, receba alertas premium e acesse conteúdo exclusivo.">
+    <meta name="keywords" content="Bitcoin, BTC, preço Bitcoin, alertas Bitcoin, criptomoedas, Adsense, Stripe, Twilio, Supabase">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50%25' y='50%25' style='dominant-baseline:central;text-anchor:middle;font-size:90px;'%3E%E2%82%BF%3C/text%3E%3C/svg%3E" type="image/svg+xml">
     <style>
-        /* Reset Básico */
+        :root {
+            --bg-color: #0f1419;<br/>
+            --text-color: #e0e0e0;<br/>
+            --primary-color: #f8991a;<br/>
+            --secondary-color: #2a2f36;<br/>
+            --border-color: #3a3f47;<br/>
+            --card-bg: #1a1f26;<br/>
+            --button-hover: #e08a00;<br/>
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
         * {
+            box-sizing: border-box;<br/>
             margin: 0;<br/>
-            padding: 0;<br/>
-            box-sizing: border-box;
+            padding: 0;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;<br/>
+            background-color: var(--bg-color);<br/>
+            color: var(--text-color);<br/>
             line-height: 1.6;<br/>
-            color: #333;<br/>
-            background-color: #f4f7f6;<br/>
             display: flex;<br/>
             flex-direction: column;<br/>
             min-height: 100vh;
@@ -26,842 +38,793 @@
         .container {
             max-width: 1200px;<br/>
             margin: 0 auto;<br/>
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        /* Header */
         header {
-            background-color: #2c3e50;<br/>
-            color: #ecf0f1;<br/>
+            background-color: var(--card-bg);<br/>
             padding: 15px 0;<br/>
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--border-color);<br/>
+            box-shadow: 0 2px 5px var(--shadow-color);
         }
 
-        header .container {
+        .header-content {
             display: flex;<br/>
             justify-content: space-between;<br/>
             align-items: center;<br/>
             flex-wrap: wrap;
         }
 
-        header h1 {
+        .logo {
             font-size: 28px;<br/>
-            margin: 0;<br/>
-            color: #ecf0f1;
-        }
-
-        .lang-selector {
+            font-weight: bold;<br/>
+            color: var(--primary-color);<br/>
+            text-decoration: none;<br/>
             display: flex;<br/>
             align-items: center;
         }
 
-        .lang-selector label {
-            margin-right: 10px;<br/>
-            font-size: 14px;
+        .logo span {
+            margin-left: 8px;<br/>
+            color: var(--text-color);
         }
 
-        .lang-selector select {
+        .lang-switcher {
+            margin-left: auto; /* Push to the right */<br/>
+            margin-right: 15px; /* Space before other elements if any */
+        }
+
+        .lang-switcher select {
+            background-color: var(--secondary-color);<br/>
+            color: var(--text-color);<br/>
+            border: 1px solid var(--border-color);<br/>
             padding: 8px 12px;<br/>
-            border: none;<br/>
             border-radius: 5px;<br/>
-            background-color: #34495e;<br/>
-            color: #ecf0f1;<br/>
             cursor: pointer;<br/>
-            font-size: 14px;
+            font-size: 1rem;<br/>
+            appearance: none; /* Remove default arrow */<br/>
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e0e0e0%22%20d%3D%22M287%2C197.9l-13.9-13.9L146.2%2C31.8L13.9%2C184l-13.9%2C13.9l146.2%2C146.2L287%2C197.9z%22%2F%3E%3C%2Fsvg%3E');<br/>
+            background-repeat: no-repeat;<br/>
+            background-position: right 8px center;<br/>
+            background-size: 12px;<br/>
+            padding-right: 30px; /* Make space for the custom arrow */
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #3498db, #2980b9);<br/>
-            color: #fff;<br/>
-            text-align: center;<br/>
-            padding: 80px 20px;<br/>
-            margin-bottom: 30px;
+        .lang-switcher select:focus {<br/>
+            outline: none;<br/>
+            border-color: var(--primary-color);
         }
 
-        .hero h2 {
-            font-size: 48px;<br/>
-            margin-bottom: 20px;<br/>
-            font-weight: 700;
+        nav ul {
+            list-style: none;<br/>
+            display: flex;<br/>
+            gap: 20px;
         }
 
-        .hero p {
-            font-size: 20px;<br/>
-            max-width: 800px;<br/>
-            margin: 0 auto;<br/>
-            opacity: 0.9;
+        nav a {
+            color: var(--text-color);<br/>
+            text-decoration: none;<br/>
+            font-weight: 500;<br/>
+            transition: color 0.3s ease;
         }
 
-        /* Section Styling */
+        nav a:hover {<br/>
+            color: var(--primary-color);
+        }
+
+        main {
+            flex-grow: 1;<br/>
+            padding: 30px 0;
+        }
+
         section {
-            padding: 40px 0;<br/>
-            margin-bottom: 30px;<br/>
-            background-color: #fff;<br/>
-            border-radius: 8px;<br/>
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        section h3 {
-            font-size: 32px;<br/>
-            text-align: center;<br/>
             margin-bottom: 40px;<br/>
-            color: #2c3e50;
+            background-color: var(--card-bg);<br/>
+            padding: 30px;<br/>
+            border-radius: 8px;<br/>
+            border: 1px solid var(--border-color);<br/>
+            box-shadow: 0 4px 10px var(--shadow-color);
         }
 
-        /* Bitcoin Converter */
-        .converter-section .content {
+        h2 {
+            font-size: 2.2rem;<br/>
+            color: var(--primary-color);<br/>
+            text-align: center;<br/>
+            margin-bottom: 30px;<br/>
+            position: relative;
+        }
+
+        h2::after {<br/>
+            content: '';<br/>
+            display: block;<br/>
+            width: 60px;<br/>
+            height: 3px;<br/>
+            background-color: var(--primary-color);<br/>
+            margin: 10px auto 0;<br/>
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .hero-section {
+            text-align: center;<br/>
+            padding: 60px 20px;<br/>
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 100%);<br/>
+            border-radius: 8px;<br/>
+            margin-bottom: 40px;<br/>
+            border: none;<br/>
+            box-shadow: none;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;<br/>
+            color: var(--primary-color);<br/>
+            margin-bottom: 20px;<br/>
+            text-shadow: 0 0 10px rgba(248, 153, 26, 0.5);
+        }
+
+        .hero-section .current-price {
+            font-size: 3rem;<br/>
+            font-weight: bold;<br/>
+            color: var(--text-color);<br/>
+            margin-top: 20px;<br/>
+            display: block;
+        }
+
+        .hero-section .last-update {
+            font-size: 0.9rem;<br/>
+            color: #9e9e9e;<br/>
+            margin-top: 10px;
+        }
+
+        .converter-section .converter-box {
             display: flex;<br/>
             flex-direction: column;<br/>
-            align-items: center;<br/>
-            gap: 20px;
+            gap: 20px;<br/>
+            max-width: 500px;<br/>
+            margin: 0 auto;<br/>
+            padding: 25px;<br/>
+            background-color: var(--secondary-color);<br/>
+            border-radius: 8px;<br/>
+            border: 1px solid var(--border-color);
         }
 
         .converter-section .input-group {
             display: flex;<br/>
             align-items: center;<br/>
-            gap: 10px;<br/>
-            margin-bottom: 15px;<br/>
-            flex-wrap: wrap;<br/>
-            justify-content: center;
+            gap: 10px;
         }
 
         .converter-section label {
             font-weight: bold;<br/>
-            font-size: 18px;<br/>
-            color: #34495e;
+            color: var(--primary-color);<br/>
+            min-width: 60px;
         }
 
-        .converter-section input[type="number"],
+        .converter-section input,
         .converter-section select {
-            padding: 12px 15px;<br/>
-            border: 1px solid #ccc;<br/>
+            flex-grow: 1;<br/>
+            padding: 12px;<br/>
             border-radius: 5px;<br/>
-            font-size: 16px;<br/>
-            width: 180px;<br/>
-            max-width: 100%;
+            border: 1px solid var(--border-color);<br/>
+            background-color: var(--card-bg);<br/>
+            color: var(--text-color);<br/>
+            font-size: 1rem;
         }
 
-        .converter-section .current-price {
-            font-size: 22px;<br/>
-            font-weight: bold;<br/>
-            color: #27ae60;<br/>
-            margin-top: 20px;<br/>
+        .converter-section input:focus,<br/>
+        .converter-section select:focus {<br/>
+            outline: none;<br/>
+            border-color: var(--primary-color);<br/>
+            box-shadow: 0 0 0 2px rgba(248, 153, 26, 0.3);
+        }
+
+        .premium-section .tabs {
+            display: flex;<br/>
+            justify-content: center;<br/>
+            margin-bottom: 30px;<br/>
+            flex-wrap: wrap;<br/>
+            gap: 10px;
+        }
+
+        .premium-section .tab-button {
+            background-color: var(--secondary-color);<br/>
+            color: var(--text-color);<br/>
+            border: 1px solid var(--border-color);<br/>
+            padding: 12px 25px;<br/>
+            border-radius: 25px;<br/>
+            cursor: pointer;<br/>
+            font-size: 1.1rem;<br/>
+            font-weight: 600;<br/>
+            transition: all 0.3s ease;
+        }
+
+        .premium-section .tab-button.active,
+        .premium-section .tab-button:hover {<br/>
+            background-color: var(--primary-color);<br/>
+            color: var(--bg-color);<br/>
+            border-color: var(--primary-color);<br/>
+            box-shadow: 0 4px 10px rgba(248, 153, 26, 0.4);
+        }
+
+        .premium-content {
+            display: none;<br/>
+            padding: 20px;<br/>
+            border: 1px solid var(--border-color);<br/>
+            border-radius: 8px;<br/>
+            background-color: var(--secondary-color);
+        }
+
+        .premium-content.active {
+            display: block;
+        }
+
+        .premium-plan {
+            display: flex;<br/>
+            flex-direction: column;<br/>
+            align-items: center;<br/>
+            gap: 20px;<br/>
             text-align: center;
         }
 
-        /* Plans Section */
-        .plans-grid {
-            display: grid;<br/>
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));<br/>
-            gap: 30px;<br/>
-            padding: 0 20px;
+        .premium-plan h3 {
+            font-size: 1.8rem;<br/>
+            color: var(--primary-color);<br/>
+            margin-bottom: 10px;
         }
 
-        .plan-card {
-            background-color: #f9f9f9;<br/>
-            border: 1px solid #eee;<br/>
-            border-radius: 8px;<br/>
-            padding: 30px;<br/>
-            text-align: center;<br/>
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);<br/>
-            transition: transform 0.3s ease;
-        }
-
-        .plan-card:hover {<br/>
-            transform: translateY(-5px);<br/>
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
-        .plan-card h4 {
-            font-size: 24px;<br/>
-            color: #3498db;<br/>
-            margin-bottom: 15px;
-        }
-
-        .plan-card .price {
-            font-size: 36px;<br/>
-            font-weight: bold;<br/>
-            color: #2c3e50;<br/>
+        .premium-plan ul {
+            list-style: none;<br/>
+            text-align: left;<br/>
             margin-bottom: 20px;
         }
 
-        .plan-card ul {
-            list-style: none;<br/>
-            margin-bottom: 25px;<br/>
-            text-align: left;
-        }
-
-        .plan-card ul li {
-            margin-bottom: 10px;<br/>
-            color: #555;<br/>
+        .premium-plan ul li {
+            margin-bottom: 8px;<br/>
             display: flex;<br/>
-            align-items: center;
+            align-items: center;<br/>
+            font-size: 1.1rem;
         }
 
-        .plan-card ul li::before {<br/>
+        .premium-plan ul li::before {<br/>
             content: '✓';<br/>
-            color: #27ae60;<br/>
+            color: var(--primary-color);<br/>
             margin-right: 10px;<br/>
             font-weight: bold;
         }
 
-        .plan-card .btn {
-            display: inline-block;<br/>
-            background-color: #3498db;<br/>
-            color: #fff;<br/>
-            padding: 12px 25px;<br/>
-            border-radius: 5px;<br/>
-            text-decoration: none;<br/>
+        .premium-plan .price {
+            font-size: 2.5rem;<br/>
             font-weight: bold;<br/>
-            transition: background-color 0.3s ease;
+            color: var(--text-color);<br/>
+            margin-bottom: 15px;
         }
 
-        .plan-card .btn:hover {<br/>
-            background-color: #2980b9;
+        .premium-plan .price span {
+            font-size: 1.2rem;<br/>
+            color: #9e9e9e;<br/>
+            font-weight: normal;
         }
 
-        /* Partners Section */
-        .partners-section .partners-list {
-            display: flex;<br/>
-            flex-wrap: wrap;<br/>
-            justify-content: center;<br/>
-            gap: 30px;<br/>
-            font-size: 18px;<br/>
-            color: #555;
-        }
-
-        .partners-section .partner-item {
-            background-color: #f0f0f0;<br/>
-            padding: 15px 25px;<br/>
-            border-radius: 5px;<br/>
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);<br/>
-            font-weight: 600;
-        }
-
-        /* E-book Section */
-        .ebook-section .content {
-            text-align: center;<br/>
-            max-width: 800px;<br/>
-            margin: 0 auto;
-        }
-
-        .ebook-section p {
-            font-size: 18px;<br/>
-            margin-bottom: 30px;<br/>
-            color: #555;
-        }
-
-        .ebook-section .btn {
-            background-color: #e67e22;<br/>
-            color: #fff;<br/>
+        .premium-plan button {
+            background-color: var(--primary-color);<br/>
+            color: var(--bg-color);<br/>
+            border: none;<br/>
             padding: 15px 30px;<br/>
-            border-radius: 5px;<br/>
-            text-decoration: none;<br/>
+            border-radius: 30px;<br/>
+            font-size: 1.2rem;<br/>
             font-weight: bold;<br/>
-            font-size: 18px;<br/>
-            transition: background-color 0.3s ease;
+            cursor: pointer;<br/>
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        .ebook-section .btn:hover {<br/>
-            background-color: #d35400;
+        .premium-plan button:hover {<br/>
+            background-color: var(--button-hover);<br/>
+            transform: translateY(-2px);
         }
 
-        /* Insights Section */
-        .insights-grid {
+        .partners-section .partners-grid {
+            display: grid;<br/>
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));<br/>
+            gap: 30px;<br/>
+            justify-items: center;<br/>
+            align-items: center;
+        }
+
+        .partners-section .partner-logo {
+            max-width: 120px;<br/>
+            filter: grayscale(100%) brightness(150%);<br/>
+            opacity: 0.7;<br/>
+            transition: all 0.3s ease;
+        }
+
+        .partners-section .partner-logo:hover {<br/>
+            filter: grayscale(0%) brightness(100%);<br/>
+            opacity: 1;
+        }
+
+        .ebook-cta {
+            text-align: center;<br/>
+            background-color: var(--primary-color);<br/>
+            color: var(--bg-color);<br/>
+            padding: 40px 20px;<br/>
+            border-radius: 8px;<br/>
+            box-shadow: 0 4px 10px rgba(248, 153, 26, 0.4);
+        }
+
+        .ebook-cta h3 {
+            font-size: 2.5rem;<br/>
+            margin-bottom: 15px;
+        }
+
+        .ebook-cta p {
+            font-size: 1.2rem;<br/>
+            margin-bottom: 25px;
+        }
+
+        .ebook-cta button {
+            background-color: var(--bg-color);<br/>
+            color: var(--primary-color);<br/>
+            border: none;<br/>
+            padding: 15px 30px;<br/>
+            border-radius: 30px;<br/>
+            font-size: 1.2rem;<br/>
+            font-weight: bold;<br/>
+            cursor: pointer;<br/>
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .ebook-cta button:hover {<br/>
+            background-color: var(--secondary-color);<br/>
+            color: var(--primary-color);<br/>
+            transform: translateY(-2px);
+        }
+
+        .tirinhas-section .tirinhas-grid {
             display: grid;<br/>
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));<br/>
-            gap: 25px;<br/>
-            padding: 0 20px;
+            gap: 25px;
         }
 
-        .insight-card {
-            background-color: #f9f9f9;<br/>
-            border: 1px solid #eee;<br/>
+        .tirinhas-section .tirinha-card {
+            background-color: var(--secondary-color);<br/>
             border-radius: 8px;<br/>
-            padding: 25px;<br/>
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;<br/>
+            border: 1px solid var(--border-color);<br/>
+            box-shadow: 0 4px 8px var(--shadow-color);<br/>
+            transition: transform 0.3s ease;
         }
 
-        .insight-card h4 {
-            font-size: 20px;<br/>
-            color: #34495e;<br/>
-            margin-bottom: 10px;
+        .tirinhas-section .tirinha-card:hover {<br/>
+            transform: translateY(-5px);
         }
 
-        .insight-card p {
-            font-size: 15px;<br/>
-            color: #666;
+        .tirinhas-section .tirinha-card img {
+            width: 100%;<br/>
+            height: auto;<br/>
+            display: block;
         }
 
-        /* AdSense Placeholder */
+        .tirinhas-section .tirinha-card .tirinha-caption {
+            padding: 15px;<br/>
+            font-size: 1rem;<br/>
+            color: #ccc;
+        }
+
         .adsense-placeholder {
-            background-color: #ecf0f1;<br/>
-            border: 1px dashed #bdc3c7;<br/>
-            text-align: center;<br/>
+            background-color: var(--secondary-color);<br/>
+            border: 1px dashed var(--border-color);<br/>
             padding: 50px 20px;<br/>
-            margin-top: 30px;<br/>
-            margin-bottom: 30px;<br/>
-            font-size: 20px;<br/>
-            color: #7f8c8d;<br/>
-            border-radius: 8px;
+            text-align: center;<br/>
+            font-size: 1.2rem;<br/>
+            color: #9e9e9e;<br/>
+            border-radius: 8px;<br/>
+            margin-top: 40px;
         }
 
-        /* Footer */
         footer {
-            background-color: #2c3e50;<br/>
-            color: #ecf0f1;<br/>
+            background-color: var(--card-bg);<br/>
+            padding: 30px 0;<br/>
+            border-top: 1px solid var(--border-color);<br/>
             text-align: center;<br/>
-            padding: 25px 0;<br/>
-            margin-top: auto; /* Empurra o footer para baixo */<br/>
-            font-size: 14px;
+            font-size: 0.9rem;<br/>
+            color: #9e9e9e;<br/>
+            margin-top: 40px;
+        }
+
+        footer .social-links a {
+            color: var(--text-color);<br/>
+            margin: 0 10px;<br/>
+            font-size: 1.5rem;<br/>
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {<br/>
+            color: var(--primary-color);
         }
 
         footer p {
-            margin: 0;
+            margin-top: 15px;<br/>
+            margin-bottom: 0;
         }
 
-        footer a {
-            color: #3498db;<br/>
-            text-decoration: none;
-        }
-
-        footer a:hover {<br/>
-            text-decoration: underline;
-        }
-
-        /* Responsividade */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 38px;
-            }
-            .hero p {
-                font-size: 18px;
-            }
-            section h3 {
-                font-size: 28px;
-            }
-            .converter-section .input-group {
-                flex-direction: column;
-            }
-            .converter-section input[type="number"],
-            .converter-section select {
-                width: 100%;
-            }
-            .plans-grid, .insights-grid {
-                grid-template-columns: 1fr;
-            }
-            header .container {
+            .header-content {
                 flex-direction: column;<br/>
                 gap: 15px;
+            }
+            .lang-switcher {
+                margin-left: 0;<br/>
+                margin-right: 0;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section .current-price {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .premium-section .tab-button {
+                width: 100%;
+            }
+            .ebook-cta h3 {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .hero h2 {
-                font-size: 30px;
+            .hero-section h1 {
+                font-size: 2rem;
             }
-            .hero p {
-                font-size: 16px;
+            .hero-section .current-price {
+                font-size: 1.8rem;
             }
-            section h3 {
-                font-size: 24px;
+            .converter-section .input-group {
+                flex-direction: column;<br/>
+                align-items: flex-start;
             }
-            .plan-card .price {
-                font-size: 30px;
+            .converter-section label {
+                margin-bottom: 5px;
             }
-            .ebook-section .btn {
-                font-size: 16px;<br/>
-                padding: 12px 20px;
+            .premium-plan .price {
+                font-size: 2rem;
+            }
+            .ebook-cta h3 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1 id="site-title">Seu Site de Bitcoin</h1>
-            <div class="lang-selector">
-                <label for="language-select" id="lang-label">Idioma:</label>
-                <select id="language-select">
+        <div class="container header-content">
+            <a href="#" class="logo">₿ <span data-lang-pt="Bitcoin Agora" data-lang-en="Bitcoin Now" data-lang-es="Bitcoin Ahora">Bitcoin Agora</span></a>
+            <div class="lang-switcher">
+                <select id="language-selector" onchange="setLang(this.value)">
                     <option value="pt">Português</option>
                     <option value="en">English</option>
                     <option value="es">Español</option>
                 </select>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero" data-lang-pt="Início" data-lang-en="Home" data-lang-es="Inicio">Início</a></li>
+                    <li><a href="#converter" data-lang-pt="Conversor" data-lang-en="Converter" data-lang-es="Convertidor">Conversor</a></li>
+                    <li><a href="#premium" data-lang-pt="Premium" data-lang-en="Premium" data-lang-es="Premium">Premium</a></li>
+                    <li><a href="#tirinhas" data-lang-pt="Tirinhas" data-lang-en="Comics" data-lang-es="Tiras">Tirinhas</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section id="hero" class="hero-section">
             <div class="container">
-                <h2 id="hero-title">Bitcoin em Tempo Real</h2>
-                <p id="hero-subtitle">Acompanhe o preço do Bitcoin, converta valores e mantenha-se atualizado com as últimas tendências do mercado.</p>
+                <h1 data-lang-pt="O Futuro Financeiro na Palma da Sua Mão" data-lang-en="The Financial Future in Your Hand" data-lang-es="El Futuro Financiero en la Palma de Tu Mano">O Futuro Financeiro na Palma da Sua Mão</h1>
+                <p data-lang-pt="Acompanhe o preço do Bitcoin em tempo real e tome decisões inteligentes." data-lang-en="Track Bitcoin price in real-time and make smart decisions." data-lang-es="Sigue el precio de Bitcoin en tiempo real y toma decisiones inteligentes.">Acompanhe o preço do Bitcoin em tempo real e tome decisões inteligentes.</p>
+                <span class="current-price" id="bitcoin-price">Carregando preço...</span>
+                <span class="last-update" id="last-update"></span>
             </div>
         </section>
 
-        <section class="converter-section">
-            <div class="container">
-                <h3 id="converter-heading">Conversor de Bitcoin</h3>
-                <div class="content">
-                    <div class="input-group">
-                        <label for="btc-amount" id="label-btc">BTC:</label>
-                        <input type="number" id="btc-amount" value="1" min="0" step="any">
-                    </div>
-                    <div class="input-group">
-                        <label for="fiat-amount" id="label-fiat">Moeda:</label>
-                        <input type="number" id="fiat-amount" value="" min="0" step="any">
-                        <select id="fiat-currency">
-                            <option value="usd">USD</option>
-                            <option value="brl" selected>BRL</option>
-                            <option value="eur">EUR</option>
-                            <option value="gbp">GBP</option>
-                        </select>
-                    </div>
-                    <p class="current-price" id="current-btc-price">Carregando preço...</p>
+        <section id="converter" class="converter-section container">
+            <h2 data-lang-pt="Conversor de Bitcoin" data-lang-en="Bitcoin Converter" data-lang-es="Convertidor de Bitcoin">Conversor de Bitcoin</h2>
+            <div class="converter-box">
+                <div class="input-group">
+                    <label for="btc-amount" data-lang-pt="BTC:" data-lang-en="BTC:" data-lang-es="BTC:">BTC:</label>
+                    <input type="number" id="btc-amount" value="1" step="any" oninput="convertCurrency()">
+                </div>
+                <div class="input-group">
+                    <label for="currency-amount" data-lang-pt="Moeda:" data-lang-en="Currency:" data-lang-es="Moneda:">Moeda:</label>
+                    <input type="number" id="currency-amount" value="0" step="any" oninput="convertCurrency(true)">
+                </div>
+                <div class="input-group">
+                    <label for="target-currency" data-lang-pt="Para:" data-lang-en="To:" data-lang-es="A:">Para:</label>
+                    <select id="target-currency" onchange="convertCurrency()">
+                        <option value="usd">USD - Dólar Americano</option>
+                        <option value="brl" selected>BRL - Real Brasileiro</option>
+                        <option value="eur">EUR - Euro</option>
+                        <option value="gbp">GBP - Libra Esterlina</option>
+                    </select>
                 </div>
             </div>
         </section>
 
-        <section class="plans-section">
-            <div class="container">
-                <h3 id="plans-heading">Planos de Alerta Premium</h3>
-                <div class="plans-grid">
-                    <div class="plan-card">
-                        <h4 id="plan1-title">Plano Básico</h4>
-                        <p class="price" id="plan1-price">R$ 29/mês</p>
-                        <ul>
-                            <li id="plan1-feature1">Alertas de preço diários</li>
-                            <li id="plan1-feature2">Notificações por e-mail</li>
-                            <li id="plan1-feature3">Acesso a análises semanais</li>
-                        </ul>
-                        <a href="#" class="btn" id="plan1-btn">Saiba Mais</a>
-                    </div>
-                    <div class="plan-card">
-                        <h4 id="plan2-title">Plano Pro</h4>
-                        <p class="price" id="plan2-price">R$ 79/mês</p>
-                        <ul>
-                            <li id="plan2-feature1">Alertas de preço em tempo real</li>
-                            <li id="plan2-feature2">Notificações por WhatsApp</li>
-                            <li id="plan2-feature3">Acesso a análises exclusivas</li>
-                            <li id="plan2-feature4">Suporte prioritário</li>
-                        </ul>
-                        <a href="#" class="btn" id="plan2-btn">Saiba Mais</a>
-                    </div>
-                    <div class="plan-card">
-                        <h4 id="plan3-title">Plano Ultimate</h4>
-                        <p class="price" id="plan3-price">R$ 199/mês</p>
-                        <ul>
-                            <li id="plan3-feature1">Alertas personalizáveis avançados</li>
-                            <li id="plan3-feature2">Notificações por WhatsApp e SMS</li>
-                            <li id="plan3-feature3">Consultoria individualizada</li>
-                            <li id="plan3-feature4">Acesso a ferramentas de trading</li>
-                            <li id="plan3-feature5">Relatórios de mercado premium</li>
-                        </ul>
-                        <a href="#" class="btn" id="plan3-btn">Saiba Mais</a>
-                    </div>
+        <section id="premium" class="premium-section container">
+            <h2 data-lang-pt="Alertas Premium de Bitcoin" data-lang-en="Premium Bitcoin Alerts" data-lang-es="Alertas Premium de Bitcoin">Alertas Premium de Bitcoin</h2>
+            <p style="text-align: center;" data-lang-pt="Não perca nenhuma oportunidade. Receba alertas de preço diretamente no seu WhatsApp." data-lang-en="Don't miss any opportunity. Get price alerts directly on your WhatsApp." data-lang-es="No pierdas ninguna oportunidad. Recibe alertas de precios directamente en tu WhatsApp.">Não perca nenhuma oportunidade. Receba alertas de preço diretamente no seu WhatsApp.</p>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab(event, 'basic')" data-lang-pt="Básico" data-lang-en="Basic" data-lang-es="Básico">Básico</button>
+                <button class="tab-button" onclick="switchTab(event, 'pro')" data-lang-pt="Pro" data-lang-en="Pro" data-lang-es="Pro">Pro</button>
+                <button class="tab-button" onclick="switchTab(event, 'enterprise')" data-lang-pt="Enterprise" data-lang-en="Enterprise" data-lang-es="Empresarial">Enterprise</button>
+            </div>
+
+            <div id="basic" class="premium-content active">
+                <div class="premium-plan">
+                    <h3 data-lang-pt="Plano Básico" data-lang-en="Basic Plan" data-lang-es="Plan Básico">Plano Básico</h3>
+                    <p data-lang-pt="Ideal para quem está começando." data-lang-en="Ideal for beginners." data-lang-es="Ideal para principiantes.">Ideal para quem está começando.</p>
+                    <ul>
+                        <li data-lang-pt="1 Alerta de preço diário" data-lang-en="1 Daily price alert" data-lang-es="1 Alerta de precio diario">1 Alerta de preço diário</li>
+                        <li data-lang-pt="Alertas via WhatsApp" data-lang-en="Alerts via WhatsApp" data-lang-es="Alertas vía WhatsApp">Alertas via WhatsApp</li>
+                        <li data-lang-pt="Histórico de 7 dias" data-lang-en="7-day history" data-lang-es="Historial de 7 días">Histórico de 7 dias</li>
+                    </ul>
+                    <div class="price" data-lang-pt="R$ 29,90 <span>/ mês</span>" data-lang-en="$ 5.99 <span>/ month</span>" data-lang-es="€ 4.99 <span>/ mes</span>">R$ 29,90 <span>/ mês</span></div>
+                    <button onclick="subscribeToPlan('basic')" data-lang-pt="Assinar Agora" data-lang-en="Subscribe Now" data-lang-es="Suscribirse Ahora">Assinar Agora</button>
+                </div>
+            </div>
+
+            <div id="pro" class="premium-content">
+                <div class="premium-plan">
+                    <h3 data-lang-pt="Plano Pro" data-lang-en="Pro Plan" data-lang-es="Plan Pro">Plano Pro</h3>
+                    <p data-lang-pt="Para traders e investidores ativos." data-lang-en="For active traders and investors." data-lang-es="Para traders e inversores activos.">Para traders e investidores ativos.</p>
+                    <ul>
+                        <li data-lang-pt="5 Alertas de preço diários" data-lang-en="5 Daily price alerts" data-lang-es="5 Alertas de precio diarios">5 Alertas de preço diários</li>
+                        <li data-lang-pt="Alertas via WhatsApp" data-lang-en="Alerts via WhatsApp" data-lang-es="Alertas vía WhatsApp">Alertas via WhatsApp</li>
+                        <li data-lang-pt="Histórico de 30 dias" data-lang-en="30-day history" data-lang-es="Historial de 30 días">Histórico de 30 dias</li>
+                        <li data-lang-pt="Alertas personalizados" data-lang-en="Custom alerts" data-lang-es="Alertas personalizados">Alertas personalizados</li>
+                    </ul>
+                    <div class="price" data-lang-pt="R$ 99,90 <span>/ mês</span>" data-lang-en="$ 19.99 <span>/ month</span>" data-lang-es="€ 16.99 <span>/ mes</span>">R$ 99,90 <span>/ mês</span></div>
+                    <button onclick="subscribeToPlan('pro')" data-lang-pt="Assinar Agora" data-lang-en="Subscribe Now" data-lang-es="Suscribirse Ahora">Assinar Agora</button>
+                </div>
+            </div>
+
+            <div id="enterprise" class="premium-content">
+                <div class="premium-plan">
+                    <h3 data-lang-pt="Plano Enterprise" data-lang-en="Enterprise Plan" data-lang-es="Plan Empresarial">Plano Enterprise</h3>
+                    <p data-lang-pt="Soluções customizadas para grandes investidores." data-lang-en="Custom solutions for large investors." data-lang-es="Soluciones personalizadas para grandes inversores.">Soluções customizadas para grandes investidores.</p>
+                    <ul>
+                        <li data-lang-pt="Alertas ilimitados" data-lang-en="Unlimited alerts" data-lang-es="Alertas ilimitados">Alertas ilimitados</li>
+                        <li data-lang-pt="Alertas via WhatsApp e API" data-lang-en="Alerts via WhatsApp & API" data-lang-es="Alertas vía WhatsApp y API">Alertas via WhatsApp e API</li>
+                        <li data-lang-pt="Histórico ilimitado" data-lang-en="Unlimited history" data-lang-es="Historial ilimitado">Histórico ilimitado</li>
+                        <li data-lang-pt="Suporte prioritário" data-lang-en="Priority support" data-lang-es="Soporte prioritario">Suporte prioritário</li>
+                        <li data-lang-pt="Consultoria especializada" data-lang-en="Expert consulting" data-lang-es="Consultoría especializada">Consultoria especializada</li>
+                    </ul>
+                    <div class="price" data-lang-pt="Entre em Contato" data-lang-en="Contact Us" data-lang-es="Contáctanos">Entre em Contato</div>
+                    <button onclick="subscribeToPlan('enterprise')" data-lang-pt="Fale Conosco" data-lang-en="Contact Us" data-lang-es="Contáctanos">Fale Conosco</button>
                 </div>
             </div>
         </section>
 
-        <section class="partners-section">
-            <div class="container">
-                <h3 id="partners-heading">Nossos Parceiros</h3>
-                <div class="partners-list">
-                    <span class="partner-item">CoinGecko</span>
-                    <span class="partner-item">Binance</span>
-                    <span class="partner-item">Coinbase</span>
-                    <span class="partner-item">Blockchain.com</span>
+        <section id="partners" class="partners-section container">
+            <h2 data-lang-pt="Nossos Parceiros" data-lang-en="Our Partners" data-lang-es="Nuestros Socios">Nossos Parceiros</h2>
+            <p style="text-align: center;" data-lang-pt="Trabalhamos com as melhores plataformas para garantir a segurança e eficiência dos seus investimentos." data-lang-en="We work with the best platforms to ensure the security and efficiency of your investments." data-lang-es="Trabajamos con las mejores plataformas para garantizar la seguridad y eficiencia de tus inversiones.">Trabalhamos com as melhores plataformas para garantir a segurança e eficiência dos seus investimentos.</p>
+            <div class="partners-grid">
+                <!-- Placeholder for partner logos -->
+                <img src="https://via.placeholder.com/120x60/2a2f36/e0e0e0?text=Partner+1" alt="Partner 1" class="partner-logo"><br/>
+                <img src="https://via.placeholder.com/120x60/2a2f36/e0e0e0?text=Partner+2" alt="Partner 2" class="partner-logo"><br/>
+                <img src="https://via.placeholder.com/120x60/2a2f36/e0e0e0?text=Partner+3" alt="Partner 3" class="partner-logo"><br/>
+                <img src="https://via.placeholder.com/120x60/2a2f36/e0e0e0?text=Partner+4" alt="Partner 4" class="partner-logo">
+            </div>
+        </section>
+
+        <section class="ebook-cta container">
+            <h3 data-lang-pt="Baixe Nosso E-book Gratuito!" data-lang-en="Download Our Free E-book!" data-lang-es="¡Descarga Nuestro E-book Gratuito!">Baixe Nosso E-book Gratuito!</h3>
+            <p data-lang-pt="Aprenda tudo sobre Bitcoin, desde o básico até estratégias avançadas de investimento." data-lang-en="Learn everything about Bitcoin, from basics to advanced investment strategies." data-lang-es="Aprende todo sobre Bitcoin, desde lo básico hasta estrategias avanzadas de inversión.">Aprenda tudo sobre Bitcoin, desde o básico até estratégias avançadas de investimento.</p>
+            <button data-lang-pt="Quero Meu E-book!" data-lang-en="I Want My E-book!" data-lang-es="¡Quiero Mi E-book!">Quero Meu E-book!</button>
+        </section>
+
+        <section id="tirinhas" class="tirinhas-section container">
+            <h2 data-lang-pt="Tirinhas do Bitcoin" data-lang-en="Bitcoin Comics" data-lang-es="Tiras de Bitcoin">Tirinhas do Bitcoin</h2>
+            <p style="text-align: center;" data-lang-pt="Humor e informação sobre o universo das criptomoedas." data-lang-en="Humor and information about the world of cryptocurrencies." data-lang-es="Humor e información sobre el universo de las criptomonedas.">Humor e informação sobre o universo das criptomoedas.</p>
+            <div class="tirinhas-grid">
+                <div class="tirinha-card">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAA... (Placeholder para Imagem 1: Bitcoin Hero)" alt="Bitcoin Hero Comic"><br/>
+                    <div class="tirinha-caption" data-lang-pt="A jornada do Bitcoin: de herói a lenda." data-lang-en="The Bitcoin journey: from hero to legend." data-lang-es="El viaje de Bitcoin: de héroe a leyenda.">A jornada do Bitcoin: de herói a lenda.</div>
+                </div>
+                <div class="tirinha-card">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAA... (Placeholder para Imagem 2: Bitcoin com Blockchain)" alt="Bitcoin Blockchain Comic"><br/>
+                    <div class="tirinha-caption" data-lang-pt="Blockchain: a tecnologia por trás da revolução." data-lang-en="Blockchain: the technology behind the revolution." data-lang-es="Blockchain: la tecnología detrás de la revolución.">Blockchain: a tecnologia por trás da revolução.</div>
+                </div>
+                <div class="tirinha-card">
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAA... (Placeholder para Imagem 3: Seguro, Rápido, Você é o Dono)" alt="Secure Fast You Own Comic">
+                    <div class="tirinha-caption" data-lang-pt="Segurança, velocidade e controle total." data-lang-en="Security, speed, and total control." data-lang-es="Seguridad, velocidad y control total.">Segurança, velocidade e controle total.</div>
                 </div>
             </div>
         </section>
 
-        <section class="ebook-section">
-            <div class="container">
-                <h3 id="ebook-heading">Guia Essencial de Bitcoin para Iniciantes</h3>
-                <div class="content">
-                    <p id="ebook-description">Baixe nosso e-book gratuito e aprenda tudo sobre Bitcoin, desde o básico até estratégias de investimento. Comece sua jornada no mundo das criptomoedas hoje!</p>
-                    <a href="#" class="btn" id="ebook-btn">Baixar E-book Grátis</a>
-                </div>
+        <section class="adsense-placeholder container">
+            <p data-lang-pt="Espaço para Anúncio Google AdSense" data-lang-en="Google AdSense Ad Space" data-lang-es="Espacio para Anuncio Google AdSense">Espaço para Anúncio Google AdSense</p>
+            <!-- Seu código Google AdSense viria aqui -->
+            <div style="width: 100%; height: 250px; background-color: #1a1f26; display: flex; align-items: center; justify-content: center; border: 1px solid #3a3f47; color: #9e9e9e; font-size: 0.9em;">
+                [AdSense Banner 728x90 ou 300x250]
             </div>
         </section>
-
-        <section class="insights-section">
-            <div class="container">
-                <h3 id="insights-heading">Insights e Análises Recentes</h3>
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <h4 id="insight1-title">O Halving do Bitcoin e Seus Impactos</h4>
-                        <p id="insight1-text">Entenda como o evento de halving afeta a oferta e a demanda do Bitcoin e suas possíveis consequências no preço.</p>
-                    </div>
-                    <div class="insight-card">
-                        <h4 id="insight2-title">Adoção Institucional: O Próximo Grande Salto?</h4>
-                        <p id="insight2-text">Analise o crescente interesse de grandes instituições financeiras no Bitcoin e o que isso significa para o futuro.</p>
-                    </div>
-                    <div class="insight-card">
-                        <h4 id="insight3-title">Bitcoin como Reserva de Valor: Mitos e Verdades</h4>
-                        <p id="insight3-text">Explore o debate sobre o papel do Bitcoin como uma reserva de valor digital em comparação com o ouro e outras commodities.</p>
-                    </div>
-                    <div class="insight-card">
-                        <h4 id="insight4-title">Regulamentação de Criptomoedas: O Cenário Global</h4>
-                        <p id="insight4-text">Um panorama das diferentes abordagens regulatórias ao redor do mundo e como elas moldam o mercado de criptoativos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="container">
-            <div class="adsense-placeholder">
-                <p id="adsense-text">Espaço para Anúncios Google AdSense</p>
-                <!-- Seu código AdSense será inserido aqui -->
-            </div>
-        </div>
     </main>
 
     <footer>
         <div class="container">
-            <p id="footer-text">&copy; 2026 Seu Site de Bitcoin. Todos os direitos reservados. | <a href="#" id="privacy-link">Política de Privacidade</a></p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p data-lang-pt="&copy; 2026 Bitcoin Agora. Todos os direitos reservados." data-lang-en="&copy; 2026 Bitcoin Now. All rights reserved." data-lang-es="&copy; 2026 Bitcoin Ahora. Todos los derechos reservados.">&copy; 2026 Bitcoin Agora. Todos os direitos reservados.</p>
+            <p data-lang-pt="Desenvolvido com paixão pelo futuro financeiro." data-lang-en="Developed with passion for the financial future." data-lang-es="Desarrollado con pasión por el futuro financiero.">Desenvolvido com paixão pelo futuro financeiro.</p>
         </div>
     </footer>
 
     <script>
-        const translations = {
-            pt: {<br/>
-                siteTitle: "Seu Site de Bitcoin",<br/>
-                langLabel: "Idioma:",<br/>
-                heroTitle: "Bitcoin em Tempo Real",<br/>
-                heroSubtitle: "Acompanhe o preço do Bitcoin, converta valores e mantenha-se atualizado com as últimas tendências do mercado.",<br/>
-                converterHeading: "Conversor de Bitcoin",<br/>
-                labelBtc: "BTC:",<br/>
-                labelFiat: "Moeda:",<br/>
-                currentBtcPrice: "Carregando preço...",<br/>
-                plansHeading: "Planos de Alerta Premium",<br/>
-                plan1Title: "Plano Básico",<br/>
-                plan1Price: "R$ 29/mês",<br/>
-                plan1Feature1: "Alertas de preço diários",<br/>
-                plan1Feature2: "Notificações por e-mail",<br/>
-                plan1Feature3: "Acesso a análises semanais",<br/>
-                plan1Btn: "Saiba Mais",<br/>
-                plan2Title: "Plano Pro",<br/>
-                plan2Price: "R$ 79/mês",<br/>
-                plan2Feature1: "Alertas de preço em tempo real",<br/>
-                plan2Feature2: "Notificações por WhatsApp",<br/>
-                plan2Feature3: "Acesso a análises exclusivas",<br/>
-                plan2Feature4: "Suporte prioritário",<br/>
-                plan2Btn: "Saiba Mais",<br/>
-                plan3Title: "Plano Ultimate",<br/>
-                plan3Price: "R$ 199/mês",<br/>
-                plan3Feature1: "Alertas personalizáveis avançados",<br/>
-                plan3Feature2: "Notificações por WhatsApp e SMS",<br/>
-                plan3Feature3: "Consultoria individualizada",<br/>
-                plan3Feature4: "Acesso a ferramentas de trading",<br/>
-                plan3Feature5: "Relatórios de mercado premium",<br/>
-                plan3Btn: "Saiba Mais",<br/>
-                partnersHeading: "Nossos Parceiros",<br/>
-                ebookHeading: "Guia Essencial de Bitcoin para Iniciantes",<br/>
-                ebookDescription: "Baixe nosso e-book gratuito e aprenda tudo sobre Bitcoin, desde o básico até estratégias de investimento. Comece sua jornada no mundo das criptomoedas hoje!",<br/>
-                ebookBtn: "Baixar E-book Grátis",<br/>
-                insightsHeading: "Insights e Análises Recentes",<br/>
-                insight1Title: "O Halving do Bitcoin e Seus Impactos",<br/>
-                insight1Text: "Entenda como o evento de halving afeta a oferta e a demanda do Bitcoin e suas possíveis consequências no preço.",<br/>
-                insight2Title: "Adoção Institucional: O Próximo Grande Salto?",<br/>
-                insight2Text: "Analise o crescente interesse de grandes instituições financeiras no Bitcoin e o que isso significa para o futuro.",<br/>
-                insight3Title: "Bitcoin como Reserva de Valor: Mitos e Verdades",<br/>
-                insight3Text: "Explore o debate sobre o papel do Bitcoin como uma reserva de valor digital em comparação com o ouro e outras commodities.",<br/>
-                insight4Title: "Regulamentação de Criptomoedas: O Cenário Global",<br/>
-                insight4Text: "Um panorama das diferentes abordagens regulatórias ao redor do mundo e como elas moldam o mercado de criptoativos.",<br/>
-                adsenseText: "Espaço para Anúncios Google AdSense",<br/>
-                footerText: "&copy; 2026 Seu Site de Bitcoin. Todos os direitos reservados. | <a href='#' id='privacy-link'>Política de Privacidade</a>",<br/>
-                privacyLink: "Política de Privacidade"
-            },
-            en: {<br/>
-                siteTitle: "Your Bitcoin Site",<br/>
-                langLabel: "Language:",<br/>
-                heroTitle: "Real-Time Bitcoin Price",<br/>
-                heroSubtitle: "Track Bitcoin price, convert values, and stay updated with the latest market trends.",<br/>
-                converterHeading: "Bitcoin Converter",<br/>
-                labelBtc: "BTC:",<br/>
-                labelFiat: "Currency:",<br/>
-                currentBtcPrice: "Loading price...",<br/>
-                plansHeading: "Premium Alert Plans",<br/>
-                plan1Title: "Basic Plan",<br/>
-                plan1Price: "$ 29/month",<br/>
-                plan1Feature1: "Daily price alerts",<br/>
-                plan1Feature2: "Email notifications",<br/>
-                plan1Feature3: "Access to weekly analyses",<br/>
-                plan1Btn: "Learn More",<br/>
-                plan2Title: "Pro Plan",<br/>
-                plan2Price: "$ 79/month",<br/>
-                plan2Feature1: "Real-time price alerts",<br/>
-                plan2Feature2: "WhatsApp notifications",<br/>
-                plan2Feature3: "Access to exclusive analyses",<br/>
-                plan2Feature4: "Priority support",<br/>
-                plan2Btn: "Learn More",<br/>
-                plan3Title: "Ultimate Plan",<br/>
-                plan3Price: "$ 199/month",<br/>
-                plan3Feature1: "Advanced customizable alerts",<br/>
-                plan3Feature2: "WhatsApp & SMS notifications",<br/>
-                plan3Feature3: "Individualized consulting",<br/>
-                plan3Feature4: "Access to trading tools",<br/>
-                plan3Feature5: "Premium market reports",<br/>
-                plan3Btn: "Learn More",<br/>
-                partnersHeading: "Our Partners",<br/>
-                ebookHeading: "Essential Bitcoin Guide for Beginners",<br/>
-                ebookDescription: "Download our free e-book and learn everything about Bitcoin, from basics to investment strategies. Start your crypto journey today!",<br/>
-                ebookBtn: "Download Free E-book",<br/>
-                insightsHeading: "Recent Insights & Analysis",<br/>
-                insight1Title: "Bitcoin Halving and Its Impacts",<br/>
-                insight1Text: "Understand how the halving event affects Bitcoin's supply and demand and its potential price consequences.",<br/>
-                insight2Title: "Institutional Adoption: The Next Big Leap?",<br/>
-                insight2Text: "Analyze the growing interest of major financial institutions in Bitcoin and what it means for the future.",<br/>
-                insight3Title: "Bitcoin as a Store of Value: Myths and Truths",<br/>
-                insight3Text: "Explore the debate on Bitcoin's role as a digital store of value compared to gold and other commodities.",<br/>
-                insight4Title: "Cryptocurrency Regulation: The Global Scenario",<br/>
-                insight4Text: "An overview of different regulatory approaches worldwide and how they shape the crypto market.",<br/>
-                adsenseText: "Google AdSense Ad Space",<br/>
-                footerText: "&copy; 2026 Your Bitcoin Site. All rights reserved. | <a href='#' id='privacy-link'>Privacy Policy</a>",<br/>
-                privacyLink: "Privacy Policy"
-            },
-            es: {<br/>
-                siteTitle: "Tu Sitio de Bitcoin",<br/>
-                langLabel: "Idioma:",<br/>
-                heroTitle: "Bitcoin en Tiempo Real",<br/>
-                heroSubtitle: "Sigue el precio de Bitcoin, convierte valores y mantente actualizado con las últimas tendencias del mercado.",<br/>
-                converterHeading: "Convertidor de Bitcoin",<br/>
-                labelBtc: "BTC:",<br/>
-                labelFiat: "Moneda:",<br/>
-                currentBtcPrice: "Cargando precio...",<br/>
-                plansHeading: "Planes de Alerta Premium",<br/>
-                plan1Title: "Plan Básico",<br/>
-                plan1Price: "$ 29/mes",<br/>
-                plan1Feature1: "Alertas de precio diarios",<br/>
-                plan1Feature2: "Notificaciones por correo electrónico",<br/>
-                plan1Feature3: "Acceso a análisis semanales",<br/>
-                plan1Btn: "Saber Más",<br/>
-                plan2Title: "Plan Pro",<br/>
-                plan2Price: "$ 79/mes",<br/>
-                plan2Feature1: "Alertas de precio en tiempo real",<br/>
-                plan2Feature2: "Notificaciones por WhatsApp",<br/>
-                plan2Feature3: "Acceso a análisis exclusivos",<br/>
-                plan2Feature4: "Soporte prioritario",<br/>
-                plan2Btn: "Saber Más",<br/>
-                plan3Title: "Plan Ultimate",<br/>
-                plan3Price: "$ 199/mes",<br/>
-                plan3Feature1: "Alertas personalizables avanzados",<br/>
-                plan3Feature2: "Notificaciones por WhatsApp y SMS",<br/>
-                plan3Feature3: "Consultoría individualizada",<br/>
-                plan3Feature4: "Acceso a herramientas de trading",<br/>
-                plan3Feature5: "Informes de mercado premium",<br/>
-                plan3Btn: "Saber Más",<br/>
-                partnersHeading: "Nuestros Socios",<br/>
-                ebookHeading: "Guía Esencial de Bitcoin para Principiantes",<br/>
-                ebookDescription: "Descarga nuestro e-book gratuito y aprende todo sobre Bitcoin, desde lo básico hasta estrategias de inversión. ¡Comienza tu viaje cripto hoy!",<br/>
-                ebookBtn: "Descargar E-book Gratis",<br/>
-                insightsHeading: "Insights y Análisis Recientes",<br/>
-                insight1Title: "El Halving de Bitcoin y Sus Impactos",<br/>
-                insight1Text: "Comprende cómo el evento de halving afecta la oferta y la demanda de Bitcoin y sus posibles consecuencias en el precio.",<br/>
-                insight2Title: "Adopción Institucional: ¿El Próximo Gran Salto?",<br/>
-                insight2Text: "Analiza el creciente interés de las grandes instituciones financieras en Bitcoin y lo que esto significa para el futuro.",<br/>
-                insight3Title: "Bitcoin como Reserva de Valor: Mitos y Verdades",<br/>
-                insight3Text: "Explora el debate sobre el papel de Bitcoin como una reserva de valor digital en comparación con el oro y otras materias primas.",<br/>
-                insight4Title: "Regulación de Criptomonedas: El Escenario Global",<br/>
-                insight4Text: "Un panorama de los diferentes enfoques regulatorios en todo el mundo y cómo moldean el mercado de criptoactivos.",<br/>
-                adsenseText: "Espacio para Anuncios de Google AdSense",<br/>
-                footerText: "&copy; 2026 Tu Sitio de Bitcoin. Todos los derechos reservados. | <a href='#' id='privacy-link'>Política de Privacidad</a>",<br/>
-                privacyLink: "Política de Privacidad"
-            }
+        // Objeto para armazenar os preços do Bitcoin
+        let bitcoinPrices = {
+            usd: 0,<br/>
+            brl: 0,<br/>
+            eur: 0,<br/>
+            gbp: 0
         };
 
-        const elementsToTranslate = {
-            'site-title': 'siteTitle',<br/>
-            'lang-label': 'langLabel',<br/>
-            'hero-title': 'heroTitle',<br/>
-            'hero-subtitle': 'heroSubtitle',<br/>
-            'converter-heading': 'converterHeading',<br/>
-            'label-btc': 'labelBtc',<br/>
-            'label-fiat': 'labelFiat',<br/>
-            'current-btc-price': 'currentBtcPrice',<br/>
-            'plans-heading': 'plansHeading',<br/>
-            'plan1-title': 'plan1Title',<br/>
-            'plan1-price': 'plan1Price',<br/>
-            'plan1-feature1': 'plan1Feature1',<br/>
-            'plan1-feature2': 'plan1Feature2',<br/>
-            'plan1-feature3': 'plan1Feature3',<br/>
-            'plan1-btn': 'plan1Btn',<br/>
-            'plan2-title': 'plan2Title',<br/>
-            'plan2-price': 'plan2Price',<br/>
-            'plan2-feature1': 'plan2Feature1',<br/>
-            'plan2-feature2': 'plan2Feature2',<br/>
-            'plan2-feature3': 'plan2Feature3',<br/>
-            'plan2-feature4': 'plan2Feature4',<br/>
-            'plan2-btn': 'plan2Btn',<br/>
-            'plan3-title': 'plan3Title',<br/>
-            'plan3-price': 'plan3Price',<br/>
-            'plan3-feature1': 'plan3Feature1',<br/>
-            'plan3-feature2': 'plan3Feature2',<br/>
-            'plan3-feature3': 'plan3Feature3',<br/>
-            'plan3-feature4': 'plan3Feature4',<br/>
-            'plan3-feature5': 'plan3Feature5',<br/>
-            'plan3-btn': 'plan3Btn',<br/>
-            'partners-heading': 'partnersHeading',<br/>
-            'ebook-heading': 'ebookHeading',<br/>
-            'ebook-description': 'ebookDescription',<br/>
-            'ebook-btn': 'ebookBtn',<br/>
-            'insights-heading': 'insightsHeading',<br/>
-            'insight1-title': 'insight1Title',<br/>
-            'insight1-text': 'insight1Text',<br/>
-            'insight2-title': 'insight2Title',<br/>
-            'insight2-text': 'insight2Text',<br/>
-            'insight3-title': 'insight3Title',<br/>
-            'insight3-text': 'insight3Text',<br/>
-            'insight4-title': 'insight4Title',<br/>
-            'insight4-text': 'insight4Text',<br/>
-            'adsense-text': 'adsenseText',<br/>
-            'footer-text': 'footerText',<br/>
-            'privacy-link': 'privacyLink'
-        };
+        // Função para buscar e atualizar o preço do Bitcoin
+        async function updatePrice() {
+            const priceElement = document.getElementById('bitcoin-price');
+            const lastUpdateElement = document.getElementById('last-update');
+            const targetCurrency = document.getElementById('target-currency').value;
 
-        let bitcoinPrice = {}; // Stores BTC price in different currencies
-        const API_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl,eur,gbp';
-
-        // --- Language Functions ---
-        function setLanguage(lang) {
-            document.documentElement.lang = lang;
-            const t = translations[lang];
-            for (const id in elementsToTranslate) {
-                const element = document.getElementById(id);
-                if (element) {
-                    const translationKey = elementsToTranslate[id];
-                    if (id === 'footer-text') {
-                        element.innerHTML = t[translationKey];
-                    } else if (id === 'privacy-link') {
-                        element.textContent = t[translationKey];
-                    }
-                    else {
-                        element.textContent = t[translationKey];
-                    }
-                }
-            }
-            // Update plan prices with correct currency symbol
-            updatePlanPrices(lang);
-            // Re-render converter with new language/currency format
-            updateConverterDisplay();
-        }
-
-        function updatePlanPrices(lang) {
-            const currencySymbols = {
-                pt: 'R$',<br/>
-                en: '$',<br/>
-                es: '$'
-            };
-            const symbol = currencySymbols[lang];
-
-            document.getElementById('plan1-price').textContent = `${symbol} 29/${lang === 'pt' ? 'mês' : 'month'}`;<br/>
-            document.getElementById('plan2-price').textContent = `${symbol} 79/${lang === 'pt' ? 'mês' : 'month'}`;<br/>
-            document.getElementById('plan3-price').textContent = `${symbol} 199/${lang === 'pt' ? 'mês' : 'month'}`;
-        }
-
-        // --- Bitcoin Converter Functions ---
-        async function fetchBitcoinPrice() {
             try {
-                const response = await fetch(API_URL);
+                priceElement.textContent = 'Carregando preço...';
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl,eur,gbp');
                 const data = await response.json();
+
                 if (data && data.bitcoin) {
-                    bitcoinPrice = data.bitcoin;
-                    updateConverterDisplay();
+                    bitcoinPrices.usd = data.bitcoin.usd;
+                    bitcoinPrices.brl = data.bitcoin.brl;
+                    bitcoinPrices.eur = data.bitcoin.eur;
+                    bitcoinPrices.gbp = data.bitcoin.gbp;
+
+                    const currentPrice = bitcoinPrices[targetCurrency];
+                    const formattedPrice = new Intl.NumberFormat(getLocale(targetCurrency), {
+                        style: 'currency',<br/>
+                        currency: targetCurrency.toUpperCase()
+                    }).format(currentPrice);
+
+                    priceElement.textContent = formattedPrice;
+                    lastUpdateElement.textContent = `Última atualização: ${new Date().toLocaleTimeString()}`;
+                    convertCurrency(); // Atualiza o conversor após o preço ser carregado
                 } else {
-                    console.error('Failed to fetch Bitcoin price:', data);
-                    document.getElementById('current-btc-price').textContent = translations[document.documentElement.lang].currentBtcPrice + " (Erro)";
+                    priceElement.textContent = 'Erro ao carregar preço.';
                 }
             } catch (error) {
-                console.error('Error fetching Bitcoin price:', error);
-                document.getElementById('current-btc-price').textContent = translations[document.documentElement.lang].currentBtcPrice + " (Erro de Conexão)";
+                console.error('Erro ao buscar preço do Bitcoin:', error);
+                priceElement.textContent = 'Erro ao carregar preço.';
             }
         }
 
-        function formatCurrency(value, currencyCode, lang) {
-            const options = {
-                style: 'currency',<br/>
-                currency: currencyCode.toUpperCase(),<br/>
-                minimumFractionDigits: 2,<br/>
-                maximumFractionDigits: 2
-            };
-            return new Intl.NumberFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', options).format(value);
-        }
-
-        function updateConverterDisplay() {
-            const fiatCurrency = document.getElementById('fiat-currency').value;
-            const lang = document.documentElement.lang;
-
-            if (bitcoinPrice[fiatCurrency]) {
-                const formattedPrice = formatCurrency(bitcoinPrice[fiatCurrency], fiatCurrency, lang);
-                document.getElementById('current-btc-price').textContent = `${translations[lang].currentBtcPrice}: 1 BTC = ${formattedPrice}`;
-            } else {
-                document.getElementById('current-btc-price').textContent = translations[lang].currentBtcPrice + " (Preço indisponível)";
+        // Função auxiliar para obter o locale correto para formatação de moeda
+        function getLocale(currency) {
+            switch (currency) {
+                case 'brl': return 'pt-BR';<br/>
+                case 'eur': return 'de-DE'; // Europeu genérico, pode ser mais específico<br/>
+                case 'gbp': return 'en-GB';<br/>
+                case 'usd':<br/>
+                default: return 'en-US';
             }
-            convertBitcoin(); // Update conversion inputs
         }
 
-        function convertBitcoin() {
-            const btcAmountInput = document.getElementById('btc-amount');
-            const fiatAmountInput = document.getElementById('fiat-amount');
-            const fiatCurrency = document.getElementById('fiat-currency').value;
-            const lang = document.documentElement.lang;
+        // Função para converter valores entre BTC e moeda fiduciária
+        function convertCurrency(isCurrencyInput = false) {
+            const btcInput = document.getElementById('btc-amount');
+            const currencyInput = document.getElementById('currency-amount');
+            const targetCurrency = document.getElementById('target-currency').value;
+            const btcPrice = bitcoinPrices[targetCurrency];
 
-            const btcValue = parseFloat(btcAmountInput.value);
-
-            if (isNaN(btcValue) || btcValue < 0) {
-                fiatAmountInput.value = '';
+            if (!btcPrice || btcPrice === 0) {
+                currencyInput.value = '0';
                 return;
             }
 
-            if (bitcoinPrice[fiatCurrency]) {
-                const convertedFiat = btcValue * bitcoinPrice[fiatCurrency];
-                fiatAmountInput.value = convertedFiat.toFixed(2);
+            if (isCurrencyInput) {
+                const currencyValue = parseFloat(currencyInput.value);
+                if (!isNaN(currencyValue)) {
+                    btcInput.value = (currencyValue / btcPrice).toFixed(8);
+                } else {
+                    btcInput.value = '';
+                }
             } else {
-                fiatAmountInput.value = '';
+                const btcValue = parseFloat(btcInput.value);
+                if (!isNaN(btcValue)) {
+                    currencyInput.value = (btcValue * btcPrice).toFixed(2);
+                } else {
+                    currencyInput.value = '';
+                }
             }
         }
 
-        function convertFiat() {
-            const btcAmountInput = document.getElementById('btc-amount');
-            const fiatAmountInput = document.getElementById('fiat-amount');
-            const fiatCurrency = document.getElementById('fiat-currency').value;
+        // Função para alternar entre as abas de planos premium
+        function switchTab(event, tabId) {
+            const tabContents = document.querySelectorAll('.premium-content');
+            tabContents.forEach(content => content.classList.remove('active'));
 
-            const fiatValue = parseFloat(fiatAmountInput.value);
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
 
-            if (isNaN(fiatValue) || fiatValue < 0) {
-                btcAmountInput.value = '';
-                return;
-            }
-
-            if (bitcoinPrice[fiatCurrency] && bitcoinPrice[fiatCurrency] > 0) {
-                const convertedBtc = fiatValue / bitcoinPrice[fiatCurrency];
-                btcAmountInput.value = convertedBtc.toFixed(8); // BTC usually has more decimal places
-            } else {
-                btcAmountInput.value = '';
-            }
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
 
-        // --- Event Listeners ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('selectedLang') || 'pt';
-            document.getElementById('language-select').value = savedLang;
-            setLanguage(savedLang);
-            fetchBitcoinPrice();
-
-            // Fetch price every 60 seconds
-            setInterval(fetchBitcoinPrice, 60000);
-
-            document.getElementById('language-select').addEventListener('change', (event) => {
-                const newLang = event.target.value;
-                setLanguage(newLang);
-                localStorage.setItem('selectedLang', newLang);
+        // Função para definir o idioma da página
+        function setLang(lang) {
+            document.documentElement.lang = lang; // Define o atributo lang do HTML
+            const elements = document.querySelectorAll('[data-lang-pt], [data-lang-en], [data-lang-es]');
+            elements.forEach(el => {
+                const text = el.getAttribute(`data-lang-${lang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' && el.type === 'placeholder') {
+                        el.placeholder = text;
+                    } else if (el.tagName === 'TITLE') {
+                        document.title = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                }
             });
 
-            document.getElementById('btc-amount').addEventListener('input', convertBitcoin);
-            document.getElementById('fiat-amount').addEventListener('input', convertFiat);
-            document.getElementById('fiat-currency').addEventListener('change', updateConverterDisplay);
+            // Atualiza o texto do seletor de idioma
+            const langSelector = document.getElementById('language-selector');
+            Array.from(langSelector.options).forEach(option => {
+                if (option.value === lang) {
+                    option.selected = true;
+                }
+            });
+
+            // Atualiza o preço para a moeda correta após a mudança de idioma, se aplicável
+            updatePrice();
+        }
+
+        // Funções placeholder para integração Stripe e Twilio
+        function subscribeToPlan(plan) {
+            console.log(`Iniciando assinatura para o plano: ${plan}`);
+            // Aqui você integraria a lógica do Stripe Checkout ou API
+            // Exemplo: initStripeCheckout(plan);
+            alert(`Você clicou para assinar o plano ${plan}. (Integração Stripe/Twilio seria ativada aqui)`);
+            // sendTwilioAlert('admin', `Novo interesse no plano ${plan}`); // Exemplo de notificação interna
+        }
+
+        // Placeholder para inicialização do Stripe (se necessário)
+        function initStripe() {
+            console.log('Stripe SDK inicializado (placeholder).');
+            // Exemplo: Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY');
+        }
+
+        // Placeholder para envio de alertas Twilio
+        function sendTwilioAlert(recipient, message) {
+            console.log(`Enviando alerta Twilio para ${recipient}: ${message} (placeholder).`);
+            // Aqui você faria uma chamada para seu backend que usa a API do Twilio
+            // Exemplo: fetch('/api/send-whatsapp-alert', { method: 'POST', body: JSON.stringify({ recipient, message }) });
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            setLang('pt'); // Define o idioma padrão como Português
+            updatePrice(); // Carrega o preço inicial do Bitcoin
+            setInterval(updatePrice, 60000); // Atualiza o preço a cada 60 segundos
+            initStripe(); // Inicializa o Stripe (placeholder)
         });
     </script>
+    <!-- Font Awesome para ícones sociais (opcional, pode ser removido se não usar) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
