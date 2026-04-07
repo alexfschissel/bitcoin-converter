@@ -286,15 +286,15 @@
             <h2 class="section-title">O que é Bitcoin? - A Tirinha Completa</h2>
             <div class="tirinhas-grid">
                 <div class="tirinha-card">
-                    <img src="https://generated-images.adapta.one/contatomedicalplanner%40gmail.com/019d6541-1bc4-7525-b7c9-8c6976fb2524/2026-04-07T00-25-09-249Z_Use_the_first_three_previously_generated_images_as.png" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
+                    <img src="data:image/png;base64,SEU_BASE64_DA_IMAGEM_1_AQUI" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
                     <div class="tirinha-title">📖 Quadros 1-4: O Começo</div>
                 </div>
                 <div class="tirinha-card">
-                    <img src="https://generated-images.adapta.one/contatomedicalplanner%40gmail.com/019d6541-1bc4-7525-b7c9-8c6976fb2524/2026-04-07T00-25-09-249Z_Use_the_first_three_previously_generated_images_as.png" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
+                    <img src="data:image/png;base64,SEU_BASE64_DA_IMAGEM_2_AQUI" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
                     <div class="tirinha-title">🚀 Quadros 5-8: A Solução</div>
                 </div>
                 <div class="tirinha-card">
-                    <img src="https://generated-images.adapta.one/contatomedicalplanner%40gmail.com/019d6541-1bc4-7525-b7c9-8c6976fb2524/2026-04-07T00-25-09-249Z_Use_the_first_three_previously_generated_images_as.png" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
+                    <img src="data:image/png;base64,SEU_BASE64_DA_IMAGEM_3_AQUI" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
                     <div class="tirinha-title">🔐 Quadros 9-12: A Segurança</div>
                 </div>
             </div>
@@ -563,94 +563,4 @@
                 const change = btc.usd_24h_change;
                 document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
                 document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
-                document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
-                convertCurrency();
-            } catch (e) { console.error('Erro ao atualizar preço:', e); }
-        }
-
-        function convertCurrency() {
-            const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
-            const moeda = document.getElementById('currency').value.toLowerCase();
-            if (amount <= 0 || !pricesByMoeda[moeda]) {
-                document.getElementById('result').textContent = '$0';
-                return;
-            }
-            const resultado = amount * pricesByMoeda[moeda];
-            const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R' };
-            const simbolo = simbolos[moeda] || moeda.toUpperCase();
-            let formatted;
-            if (moeda === 'brl') {
-                formatted = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            } else {
-                formatted = resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
-            }
-            document.getElementById('result').textContent = simbolo + ' ' + formatted;
-        }
-
-        function switchTab(tab) {
-            ['dados', 'alertas', 'pagamento'].forEach(t => {
-                const el = document.getElementById(t + '-tab');
-                if (el) el.classList.remove('show');
-            });
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const tabEl = document.getElementById(tab + '-tab');
-            if (tabEl) tabEl.classList.add('show');
-            const buttons = document.querySelectorAll('.tab-btn');
-            const index = ['dados', 'alertas', 'pagamento'].indexOf(tab);
-            if (buttons[index]) buttons[index].classList.add('active');
-        }
-
-        function goAlertas() {
-            if (!document.getElementById('whatsapp').value || !document.getElementById('email').value) {
-                showMsg('Preencha todos os campos', 'error');
-                return;
-            }
-            switchTab('alertas');
-        }
-
-        function goPagamento() {
-            const above = parseFloat(document.getElementById('above').value);
-            const below = parseFloat(document.getElementById('below').value);
-            if (!above || !below) { showMsg('Preencha os alertas', 'error'); return; }
-            if (above <= currentPrice || below >= currentPrice) { showMsg('Verificar alertas', 'error'); return; }
-            switchTab('pagamento');
-        }
-
-        async function pay() {
-            const btn = document.getElementById('payBtn');
-            btn.disabled = true;
-            try {
-                const res = await fetch('/api/create-payment', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        amount: 299,
-                        email: document.getElementById('email').value,
-                        whatsapp: document.getElementById('whatsapp').value,
-                        alertAbove: parseFloat(document.getElementById('above').value),
-                        alertBelow: parseFloat(document.getElementById('below').value)
-                    })
-                });
-                const data = await res.json();
-                const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
-                    payment_method: { card: cardElement, billing_details: { email: document.getElementById('email').value } }
-                });
-                if (error) showMsg('Erro: ' + error.message, 'error');
-                else if (paymentIntent.status === 'succeeded') showMsg('✅ Sucesso!', 'success');
-            } catch (e) { showMsg('Erro: ' + e.message, 'error'); }
-            finally { btn.disabled = false; }
-        }
-
-        function showMsg(text, type) {
-            const msg = document.getElementById('message');
-            msg.textContent = text;
-            msg.className = 'message show ' + type;
-            setTimeout(() => msg.classList.remove('show'), 5000);
-        }
-
-        applyLanguage('pt');
-        updatePrice();
-        setInterval(updatePrice, 30000);
-    </script>
-</body>
-</html>
+     
