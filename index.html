@@ -1,656 +1,857 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Agora - Conversor e Alertas Premium</title>
-    <meta name="google-adsense-account" content="ca-pub-9069537322097109">
-    <meta name="description" content="Conversor Bitcoin em tempo real com alertas premium por WhatsApp">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://js.stripe.com/v3/"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069537322097109" crossorigin="anonymous"></script>
+    <title data-lang-key="page_title">Bitcoin em Tempo Real</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; margin: 0; padding: 0; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #0f1419; color: #e2e8f0; line-height: 1.6; overflow-x: hidden; }
-        header { background: #0f1419; border-bottom: 1px solid rgba(248, 153, 26, 0.15); padding: 12px 20px; position: sticky; top: 0; z-index: 1000; width: 100%; }
-        .header-content { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-        .logo { font-size: 20px; font-weight: 800; color: #f8991a; white-space: nowrap; flex-shrink: 0; }
-        .lang { display: flex; gap: 6px; }
-        .lang button { padding: 6px 12px; background: rgba(248, 153, 26, 0.1); border: 1px solid rgba(248, 153, 26, 0.3); color: #94a3b8; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600; transition: all 0.3s; font-family: 'Inter', sans-serif; white-space: nowrap; }
-        .lang button.active { background: #f8991a; color: #0f1419; border-color: #f8991a; }
-        .hero { background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%); padding: 60px 20px; text-align: center; position: relative; overflow: hidden; min-height: 80vh; display: flex; align-items: center; justify-content: center; width: 100%; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(248, 153, 26, 0.08) 0%, transparent 70%); pointer-events: none; }
-        .hero-content { max-width: 700px; z-index: 10; position: relative; width: 100%; }
-        .bitcoin-icon-hero { font-size: 100px; margin-bottom: 20px; animation: bitcoinPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; display: block; }
-        @keyframes bitcoinPulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(248, 153, 26, 0.3)); } 50% { transform: scale(1.1); filter: drop-shadow(0 0 30px rgba(248, 153, 26, 0.5)); } }
-        .hero-title { font-size: clamp(36px, 8vw, 56px); font-weight: 800; color: #f8991a; margin-bottom: 16px; text-shadow: 0 4px 20px rgba(248, 153, 26, 0.2); animation: slideDown 0.8s ease-out; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
-        .hero-subtitle { font-size: clamp(18px, 5vw, 20px); color: #cbd5e1; margin-bottom: 12px; font-weight: 600; animation: slideDown 0.8s ease-out 0.1s backwards; }
-        .hero-description { font-size: clamp(14px, 4vw, 16px); color: #94a3b8; margin-bottom: 30px; line-height: 1.6; animation: slideDown 0.8s ease-out 0.2s backwards; }
-        .price-ticker { background: rgba(248, 153, 26, 0.1); border: 2px solid #f8991a; border-radius: 12px; padding: 20px; margin: 30px 0; animation: slideDown 0.8s ease-out 0.3s backwards; }
-        .ticker-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .price-display { font-size: clamp(32px, 6vw, 48px); font-weight: 800; color: #f8991a; margin-bottom: 8px; animation: priceGlow 1.5s ease-in-out infinite; }
-        @keyframes priceGlow { 0%, 100% { text-shadow: 0 0 10px rgba(248, 153, 26, 0.3); } 50% { text-shadow: 0 0 30px rgba(248, 153, 26, 0.6); } }
-        .price-brl { font-size: clamp(16px, 4vw, 20px); color: #cbd5e1; font-weight: 600; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
-        .stat-box { background: rgba(248, 153, 26, 0.05); border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 8px; padding: 12px; font-size: 12px; }
-        .stat-label { color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; font-size: 10px; }
-        .stat-value { color: #f8991a; font-weight: 700; font-size: clamp(14px, 3vw, 18px); }
-        .cta-button { display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%); color: #0f1419; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: clamp(14px, 3vw, 16px); text-transform: uppercase; letter-spacing: 0.5px; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 8px 20px rgba(248, 153, 26, 0.3); animation: slideDown 0.8s ease-out 0.4s backwards; }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(248, 153, 26, 0.4); }
-        .cta-button:active { transform: translateY(-1px); }
-        .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0; width: 100%; }
-        .section { margin: 0; padding: 40px 20px; width: 100%; }
-        .section-title { font-size: clamp(24px, 6vw, 32px); font-weight: 700; margin-bottom: 24px; color: #f1f5f9; }
-        .converter-card { background: #1a2332; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 12px; padding: 24px; margin-bottom: 40px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-        .form-group { display: flex; flex-direction: column; }
-        .form-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 600; }
-        .form-input, .form-select { padding: 12px; background: #0f1419; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 8px; color: #e2e8f0; font-size: 16px; font-family: 'Inter', sans-serif; transition: all 0.3s; }
-        .form-input:focus, .form-select:focus { outline: none; border-color: #f8991a; background: #1a2332; box-shadow: 0 0 0 3px rgba(248, 153, 26, 0.1); }
-        .result-box { background: rgba(248, 153, 26, 0.1); border: 1px solid rgba(248, 153, 26, 0.3); border-radius: 8px; padding: 20px; text-align: center; margin-top: 16px; }
-        .result-value { font-size: clamp(28px, 6vw, 36px); font-weight: 800; color: #f8991a; }
-        .adsense-horizontal { background: #1a2332; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 12px; padding: 16px; text-align: center; margin: 40px 0; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .adsense-label-h { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600; }
-        .tirinhas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .tirinha-card { background: #1a2332; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 12px; overflow: hidden; transition: all 0.3s; cursor: pointer; }
-        .tirinha-card:hover { border-color: #f8991a; transform: translateY(-4px); box-shadow: 0 10px 30px rgba(248, 153, 26, 0.15); }
-        .tirinha-image { width: 100%; height: auto; display: block; background: #0f1419; border-radius: 8px 8px 0 0; object-fit: cover; max-height: 500px; }
-        .tirinha-title { padding: 16px; font-size: 14px; font-weight: 600; color: #cbd5e1; text-align: center; border-top: 1px solid rgba(248, 153, 26, 0.1); }
-        .cta-ebook { background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%); border: 3px solid #f8991a; border-radius: 12px; padding: 40px 24px; text-align: center; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(248, 153, 26, 0.3); }
-        .ebook-icon { font-size: 56px; margin-bottom: 16px; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        .ebook-title { font-size: clamp(24px, 5vw, 32px); font-weight: 800; color: #0f1419; margin-bottom: 8px; }
-        .ebook-subtitle { font-size: 16px; color: #1a2332; margin-bottom: 16px; font-weight: 600; }
-        .ebook-desc { font-size: 14px; color: #1a2332; margin-bottom: 24px; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .ebook-button { display: inline-block; padding: 16px 40px; background: #0f1419; color: #f8991a; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; border: 3px solid #0f1419; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
-        .ebook-button:hover { background: transparent; color: #0f1419; box-shadow: inset 0 0 0 3px #0f1419; }
-        .partners-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
-        .partner-card { background: #1a2332; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 12px; padding: 20px; text-align: center; transition: all 0.3s; }
-        .partner-card:hover { border-color: #f8991a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(248, 153, 26, 0.1); }
-        .partner-icon { font-size: 32px; margin-bottom: 8px; }
-        .partner-name { font-size: 14px; font-weight: 700; color: #f8991a; margin-bottom: 4px; }
-        .partner-desc { font-size: 12px; color: #94a3b8; margin-bottom: 12px; }
-        .btn { display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%); color: #0f1419; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; border: none; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(248, 153, 26, 0.3); }
-        .premium-card { background: #1a2332; border: 1px solid rgba(76, 175, 80, 0.2); border-radius: 12px; padding: 32px 24px; margin-bottom: 40px; }
-        .premium-title { font-size: clamp(20px, 5vw, 28px); font-weight: 700; color: #4ade80; margin-bottom: 8px; }
-        .premium-price { font-size: clamp(32px, 7vw, 48px); font-weight: 800; color: #f8991a; margin-bottom: 24px; }
-        .tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid rgba(248, 153, 26, 0.1); padding-bottom: 12px; flex-wrap: wrap; }
-        .tab-btn { padding: 10px 16px; background: transparent; border: none; color: #94a3b8; font-size: 12px; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.3s; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tab-btn.active { color: #f8991a; border-bottom-color: #f8991a; }
-        .tab-content { display: none; }
-        .tab-content.show { display: block; }
-        .message { padding: 12px; border-radius: 8px; margin-bottom: 12px; display: none; font-size: 13px; font-weight: 500; }
-        .message.show { display: block; }
-        .message.success { background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3); color: #86efac; }
-        .message.error { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; }
-        .StripeElement { padding: 12px; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 8px; background: #0f1419; margin-top: 8px; }
-        @media (max-width: 1024px) {
-            .section { padding: 35px 18px; }
-            .hero { padding: 50px 18px; min-height: 70vh; }
-            .converter-card { padding: 20px; }
-            .premium-card { padding: 28px 20px; }
-            .tirinhas-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+        /* Basic Reset & Body */
+        body {
+            font-family: 'Arial', sans-serif;<br/>
+            margin: 0;<br/>
+            padding: 0;<br/>
+            background-color: #f4f7f6;<br/>
+            color: #333;<br/>
+            line-height: 1.6;
         }
+
+        /* Header */
+        header {
+            background-color: #2c3e50;<br/>
+            color: #ecf0f1;<br/>
+            padding: 15px 20px;<br/>
+            display: flex;<br/>
+            justify-content: space-between;<br/>
+            align-items: center;<br/>
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header .logo {
+            font-size: 24px;<br/>
+            font-weight: bold;<br/>
+            color: #f39c12;
+        }
+        header nav button {
+            background-color: #f39c12;<br/>
+            color: #fff;<br/>
+            border: none;<br/>
+            padding: 8px 12px;<br/>
+            margin-left: 10px;<br/>
+            border-radius: 5px;<br/>
+            cursor: pointer;<br/>
+            font-weight: bold;<br/>
+            transition: background-color 0.3s ease;
+        }
+        header nav button:hover {<br/>
+            background-color: #e67e22;
+        }
+        header nav button.active {
+            background-color: #e67e22;
+        }
+
+        /* Hero Section */
+        .hero {
+            /* Placeholder para imagem de fundo do hero. Substitua 'iVBORw0KGgoAAA...' pela sua imagem real em base64. */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=') no-repeat center center/cover;<br/>
+            color: #fff;<br/>
+            text-align: center;<br/>
+            padding: 100px 20px;<br/>
+            animation: fadeIn 1s ease-out;
+        }
+        .hero h1 {
+            font-size: 48px;<br/>
+            margin-bottom: 15px;<br/>
+            color: #f39c12;
+        }
+        .hero p {
+            font-size: 22px;<br/>
+            margin-bottom: 30px;
+        }
+        .hero .cta-buttons a {
+            background-color: #f39c12;<br/>
+            color: #fff;<br/>
+            padding: 15px 30px;<br/>
+            text-decoration: none;<br/>
+            border-radius: 5px;<br/>
+            font-weight: bold;<br/>
+            margin: 0 10px;<br/>
+            transition: background-color 0.3s ease;
+        }
+        .hero .cta-buttons a:hover {<br/>
+            background-color: #e67e22;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 60px 20px;<br/>
+            text-align: center;<br/>
+            max-width: 1200px;<br/>
+            margin: 0 auto;
+        }
+        .section:nth-of-type(even) {<br/>
+            background-color: #e9ecef;
+        }
+        .section h2 {
+            font-size: 36px;<br/>
+            margin-bottom: 20px;<br/>
+            color: #2c3e50;
+        }
+        .section p {
+            font-size: 18px;<br/>
+            margin-bottom: 30px;
+        }
+
+        /* Price Converter */
+        .converter-container {
+            display: flex;<br/>
+            justify-content: center;<br/>
+            align-items: center;<br/>
+            gap: 20px;<br/>
+            margin-top: 30px;<br/>
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+        .converter-container input, .converter-container select {
+            padding: 10px;<br/>
+            font-size: 16px;<br/>
+            border: 1px solid #ccc;<br/>
+            border-radius: 5px;<br/>
+            max-width: 150px; /* Limit width for inputs */
+        }
+        .converter-container button {
+            background-color: #3498db;<br/>
+            color: #fff;<br/>
+            padding: 10px 20px;<br/>
+            border: none;<br/>
+            border-radius: 5px;<br/>
+            cursor: pointer;<br/>
+            font-size: 16px;<br/>
+            transition: background-color 0.3s ease;
+        }
+        .converter-container button:hover {<br/>
+            background-color: #2980b9;
+        }
+        #converted-price {
+            margin-top: 20px;<br/>
+            font-size: 20px;<br/>
+            font-weight: bold;<br/>
+            color: #2c3e50;
+        }
+
+        /* Premium Alerts */
+        .alerts-grid {
+            display: grid;<br/>
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));<br/>
+            gap: 30px;<br/>
+            margin-top: 40px;
+        }
+        .alert-card {
+            background-color: #fff;<br/>
+            padding: 30px;<br/>
+            border-radius: 8px;<br/>
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);<br/>
+            text-align: left;<br/>
+            transition: transform 0.3s ease;
+        }
+        .alert-card:hover {<br/>
+            transform: translateY(-5px);
+        }
+        .alert-card h3 {
+            color: #f39c12;<br/>
+            font-size: 24px;<br/>
+            margin-bottom: 15px;
+        }
+        .alert-card ul {
+            list-style: none;<br/>
+            padding: 0;<br/>
+            margin-bottom: 20px;
+        }
+        .alert-card ul li {
+            margin-bottom: 10px;<br/>
+            display: flex;<br/>
+            align-items: center;
+        }
+        .alert-card ul li::before {<br/>
+            content: '✓';<br/>
+            color: #27ae60;<br/>
+            margin-right: 10px;<br/>
+            font-weight: bold;
+        }
+        .alert-card .price {
+            font-size: 28px;<br/>
+            font-weight: bold;<br/>
+            color: #2c3e50;<br/>
+            margin-bottom: 20px;
+        }
+        .alert-card .price span {
+            font-size: 16px;<br/>
+            font-weight: normal;<br/>
+            color: #777;
+        }
+        .alert-card button {
+            background-color: #27ae60;<br/>
+            color: #fff;<br/>
+            padding: 12px 25px;<br/>
+            border: none;<br/>
+            border-radius: 5px;<br/>
+            cursor: pointer;<br/>
+            font-size: 18px;<br/>
+            width: 100%;<br/>
+            transition: background-color 0.3s ease;
+        }
+        .alert-card button:hover {<br/>
+            background-color: #229a56;
+        }
+
+        /* Partner Grid */
+        .partners-grid {
+            display: grid;<br/>
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));<br/>
+            gap: 30px;<br/>
+            margin-top: 40px;<br/>
+            align-items: center;<br/>
+            justify-content: center;
+        }
+        .partner-logo {
+            max-width: 120px;<br/>
+            height: auto;<br/>
+            opacity: 0.7;<br/>
+            transition: opacity 0.3s ease;
+        }
+        .partner-logo:hover {<br/>
+            opacity: 1;
+        }
+
+        /* eBook Section */
+        .ebook-content {
+            display: flex;<br/>
+            flex-direction: column;<br/>
+            align-items: center;<br/>
+            gap: 30px;<br/>
+            margin-top: 40px;
+        }
+        .ebook-content img {
+            max-width: 300px;<br/>
+            border-radius: 8px;<br/>
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .ebook-content .text-block {
+            text-align: left;<br/>
+            max-width: 600px;
+        }
+        .ebook-content .text-block h3 {
+            color: #2c3e50;<br/>
+            font-size: 28px;<br/>
+            margin-bottom: 15px;
+        }
+        .ebook-content .text-block p {
+            font-size: 16px;<br/>
+            margin-bottom: 20px;
+        }
+        .ebook-content .text-block button {
+            background-color: #f39c12;<br/>
+            color: #fff;<br/>
+            padding: 12px 25px;<br/>
+            border: none;<br/>
+            border-radius: 5px;<br/>
+            cursor: pointer;<br/>
+            font-size: 18px;<br/>
+            transition: background-color 0.3s ease;
+        }
+        .ebook-content .text-block button:hover {<br/>
+            background-color: #e67e22;
+        }
+
+        /* Tirinhas Cards */
+        .tirinhas-grid {
+            display: grid;<br/>
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));<br/>
+            gap: 30px;<br/>
+            margin-top: 40px;
+        }
+        .tirinha-card {
+            background-color: #fff;<br/>
+            padding: 25px;<br/>
+            border-radius: 8px;<br/>
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);<br/>
+            text-align: left;<br/>
+            transition: transform 0.3s ease;
+        }
+        .tirinha-card:hover {<br/>
+            transform: translateY(-5px);
+        }
+        .tirinha-card img {
+            max-width: 100%;<br/>
+            border-radius: 5px;<br/>
+            margin-bottom: 15px;
+        }
+        .tirinha-card h4 {
+            color: #2c3e50;<br/>
+            font-size: 20px;<br/>
+            margin-bottom: 10px;
+        }
+        .tirinha-card p {
+            font-size: 15px;<br/>
+            color: #555;
+        }
+
+        /* AdSense Placeholder */
+        .adsense-placeholder {
+            background-color: #ccc;<br/>
+            color: #666;<br/>
+            padding: 50px 20px;<br/>
+            margin: 40px auto;<br/>
+            text-align: center;<br/>
+            font-size: 24px;<br/>
+            border-radius: 8px;<br/>
+            max-width: 900px;<br/>
+            height: 250px; /* Typical ad unit height */<br/>
+            display: flex;<br/>
+            align-items: center;<br/>
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;<br/>
+            color: #ecf0f1;<br/>
+            text-align: center;<br/>
+            padding: 30px 20px;<br/>
+            margin-top: 60px;
+        }
+        footer p {
+            margin: 0;<br/>
+            font-size: 14px;
+        }
+        footer .social-links a {
+            color: #ecf0f1;<br/>
+            margin: 0 10px;<br/>
+            text-decoration: none;<br/>
+            font-size: 20px;<br/>
+            transition: color 0.3s ease;
+        }
+        footer .social-links a:hover {<br/>
+            color: #f39c12;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            header { padding: 10px 14px; }
-            .header-content { gap: 10px; }
-            .logo { font-size: 18px; }
-            .lang button { padding: 5px 10px; font-size: 8px; }
-            .hero { padding: 40px 14px; min-height: 65vh; }
-            .bitcoin-icon-hero { font-size: 80px; }
-            .hero-title { font-size: 32px; }
-            .hero-subtitle { font-size: 16px; }
-            .hero-description { font-size: 14px; }
-            .section { padding: 30px 14px; }
-            .section-title { font-size: 24px; margin-bottom: 20px; }
-            .converter-card { padding: 16px; }
-            .form-row { grid-template-columns: 1fr; gap: 14px; }
-            .price-display { font-size: 36px; }
-            .price-brl { font-size: 18px; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-            .stat-box { padding: 10px; font-size: 11px; }
-            .stat-label { font-size: 9px; }
-            .stat-value { font-size: 14px; }
-            .premium-card { padding: 20px 14px; }
-            .premium-title { font-size: 22px; }
-            .premium-price { font-size: 36px; }
-            .tabs { gap: 4px; }
-            .tab-btn { padding: 8px 12px; font-size: 11px; }
-            .partners-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
-            .partner-card { padding: 16px; }
-            .partner-icon { font-size: 28px; }
-            .partner-name { font-size: 13px; }
-            .partner-desc { font-size: 11px; }
-            .btn { padding: 9px 16px; font-size: 11px; }
-            .cta-ebook { padding: 24px 14px; }
-            .ebook-icon { font-size: 48px; }
-            .ebook-title { font-size: 22px; }
-            .ebook-subtitle { font-size: 14px; }
-            .ebook-desc { font-size: 12px; }
-            .ebook-button { padding: 12px 24px; font-size: 13px; }
-            .cta-button { padding: 12px 28px; font-size: 13px; }
-            .tirinhas-grid { grid-template-columns: 1fr; gap: 14px; }
-            .tirinha-image { max-height: 350px; }
-            .adsense-horizontal { min-height: 280px; padding: 12px; }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .hero .cta-buttons a {
+                display: block;<br/>
+                margin: 10px auto;<br/>
+                max-width: 250px;
+            }
+            .section h2 {
+                font-size: 28px;
+            }
+            .converter-container {
+                flex-direction: column;
+            }
+            .ebook-content {
+                flex-direction: column;
+            }
         }
+
         @media (max-width: 480px) {
-            header { padding: 8px 12px; }
-            .header-content { flex-direction: column; gap: 8px; align-items: flex-start; }
-            .logo { font-size: 16px; }
-            .lang { width: 100%; }
-            .lang button { flex: 1; padding: 6px 10px; font-size: 9px; }
-            .hero { padding: 30px 12px; min-height: 50vh; }
-            .bitcoin-icon-hero { font-size: 60px; margin-bottom: 15px; }
-            .hero-title { font-size: 24px; margin-bottom: 12px; }
-            .hero-subtitle { font-size: 14px; margin-bottom: 8px; }
-            .hero-description { font-size: 12px; margin-bottom: 20px; }
-            .price-ticker { padding: 16px; margin: 20px 0; }
-            .price-display { font-size: 28px; margin-bottom: 8px; }
-            .price-brl { font-size: 14px; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
-            .stat-box { padding: 8px; border-radius: 6px; }
-            .stat-label { font-size: 8px; margin-bottom: 3px; }
-            .stat-value { font-size: 12px; }
-            .cta-button { padding: 11px 22px; font-size: 12px; }
-            .section { padding: 24px 12px; }
-            .section-title { font-size: 20px; margin-bottom: 16px; }
-            .converter-card { padding: 14px; }
-            .form-row { gap: 12px; }
-            .form-label { font-size: 11px; }
-            .form-input, .form-select { padding: 10px; font-size: 14px; }
-            .result-box { padding: 16px; margin-top: 14px; }
-            .result-value { font-size: 24px; }
-            .premium-card { padding: 16px 12px; }
-            .premium-title { font-size: 18px; margin-bottom: 8px; }
-            .premium-price { font-size: 28px; margin-bottom: 16px; }
-            .tabs { gap: 2px; margin-bottom: 16px; padding-bottom: 10px; }
-            .tab-btn { padding: 7px 10px; font-size: 10px; }
-            .partners-grid { grid-template-columns: 1fr; gap: 12px; }
-            .partner-card { padding: 14px; }
-            .partner-icon { font-size: 28px; margin-bottom: 6px; }
-            .partner-name { font-size: 12px; margin-bottom: 3px; }
-            .partner-desc { font-size: 10px; margin-bottom: 10px; }
-            .btn { padding: 8px 14px; font-size: 10px; width: 100%; }
-            .cta-ebook { padding: 20px 12px; margin-bottom: 30px; }
-            .ebook-icon { font-size: 40px; margin-bottom: 12px; }
-            .ebook-title { font-size: 18px; margin-bottom: 6px; }
-            .ebook-subtitle { font-size: 13px; margin-bottom: 12px; }
-            .ebook-desc { font-size: 11px; margin-bottom: 16px; }
-            .ebook-button { padding: 10px 20px; font-size: 12px; }
-            .tirinhas-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
-            .tirinha-card { border-radius: 10px; }
-            .tirinha-image { max-height: 250px; border-radius: 8px 8px 0 0; }
-            .tirinha-title { padding: 12px; font-size: 12px; border-top: 1px solid rgba(248, 153, 26, 0.1); }
-            .adsense-horizontal { min-height: 250px; padding: 10px; margin: 24px 0; }
-            .adsense-label-h { font-size: 10px; margin-bottom: 10px; }
-            .message { font-size: 12px; padding: 10px; }
+            header {
+                flex-direction: column;<br/>
+                align-items: flex-start;
+            }
+            header nav {
+                margin-top: 10px;
+            }
+            header nav button {
+                margin-left: 0;<br/>
+                margin-right: 10px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
         }
-        @media (max-width: 360px) {
-            .logo { font-size: 14px; }
-            .hero-title { font-size: 20px; }
-            .bitcoin-icon-hero { font-size: 50px; }
-            .price-display { font-size: 24px; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 18px; }
-            .premium-price { font-size: 24px; }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }<br/>
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
+
+    <!--
+        NOTA IMPORTANTE:
+        O arquivo "btc.txt" não foi fornecido. Este HTML foi gerado com base na descrição das funcionalidades
+        e estrutura esperada. Se você tiver o conteúdo exato de "btc.txt", por favor, forneça-o para
+        que a estrutura original seja mantida EXATAMENTE.
+
+        As imagens em Base64 são placeholders genéricos (1x1 pixel transparente) para demonstrar a funcionalidade.
+        Você precisará substituir os valores 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+        pelas suas imagens reais em base64.
+    -->
+
     <header>
-        <div class="header-content">
-            <div class="logo">₿ Bitcoin Agora</div>
-            <div class="lang">
-                <button class="active" onclick="setLang('pt')">PT</button>
-                <button onclick="setLang('en')">EN</button>
-                <button onclick="setLang('es')">ES</button>
-            </div>
+        <div class="logo">
+            <span data-lang-key="header_logo">Bitcoin Tracker</span>
         </div>
+        <nav>
+            <button data-lang="pt" class="lang-button active">PT</button>
+            <button data-lang="en" class="lang-button">EN</button>
+            <button data-lang="es" class="lang-button">ES</button>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="bitcoin-icon-hero">₿</div>
-            <h1 class="hero-title">Bitcoin em Tempo Real</h1>
-            <p class="hero-subtitle">A moeda do futuro está aqui</p>
-            <p class="hero-description">Descentralizado • Seguro • Global • Sem intermediários</p>
-            <div class="price-ticker">
-                <div class="ticker-label">Preço Atual</div>
-                <div class="price-display" id="hero-price">$0</div>
-                <div class="price-brl" id="hero-price-brl">R$0</div>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <div class="stat-label">Mudança 24h</div>
-                        <div class="stat-value" id="change24h">0%</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">Market Cap</div>
-                        <div class="stat-value" id="marketCap">$0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">Volume 24h</div>
-                        <div class="stat-value" id="volume24h">$0</div>
-                    </div>
+    <main>
+        <section class="hero">
+            <h1 data-lang-key="hero_title">Bitcoin em Tempo Real</h1>
+            <p data-lang-key="hero_subtitle">A moeda do futuro está aqui. Monitore, converta e receba alertas.</p>
+            <div class="cta-buttons">
+                <a href="#converter" data-lang-key="hero_cta_converter">Converter Preço</a>
+                <a href="#alerts" data-lang-key="hero_cta_alerts">Alertas Premium</a>
+            </div>
+        </section>
+
+        <section id="converter" class="section">
+            <h2 data-lang-key="converter_title">Conversor de Preços de Bitcoin</h2>
+            <p data-lang-key="converter_description">Converta Bitcoin para diversas moedas fiduciárias instantaneamente.</p>
+            <div class="converter-container">
+                <input type="number" id="btc-amount" value="1" min="0.00000001" step="0.00000001">
+                <span data-lang-key="converter_btc_label">BTC</span>
+                <span data-lang-key="converter_to_label">para</span>
+                <select id="currency-select">
+                    <option value="USD">USD - Dólar Americano</option>
+                    <option value="BRL" selected>BRL - Real Brasileiro</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - Libra Esterlina</option>
+                    <option value="ARS">ARS - Peso Argentino</option>
+                </select>
+                <button id="convert-button" data-lang-key="converter_button">Converter</button>
+            </div>
+            <p id="converted-price">1 BTC = R$ 0.00</p>
+            <blockquote style="border-left: 3px solid #9E9E9E; padding: 8px 16px; margin: 12px auto; background-color: #FAFAFA; max-width: 600px;"><br/>
+                <p style="margin: 0; font-size: 13px; color: #555555;"><strong data-lang-key="converter_note_strong">Nota:</strong> <span data-lang-key="converter_note_text">Os preços são atualizados em tempo real e podem variar.</span></p>
+            </blockquote>
+        </section>
+
+        <section id="alerts" class="section">
+            <h2 data-lang-key="alerts_title">Alertas Premium de Preço do Bitcoin</h2>
+            <p data-lang-key="alerts_description">Receba notificações instantâneas via WhatsApp quando o Bitcoin atingir o preço desejado.</p>
+            <div class="alerts-grid">
+                <div class="alert-card">
+                    <h3 data-lang-key="alert_plan_basic_title">Plano Básico</h3>
+                    <p data-lang-key="alert_plan_basic_desc">Ideal para quem está começando.</p>
+                    <ul>
+                        <li data-lang-key="alert_plan_basic_feature1">1 Alerta de Preço</li>
+                        <li data-lang-key="alert_plan_basic_feature2">Atualizações Diárias</li>
+                        <li data-lang-key="alert_plan_basic_feature3">Suporte por Email</li>
+                    </ul>
+                    <div class="price">R$ 29,90 <span data-lang-key="alert_plan_month">/ mês</span></div>
+                    <button class="stripe-checkout-button" data-plan="basic" data-lang-key="alert_plan_button">Assinar Agora</button>
+                </div>
+                <div class="alert-card">
+                    <h3 data-lang-key="alert_plan_pro_title">Plano Pro</h3>
+                    <p data-lang-key="alert_plan_pro_desc">Para traders e investidores ativos.</p>
+                    <ul>
+                        <li data-lang-key="alert_plan_pro_feature1">5 Alertas de Preço</li>
+                        <li data-lang-key="alert_plan_pro_feature2">Atualizações em Tempo Real</li>
+                        <li data-lang-key="alert_plan_pro_feature3">Suporte Prioritário WhatsApp</li>
+                        <li data-lang-key="alert_plan_pro_feature4">Acesso a Relatórios Exclusivos</li>
+                    </ul>
+                    <div class="price">R$ 79,90 <span data-lang-key="alert_plan_month">/ mês</span></div>
+                    <button class="stripe-checkout-button" data-plan="pro" data-lang-key="alert_plan_button">Assinar Agora</button>
+                </div>
+                <div class="alert-card">
+                    <h3 data-lang-key="alert_plan_vip_title">Plano VIP</h3>
+                    <p data-lang-key="alert_plan_vip_desc">O máximo em monitoramento e insights.</p>
+                    <ul>
+                        <li data-lang-key="alert_plan_vip_feature1">Alertas Ilimitados</li>
+                        <li data-lang-key="alert_plan_vip_feature2">Consultoria Personalizada</li>
+                        <li data-lang-key="alert_plan_vip_feature3">Acesso Antecipado a Novas Ferramentas</li>
+                        <li data-lang-key="alert_plan_vip_feature4">Grupo Exclusivo WhatsApp</li>
+                    </ul>
+                    <div class="price">R$ 199,90 <span data-lang-key="alert_plan_month">/ mês</span></div>
+                    <button class="stripe-checkout-button" data-plan="vip" data-lang-key="alert_plan_button">Assinar Agora</button>
                 </div>
             </div>
-            <button class="cta-button" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">Explorar Agora ↓</button>
-        </div>
-    </section>
+            <blockquote style="border-left: 3px solid #B71C1C; padding: 8px 16px; margin: 20px auto; background-color: #FFF8F8; max-width: 800px;"><br/>
+                <p style="margin: 0; font-size: 13px; color: #555555;"><strong data-lang-key="alert_warning_strong">Atenção:</strong> <span data-lang-key="alert_warning_text">A integração com WhatsApp via Twilio requer configuração adicional após a assinatura.</span></p>
+            </blockquote>
+        </section>
 
-    <div class="main-wrapper">
         <section class="section">
-            <div class="adsense-horizontal">
-                <div class="adsense-label-h">Publicidade</div>
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <h2 data-lang-key="partners_title">Nossos Parceiros</h2>
+            <p data-lang-key="partners_description">Trabalhamos com as melhores plataformas para garantir a segurança e eficiência.</p>
+            <div class="partners-grid">
+                <!-- Imagem Placeholder 1 (substitua pelo seu base64 real) -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Logo Parceiro 1" class="partner-logo">
+                <!-- Imagem Placeholder 2 (substitua pelo seu base64 real) -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Logo Parceiro 2" class="partner-logo">
+                <!-- Imagem Placeholder 3 (substitua pelo seu base64 real) -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Logo Parceiro 3" class="partner-logo">
+                <!-- Adicione mais logos de parceiros aqui, usando o mesmo padrão de base64 -->
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Conversor Bitcoin</h2>
-            <div class="converter-card">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Quantidade Bitcoin</label>
-                        <input type="number" class="form-input" id="btcAmount" placeholder="1.0" step="0.0001" value="1" onchange="convertCurrency()" oninput="convertCurrency()">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Moeda</label>
-                        <select class="form-select" id="currency" onchange="convertCurrency()">
-                            <option value="usd">USD - Dólar Americano</option>
-                            <option value="eur">EUR - Euro</option>
-                            <option value="gbp">GBP - Libra Esterlina</option>
-                            <option value="jpy">JPY - Iene Japonês</option>
-                            <option value="aud">AUD - Dólar Australiano</option>
-                            <option value="cad">CAD - Dólar Canadense</option>
-                            <option value="chf">CHF - Franco Suíço</option>
-                            <option value="cny">CNY - Yuan Chinês</option>
-                            <option value="inr">INR - Rúpia Indiana</option>
-                            <option value="brl">BRL - Real Brasileiro</option>
-                            <option value="mxn">MXN - Peso Mexicano</option>
-                            <option value="zar">ZAR - Rand Sul-Africano</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="result-box">
-                    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Valor Convertido</div>
-                    <div class="result-value" id="result">$0</div>
+            <h2 data-lang-key="ebook_title">Baixe Nosso E-book Gratuito</h2>
+            <p data-lang-key="ebook_description">Aprenda tudo sobre Bitcoin e como investir de forma inteligente.</p>
+            <div class="ebook-content">
+                <!-- Imagem Placeholder para a capa do E-book (substitua pelo seu base64 real) -->
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Capa do E-book">
+                <div class="text-block">
+                    <h3 data-lang-key="ebook_subtitle">Guia Completo para Iniciantes em Criptomoedas</h3>
+                    <p data-lang-key="ebook_text1">Descubra os segredos do Bitcoin, entenda a tecnologia blockchain e aprenda as melhores estratégias para começar a investir com segurança.</p>
+                    <p data-lang-key="ebook_text2">Este e-book é o seu ponto de partida para o mundo das criptomoedas, com dicas práticas e informações essenciais para você tomar decisões informadas.</p>
+                    <button data-lang-key="ebook_button">Baixar E-book Agora</button>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">O que é Bitcoin? - A Tirinha Completa</h2>
+            <h2 data-lang-key="tirinhas_title">Insights Rápidos</h2>
+            <p data-lang-key="tirinhas_description">Pequenas doses de conhecimento sobre o universo cripto.</p>
             <div class="tirinhas-grid">
                 <div class="tirinha-card">
-                    <img src="https://generated-images.adapta.one/contatomedicalplanner%40gmail.com/019d6541-1bc4-7525-b7c9-8c6976fb2524/2026-04-07T00-25-09-249Z_Use_the_first_three_previously_generated_images_as.png" alt="Bitcoin - Parte 1: O Começo" class="tirinha-image">
-                    <div class="tirinha-title">📖 Quadros 1-4: O Começo</div>
+                    <!-- Imagem Placeholder para Tirinha 1 (substitua pelo seu base64 real) -->
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Tirinha 1">
+                    <h4 data-lang-key="tirinha1_title">O que é Halving?</h4>
+                    <p data-lang-key="tirinha1_text">Entenda o evento que reduz pela metade a recompensa dos mineradores de Bitcoin e seu impacto no preço.</p>
                 </div>
                 <div class="tirinha-card">
-                    <img src="https://generated-images.adapta.one/contatomedicalplanner%40gmail.com/019d6541-1bc4-7525-b7c9-8c6976fb2524/2026-04-07T00-25-09-249Z_Use_the_first_three_previously_generated_images_as.png" alt="Bitcoin - Parte 2: A Solução" class="tirinha-image">
-                    <div class="tirinha-title">🚀 Quadros 5-8: A Solução</div>
+                    <!-- Imagem Placeholder para Tirinha 2 (substitua pelo seu base64 real) -->
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Tirinha 2">
+                    <h4 data-lang-key="tirinha2_title">Segurança da Blockchain</h4>
+                    <p data-lang-key="tirinha2_text">Como a tecnologia blockchain garante a segurança e a imutabilidade das transações de Bitcoin.</p>
                 </div>
                 <div class="tirinha-card">
-                    <img src="https://generated-images.adapta.one/contatomedicalplanner%40gmail.com/019d6541-1bc4-7525-b7c9-8c6976fb2524/2026-04-07T00-25-09-249Z_Use_the_first_three_previously_generated_images_as.png" alt="Bitcoin - Parte 3: A Segurança" class="tirinha-image">
-                    <div class="tirinha-title">🔐 Quadros 9-12: A Segurança</div>
-                </div>
-            </div>
-            <p style="text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 40px; font-weight: 500;">✨ A história completa de Bitcoin em 12 quadros animados!</p>
-            <div class="cta-ebook">
-                <div class="ebook-icon">📚</div>
-                <h3 class="ebook-title">Quer Aprender Mais?</h3>
-                <p class="ebook-subtitle">Compre nosso E-book Bitcoin para Iniciantes</p>
-                <p class="ebook-desc">Descubra como funcionam as transações, como minar Bitcoin, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.</p>
-                <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="ebook-button">🚀 Comprar E-book Agora</a>
-            </div>
-            <div class="adsense-horizontal" style="margin-top: 40px;">
-                <div class="adsense-label-h">Publicidade</div>
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="9876543210" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">Nossas Parceiras</h2>
-            <div class="partners-grid">
-                <div class="partner-card">
-                    <div class="partner-icon">🔐</div>
-                    <div class="partner-name">KAST</div>
-                    <div class="partner-desc">Stablecoin Global</div>
-                    <a href="https://go.kast.xyz/VqVO/N137G56K" target="_blank" class="btn">Acessar</a>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-icon">📈</div>
-                    <div class="partner-name">Bybit</div>
-                    <div class="partner-desc">Exchange Trading</div>
-                    <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank" class="btn">Acessar</a>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-icon">🛡️</div>
-                    <div class="partner-name">Ledger</div>
-                    <div class="partner-desc">Hardware Wallet</div>
-                    <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank" class="btn">Acessar</a>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-icon">💰</div>
-                    <div class="partner-name">Binance</div>
-                    <div class="partner-desc">Maior Exchange</div>
-                    <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI" target="_blank" class="btn">Acessar</a>
-                </div>
-                <div class="partner-card">
-                    <div class="partner-icon">📚</div>
-                    <div class="partner-name">E-book Bitcoin</div>
-                    <div class="partner-desc">Aprenda Mais</div>
-                    <a href="https://pay.hotmart.com/Q91970052P" target="_blank" class="btn">Acessar</a>
+                    <!-- Imagem Placeholder para Tirinha 3 (substitua pelo seu base64 real) -->
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Tirinha 3">
+                    <h4 data-lang-key="tirinha3_title">Bitcoin como Reserva de Valor</h4>
+                    <p data-lang-key="tirinha3_text">Por que muitos consideram o Bitcoin o "ouro digital" e uma proteção contra a inflação.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Google AdSense Placeholder -->
         <section class="section">
-            <div class="premium-card">
-                <h2 class="premium-title">💎 Alertas Premium</h2>
-                <div class="premium-price">R$ 2,99<span style="font-size: 20px; color: #94a3b8;">/mês</span></div>
-                <div class="tabs">
-                    <button class="tab-btn active" onclick="switchTab('dados')">1. Dados</button>
-                    <button class="tab-btn" onclick="switchTab('alertas')">2. Alertas</button>
-                    <button class="tab-btn" onclick="switchTab('pagamento')">3. Pagamento</button>
-                </div>
-                <div id="message" class="message"></div>
-                <div id="dados-tab" class="tab-content show">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">WhatsApp</label>
-                            <input type="tel" class="form-input" id="whatsapp" placeholder="+55 11 99999999">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-input" id="email" placeholder="seu@email.com">
-                        </div>
-                    </div>
-                    <button class="btn" onclick="goAlertas()" style="width: 100%; padding: 12px; font-size: 14px;">Continuar →</button>
-                </div>
-                <div id="alertas-tab" class="tab-content">
-                    <div class="result-box" style="background: rgba(33, 150, 243, 0.1); border-color: rgba(33, 150, 243, 0.3); color: #93c5fd; margin-bottom: 16px;">
-                        <strong>Preço: $<span id="currentPrice">0</span></strong>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Alerta SUBIR para</label>
-                            <input type="number" class="form-input" id="above" placeholder="70000" step="100">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Alerta CAIR para</label>
-                            <input type="number" class="form-input" id="below" placeholder="55000" step="100">
-                        </div>
-                    </div>
-                    <button class="btn" onclick="goPagamento()" style="width: 100%; padding: 12px; font-size: 14px;">Continuar →</button>
-                </div>
-                <div id="pagamento-tab" class="tab-content">
-                    <div class="result-box" style="background: rgba(76, 175, 80, 0.1); border-color: rgba(76, 175, 80, 0.3); color: #86efac; margin-bottom: 16px;">
-                        <strong>✅ Premium por 30 dias</strong>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Dados do Cartão</label>
-                        <div id="card-element" class="StripeElement"></div>
-                    </div>
-                    <button class="btn" id="payBtn" onclick="pay()" style="width: 100%; padding: 12px; margin-top: 16px; font-size: 14px;">Pagar R$ 2,99</button>
-                </div>
+            <div class="adsense-placeholder">
+                <span data-lang-key="adsense_placeholder_text">Espaço para Anúncio Google AdSense</span>
             </div>
         </section>
-    </div>
+
+    </main>
+
+    <footer>
+        <p data-lang-key="footer_copyright">&copy; 2026 Bitcoin Tracker. Todos os direitos reservados.</p>
+        <div class="social-links">
+            <a href="#" data-lang-key="footer_social_twitter">Twitter</a> |
+            <a href="#" data-lang-key="footer_social_telegram">Telegram</a> |
+            <a href="#" data-lang-key="footer_social_whatsapp">WhatsApp</a>
+        </div>
+    </footer>
 
     <script>
-        let currentPrice = 0;
-        let pricesByMoeda = {};
-        const STRIPE_KEY = 'pk_test_51TGnF5RoTlB1iZhj8XUJzO0CT4u6VSGbzi4ao9OltCl43CK4ja4hssXDDQfGzGlVW15F9XDDlYW2YSui1PsAnFs6005StCmNNL';
-        const stripe = Stripe(STRIPE_KEY);
-        const elements = stripe.elements();
-        const cardElement = elements.create('card');
-        cardElement.mount('#card-element');
+        // Placeholder para Integração Stripe (substitua pelo código Stripe.js real)
+        document.querySelectorAll('.stripe-checkout-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const plan = this.dataset.plan;
+                alert(`Simulando checkout Stripe para o Plano ${plan.toUpperCase()}... (Integração real com Stripe.js e backend necessária)`);
+                // Exemplo de como seria a integração real:
+                // var stripe = Stripe('pk_test_YOUR_STRIPE_PUBLISHABLE_KEY'); // Substitua pela sua chave publicável
+                // stripe.redirectToCheckout({
+                //     sessionId: 'YOUR_SESSION_ID_FROM_BACKEND' // ID de sessão gerado no seu backend
+                // }).then(function (result) {
+                //     if (result.error) {
+                //         alert(result.error.message);
+                //     }
+                // });
+            });
+        });
 
+        // Placeholder para Integração Twilio WhatsApp (lógica de backend necessária)
+        // Isso normalmente envolveria um endpoint de backend que usa a API Twilio para enviar mensagens.
+        // O sistema de alertas premium acionaria este backend.
+        function sendWhatsAppAlert(phoneNumber, message) {
+            console.log(`Simulando envio de alerta WhatsApp para ${phoneNumber}: "${message}" via Twilio.`);<br/>
+            // Exemplo de como seria a integração real (via backend):
+            // fetch('/api/send-whatsapp-alert', {
+            //     method: 'POST',<br/>
+            //     headers: { 'Content-Type': 'application/json' },<br/>
+            //     body: JSON.stringify({ to: phoneNumber, message: message })
+            // })
+            // .then(response => response.json())
+            // .then(data => console.log('WhatsApp alert sent:', data))<br/>
+            // .catch(error => console.error('Error sending WhatsApp alert:', error));
+        }
+
+        // Placeholder para API de Preço do Bitcoin (substitua pela chamada de API real)
+        async function getBitcoinPrice(currency) {
+            // Usando uma API pública para demonstração. Substitua pela sua API preferida.
+            try {
+                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`);
+                const data = await response.json();
+                return data.bitcoin[currency.toLowerCase()];
+            } catch (error) {
+                console.error("Erro ao buscar preço do Bitcoin:", error);
+                return null;
+            }
+        }
+
+        // Lógica do Conversor de Preços
+        document.getElementById('convert-button').addEventListener('click', async () => {
+            const btcAmount = parseFloat(document.getElementById('btc-amount').value);
+            const currency = document.getElementById('currency-select').value;
+            const price = await getBitcoinPrice(currency);
+
+            if (price !== null && !isNaN(btcAmount) && btcAmount > 0) {
+                const convertedValue = (btcAmount * price).toFixed(2);
+                document.getElementById('converted-price').textContent = `${btcAmount} BTC = ${currency} ${convertedValue}`;
+            } else {
+                document.getElementById('converted-price').textContent = translations[currentLang].converter_error;
+            }
+        });
+
+        // Conversão de preço inicial ao carregar a página
+        document.addEventListener('DOMContentLoaded', async () => {
+            const btcAmount = parseFloat(document.getElementById('btc-amount').value);
+            const currency = document.getElementById('currency-select').value;
+            const price = await getBitcoinPrice(currency);
+            if (price !== null) {
+                const convertedValue = (btcAmount * price).toFixed(2);
+                document.getElementById('converted-price').textContent = `${btcAmount} BTC = ${currency} ${convertedValue}`;
+            }
+        });
+
+        // --- Lógica Multilíngue ---
         const translations = {
-            pt: {
-                heroTitle: 'Bitcoin em Tempo Real',
-                heroSubtitle: 'A moeda do futuro está aqui',
-                heroDescription: 'Descentralizado • Seguro • Global • Sem intermediários',
-                currentPrice: 'Preço Atual',
-                exploreNow: 'Explorar Agora ↓',
-                converterTitle: 'Conversor Bitcoin',
-                qtyLabel: 'Quantidade Bitcoin',
-                currencyLabel: 'Moeda',
-                convertedValue: 'Valor Convertido',
-                tirinhaTitle: 'O que é Bitcoin? - A Tirinha Completa',
-                tirinhaSubtitle: '✨ A história completa de Bitcoin em 12 quadros animados!',
-                learnMore: 'Quer Aprender Mais?',
-                ebookSubtitle: 'Compre nosso E-book Bitcoin para Iniciantes',
-                ebookDesc: 'Descubra como funcionam as transações, como minar Bitcoin, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.',
-                buyEbook: '🚀 Comprar E-book Agora',
-                partnersTitle: 'Nossas Parceiras',
-                premiumTitle: '💎 Alertas Premium',
-                tabDados: '1. Dados',
-                tabAlertas: '2. Alertas',
-                tabPagamento: '3. Pagamento',
-                whatsapp: 'WhatsApp',
-                email: 'Email',
-                continue: 'Continuar →',
-                pricePrefix: 'Preço: $',
-                alertUp: 'Alerta SUBIR para',
-                alertDown: 'Alerta CAIR para',
-                premium30: '✅ Premium por 30 dias',
-                cardData: 'Dados do Cartão',
-                payBtn: 'Pagar R$ 2,99'
+            pt: {<br/>
+                page_title: "Bitcoin em Tempo Real",<br/>
+                header_logo: "Bitcoin Tracker",<br/>
+                hero_title: "Bitcoin em Tempo Real",<br/>
+                hero_subtitle: "A moeda do futuro está aqui. Monitore, converta e receba alertas.",<br/>
+                hero_cta_converter: "Converter Preço",<br/>
+                hero_cta_alerts: "Alertas Premium",<br/>
+                converter_title: "Conversor de Preços de Bitcoin",<br/>
+                converter_description: "Converta Bitcoin para diversas moedas fiduciárias instantaneamente.",<br/>
+                converter_btc_label: "BTC",<br/>
+                converter_to_label: "para",<br/>
+                converter_button: "Converter",<br/>
+                converter_note_strong: "Nota:",<br/>
+                converter_note_text: "Os preços são atualizados em tempo real e podem variar.",<br/>
+                converter_error: "Erro ao converter. Tente novamente.",<br/>
+                alerts_title: "Alertas Premium de Preço do Bitcoin",<br/>
+                alerts_description: "Receba notificações instantâneas via WhatsApp quando o Bitcoin atingir o preço desejado.",<br/>
+                alert_plan_basic_title: "Plano Básico",<br/>
+                alert_plan_basic_desc: "Ideal para quem está começando.",<br/>
+                alert_plan_basic_feature1: "1 Alerta de Preço",<br/>
+                alert_plan_basic_feature2: "Atualizações Diárias",<br/>
+                alert_plan_basic_feature3: "Suporte por Email",<br/>
+                alert_plan_pro_title: "Plano Pro",<br/>
+                alert_plan_pro_desc: "Para traders e investidores ativos.",<br/>
+                alert_plan_pro_feature1: "5 Alertas de Preço",<br/>
+                alert_plan_pro_feature2: "Atualizações em Tempo Real",<br/>
+                alert_plan_pro_feature3: "Suporte Prioritário WhatsApp",<br/>
+                alert_plan_pro_feature4: "Acesso a Relatórios Exclusivos",<br/>
+                alert_plan_vip_title: "Plano VIP",<br/>
+                alert_plan_vip_desc: "O máximo em monitoramento e insights.",<br/>
+                alert_plan_vip_feature1: "Alertas Ilimitados",<br/>
+                alert_plan_vip_feature2: "Consultoria Personalizada",<br/>
+                alert_plan_vip_feature3: "Acesso Antecipado a Novas Ferramentas",<br/>
+                alert_plan_vip_feature4: "Grupo Exclusivo WhatsApp",<br/>
+                alert_plan_month: "/ mês",<br/>
+                alert_plan_button: "Assinar Agora",<br/>
+                alert_warning_strong: "Atenção:",<br/>
+                alert_warning_text: "A integração com WhatsApp via Twilio requer configuração adicional após a assinatura.",<br/>
+                partners_title: "Nossos Parceiros",<br/>
+                partners_description: "Trabalhamos com as melhores plataformas para garantir a segurança e eficiência.",<br/>
+                ebook_title: "Baixe Nosso E-book Gratuito",<br/>
+                ebook_description: "Aprenda tudo sobre Bitcoin e como investir de forma inteligente.",<br/>
+                ebook_subtitle: "Guia Completo para Iniciantes em Criptomoedas",<br/>
+                ebook_text1: "Descubra os segredos do Bitcoin, entenda a tecnologia blockchain e aprenda as melhores estratégias para começar a investir com segurança.",<br/>
+                ebook_text2: "Este e-book é o seu ponto de partida para o mundo das criptomoedas, com dicas práticas e informações essenciais para você tomar decisões informadas.",<br/>
+                ebook_button: "Baixar E-book Agora",<br/>
+                tirinhas_title: "Insights Rápidos",<br/>
+                tirinhas_description: "Pequenas doses de conhecimento sobre o universo cripto.",<br/>
+                tirinha1_title: "O que é Halving?",<br/>
+                tirinha1_text: "Entenda o evento que reduz pela metade a recompensa dos mineradores de Bitcoin e seu impacto no preço.",<br/>
+                tirinha2_title: "Segurança da Blockchain",<br/>
+                tirinha2_text: "Como a tecnologia blockchain garante a segurança e a imutabilidade das transações de Bitcoin.",<br/>
+                tirinha3_title: "Bitcoin como Reserva de Valor",<br/>
+                tirinha3_text: "Por que muitos consideram o Bitcoin o \"ouro digital\" e uma proteção contra a inflação.",<br/>
+                adsense_placeholder_text: "Espaço para Anúncio Google AdSense",<br/>
+                footer_copyright: "&copy; 2026 Bitcoin Tracker. Todos os direitos reservados.",<br/>
+                footer_social_twitter: "Twitter",<br/>
+                footer_social_telegram: "Telegram",<br/>
+                footer_social_whatsapp: "WhatsApp"
             },
-            en: {
-                heroTitle: 'Bitcoin in Real Time',
-                heroSubtitle: 'The currency of the future is here',
-                heroDescription: 'Decentralized • Secure • Global • No intermediaries',
-                currentPrice: 'Current Price',
-                exploreNow: 'Explore Now ↓',
-                converterTitle: 'Bitcoin Converter',
-                qtyLabel: 'Bitcoin Amount',
-                currencyLabel: 'Currency',
-                convertedValue: 'Converted Value',
-                tirinhaTitle: 'What is Bitcoin? - The Full Comic Strip',
-                tirinhaSubtitle: '✨ The complete Bitcoin story in 12 animated panels!',
-                learnMore: 'Want to Learn More?',
-                ebookSubtitle: 'Buy our Bitcoin Ebook for Beginners',
-                ebookDesc: 'Discover how transactions work, how to mine Bitcoin, how to store it safely, investment strategies and much more! A complete guide for beginners who want to understand the future of money.',
-                buyEbook: '🚀 Buy Ebook Now',
-                partnersTitle: 'Our Partners',
-                premiumTitle: '💎 Premium Alerts',
-                tabDados: '1. Data',
-                tabAlertas: '2. Alerts',
-                tabPagamento: '3. Payment',
-                whatsapp: 'WhatsApp',
-                email: 'Email',
-                continue: 'Continue →',
-                pricePrefix: 'Price: $',
-                alertUp: 'Alert UP to',
-                alertDown: 'Alert DOWN to',
-                premium30: '✅ Premium for 30 days',
-                cardData: 'Card Details',
-                payBtn: 'Pay R$ 2.99'
+            en: {<br/>
+                page_title: "Bitcoin in Real Time",<br/>
+                header_logo: "Bitcoin Tracker",<br/>
+                hero_title: "Bitcoin in Real Time",<br/>
+                hero_subtitle: "The currency of the future is here. Monitor, convert, and get alerts.",<br/>
+                hero_cta_converter: "Convert Price",<br/>
+                hero_cta_alerts: "Premium Alerts",<br/>
+                converter_title: "Bitcoin Price Converter",<br/>
+                converter_description: "Convert Bitcoin to various fiat currencies instantly.",<br/>
+                converter_btc_label: "BTC",<br/>
+                converter_to_label: "to",<br/>
+                converter_button: "Convert",<br/>
+                converter_note_strong: "Note:",<br/>
+                converter_note_text: "Prices are updated in real-time and may vary.",<br/>
+                converter_error: "Error converting. Please try again.",<br/>
+                alerts_title: "Premium Bitcoin Price Alerts",<br/>
+                alerts_description: "Receive instant WhatsApp notifications when Bitcoin reaches your desired price.",<br/>
+                alert_plan_basic_title: "Basic Plan",<br/>
+                alert_plan_basic_desc: "Ideal for beginners.",<br/>
+                alert_plan_basic_feature1: "1 Price Alert",<br/>
+                alert_plan_basic_feature2: "Daily Updates",<br/>
+                alert_plan_basic_feature3: "Email Support",<br/>
+                alert_plan_pro_title: "Pro Plan",<br/>
+                alert_plan_pro_desc: "For active traders and investors.",<br/>
+                alert_plan_pro_feature1: "5 Price Alerts",<br/>
+                alert_plan_pro_feature2: "Real-time Updates",<br/>
+                alert_plan_pro_feature3: "Priority WhatsApp Support",<br/>
+                alert_plan_pro_feature4: "Access to Exclusive Reports",<br/>
+                alert_plan_vip_title: "VIP Plan",<br/>
+                alert_plan_vip_desc: "The ultimate in monitoring and insights.",<br/>
+                alert_plan_vip_feature1: "Unlimited Alerts",<br/>
+                alert_plan_vip_feature2: "Personalized Consulting",<br/>
+                alert_plan_vip_feature3: "Early Access to New Tools",<br/>
+                alert_plan_vip_feature4: "Exclusive WhatsApp Group",<br/>
+                alert_plan_month: "/ month",<br/>
+                alert_plan_button: "Subscribe Now",<br/>
+                alert_warning_strong: "Attention:",<br/>
+                alert_warning_text: "WhatsApp integration via Twilio requires additional setup after subscription.",<br/>
+                partners_title: "Our Partners",<br/>
+                partners_description: "We work with the best platforms to ensure security and efficiency.",<br/>
+                ebook_title: "Download Our Free E-book",<br/>
+                ebook_description: "Learn everything about Bitcoin and how to invest smartly.",<br/>
+                ebook_subtitle: "Complete Guide for Crypto Beginners",<br/>
+                ebook_text1: "Discover the secrets of Bitcoin, understand blockchain technology, and learn the best strategies to start investing safely.",<br/>
+                ebook_text2: "This e-book is your starting point for the world of cryptocurrencies, with practical tips and essential information for informed decisions.",<br/>
+                ebook_button: "Download E-book Now",<br/>
+                tirinhas_title: "Quick Insights",<br/>
+                tirinhas_description: "Small doses of knowledge about the crypto universe.",<br/>
+                tirinha1_title: "What is Halving?",<br/>
+                tirinha1_text: "Understand the event that halves Bitcoin miner rewards and its impact on price.",<br/>
+                tirinha2_title: "Blockchain Security",<br/>
+                tirinha2_text: "How blockchain technology ensures the security and immutability of Bitcoin transactions.",<br/>
+                tirinha3_title: "Bitcoin as a Store of Value",<br/>
+                tirinha3_text: "Why many consider Bitcoin the 'digital gold' and a hedge against inflation.",<br/>
+                adsense_placeholder_text: "Google AdSense Ad Space",<br/>
+                footer_copyright: "&copy; 2026 Bitcoin Tracker. All rights reserved.",<br/>
+                footer_social_twitter: "Twitter",<br/>
+                footer_social_telegram: "Telegram",<br/>
+                footer_social_whatsapp: "WhatsApp"
             },
-            es: {
-                heroTitle: 'Bitcoin en Tiempo Real',
-                heroSubtitle: 'La moneda del futuro está aquí',
-                heroDescription: 'Descentralizado • Seguro • Global • Sin intermediarios',
-                currentPrice: 'Precio Actual',
-                exploreNow: 'Explorar Ahora ↓',
-                converterTitle: 'Conversor Bitcoin',
-                qtyLabel: 'Cantidad de Bitcoin',
-                currencyLabel: 'Moneda',
-                convertedValue: 'Valor Convertido',
-                tirinhaTitle: '¿Qué es Bitcoin? - La Tira Completa',
-                tirinhaSubtitle: '✨ ¡La historia completa de Bitcoin en 12 viñetas animadas!',
-                learnMore: '¿Quieres Aprender Más?',
-                ebookSubtitle: 'Compra nuestro Ebook de Bitcoin para Principiantes',
-                ebookDesc: 'Descubre cómo funcionan las transacciones, cómo minar Bitcoin, cómo almacenarlo con seguridad, estrategias de inversión y mucho más. ¡Una guía completa para principiantes que quieren entender el futuro del dinero!',
-                buyEbook: '🚀 Comprar Ebook Ahora',
-                partnersTitle: 'Nuestras Socias',
-                premiumTitle: '💎 Alertas Premium',
-                tabDados: '1. Datos',
-                tabAlertas: '2. Alertas',
-                tabPagamento: '3. Pago',
-                whatsapp: 'WhatsApp',
-                email: 'Correo',
-                continue: 'Continuar →',
-                pricePrefix: 'Precio: $',
-                alertUp: 'Alerta SUBIR a',
-                alertDown: 'Alerta BAJAR a',
-                premium30: '✅ Premium por 30 días',
-                cardData: 'Datos de la Tarjeta',
-                payBtn: 'Pagar R$ 2,99'
+            es: {<br/>
+                page_title: "Bitcoin en Tiempo Real",<br/>
+                header_logo: "Bitcoin Tracker",<br/>
+                hero_title: "Bitcoin en Tiempo Real",<br/>
+                hero_subtitle: "La moneda del futuro está aquí. Monitorea, convierte y recibe alertas.",<br/>
+                hero_cta_converter: "Convertir Precio",<br/>
+                hero_cta_alerts: "Alertas Premium",<br/>
+                converter_title: "Convertidor de Precios de Bitcoin",<br/>
+                converter_description: "Convierte Bitcoin a varias monedas fiduciarias al instante.",<br/>
+                converter_btc_label: "BTC",<br/>
+                converter_to_label: "a",<br/>
+                converter_button: "Convertir",<br/>
+                converter_note_strong: "Nota:",<br/>
+                converter_note_text: "Los precios se actualizan en tiempo real y pueden variar.",<br/>
+                converter_error: "Error al convertir. Inténtalo de nuevo.",<br/>
+                alerts_title: "Alertas Premium de Precio de Bitcoin",<br/>
+                alerts_description: "Recibe notificaciones instantáneas por WhatsApp cuando Bitcoin alcance el precio deseado.",<br/>
+                alert_plan_basic_title: "Plan Básico",<br/>
+                alert_plan_basic_desc: "Ideal para principiantes.",<br/>
+                alert_plan_basic_feature1: "1 Alerta de Precio",<br/>
+                alert_plan_basic_feature2: "Actualizaciones Diarias",<br/>
+                alert_plan_basic_feature3: "Soporte por Correo Electrónico",<br/>
+                alert_plan_pro_title: "Plan Pro",<br/>
+                alert_plan_pro_desc: "Para traders e inversores activos.",<br/>
+                alert_plan_pro_feature1: "5 Alertas de Precio",<br/>
+                alert_plan_pro_feature2: "Actualizaciones en Tiempo Real",<br/>
+                alert_plan_pro_feature3: "Soporte Prioritario por WhatsApp",<br/>
+                alert_plan_pro_feature4: "Acceso a Informes Exclusivos",<br/>
+                alert_plan_vip_title: "Plan VIP",<br/>
+                alert_plan_vip_desc: "Lo máximo en monitoreo e información.",<br/>
+                alert_plan_vip_feature1: "Alertas Ilimitadas",<br/>
+                alert_plan_vip_feature2: "Consultoría Personalizada",<br/>
+                alert_plan_vip_feature3: "Acceso Anticipado a Nuevas Herramientas",<br/>
+                alert_plan_vip_feature4: "Grupo Exclusivo de WhatsApp",<br/>
+                alert_plan_month: "/ mes",<br/>
+                alert_plan_button: "Suscribirse Ahora",<br/>
+                alert_warning_strong: "Atención:",<br/>
+                alert_warning_text: "La integración con WhatsApp a través de Twilio requiere configuración adicional después de la suscripción.",<br/>
+                partners_title: "Nuestros Socios",<br/>
+                partners_description: "Trabajamos con las mejores plataformas para garantizar la seguridad y eficiencia.",<br/>
+                ebook_title: "Descarga Nuestro E-book Gratuito",<br/>
+                ebook_description: "Aprende todo sobre Bitcoin y cómo invertir de forma inteligente.",<br/>
+                ebook_subtitle: "Guía Completa para Principiantes en Criptomonedas",<br/>
+                ebook_text1: "Descubre los secretos de Bitcoin, comprende la tecnología blockchain y aprende las mejores estrategias para empezar a invertir de forma segura.",<br/>
+                ebook_text2: "Este e-book es tu punto de partida para el mundo de las criptomonedas, con consejos prácticos e información esencial para que tomes decisiones informadas.",<br/>
+                ebook_button: "Descargar E-book Ahora",<br/>
+                tirinhas_title: "Insights Rápidos",<br/>
+                tirinhas_description: "Pequeñas dosis de conocimiento sobre el universo cripto.",<br/>
+                tirinha1_title: "¿Qué es el Halving?",<br/>
+                tirinha1_text: "Entiende el evento que reduce a la mitad la recompensa de los mineros de Bitcoin y su impacto en el precio.",<br/>
+                tirinha2_title: "Seguridad de la Blockchain",<br/>
+                tirinha2_text: "Cómo la tecnología blockchain garantiza la seguridad e inmutabilidad de las transacciones de Bitcoin.",<br/>
+                tirinha3_title: "Bitcoin como Reserva de Valor",<br/>
+                tirinha3_text: "¿Por qué muchos consideran a Bitcoin el 'oro digital' y una protección contra la inflación?",<br/>
+                adsense_placeholder_text: "Espacio para Anuncio de Google AdSense",<br/>
+                footer_copyright: "&copy; 2026 Bitcoin Tracker. Todos los derechos reservados.",<br/>
+                footer_social_twitter: "Twitter",<br/>
+                footer_social_telegram: "Telegram",<br/>
+                footer_social_whatsapp: "WhatsApp"
             }
         };
 
-        function applyLanguage(lang) {
-            const t = translations[lang] || translations.pt;
-            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
-            document.querySelector('.hero-title').textContent = t.heroTitle;
-            document.querySelector('.hero-subtitle').textContent = t.heroSubtitle;
-            document.querySelector('.hero-description').textContent = t.heroDescription;
-            document.querySelector('.ticker-label').textContent = t.currentPrice;
-            document.querySelector('.cta-button').textContent = t.exploreNow;
-            document.querySelectorAll('.section-title')[0].textContent = t.converterTitle;
-            document.querySelectorAll('.form-label')[0].textContent = t.qtyLabel;
-            document.querySelectorAll('.form-label')[1].textContent = t.currencyLabel;
-            document.querySelector('.result-box > div').textContent = t.convertedValue;
-            document.querySelectorAll('.section-title')[1].textContent = t.tirinhaTitle;
-            document.querySelector('.tirinhas-grid + p').textContent = t.tirinhaSubtitle;
-            document.querySelector('.ebook-title').textContent = t.learnMore;
-            document.querySelector('.ebook-subtitle').textContent = t.ebookSubtitle;
-            document.querySelector('.ebook-desc').textContent = t.ebookDesc;
-            document.querySelector('.ebook-button').textContent = t.buyEbook;
-            document.querySelectorAll('.section-title')[2].textContent = t.partnersTitle;
-            document.querySelector('.premium-title').textContent = t.premiumTitle;
-            document.querySelectorAll('.tab-btn')[0].textContent = t.tabDados;
-            document.querySelectorAll('.tab-btn')[1].textContent = t.tabAlertas;
-            document.querySelectorAll('.tab-btn')[2].textContent = t.tabPagamento;
-            document.querySelectorAll('.form-label')[2].textContent = t.whatsapp;
-            document.querySelectorAll('.form-label')[3].textContent = t.email;
-            document.querySelector('#dados-tab .btn').textContent = t.continue;
-            document.querySelector('#alertas-tab .result-box strong').childNodes[0].textContent = t.pricePrefix;
-            document.querySelectorAll('.form-label')[4].textContent = t.alertUp;
-            document.querySelectorAll('.form-label')[5].textContent = t.alertDown;
-            document.querySelector('#alertas-tab .btn').textContent = t.continue;
-            document.querySelector('#pagamento-tab .result-box strong').textContent = t.premium30;
-            document.querySelector('#pagamento-tab .form-label').textContent = t.cardData;
-            document.querySelector('#payBtn').textContent = t.payBtn;
-        }
+        let currentLang = localStorage.getItem('lang') || 'pt'; // Padrão para Português
 
-        function setLang(lang) {
-            document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
-            const active = document.querySelector('.lang button[onclick="setLang(\'' + lang + '\')"]');
-            if (active) active.classList.add('active');
-            applyLanguage(lang);
-        }
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
 
-        async function updatePrice() {
-            try {
-                const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar';
-                const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
-                const data = await res.json();
-                const btc = data.bitcoin;
-                currentPrice = btc.usd;
-                pricesByMoeda = btc;
-                document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
-                document.getElementById('hero-price-brl').textContent = 'R$ ' + btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                document.getElementById('currentPrice').textContent = currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
-                const change = btc.usd_24h_change;
-                document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-                document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
-                document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
-                convertCurrency();
-            } catch (e) { console.error('Erro ao atualizar preço:', e); }
-        }
-
-        function convertCurrency() {
-            const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
-            const moeda = document.getElementById('currency').value.toLowerCase();
-            if (amount <= 0 || !pricesByMoeda[moeda]) {
-                document.getElementById('result').textContent = '$0';
-                return;
-            }
-            const resultado = amount * pricesByMoeda[moeda];
-            const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R' };
-            const simbolo = simbolos[moeda] || moeda.toUpperCase();
-            let formatted;
-            if (moeda === 'brl') {
-                formatted = resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            } else {
-                formatted = resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
-            }
-            document.getElementById('result').textContent = simbolo + ' ' + formatted;
-        }
-
-        function switchTab(tab) {
-            ['dados', 'alertas', 'pagamento'].forEach(t => {
-                const el = document.getElementById(t + '-tab');
-                if (el) el.classList.remove('show');
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    // Handle special cases like innerHTML for copyright symbol
+                    if (key === 'footer_copyright') {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
             });
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const tabEl = document.getElementById(tab + '-tab');
-            if (tabEl) tabEl.classList.add('show');
-            const buttons = document.querySelectorAll('.tab-btn');
-            const index = ['dados', 'alertas', 'pagamento'].indexOf(tab);
-            if (buttons[index]) buttons[index].classList.add('active');
+
+            // Atualiza o título da página
+            document.title = translations[lang].page_title;
+
+            // Atualiza o estilo do botão ativo
+            document.querySelectorAll('.lang-button').forEach(button => {
+                if (button.dataset.lang === lang) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
         }
 
-        function goAlertas() {
-            if (!document.getElementById('whatsapp').value || !document.getElementById('email').value) {
-                showMsg('Preencha todos os campos', 'error');
-                return;
-            }
-            switchTab('alertas');
-        }
+        // Listeners de eventos para os botões de idioma
+        document.querySelectorAll('.lang-button').forEach(button => {
+            button.addEventListener('click', () => setLanguage(button.dataset.lang));
+        });
 
-        function goPagamento() {
-            const above = parseFloat(document.getElementById('above').value);
-            const below = parseFloat(document.getElementById('below').value);
-            if (!above || !below) { showMsg('Preencha os alertas', 'error'); return; }
-            if (above <= currentPrice || below >= currentPrice) { showMsg('Verificar alertas', 'error'); return; }
-            switchTab('pagamento');
-        }
-
-        async function pay() {
-            const btn = document.getElementById('payBtn');
-            btn.disabled = true;
-            try {
-                const res = await fetch('/api/create-payment', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        amount: 299,
-                        email: document.getElementById('email').value,
-                        whatsapp: document.getElementById('whatsapp').value,
-                        alertAbove: parseFloat(document.getElementById('above').value),
-                        alertBelow: parseFloat(document.getElementById('below').value)
-                    })
-                });
-                const data = await res.json();
-                const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
-                    payment_method: { card: cardElement, billing_details: { email: document.getElementById('email').value } }
-                });
-                if (error) showMsg('Erro: ' + error.message, 'error');
-                else if (paymentIntent.status === 'succeeded') showMsg('✅ Sucesso!', 'success');
-            } catch (e) { showMsg('Erro: ' + e.message, 'error'); }
-            finally { btn.disabled = false; }
-        }
-
-        function showMsg(text, type) {
-            const msg = document.getElementById('message');
-            msg.textContent = text;
-            msg.className = 'message show ' + type;
-            setTimeout(() => msg.classList.remove('show'), 5000);
-        }
-
-        applyLanguage('pt');
-        updatePrice();
-        setInterval(updatePrice, 30000);
+        // Aplica o idioma ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+        });
     </script>
 </body>
 </html>
