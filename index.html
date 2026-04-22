@@ -122,6 +122,7 @@
         font-weight: 800;
         color: #f8991a;
         margin-bottom: 8px;
+        min-height: 60px;
     }
 
     .stats-grid {
@@ -476,6 +477,22 @@
         .ebook-section { padding: 24px 16px; }
         .footer-links { flex-direction: column; gap: 10px; }
     }
+
+    .loading-spinner {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 2px solid rgba(248, 153, 26, 0.3);
+        border-top: 2px solid #f8991a;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 8px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
 ```
 
@@ -505,20 +522,20 @@
 ```
     <div class="price-ticker">
         <div class="stats-label" data-i18n="price_label">Preço do Bitcoin Agora</div>
-        <div class="price-display" id="hero-price">$0</div>
-        <div style="color: #cbd5e1; font-weight: 600;">R$ <span id="hero-price-brl">0</span></div>
+        <div class="price-display" id="hero-price"><span class="loading-spinner"></span>Carregando...</div>
+        <div style="color: #cbd5e1; font-weight: 600;">R$ <span id="hero-price-brl">--</span></div>
         <div class="stats-grid">
             <div class="stat-box">
                 <div class="stat-label" data-i18n="stat_change">Mudança 24h</div>
-                <div class="stat-value" id="change24h">0%</div>
+                <div class="stat-value" id="change24h">--</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label" data-i18n="stat_market">Market Cap</div>
-                <div class="stat-value" id="marketCap">$0</div>
+                <div class="stat-value" id="marketCap">--</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label" data-i18n="stat_volume">Volume 24h</div>
-                <div class="stat-value" id="volume24h">$0</div>
+                <div class="stat-value" id="volume24h">--</div>
             </div>
         </div>
     </div>
@@ -863,7 +880,7 @@
 
 </footer>
 
-<!-- TRANSLATION SYSTEM & SCRIPTS -->
+<!-- TRANSLATION SYSTEM & BITCOIN PRICE SCRIPT -->
 
 <script>
     const translations = {
@@ -1151,13 +1168,11 @@
     function setLang(lang) {
         localStorage.setItem('bitcoinLang', lang);
         
-        // Atualizar botões ativos
         document.querySelectorAll('.lang button').forEach(btn => {
             btn.classList.remove('active');
         });
         document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
         
-        // Traduzir página
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -1166,17 +1181,83 @@
         });
     }
 
-    // Carregar idioma salvo
     const savedLang = localStorage.getItem('bitcoinLang') || 'pt';
     setLang(savedLang);
 </script>
 
-<!-- EMAILJS SCRIPT -->
+<!-- BITCOIN PRICE API - CORRIGIDO -->
 
 <script>
-    // Inicializar EmailJS
     emailjs.init("YOUR_PUBLIC_KEY");
     
+    let currentPrice = 0;
+    let pricesByMoeda = {};
+    
+    async function updatePrice() {
+        try {
+            const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar,sgd';
+            
+            // Usando endpoint correto da CoinGecko v3
+            const url = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
+            
+            const res = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (!res.ok) {
+                throw new Error(`API erro: ${res.status}`);
+            }
+            
+            const data = await res.json();
+            
+            if (!data.bitcoin) {
+                throw new Error('Bitcoin data not found in response');
+            }
+            
+            const btc = data.bitcoin;
+            currentPrice = btc.usd;
+            pricesByMoeda = btc;
+            
+            // Atualizar display
+            document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
+            document.getElementById('hero-price-brl').textContent = btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            
+            const change = btc.usd_24h_change || 0;
+            document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+            document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
+            document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
+            
+            convertCurrency();
+        } catch (error) {
+            console.error('Erro ao atualizar preço:', error);
+            document.getElementById('hero-price').textContent = 'Erro ao carregar';
+            document.getElementById('hero-price-brl').textContent = '--';
+        }
+    }
+
+    function convertCurrency() {
+        const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
+        const moeda = document.getElementById('currency').value.toLowerCase();
+        
+        if (amount <= 0 || !pricesByMoeda[moeda]) { 
+            document.getElementById('result').textContent = 'R$ 0'; 
+            return; 
+        }
+        
+        const resultado = amount * pricesByMoeda[moeda];
+        const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R', sgd: 'S$' };
+        const simbolo = simbolos[moeda] || moeda.toUpperCase();
+        
+        let formatted = moeda === 'brl' 
+            ? resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+            : resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        
+        document.getElementById('result').textContent = simbolo + ' ' + formatted;
+    }
+
     async function sendEmail() {
         const name = document.getElementById('contact_name').value;
         const email = document.getElementById('contact_email').value;
@@ -1221,52 +1302,7 @@
         }
     }
 
-    // BITCOIN PRICE CONVERTER
-    let currentPrice = 0;
-    let pricesByMoeda = {};
-    
-    async function updatePrice() {
-        try {
-            const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar,sgd';
-            const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
-            const data = await res.json();
-            const btc = data.bitcoin;
-            
-            currentPrice = btc.usd;
-            pricesByMoeda = btc;
-            
-            document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
-            document.getElementById('hero-price-brl').textContent = btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            
-            const change = btc.usd_24h_change;
-            document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-            document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
-            document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
-            
-            convertCurrency();
-        } catch (e) { console.error('Erro ao atualizar preço:', e); }
-    }
-
-    function convertCurrency() {
-        const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
-        const moeda = document.getElementById('currency').value.toLowerCase();
-        
-        if (amount <= 0 || !pricesByMoeda[moeda]) { 
-            document.getElementById('result').textContent = 'R$ 0'; 
-            return; 
-        }
-        
-        const resultado = amount * pricesByMoeda[moeda];
-        const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R', sgd: 'S$' };
-        const simbolo = simbolos[moeda] || moeda.toUpperCase();
-        
-        let formatted = moeda === 'brl' 
-            ? resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-            : resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
-        
-        document.getElementById('result').textContent = simbolo + ' ' + formatted;
-    }
-
+    // Carregar preço imediatamente e a cada 30 segundos
     updatePrice();
     setInterval(updatePrice, 30000);
 </script>
