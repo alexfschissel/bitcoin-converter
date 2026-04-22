@@ -1079,15 +1079,24 @@
 
     function setLang(lang) {
         localStorage.setItem('lang', lang);
-        document.querySelectorAll('.lang button').forEach(b => b.classList.remove('active'));
-        event.target.classList.add('active');
+        // Marcar botão como ativo
+        document.querySelectorAll('.lang button').forEach(b => {
+            if (b.getAttribute('data-lang') === lang) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
         
+        // Atualizar todas as labels
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
                 el.textContent = translations[lang][key];
             }
         });
+        
+        console.log('✅ Idioma alterado para:', lang);
     }
 
     // Load saved language
@@ -1166,10 +1175,13 @@
 
     function showMsg(text, type) {
         const msg = document.getElementById('message');
+        if (!msg) return; // Se não existir, ignora
         msg.textContent = text;
         msg.className = 'message show ' + type;
         setTimeout(() => msg.classList.remove('show'), 5000);
     }
+
+    async function updatePrice() {
         try {
             const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar';
             const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
@@ -1189,7 +1201,10 @@
             document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
             
             convertCurrency();
-        } catch (e) { console.error('Erro ao atualizar preço:', e); }
+            console.log('✅ Preço atualizado:', currentPrice);
+        } catch (e) { 
+            console.error('❌ Erro ao atualizar preço:', e); 
+        }
     }
 
     function convertCurrency() {
