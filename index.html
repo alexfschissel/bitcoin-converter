@@ -477,22 +477,6 @@
         .ebook-section { padding: 24px 16px; }
         .footer-links { flex-direction: column; gap: 10px; }
     }
-
-    .loading-spinner {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border: 2px solid rgba(248, 153, 26, 0.3);
-        border-top: 2px solid #f8991a;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin-right: 8px;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
 </style>
 ```
 
@@ -517,30 +501,30 @@
 <section class="hero">
     <div class="hero-content">
         <h1 class="hero-title">₿</h1>
-        <p class="hero-subtitle" data-i18n="hero_subtitle">Bitcoin Agora - Seu Guia Completo para Investir com Segurança</p>
+        <p class="hero-subtitle">Bitcoin Agora - Seu Guia Completo para Investir com Segurança</p>
 
 ```
     <div class="price-ticker">
-        <div class="stats-label" data-i18n="price_label">Preço do Bitcoin Agora</div>
-        <div class="price-display" id="hero-price"><span class="loading-spinner"></span>Carregando...</div>
+        <div class="stats-label">Preço do Bitcoin Agora</div>
+        <div class="price-display" id="hero-price">Carregando...</div>
         <div style="color: #cbd5e1; font-weight: 600;">R$ <span id="hero-price-brl">--</span></div>
         <div class="stats-grid">
             <div class="stat-box">
-                <div class="stat-label" data-i18n="stat_change">Mudança 24h</div>
+                <div class="stat-label">Mudança 24h</div>
                 <div class="stat-value" id="change24h">--</div>
             </div>
             <div class="stat-box">
-                <div class="stat-label" data-i18n="stat_market">Market Cap</div>
+                <div class="stat-label">Market Cap</div>
                 <div class="stat-value" id="marketCap">--</div>
             </div>
             <div class="stat-box">
-                <div class="stat-label" data-i18n="stat_volume">Volume 24h</div>
+                <div class="stat-label">Volume 24h</div>
                 <div class="stat-value" id="volume24h">--</div>
             </div>
         </div>
     </div>
 
-    <button class="cta-button" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})" data-i18n="cta_read">
+    <button class="cta-button" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">
         Leia o Guia ↓
     </button>
 </div>
@@ -555,15 +539,15 @@
 ```
 <!-- ADSENSE #1 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- CONVERSOR BITCOIN -->
 <section class="section">
-    <h2 data-i18n="converter_title">Conversor Bitcoin em Tempo Real</h2>
-    <p data-i18n="converter_desc">
+    <h2>Conversor Bitcoin em Tempo Real</h2>
+    <p>
         Use nosso conversor gratuito para calcular o valor de qualquer quantidade de Bitcoin em mais de 13 moedas diferentes. 
         Os preços são atualizados a cada 30 segundos diretamente da API CoinGecko, garantindo máxima precisão.
     </p>
@@ -571,11 +555,11 @@
     <div class="converter-card">
         <div class="form-row">
             <div class="form-group">
-                <label class="form-label" data-i18n="converter_amount">Quantidade de Bitcoin</label>
+                <label class="form-label">Quantidade de Bitcoin</label>
                 <input type="number" id="btcAmount" placeholder="1.0" step="0.0001" value="1" onchange="convertCurrency()" oninput="convertCurrency()">
             </div>
             <div class="form-group">
-                <label class="form-label" data-i18n="converter_currency">Escolha a Moeda</label>
+                <label class="form-label">Escolha a Moeda</label>
                 <select id="currency" onchange="convertCurrency()">
                     <option value="brl" selected>BRL - Real Brasileiro</option>
                     <option value="usd">USD - US Dollar</option>
@@ -594,7 +578,7 @@
             </div>
         </div>
         <div class="result-box">
-            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;" data-i18n="converter_result">Valor Convertido</div>
+            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Valor Convertido</div>
             <div class="result-value" id="result">R$ 0</div>
         </div>
     </div>
@@ -602,49 +586,49 @@
 
 <!-- ADSENSE #2 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="5555555555" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- COMO COMPRAR BITCOIN -->
 <section class="section">
-    <h2 data-i18n="buy_title">Como Comprar Bitcoin: Passo a Passo</h2>
+    <h2>Como Comprar Bitcoin: Passo a Passo</h2>
     
-    <h3 data-i18n="buy_step1_title">Passo 1: Escolha a Melhor Corretora</h3>
-    <p data-i18n="buy_step1_desc">
+    <h3>Passo 1: Escolha a Melhor Corretora</h3>
+    <p>
         Uma <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">corretora de criptomoedas</a> é uma plataforma onde você compra e vende Bitcoin. 
         A melhor escolha é a <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Binance</a>, 
         que é a maior do mundo com 30 milhões de usuários. A <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank">Bybit</a> também é excelente.
     </p>
 
     <div class="cta-box">
-        <strong data-i18n="cta_binance_title">✨ Abra sua Conta na Binance</strong>
-        <p style="margin: 8px 0; font-size: 14px;" data-i18n="cta_binance_desc">A maior corretora de criptomoedas do mundo.</p>
-        <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank" data-i18n="cta_binance_btn">
+        <strong>✨ Abra sua Conta na Binance</strong>
+        <p style="margin: 8px 0; font-size: 14px;">A maior corretora de criptomoedas do mundo.</p>
+        <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">
             → Criar Conta Gratuita
         </a>
     </div>
 
-    <h3 data-i18n="buy_step2_title">Passo 2: Verificação de Identidade</h3>
-    <p data-i18n="buy_step2_desc">
+    <h3>Passo 2: Verificação de Identidade</h3>
+    <p>
         Toda <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">corretora regulada</a> 
         exige verificação de identidade. Você precisará enviar um documento de identidade e tirar uma selfie. Leva 10-30 minutos.
     </p>
 
-    <h3 data-i18n="buy_step3_title">Passo 3: Deposite Dinheiro (PIX é Rápido)</h3>
-    <p data-i18n="buy_step3_desc">
+    <h3>Passo 3: Deposite Dinheiro (PIX é Rápido)</h3>
+    <p>
         Após verificado, você pode depositar via PIX (instantâneo) ou transferência bancária. Comece com um valor pequeno.
     </p>
 
-    <h3 data-i18n="buy_step4_title">Passo 4: Compre Bitcoin</h3>
-    <p data-i18n="buy_step4_desc">
+    <h3>Passo 4: Compre Bitcoin</h3>
+    <p>
         Na sua <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">corretora</a>, 
         selecione Bitcoin, escolha a quantidade e confirme a compra. Pronto! Você agora possui Bitcoin.
     </p>
 
-    <h3 data-i18n="buy_step5_title">Passo 5: Armazene de Forma Segura</h3>
-    <p data-i18n="buy_step5_desc">
+    <h3>Passo 5: Armazene de Forma Segura</h3>
+    <p>
         Para Bitcoin de longo prazo, invista em uma <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet segura</a> 
         como a <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">Ledger</a>. 
         A <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet</a> 
@@ -652,9 +636,9 @@
     </p>
 
     <div class="cta-box">
-        <strong data-i18n="cta_ledger_title">🔒 Compre uma Hardware Wallet Ledger</strong>
-        <p style="margin: 8px 0; font-size: 14px;" data-i18n="cta_ledger_desc">Segurança de nível institucional para seu Bitcoin.</p>
-        <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank" data-i18n="cta_ledger_btn">
+        <strong>🔒 Compre uma Hardware Wallet Ledger</strong>
+        <p style="margin: 8px 0; font-size: 14px;">Segurança de nível institucional para seu Bitcoin.</p>
+        <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">
             → Comprar Ledger Agora
         </a>
     </div>
@@ -662,39 +646,37 @@
 
 <!-- ADSENSE #3 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="7777777777" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- O QUE É BITCOIN -->
 <section class="section">
-    <h2 data-i18n="what_title">O Que é Bitcoin?</h2>
+    <h2>O Que é Bitcoin?</h2>
 
-    <p data-i18n="what_intro">
+    <p>
         Bitcoin é a primeira criptomoeda do mundo, criada em 2009. Diferentemente do dinheiro tradicional controlado por bancos, 
         Bitcoin é totalmente descentralizado. Funciona através de uma rede de computadores espalhados pelo mundo.
     </p>
 
-    <h3 data-i18n="blockchain_title">Como Funciona o Blockchain</h3>
-    <p data-i18n="blockchain_desc">
+    <h3>Como Funciona o Blockchain</h3>
+    <p>
         Bitcoin usa a tecnologia blockchain - um registro compartilhado que documenta TODAS as transações desde sua criação. 
         Quando você envia Bitcoin, milhares de computadores verificam e confirmam a transação. É seguro e imutável.
     </p>
 
-    <h3 data-i18n="value_title">Por Que Bitcoin Tem Valor?</h3>
-    <p data-i18n="value_intro">
-        Bitcoin tem valor por vários motivos:
-    </p>
+    <h3>Por Que Bitcoin Tem Valor?</h3>
+    <p>Bitcoin tem valor por vários motivos:</p>
     <div class="highlight-box">
-        <strong data-i18n="value_scarcity">1. Escassez:</strong> <span data-i18n="value_scarcity_desc">Apenas 21 milhões de Bitcoins existirão para sempre.</span><br><br>
-        <strong data-i18n="value_utility">2. Utilidade:</strong> <span data-i18n="value_utility_desc">É útil para enviar dinheiro internacionalmente sem intermediários.</span><br><br>
-        <strong data-i18n="value_security">3. Segurança:</strong> <span data-i18n="value_security_desc">A rede Bitcoin nunca foi hackeada. É matematicamente segura.</span><br><br>
-        <strong data-i18n="value_demand">4. Demanda Global:</strong> <span data-i18n="value_demand_desc">Instituições e pessoas em 180+ países querem Bitcoin.</span>
+        <strong>1. Escassez:</strong> Apenas 21 milhões de Bitcoins existirão para sempre.<br><br>
+        <strong>2. Utilidade:</strong> É útil para enviar dinheiro internacionalmente sem intermediários.<br><br>
+        <strong>3. Segurança:</strong> A rede Bitcoin nunca foi hackeada. É matematicamente segura.<br><br>
+        <strong>4. Demanda Global:</strong> Instituições e pessoas em 180+ países querem Bitcoin.
     </div>
 
-    <h3 data-i18n="mining_title">Mineração de Bitcoin</h3>
-    <p data-i18n="mining_desc">
+    <h3>Mineração de Bitcoin</h3>
+    <p>
         Mineração é o processo de validar transações e criar novos bitcoins. Os mineradores resolvem problemas matemáticos complexos 
         e ganham Bitcoin como recompensa. Hoje é feito por grandes operações com computadores especializados.
     </p>
@@ -702,53 +684,51 @@
 
 <!-- ADSENSE #4 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="9999999999" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- SEGURANÇA -->
 <section class="section">
-    <h2 data-i18n="security_title">Segurança: Como Proteger Seu Bitcoin</h2>
+    <h2>Segurança: Como Proteger Seu Bitcoin</h2>
 
-    <h3 data-i18n="risk1_title">❌ Risco #1: Deixar Bitcoin em Corretora</h3>
-    <p data-i18n="risk1_desc">
-        <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Corretoras</a> 
-        podem ser hackeadas. A regra é: "Se não tiver a chave, não é seu Bitcoin".
+    <h3>❌ Risco #1: Deixar Bitcoin em Corretora</h3>
+    <p>
+        Corretoras podem ser hackeadas. A regra é: "Se não tiver a chave, não é seu Bitcoin".
     </p>
-    <p><strong data-i18n="solution_label">Solução:</strong> <span data-i18n="risk1_solution">Use <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a> para guardar Bitcoin de longo prazo.</span></p>
+    <p><strong>Solução:</strong> Use <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a> para guardar Bitcoin de longo prazo.</p>
 
-    <h3 data-i18n="risk2_title">❌ Risco #2: Perder Acesso à Seed Phrase</h3>
-    <p data-i18n="risk2_desc">
+    <h3>❌ Risco #2: Perder Acesso à Seed Phrase</h3>
+    <p>
         Sua seed phrase (12 palavras) é o acesso total ao seu Bitcoin. Se perder e não tiver backup, está perdido para sempre.
     </p>
-    <p><strong data-i18n="solution_label">Solução:</strong> <span data-i18n="risk2_solution">Escreva em papel e guarde em local seguro como um cofre.</span></p>
+    <p><strong>Solução:</strong> Escreva em papel e guarde em local seguro como um cofre.</p>
 
-    <h3 data-i18n="risk3_title">❌ Risco #3: Malware</h3>
-    <p data-i18n="risk3_desc">
+    <h3>❌ Risco #3: Malware</h3>
+    <p>
         Se seu computador tem malware, um criminoso pode roubar sua chave privada. Uma <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet</a> protege contra isso.
     </p>
 
-    <h3 data-i18n="risk4_title">❌ Risco #4: Phishing</h3>
-    <p data-i18n="risk4_desc">
-        Emails falsos fingindo ser da <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">corretora</a> 
-        são comuns. NUNCA clique em links de email sobre Bitcoin.
+    <h3>❌ Risco #4: Phishing</h3>
+    <p>
+        Emails falsos fingindo ser da corretora são comuns. NUNCA clique em links de email sobre Bitcoin.
     </p>
 
-    <h3 data-i18n="checklist_title">✅ Checklist de Segurança</h3>
+    <h3>✅ Checklist de Segurança</h3>
     <div class="highlight-box">
-        <span data-i18n="check1">☑ Ative autenticação de dois fatores (2FA)</span> <br>
-        <span data-i18n="check2">☑ Use senhas únicas para cada plataforma</span> <br>
-        <span data-i18n="check3">☑ Guarde seed phrase em papel, em local seguro</span> <br>
-        <span data-i18n="check4">☑ Invista em <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a> para Bitcoin de longo prazo</span> <br>
-        <span data-i18n="check5">☑ Mantenha antivírus atualizado</span> <br>
-        <span data-i18n="check6">☑ Nunca digite informações em links de email</span> <br>
+        ☑ Ative autenticação de dois fatores (2FA) <br>
+        ☑ Use senhas únicas para cada plataforma <br>
+        ☑ Guarde seed phrase em papel, em local seguro <br>
+        ☑ Invista em <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a> para Bitcoin de longo prazo <br>
+        ☑ Mantenha antivírus atualizado <br>
+        ☑ Nunca digite informações em links de email <br>
     </div>
 </section>
 
 <!-- ADSENSE #5 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="2222222222" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -757,22 +737,22 @@
 <section class="section">
     <div class="ebook-section">
         <div class="ebook-icon">📚</div>
-        <h2 data-i18n="ebook_title">Quer Aprender Tudo Sobre Bitcoin?</h2>
-        <p data-i18n="ebook_subtitle">Compre nosso E-book Completo: "Bitcoin para Iniciantes - Do Zero ao Profissional"</p>
+        <h2>Quer Aprender Tudo Sobre Bitcoin?</h2>
+        <p>Compre nosso E-book Completo: "Bitcoin para Iniciantes - Do Zero ao Profissional"</p>
         
         <div style="background: rgba(0, 0, 0, 0.15); border-radius: 8px; padding: 16px; margin: 20px 0; text-align: left; font-size: 14px; color: #1a2332;">
-            <strong style="display: block; margin-bottom: 12px;" data-i18n="ebook_included">📖 Incluído no E-book:</strong>
+            <strong style="display: block; margin-bottom: 12px;">📖 Incluído no E-book:</strong>
             <ul style="list-style: none; padding: 0; line-height: 2;">
-                <li data-i18n="ebook_item1">✓ Guia completo: como comprar Bitcoin passo-a-passo</li>
-                <li data-i18n="ebook_item2">✓ Segurança profissional em 10 passos</li>
-                <li data-i18n="ebook_item3">✓ Estratégias de investimento comprovadas</li>
-                <li data-i18n="ebook_item4">✓ Análise técnica básica para iniciantes</li>
-                <li data-i18n="ebook_item5">✓ Tudo sobre mineração de Bitcoin</li>
-                <li data-i18n="ebook_item6">✓ Erros comuns que 90% cometem</li>
+                <li>✓ Guia completo: como comprar Bitcoin passo-a-passo</li>
+                <li>✓ Segurança profissional em 10 passos</li>
+                <li>✓ Estratégias de investimento comprovadas</li>
+                <li>✓ Análise técnica básica para iniciantes</li>
+                <li>✓ Tudo sobre mineração de Bitcoin</li>
+                <li>✓ Erros comuns que 90% cometem</li>
             </ul>
         </div>
 
-        <button class="ebook-button" onclick="window.open('https://pay.hotmart.com/Q91970052P', '_blank')" data-i18n="ebook_button">
+        <button class="ebook-button" onclick="window.open('https://pay.hotmart.com/Q91970052P', '_blank')">
             🚀 Comprar Agora por R$ 29,90
         </button>
     </div>
@@ -780,14 +760,14 @@
 
 <!-- ADSENSE #6 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="4444444444" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- VÍDEO YOUTUBE -->
 <section class="section">
-    <h2 data-i18n="video_title">Vídeo: Bitcoin para Iniciantes</h2>
+    <h2>Vídeo: Bitcoin para Iniciantes</h2>
     <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid rgba(248, 153, 26, 0.2); margin: 20px 0;">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/Gc2en3nHxA4?start=8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
     </div>
@@ -795,43 +775,43 @@
 
 <!-- ADSENSE #7 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="6666666666" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
 <!-- CONTATO -->
 <section class="section">
-    <h2 data-i18n="contact_title">Entre em Contato</h2>
-    <p data-i18n="contact_desc">Tem dúvidas? Preencha o formulário abaixo:</p>
+    <h2>Entre em Contato</h2>
+    <p>Tem dúvidas? Preencha o formulário abaixo:</p>
 
     <div class="contact-form">
         <div class="form-group-contact">
-            <label class="form-label" data-i18n="form_name">Seu Nome</label>
+            <label class="form-label">Seu Nome</label>
             <input type="text" id="contact_name" placeholder="Seu nome completo" required>
         </div>
 
         <div class="form-group-contact">
-            <label class="form-label" data-i18n="form_email">Seu Email</label>
+            <label class="form-label">Seu Email</label>
             <input type="email" id="contact_email" placeholder="seu.email@gmail.com" required>
         </div>
 
         <div class="form-group-contact">
-            <label class="form-label" data-i18n="form_subject">Assunto</label>
+            <label class="form-label">Assunto</label>
             <input type="text" id="contact_subject" placeholder="Qual é sua dúvida?" required>
         </div>
 
         <div class="form-group-contact">
-            <label class="form-label" data-i18n="form_message">Mensagem</label>
+            <label class="form-label">Mensagem</label>
             <textarea id="contact_message" placeholder="Descreva sua mensagem..." style="min-height: 150px; resize: vertical;"></textarea>
         </div>
 
-        <button class="contact-button" onclick="sendEmail()" data-i18n="form_button">Enviar Mensagem</button>
+        <button class="contact-button" onclick="sendEmail()">Enviar Mensagem</button>
 
-        <div id="successMessage" class="success-message" data-i18n="form_success">
+        <div id="successMessage" class="success-message">
             ✅ Mensagem enviada com sucesso! Responderemos em breve.
         </div>
-        <div id="errorMessage" class="error-message" data-i18n="form_error">
+        <div id="errorMessage" class="error-message">
             ❌ Erro ao enviar mensagem. Tente novamente.
         </div>
     </div>
@@ -839,7 +819,7 @@
 
 <!-- ADSENSE #8 -->
 <div class="adsense-container">
-    <div class="ads-label" data-i18n="ads_label">Publicidade</div>
+    <div class="ads-label">Publicidade</div>
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9069537322097109" data-ad-slot="8888888888" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
@@ -852,12 +832,12 @@
 <footer>
     <div class="footer-content">
         <div class="footer-disclaimer">
-            <strong style="color: #f8991a;" data-i18n="disclaimer_title">⚠️ Disclaimer Importante:</strong>
-            <p style="margin-top: 8px;" data-i18n="disclaimer_content">
+            <strong style="color: #f8991a;">⚠️ Disclaimer Importante:</strong>
+            <p style="margin-top: 8px;">
                 Bitcoin Agora é um site <strong>educacional</strong> que contém <strong>links de afiliados</strong>. 
                 Recebemos comissões quando você se registra, sem custo adicional para você.
             </p>
-            <p style="margin-top: 8px;" data-i18n="disclaimer_warning">
+            <p style="margin-top: 8px;">
                 <strong>AVISO CRÍTICO:</strong> Bitcoin é um investimento de <strong>ALTÍSSIMO RISCO</strong>. 
                 O preço é extremamente volátil. Você pode perder 100% do seu investimento. 
                 <strong>NUNCA invista dinheiro que não possa perder.</strong> 
@@ -867,12 +847,12 @@
 
 ```
     <div class="footer-links">
-        <a href="/politica-privacidade.html" data-i18n="footer_privacy">Política de Privacidade</a>
-        <a href="/termos-uso.html" data-i18n="footer_terms">Termos de Uso</a>
-        <a href="/quem-somos.html" data-i18n="footer_about">Quem Somos</a>
+        <a href="politica-privacidade.html" target="_blank">Política de Privacidade</a>
+        <a href="termos-uso.html" target="_blank">Termos de Uso</a>
+        <a href="quem-somos.html" target="_blank">Quem Somos</a>
     </div>
 
-    <div class="footer-text" data-i18n="footer_copyright">
+    <div class="footer-text">
         © 2026 Bitcoin Agora. Todos os direitos reservados. | Investir em criptomoedas envolve riscos significativos.
     </div>
 </div>
@@ -880,384 +860,12 @@
 
 </footer>
 
-<!-- TRANSLATION SYSTEM & BITCOIN PRICE SCRIPT -->
+<!-- SCRIPTS -->
 
 <script>
-    const translations = {
-        pt: {
-            hero_subtitle: "Bitcoin Agora - Seu Guia Completo para Investir com Segurança",
-            price_label: "Preço do Bitcoin Agora",
-            stat_change: "Mudança 24h",
-            stat_market: "Market Cap",
-            stat_volume: "Volume 24h",
-            cta_read: "Leia o Guia ↓",
-            ads_label: "Publicidade",
-            converter_title: "Conversor Bitcoin em Tempo Real",
-            converter_desc: "Use nosso conversor gratuito para calcular o valor de qualquer quantidade de Bitcoin em mais de 13 moedas diferentes. Os preços são atualizados a cada 30 segundos diretamente da API CoinGecko, garantindo máxima precisão.",
-            converter_amount: "Quantidade de Bitcoin",
-            converter_currency: "Escolha a Moeda",
-            converter_result: "Valor Convertido",
-            buy_title: "Como Comprar Bitcoin: Passo a Passo",
-            buy_step1_title: "Passo 1: Escolha a Melhor Corretora",
-            buy_step1_desc: "Uma corretora de criptomoedas é uma plataforma onde você compra e vende Bitcoin. A melhor escolha é a Binance, que é a maior do mundo com 30 milhões de usuários. A Bybit também é excelente.",
-            cta_binance_title: "✨ Abra sua Conta na Binance",
-            cta_binance_desc: "A maior corretora de criptomoedas do mundo.",
-            cta_binance_btn: "→ Criar Conta Gratuita",
-            buy_step2_title: "Passo 2: Verificação de Identidade",
-            buy_step2_desc: "Toda corretora regulada exige verificação de identidade. Você precisará enviar um documento de identidade e tirar uma selfie. Leva 10-30 minutos.",
-            buy_step3_title: "Passo 3: Deposite Dinheiro (PIX é Rápido)",
-            buy_step3_desc: "Após verificado, você pode depositar via PIX (instantâneo) ou transferência bancária. Comece com um valor pequeno.",
-            buy_step4_title: "Passo 4: Compre Bitcoin",
-            buy_step4_desc: "Na sua corretora, selecione Bitcoin, escolha a quantidade e confirme a compra. Pronto! Você agora possui Bitcoin.",
-            buy_step5_title: "Passo 5: Armazene de Forma Segura",
-            buy_step5_desc: "Para Bitcoin de longo prazo, invista em uma hardware wallet segura como a Ledger. A hardware wallet protege suas chaves privadas offline, longe de hackers.",
-            cta_ledger_title: "🔒 Compre uma Hardware Wallet Ledger",
-            cta_ledger_desc: "Segurança de nível institucional para seu Bitcoin.",
-            cta_ledger_btn: "→ Comprar Ledger Agora",
-            what_title: "O Que é Bitcoin?",
-            what_intro: "Bitcoin é a primeira criptomoeda do mundo, criada em 2009. Diferentemente do dinheiro tradicional controlado por bancos, Bitcoin é totalmente descentralizado. Funciona através de uma rede de computadores espalhados pelo mundo.",
-            blockchain_title: "Como Funciona o Blockchain",
-            blockchain_desc: "Bitcoin usa a tecnologia blockchain - um registro compartilhado que documenta TODAS as transações desde sua criação. Quando você envia Bitcoin, milhares de computadores verificam e confirmam a transação. É seguro e imutável.",
-            value_title: "Por Que Bitcoin Tem Valor?",
-            value_intro: "Bitcoin tem valor por vários motivos:",
-            value_scarcity: "1. Escassez:",
-            value_scarcity_desc: "Apenas 21 milhões de Bitcoins existirão para sempre.",
-            value_utility: "2. Utilidade:",
-            value_utility_desc: "É útil para enviar dinheiro internacionalmente sem intermediários.",
-            value_security: "3. Segurança:",
-            value_security_desc: "A rede Bitcoin nunca foi hackeada. É matematicamente segura.",
-            value_demand: "4. Demanda Global:",
-            value_demand_desc: "Instituições e pessoas em 180+ países querem Bitcoin.",
-            mining_title: "Mineração de Bitcoin",
-            mining_desc: "Mineração é o processo de validar transações e criar novos bitcoins. Os mineradores resolvem problemas matemáticos complexos e ganham Bitcoin como recompensa. Hoje é feito por grandes operações com computadores especializados.",
-            security_title: "Segurança: Como Proteger Seu Bitcoin",
-            risk1_title: "❌ Risco #1: Deixar Bitcoin em Corretora",
-            risk1_desc: "Corretoras podem ser hackeadas. A regra é: 'Se não tiver a chave, não é seu Bitcoin'.",
-            solution_label: "Solução:",
-            risk1_solution: "Use hardware wallet Ledger para guardar Bitcoin de longo prazo.",
-            risk2_title: "❌ Risco #2: Perder Acesso à Seed Phrase",
-            risk2_desc: "Sua seed phrase (12 palavras) é o acesso total ao seu Bitcoin. Se perder e não tiver backup, está perdido para sempre.",
-            risk2_solution: "Escreva em papel e guarde em local seguro como um cofre.",
-            risk3_title: "❌ Risco #3: Malware",
-            risk3_desc: "Se seu computador tem malware, um criminoso pode roubar sua chave privada. Uma hardware wallet protege contra isso.",
-            risk4_title: "❌ Risco #4: Phishing",
-            risk4_desc: "Emails falsos fingindo ser da corretora são comuns. NUNCA clique em links de email sobre Bitcoin.",
-            checklist_title: "✅ Checklist de Segurança",
-            check1: "☑ Ative autenticação de dois fatores (2FA)",
-            check2: "☑ Use senhas únicas para cada plataforma",
-            check3: "☑ Guarde seed phrase em papel, em local seguro",
-            check4: "☑ Invista em hardware wallet Ledger para Bitcoin de longo prazo",
-            check5: "☑ Mantenha antivírus atualizado",
-            check6: "☑ Nunca digite informações em links de email",
-            ebook_title: "Quer Aprender Tudo Sobre Bitcoin?",
-            ebook_subtitle: 'Compre nosso E-book Completo: "Bitcoin para Iniciantes - Do Zero ao Profissional"',
-            ebook_included: "📖 Incluído no E-book:",
-            ebook_item1: "✓ Guia completo: como comprar Bitcoin passo-a-passo",
-            ebook_item2: "✓ Segurança profissional em 10 passos",
-            ebook_item3: "✓ Estratégias de investimento comprovadas",
-            ebook_item4: "✓ Análise técnica básica para iniciantes",
-            ebook_item5: "✓ Tudo sobre mineração de Bitcoin",
-            ebook_item6: "✓ Erros comuns que 90% cometem",
-            ebook_button: "🚀 Comprar Agora por R$ 29,90",
-            video_title: "Vídeo: Bitcoin para Iniciantes",
-            contact_title: "Entre em Contato",
-            contact_desc: "Tem dúvidas? Preencha o formulário abaixo:",
-            form_name: "Seu Nome",
-            form_email: "Seu Email",
-            form_subject: "Assunto",
-            form_message: "Mensagem",
-            form_button: "Enviar Mensagem",
-            form_success: "✅ Mensagem enviada com sucesso! Responderemos em breve.",
-            form_error: "❌ Erro ao enviar mensagem. Tente novamente.",
-            disclaimer_title: "⚠️ Disclaimer Importante:",
-            disclaimer_content: "Bitcoin Agora é um site educacional que contém links de afiliados. Recebemos comissões quando você se registra, sem custo adicional para você.",
-            disclaimer_warning: "AVISO CRÍTICO: Bitcoin é um investimento de ALTÍSSIMO RISCO. O preço é extremamente volátil. Você pode perder 100% do seu investimento. NUNCA invista dinheiro que não possa perder. Sempre consulte um consultor financeiro profissional antes de investir.",
-            footer_privacy: "Política de Privacidade",
-            footer_terms: "Termos de Uso",
-            footer_about: "Quem Somos",
-            footer_copyright: "© 2026 Bitcoin Agora. Todos os direitos reservados. | Investir em criptomoedas envolve riscos significativos."
-        },
-        en: {
-            hero_subtitle: "Bitcoin Now - Your Complete Guide to Investing Safely",
-            price_label: "Bitcoin Price Now",
-            stat_change: "24h Change",
-            stat_market: "Market Cap",
-            stat_volume: "24h Volume",
-            cta_read: "Read the Guide ↓",
-            ads_label: "Advertisement",
-            converter_title: "Real-Time Bitcoin Converter",
-            converter_desc: "Use our free converter to calculate the value of any amount of Bitcoin in over 13 different currencies. Prices are updated every 30 seconds directly from the CoinGecko API, ensuring maximum accuracy.",
-            converter_amount: "Amount of Bitcoin",
-            converter_currency: "Choose Currency",
-            converter_result: "Converted Value",
-            buy_title: "How to Buy Bitcoin: Step by Step",
-            buy_step1_title: "Step 1: Choose the Best Exchange",
-            buy_step1_desc: "A cryptocurrency exchange is a platform where you buy and sell Bitcoin. The best choice is Binance, which is the world's largest with 30 million users. Bybit is also excellent.",
-            cta_binance_title: "✨ Open Your Account on Binance",
-            cta_binance_desc: "The world's largest cryptocurrency exchange.",
-            cta_binance_btn: "→ Create Free Account",
-            buy_step2_title: "Step 2: Identity Verification",
-            buy_step2_desc: "Every regulated exchange requires identity verification. You'll need to submit an identity document and take a selfie. It takes 10-30 minutes.",
-            buy_step3_title: "Step 3: Deposit Money (PIX is Fast)",
-            buy_step3_desc: "Once verified, you can deposit via PIX (instant) or bank transfer. Start with a small amount.",
-            buy_step4_title: "Step 4: Buy Bitcoin",
-            buy_step4_desc: "On your exchange, select Bitcoin, choose the amount and confirm the purchase. Done! You now own Bitcoin.",
-            buy_step5_title: "Step 5: Store It Safely",
-            buy_step5_desc: "For long-term Bitcoin, invest in a secure hardware wallet like Ledger. The hardware wallet protects your private keys offline, away from hackers.",
-            cta_ledger_title: "🔒 Buy a Ledger Hardware Wallet",
-            cta_ledger_desc: "Institutional-level security for your Bitcoin.",
-            cta_ledger_btn: "→ Buy Ledger Now",
-            what_title: "What is Bitcoin?",
-            what_intro: "Bitcoin is the world's first cryptocurrency, created in 2009. Unlike traditional money controlled by banks, Bitcoin is completely decentralized. It operates through a network of computers spread around the world.",
-            blockchain_title: "How Blockchain Works",
-            blockchain_desc: "Bitcoin uses blockchain technology - a shared record that documents ALL transactions since its creation. When you send Bitcoin, thousands of computers verify and confirm the transaction. It's secure and immutable.",
-            value_title: "Why Does Bitcoin Have Value?",
-            value_intro: "Bitcoin has value for several reasons:",
-            value_scarcity: "1. Scarcity:",
-            value_scarcity_desc: "Only 21 million Bitcoins will ever exist.",
-            value_utility: "2. Utility:",
-            value_utility_desc: "It's useful for sending money internationally without intermediaries.",
-            value_security: "3. Security:",
-            value_security_desc: "The Bitcoin network has never been hacked. It's mathematically secure.",
-            value_demand: "4. Global Demand:",
-            value_demand_desc: "Institutions and people in 180+ countries want Bitcoin.",
-            mining_title: "Bitcoin Mining",
-            mining_desc: "Mining is the process of validating transactions and creating new bitcoins. Miners solve complex mathematical problems and earn Bitcoin as a reward. Today it's done by large operations with specialized computers.",
-            security_title: "Security: How to Protect Your Bitcoin",
-            risk1_title: "❌ Risk #1: Leaving Bitcoin on an Exchange",
-            risk1_desc: "Exchanges can be hacked. The rule is: 'If you don't have the key, it's not your Bitcoin'.",
-            solution_label: "Solution:",
-            risk1_solution: "Use Ledger hardware wallet to store Bitcoin for the long term.",
-            risk2_title: "❌ Risk #2: Losing Access to Your Seed Phrase",
-            risk2_desc: "Your seed phrase (12 words) is total access to your Bitcoin. If you lose it and don't have a backup, it's lost forever.",
-            risk2_solution: "Write it on paper and store it in a safe place like a safe.",
-            risk3_title: "❌ Risk #3: Malware",
-            risk3_desc: "If your computer has malware, a criminal can steal your private key. A hardware wallet protects against this.",
-            risk4_title: "❌ Risk #4: Phishing",
-            risk4_desc: "Fake emails pretending to be from the exchange are common. NEVER click on links in emails about Bitcoin.",
-            checklist_title: "✅ Security Checklist",
-            check1: "☑ Enable two-factor authentication (2FA)",
-            check2: "☑ Use unique passwords for each platform",
-            check3: "☑ Store seed phrase on paper in a safe location",
-            check4: "☑ Invest in Ledger hardware wallet for long-term Bitcoin",
-            check5: "☑ Keep antivirus updated",
-            check6: "☑ Never enter information in email links",
-            ebook_title: "Want to Learn Everything About Bitcoin?",
-            ebook_subtitle: 'Buy Our Complete E-book: "Bitcoin for Beginners - From Zero to Pro"',
-            ebook_included: "📖 Included in the E-book:",
-            ebook_item1: "✓ Complete guide: how to buy Bitcoin step-by-step",
-            ebook_item2: "✓ Professional security in 10 steps",
-            ebook_item3: "✓ Proven investment strategies",
-            ebook_item4: "✓ Basic technical analysis for beginners",
-            ebook_item5: "✓ Everything about Bitcoin mining",
-            ebook_item6: "✓ Common mistakes 90% make",
-            ebook_button: "🚀 Buy Now for $5.98",
-            video_title: "Video: Bitcoin for Beginners",
-            contact_title: "Contact Us",
-            contact_desc: "Have questions? Fill out the form below:",
-            form_name: "Your Name",
-            form_email: "Your Email",
-            form_subject: "Subject",
-            form_message: "Message",
-            form_button: "Send Message",
-            form_success: "✅ Message sent successfully! We'll respond soon.",
-            form_error: "❌ Error sending message. Try again.",
-            disclaimer_title: "⚠️ Important Disclaimer:",
-            disclaimer_content: "Bitcoin Now is an educational site that contains affiliate links. We receive commissions when you register, at no extra cost to you.",
-            disclaimer_warning: "CRITICAL WARNING: Bitcoin is a VERY HIGH RISK investment. The price is extremely volatile. You could lose 100% of your investment. NEVER invest money you can't afford to lose. Always consult a professional financial advisor before investing.",
-            footer_privacy: "Privacy Policy",
-            footer_terms: "Terms of Use",
-            footer_about: "About Us",
-            footer_copyright: "© 2026 Bitcoin Now. All rights reserved. | Investing in cryptocurrencies involves significant risks."
-        },
-        es: {
-            hero_subtitle: "Bitcoin Ahora - Tu Guía Completa para Invertir con Seguridad",
-            price_label: "Precio de Bitcoin Ahora",
-            stat_change: "Cambio 24h",
-            stat_market: "Cap. Mercado",
-            stat_volume: "Volumen 24h",
-            cta_read: "Lee la Guía ↓",
-            ads_label: "Publicidad",
-            converter_title: "Conversor de Bitcoin en Tiempo Real",
-            converter_desc: "Usa nuestro conversor gratuito para calcular el valor de cualquier cantidad de Bitcoin en más de 13 monedas diferentes. Los precios se actualizan cada 30 segundos directamente desde la API de CoinGecko, asegurando máxima precisión.",
-            converter_amount: "Cantidad de Bitcoin",
-            converter_currency: "Elige Moneda",
-            converter_result: "Valor Convertido",
-            buy_title: "Cómo Comprar Bitcoin: Paso a Paso",
-            buy_step1_title: "Paso 1: Elige el Mejor Exchange",
-            buy_step1_desc: "Un exchange de criptomonedas es una plataforma donde compras y vendes Bitcoin. La mejor opción es Binance, que es la más grande del mundo con 30 millones de usuarios. Bybit también es excelente.",
-            cta_binance_title: "✨ Abre tu Cuenta en Binance",
-            cta_binance_desc: "El exchange de criptomonedas más grande del mundo.",
-            cta_binance_btn: "→ Crear Cuenta Gratis",
-            buy_step2_title: "Paso 2: Verificación de Identidad",
-            buy_step2_desc: "Todo exchange regulado requiere verificación de identidad. Necesitarás enviar un documento de identidad y tomarte una selfie. Toma 10-30 minutos.",
-            buy_step3_title: "Paso 3: Deposita Dinero (PIX es Rápido)",
-            buy_step3_desc: "Una vez verificado, puedes depositar vía PIX (instantáneo) o transferencia bancaria. Comienza con una cantidad pequeña.",
-            buy_step4_title: "Paso 4: Compra Bitcoin",
-            buy_step4_desc: "En tu exchange, selecciona Bitcoin, elige la cantidad y confirma la compra. ¡Listo! Ahora posees Bitcoin.",
-            buy_step5_title: "Paso 5: Almacénalo de Forma Segura",
-            buy_step5_desc: "Para Bitcoin a largo plazo, invierte en una billetera de hardware segura como Ledger. La billetera de hardware protege tus claves privadas sin conexión, lejos de los hackers.",
-            cta_ledger_title: "🔒 Compra una Billetera Ledger",
-            cta_ledger_desc: "Seguridad de nivel institucional para tu Bitcoin.",
-            cta_ledger_btn: "→ Comprar Ledger Ahora",
-            what_title: "¿Qué es Bitcoin?",
-            what_intro: "Bitcoin es la primera criptomoneda del mundo, creada en 2009. A diferencia del dinero tradicional controlado por bancos, Bitcoin es completamente descentralizado. Opera a través de una red de computadoras distribuidas en todo el mundo.",
-            blockchain_title: "¿Cómo Funciona Blockchain?",
-            blockchain_desc: "Bitcoin usa la tecnología blockchain - un registro compartido que documenta TODAS las transacciones desde su creación. Cuando envías Bitcoin, miles de computadoras verifican y confirman la transacción. Es seguro e inmutable.",
-            value_title: "¿Por Qué Bitcoin Tiene Valor?",
-            value_intro: "Bitcoin tiene valor por varias razones:",
-            value_scarcity: "1. Escasez:",
-            value_scarcity_desc: "Solo existirán 21 millones de Bitcoins.",
-            value_utility: "2. Utilidad:",
-            value_utility_desc: "Es útil para enviar dinero internacionalmente sin intermediarios.",
-            value_security: "3. Seguridad:",
-            value_security_desc: "La red Bitcoin nunca ha sido hackeada. Es matemáticamente segura.",
-            value_demand: "4. Demanda Global:",
-            value_demand_desc: "Instituciones y personas en 180+ países quieren Bitcoin.",
-            mining_title: "Minería de Bitcoin",
-            mining_desc: "La minería es el proceso de validar transacciones y crear nuevos bitcoins. Los mineros resuelven problemas matemáticos complejos y ganan Bitcoin como recompensa. Hoy lo hacen operaciones grandes con computadoras especializadas.",
-            security_title: "Seguridad: Cómo Proteger Tu Bitcoin",
-            risk1_title: "❌ Riesgo #1: Dejar Bitcoin en el Exchange",
-            risk1_desc: "Los exchanges pueden ser hackeados. La regla es: 'Si no tienes la clave, no es tu Bitcoin'.",
-            solution_label: "Solución:",
-            risk1_solution: "Usa billetera Ledger para guardar Bitcoin a largo plazo.",
-            risk2_title: "❌ Riesgo #2: Perder Acceso a tu Seed Phrase",
-            risk2_desc: "Tu seed phrase (12 palabras) es acceso total a tu Bitcoin. Si la pierdes y no tienes copia de seguridad, se pierde para siempre.",
-            risk2_solution: "Escríbela en papel y guárdala en un lugar seguro como una caja fuerte.",
-            risk3_title: "❌ Riesgo #3: Malware",
-            risk3_desc: "Si tu computadora tiene malware, un criminal puede robar tu clave privada. Una billetera de hardware protege contra esto.",
-            risk4_title: "❌ Riesgo #4: Phishing",
-            risk4_desc: "Los correos falsos fingiendo ser del exchange son comunes. NUNCA hagas clic en enlaces en correos sobre Bitcoin.",
-            checklist_title: "✅ Lista de Verificación de Seguridad",
-            check1: "☑ Habilita autenticación de dos factores (2FA)",
-            check2: "☑ Usa contraseñas únicas para cada plataforma",
-            check3: "☑ Guarda seed phrase en papel en un lugar seguro",
-            check4: "☑ Invierte en billetera Ledger para Bitcoin a largo plazo",
-            check5: "☑ Mantén antivirus actualizado",
-            check6: "☑ Nunca ingreses información en enlaces de correo",
-            ebook_title: "¿Quieres Aprender Todo Sobre Bitcoin?",
-            ebook_subtitle: 'Compra Nuestro E-book Completo: "Bitcoin para Principiantes - De Cero a Profesional"',
-            ebook_included: "📖 Incluido en el E-book:",
-            ebook_item1: "✓ Guía completa: cómo comprar Bitcoin paso a paso",
-            ebook_item2: "✓ Seguridad profesional en 10 pasos",
-            ebook_item3: "✓ Estrategias de inversión probadas",
-            ebook_item4: "✓ Análisis técnico básico para principiantes",
-            ebook_item5: "✓ Todo sobre minería de Bitcoin",
-            ebook_item6: "✓ Errores comunes que comete el 90%",
-            ebook_button: "🚀 Comprar Ahora por $5.98",
-            video_title: "Video: Bitcoin para Principiantes",
-            contact_title: "Contáctanos",
-            contact_desc: "¿Tienes preguntas? Completa el formulario a continuación:",
-            form_name: "Tu Nombre",
-            form_email: "Tu Email",
-            form_subject: "Asunto",
-            form_message: "Mensaje",
-            form_button: "Enviar Mensaje",
-            form_success: "✅ ¡Mensaje enviado con éxito! Responderemos pronto.",
-            form_error: "❌ Error al enviar mensaje. Intenta de nuevo.",
-            disclaimer_title: "⚠️ Aviso Legal Importante:",
-            disclaimer_content: "Bitcoin Ahora es un sitio educativo que contiene enlaces de afiliados. Recibimos comisiones cuando te registras, sin costo adicional para ti.",
-            disclaimer_warning: "ADVERTENCIA CRÍTICA: Bitcoin es una inversión de MUY ALTO RIESGO. El precio es extremadamente volátil. Podrías perder el 100% de tu inversión. NUNCA inviertas dinero que no puedas perder. Siempre consulta a un asesor financiero profesional antes de invertir.",
-            footer_privacy: "Política de Privacidad",
-            footer_terms: "Términos de Uso",
-            footer_about: "Acerca de Nosotros",
-            footer_copyright: "© 2026 Bitcoin Ahora. Todos los derechos reservados. | Invertir en criptomonedas conlleva riesgos significativos."
-        }
-    };
-
-    function setLang(lang) {
-        localStorage.setItem('bitcoinLang', lang);
-        
-        document.querySelectorAll('.lang button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-        
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
-            }
-        });
-    }
-
-    const savedLang = localStorage.getItem('bitcoinLang') || 'pt';
-    setLang(savedLang);
-</script>
-
-<!-- BITCOIN PRICE API - CORRIGIDO -->
-
-<script>
+    // EMAILJS
     emailjs.init("YOUR_PUBLIC_KEY");
     
-    let currentPrice = 0;
-    let pricesByMoeda = {};
-    
-    async function updatePrice() {
-        try {
-            const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar,sgd';
-            
-            // Usando endpoint correto da CoinGecko v3
-            const url = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
-            
-            const res = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            
-            if (!res.ok) {
-                throw new Error(`API erro: ${res.status}`);
-            }
-            
-            const data = await res.json();
-            
-            if (!data.bitcoin) {
-                throw new Error('Bitcoin data not found in response');
-            }
-            
-            const btc = data.bitcoin;
-            currentPrice = btc.usd;
-            pricesByMoeda = btc;
-            
-            // Atualizar display
-            document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
-            document.getElementById('hero-price-brl').textContent = btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            
-            const change = btc.usd_24h_change || 0;
-            document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-            document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
-            document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
-            
-            convertCurrency();
-        } catch (error) {
-            console.error('Erro ao atualizar preço:', error);
-            document.getElementById('hero-price').textContent = 'Erro ao carregar';
-            document.getElementById('hero-price-brl').textContent = '--';
-        }
-    }
-
-    function convertCurrency() {
-        const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
-        const moeda = document.getElementById('currency').value.toLowerCase();
-        
-        if (amount <= 0 || !pricesByMoeda[moeda]) { 
-            document.getElementById('result').textContent = 'R$ 0'; 
-            return; 
-        }
-        
-        const resultado = amount * pricesByMoeda[moeda];
-        const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R', sgd: 'S$' };
-        const simbolo = simbolos[moeda] || moeda.toUpperCase();
-        
-        let formatted = moeda === 'brl' 
-            ? resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-            : resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
-        
-        document.getElementById('result').textContent = simbolo + ' ' + formatted;
-    }
-
     async function sendEmail() {
         const name = document.getElementById('contact_name').value;
         const email = document.getElementById('contact_email').value;
@@ -1302,7 +910,60 @@
         }
     }
 
-    // Carregar preço imediatamente e a cada 30 segundos
+    // BITCOIN PRICE - CORRIGIDO COM FALLBACK
+    let currentPrice = 0;
+    let pricesByMoeda = {};
+    
+    async function updatePrice() {
+        try {
+            // Usar API que funciona com CORS
+            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl,eur,gbp,jpy,aud,cad,chf,cny,inr,mxn,zar,sgd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true');
+            
+            if (!res.ok) throw new Error('API falhou');
+            
+            const data = await res.json();
+            const btc = data.bitcoin;
+            
+            currentPrice = btc.usd;
+            pricesByMoeda = btc;
+            
+            // Atualizar display
+            document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
+            document.getElementById('hero-price-brl').textContent = btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            
+            const change = btc.usd_24h_change || 0;
+            document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+            document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
+            document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
+            
+            convertCurrency();
+        } catch (error) {
+            console.error('Erro ao carregar preço:', error);
+            document.getElementById('hero-price').textContent = 'Erro ao carregar preço';
+        }
+    }
+
+    function convertCurrency() {
+        const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
+        const moeda = document.getElementById('currency').value.toLowerCase();
+        
+        if (amount <= 0 || !pricesByMoeda[moeda]) { 
+            document.getElementById('result').textContent = 'R$ 0'; 
+            return; 
+        }
+        
+        const resultado = amount * pricesByMoeda[moeda];
+        const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R', sgd: 'S$' };
+        const simbolo = simbolos[moeda] || moeda.toUpperCase();
+        
+        let formatted = moeda === 'brl' 
+            ? resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+            : resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
+        
+        document.getElementById('result').textContent = simbolo + ' ' + formatted;
+    }
+
+    // Carregar preço imediatamente
     updatePrice();
     setInterval(updatePrice, 30000);
 </script>
