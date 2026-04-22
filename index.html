@@ -419,7 +419,7 @@
 <section class="hero">
     <div class="hero-content">
         <h1 class="hero-title">₿</h1>
-        <p class="hero-subtitle">Bitcoin Agora - Seu Guia Completo para Investir com Segurança</p>
+        <p class="hero-subtitle" id="hero-subtitle">Bitcoin Agora - Seu Guia Completo para Investir com Segurança</p>
         <div class="price-ticker">
             <div class="stats-label" style="font-size: 12px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Preço do Bitcoin Agora</div>
             <div class="price-display" id="hero-price">Carregando...</div>
@@ -439,7 +439,7 @@
                 </div>
             </div>
         </div>
-        <button class="cta-button" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">
+        <button class="cta-button" id="cta-read" onclick="document.querySelector('.section').scrollIntoView({behavior:'smooth'})">
             Leia o Guia ↓
         </button>
     </div>
@@ -454,7 +454,7 @@
 </div>
 
 <section class="section">
-    <h2>Conversor Bitcoin em Tempo Real</h2>
+    <h2 id="converter-title">Conversor Bitcoin em Tempo Real</h2>
     <p>Use nosso conversor gratuito para calcular o valor de qualquer quantidade de Bitcoin em mais de 13 moedas diferentes. Os preços são atualizados a cada 30 segundos diretamente da API CoinGecko, garantindo máxima precisão.</p>
     <div class="converter-card">
         <div class="form-row">
@@ -495,7 +495,7 @@
 </div>
 
 <section class="section">
-    <h2>Como Comprar Bitcoin: Passo a Passo</h2>
+    <h2 id="buy-title">Como Comprar Bitcoin: Passo a Passo</h2>
     <h3>Passo 1: Escolha a Melhor Corretora</h3>
     <p>Uma <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">corretora de criptomoedas</a> é uma plataforma onde você compra e vende Bitcoin. A melhor escolha é a <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Binance</a>, que é a maior do mundo com 30 milhões de usuários. A <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank">Bybit</a> também é excelente.</p>
     <div class="cta-box">
@@ -525,7 +525,7 @@
 </div>
 
 <section class="section">
-    <h2>O Que é Bitcoin?</h2>
+    <h2 id="what-title">O Que é Bitcoin?</h2>
     <p>Bitcoin é a primeira criptomoeda do mundo, criada em 2009. Diferentemente do dinheiro tradicional controlado por bancos, Bitcoin é totalmente descentralizado. Funciona através de uma rede de computadores espalhados pelo mundo.</p>
     <h3>Como Funciona o Blockchain</h3>
     <p>Bitcoin usa a tecnologia blockchain - um registro compartilhado que documenta TODAS as transações desde sua criação. Quando você envia Bitcoin, milhares de computadores verificam e confirmam a transação. É seguro e imutável.</p>
@@ -548,7 +548,7 @@
 </div>
 
 <section class="section">
-    <h2>Segurança: Como Proteger Seu Bitcoin</h2>
+    <h2 id="security-title">Segurança: Como Proteger Seu Bitcoin</h2>
     <h3>❌ Risco #1: Deixar Bitcoin em Corretora</h3>
     <p><a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Corretoras</a> podem ser hackeadas. A regra é: "Se não tiver a chave, não é seu Bitcoin".</p>
     <p><strong>Solução:</strong> Use <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a> para guardar Bitcoin de longo prazo.</p>
@@ -579,8 +579,8 @@
 <section class="section">
     <div class="ebook-section">
         <div class="ebook-icon">📚</div>
-        <h2>Quer Aprender Tudo Sobre Bitcoin?</h2>
-        <p>Compre nosso E-book Completo: "Bitcoin para Iniciantes - Do Zero ao Profissional"</p>
+        <h2 id="ebook-title">Quer Aprender Tudo Sobre Bitcoin?</h2>
+        <p id="ebook-subtitle">Compre nosso E-book Completo: "Bitcoin para Iniciantes - Do Zero ao Profissional"</p>
         <div style="background: rgba(0, 0, 0, 0.15); border-radius: 8px; padding: 16px; margin: 20px 0; text-align: left; font-size: 14px; color: #1a2332;">
             <strong style="display: block; margin-bottom: 12px;">📖 Incluído no E-book:</strong>
             <ul style="list-style: none; padding: 0; line-height: 2;">
@@ -603,7 +603,7 @@
 </div>
 
 <section class="section">
-    <h2>Vídeo: Bitcoin para Iniciantes</h2>
+    <h2 id="video-title">Vídeo: Bitcoin para Iniciantes</h2>
     <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid rgba(248, 153, 26, 0.2); margin: 20px 0;">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/Gc2en3nHxA4?start=8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
     </div>
@@ -616,7 +616,7 @@
 </div>
 
 <section class="section">
-    <h2>Entre em Contato</h2>
+    <h2 id="contact-title">Entre em Contato</h2>
     <p>Tem dúvidas? Preencha o formulário abaixo:</p>
     <div class="contact-form">
         <div class="form-group-contact">
@@ -657,9 +657,9 @@
             <p style="margin-top: 8px;"><strong>AVISO CRÍTICO:</strong> Bitcoin é um investimento de <strong>ALTÍSSIMO RISCO</strong>. O preço é extremamente volátil. Você pode perder 100% do seu investimento. <strong>NUNCA invista dinheiro que não possa perder.</strong> Sempre consulte um consultor financeiro profissional antes de investir.</p>
         </div>
         <div class="footer-links">
-            <a href="./politica-privacidade.html">Política de Privacidade</a>
-            <a href="./termos-uso.html">Termos de Uso</a>
-            <a href="./quem-somos.html">Quem Somos</a>
+            <a href="./politica-privacidade.html" id="footer-privacy">Política de Privacidade</a>
+            <a href="./termos-uso.html" id="footer-terms">Termos de Uso</a>
+            <a href="./quem-somos.html" id="footer-about">Quem Somos</a>
         </div>
         <div class="footer-text">© 2026 Bitcoin Agora. Todos os direitos reservados. | Investir em criptomoedas envolve riscos significativos.</div>
     </div>
@@ -694,6 +694,7 @@ async function sendEmail() {
     }
 }
 
+// BITCOIN PRICE CONVERTER - CÓDIGO ORIGINAL CORRIGIDO
 let currentPrice = 0;
 let pricesByMoeda = {};
 
@@ -703,45 +704,124 @@ async function updatePrice() {
         const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
         const data = await res.json();
         const btc = data.bitcoin;
+        
         currentPrice = btc.usd;
         pricesByMoeda = btc;
+        
         document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
         document.getElementById('hero-price-brl').textContent = btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        document.getElementById('change24h').textContent = (btc.usd_24h_change >= 0 ? '+' : '') + btc.usd_24h_change.toFixed(2) + '%';
+        
+        const change = btc.usd_24h_change;
+        document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
         document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
         document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
+        
         convertCurrency();
-        console.log('✅ Bitcoin carregado:', currentPrice);
-    } catch (e) { 
-        console.error('❌ Erro:', e);
-        document.getElementById('hero-price').textContent = 'Erro ao carregar';
-    }
+    } catch (e) { console.error('Erro ao atualizar preço:', e); }
 }
 
 function convertCurrency() {
     const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
     const moeda = document.getElementById('currency').value.toLowerCase();
-    if (amount <= 0 || !pricesByMoeda[moeda]) { document.getElementById('result').textContent = 'R$ 0'; return; }
+    
+    if (amount <= 0 || !pricesByMoeda[moeda]) { 
+        document.getElementById('result').textContent = 'R$ 0'; 
+        return; 
+    }
+    
     const resultado = amount * pricesByMoeda[moeda];
     const simbolos = { usd: '$', eur: '€', gbp: '£', jpy: '¥', aud: '$', cad: '$', chf: 'CHF', cny: '¥', inr: '₹', brl: 'R$', mxn: '$', zar: 'R', sgd: 'S$' };
     const simbolo = simbolos[moeda] || moeda.toUpperCase();
-    let formatted = moeda === 'brl' ? resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
+    
+    let formatted = moeda === 'brl' 
+        ? resultado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        : resultado.toLocaleString('en-US', { maximumFractionDigits: 2 });
+    
     document.getElementById('result').textContent = simbolo + ' ' + formatted;
 }
 
+// SISTEMA DE TRADUÇÃO COMPLETO PT/EN/ES
+const translations = {
+    pt: {
+        'hero-subtitle': 'Bitcoin Agora - Seu Guia Completo para Investir com Segurança',
+        'cta-read': 'Leia o Guia ↓',
+        'converter-title': 'Conversor Bitcoin em Tempo Real',
+        'buy-title': 'Como Comprar Bitcoin: Passo a Passo',
+        'what-title': 'O Que é Bitcoin?',
+        'security-title': 'Segurança: Como Proteger Seu Bitcoin',
+        'ebook-title': 'Quer Aprender Tudo Sobre Bitcoin?',
+        'ebook-subtitle': 'Compre nosso E-book Completo: "Bitcoin para Iniciantes - Do Zero ao Profissional"',
+        'video-title': 'Vídeo: Bitcoin para Iniciantes',
+        'contact-title': 'Entre em Contato',
+        'footer-privacy': 'Política de Privacidade',
+        'footer-terms': 'Termos de Uso',
+        'footer-about': 'Quem Somos'
+    },
+    en: {
+        'hero-subtitle': 'Bitcoin Now - Your Complete Guide to Investing Safely',
+        'cta-read': 'Read the Guide ↓',
+        'converter-title': 'Real-Time Bitcoin Converter',
+        'buy-title': 'How to Buy Bitcoin: Step by Step',
+        'what-title': 'What is Bitcoin?',
+        'security-title': 'Security: How to Protect Your Bitcoin',
+        'ebook-title': 'Want to Learn Everything About Bitcoin?',
+        'ebook-subtitle': 'Buy our Complete E-book: "Bitcoin for Beginners - From Zero to Professional"',
+        'video-title': 'Video: Bitcoin for Beginners',
+        'contact-title': 'Contact Us',
+        'footer-privacy': 'Privacy Policy',
+        'footer-terms': 'Terms of Use',
+        'footer-about': 'About Us'
+    },
+    es: {
+        'hero-subtitle': 'Bitcoin Ahora - Tu Guía Completa para Invertir con Seguridad',
+        'cta-read': 'Lee la Guía ↓',
+        'converter-title': 'Conversor de Bitcoin en Tiempo Real',
+        'buy-title': 'Cómo Comprar Bitcoin: Paso a Paso',
+        'what-title': '¿Qué es Bitcoin?',
+        'security-title': 'Seguridad: Cómo Proteger tu Bitcoin',
+        'ebook-title': '¿Quieres Aprender Todo Sobre Bitcoin?',
+        'ebook-subtitle': 'Compra nuestro E-book Completo: "Bitcoin para Principiantes - De Cero a Profesional"',
+        'video-title': 'Video: Bitcoin para Principiantes',
+        'contact-title': 'Contáctanos',
+        'footer-privacy': 'Política de Privacidad',
+        'footer-terms': 'Términos de Uso',
+        'footer-about': 'Acerca de Nosotros'
+    }
+};
+
 function setLang(lang) {
-    localStorage.setItem('bitcoinLang', lang);
+    localStorage.setItem('lang', lang);
+    
+    // Atualizar botão ativo
     document.querySelectorAll('.lang button').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
-    console.log('✅ Idioma: ' + lang);
+    
+    // Traduzir todos os elementos
+    for (let key in translations[lang]) {
+        const elem = document.getElementById(key);
+        if (elem) {
+            elem.textContent = translations[lang][key];
+        }
+    }
+    
+    console.log('Idioma mudado para:', lang);
 }
 
-const savedLang = localStorage.getItem('bitcoinLang') || 'pt';
+// Carregar idioma salvo
+const savedLang = localStorage.getItem('lang') || 'pt';
 if (savedLang !== 'pt') {
     document.querySelectorAll('.lang button').forEach(btn => btn.classList.remove('active'));
     const buttons = document.querySelectorAll('.lang button');
     if (savedLang === 'en') buttons[1].classList.add('active');
     if (savedLang === 'es') buttons[2].classList.add('active');
+    
+    // Aplicar tradução
+    for (let key in translations[savedLang]) {
+        const elem = document.getElementById(key);
+        if (elem) {
+            elem.textContent = translations[savedLang][key];
+        }
+    }
 }
 
 updatePrice();
