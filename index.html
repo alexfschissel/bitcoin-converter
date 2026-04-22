@@ -67,16 +67,11 @@
         font-size: 10px;
         font-weight: 600;
         font-family: 'Inter', sans-serif;
-        transition: all 0.3s;
     }
 
     .lang button.active {
         background: #f8991a;
         color: #0f1419;
-    }
-
-    .lang button:hover {
-        transform: scale(1.05);
     }
 
     .hero {
@@ -122,7 +117,6 @@
         font-weight: 800;
         color: #f8991a;
         margin-bottom: 8px;
-        min-height: 60px;
     }
 
     .stats-grid {
@@ -267,7 +261,7 @@
         font-weight: 600;
     }
 
-    input, select, textarea {
+    input, select {
         padding: 12px;
         background: #0f1419;
         border: 1px solid rgba(248, 153, 26, 0.2);
@@ -277,7 +271,7 @@
         font-family: 'Inter', sans-serif;
     }
 
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus {
         outline: none;
         border-color: #f8991a;
         box-shadow: 0 0 0 3px rgba(248, 153, 26, 0.1);
@@ -489,14 +483,14 @@
     <div class="header-content">
         <div class="logo">₿ Bitcoin Agora</div>
         <div class="lang">
-            <button class="active" onclick="setLang('pt')" data-lang="pt">PT</button>
-            <button onclick="setLang('en')" data-lang="en">EN</button>
-            <button onclick="setLang('es')" data-lang="es">ES</button>
+            <button class="active" onclick="setLang('pt')">PT</button>
+            <button onclick="setLang('en')">EN</button>
+            <button onclick="setLang('es')">ES</button>
         </div>
     </div>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION - MINIMALISTA -->
 
 <section class="hero">
     <div class="hero-content">
@@ -505,21 +499,21 @@
 
 ```
     <div class="price-ticker">
-        <div class="stats-label">Preço do Bitcoin Agora</div>
-        <div class="price-display" id="hero-price">Carregando...</div>
-        <div style="color: #cbd5e1; font-weight: 600;">R$ <span id="hero-price-brl">--</span></div>
+        <div class="stats-label" style="font-size: 12px; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Preço do Bitcoin Agora</div>
+        <div class="price-display" id="hero-price">$0</div>
+        <div style="color: #cbd5e1; font-weight: 600;">R$ <span id="hero-price-brl">0</span></div>
         <div class="stats-grid">
             <div class="stat-box">
                 <div class="stat-label">Mudança 24h</div>
-                <div class="stat-value" id="change24h">--</div>
+                <div class="stat-value" id="change24h">0%</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Market Cap</div>
-                <div class="stat-value" id="marketCap">--</div>
+                <div class="stat-value" id="marketCap">$0</div>
             </div>
             <div class="stat-box">
                 <div class="stat-label">Volume 24h</div>
-                <div class="stat-value" id="volume24h">--</div>
+                <div class="stat-value" id="volume24h">$0</div>
             </div>
         </div>
     </div>
@@ -562,18 +556,18 @@
                 <label class="form-label">Escolha a Moeda</label>
                 <select id="currency" onchange="convertCurrency()">
                     <option value="brl" selected>BRL - Real Brasileiro</option>
-                    <option value="usd">USD - US Dollar</option>
+                    <option value="usd">USD - Dólar Americano</option>
                     <option value="eur">EUR - Euro</option>
-                    <option value="gbp">GBP - British Pound</option>
-                    <option value="jpy">JPY - Japanese Yen</option>
-                    <option value="aud">AUD - Australian Dollar</option>
-                    <option value="cad">CAD - Canadian Dollar</option>
-                    <option value="chf">CHF - Swiss Franc</option>
-                    <option value="cny">CNY - Chinese Yuan</option>
-                    <option value="inr">INR - Indian Rupee</option>
-                    <option value="mxn">MXN - Mexican Peso</option>
-                    <option value="zar">ZAR - South African Rand</option>
-                    <option value="sgd">SGD - Singapore Dollar</option>
+                    <option value="gbp">GBP - Libra Esterlina</option>
+                    <option value="jpy">JPY - Iene Japonês</option>
+                    <option value="aud">AUD - Dólar Australiano</option>
+                    <option value="cad">CAD - Dólar Canadense</option>
+                    <option value="chf">CHF - Franco Suíço</option>
+                    <option value="cny">CNY - Yuan Chinês</option>
+                    <option value="inr">INR - Rúpia Indiana</option>
+                    <option value="mxn">MXN - Peso Mexicano</option>
+                    <option value="zar">ZAR - Rand Sul-Africano</option>
+                    <option value="sgd">SGD - Dólar de Cingapura</option>
                 </select>
             </div>
         </div>
@@ -667,7 +661,9 @@
     </p>
 
     <h3>Por Que Bitcoin Tem Valor?</h3>
-    <p>Bitcoin tem valor por vários motivos:</p>
+    <p>
+        Bitcoin tem valor por vários motivos:
+    </p>
     <div class="highlight-box">
         <strong>1. Escassez:</strong> Apenas 21 milhões de Bitcoins existirão para sempre.<br><br>
         <strong>2. Utilidade:</strong> É útil para enviar dinheiro internacionalmente sem intermediários.<br><br>
@@ -695,7 +691,8 @@
 
     <h3>❌ Risco #1: Deixar Bitcoin em Corretora</h3>
     <p>
-        Corretoras podem ser hackeadas. A regra é: "Se não tiver a chave, não é seu Bitcoin".
+        <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Corretoras</a> 
+        podem ser hackeadas. A regra é: "Se não tiver a chave, não é seu Bitcoin".
     </p>
     <p><strong>Solução:</strong> Use <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a> para guardar Bitcoin de longo prazo.</p>
 
@@ -712,7 +709,8 @@
 
     <h3>❌ Risco #4: Phishing</h3>
     <p>
-        Emails falsos fingindo ser da corretora são comuns. NUNCA clique em links de email sobre Bitcoin.
+        Emails falsos fingindo ser da <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">corretora</a> 
+        são comuns. NUNCA clique em links de email sobre Bitcoin.
     </p>
 
     <h3>✅ Checklist de Segurança</h3>
@@ -803,7 +801,7 @@
 
         <div class="form-group-contact">
             <label class="form-label">Mensagem</label>
-            <textarea id="contact_message" placeholder="Descreva sua mensagem..." style="min-height: 150px; resize: vertical;"></textarea>
+            <textarea id="contact_message" placeholder="Descreva sua mensagem..." style="padding: 12px; background: #0f1419; border: 1px solid rgba(248, 153, 26, 0.2); border-radius: 6px; color: #e2e8f0; font-size: 15px; font-family: 'Inter', sans-serif; min-height: 150px; resize: vertical;"></textarea>
         </div>
 
         <button class="contact-button" onclick="sendEmail()">Enviar Mensagem</button>
@@ -847,9 +845,9 @@
 
 ```
     <div class="footer-links">
-        <a href="politica-privacidade.html" target="_blank">Política de Privacidade</a>
-        <a href="termos-uso.html" target="_blank">Termos de Uso</a>
-        <a href="quem-somos.html" target="_blank">Quem Somos</a>
+        <a href="/politica-privacidade.html">Política de Privacidade</a>
+        <a href="/termos-uso.html">Termos de Uso</a>
+        <a href="/quem-somos.html">Quem Somos</a>
     </div>
 
     <div class="footer-text">
@@ -860,11 +858,11 @@
 
 </footer>
 
-<!-- SCRIPTS -->
+<!-- EMAILJS SCRIPT -->
 
 <script>
-    // EMAILJS
-    emailjs.init("YOUR_PUBLIC_KEY");
+    // Inicializar EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY"); // Você vai substituir por sua chave pública
     
     async function sendEmail() {
         const name = document.getElementById('contact_name').value;
@@ -890,11 +888,13 @@
                 document.getElementById('successMessage').style.display = 'block';
                 document.getElementById('errorMessage').style.display = 'none';
                 
+                // Limpar formulário
                 document.getElementById('contact_name').value = '';
                 document.getElementById('contact_email').value = '';
                 document.getElementById('contact_subject').value = '';
                 document.getElementById('contact_message').value = '';
 
+                // Esconder mensagem após 5 segundos
                 setTimeout(() => {
                     document.getElementById('successMessage').style.display = 'none';
                 }, 5000);
@@ -910,37 +910,30 @@
         }
     }
 
-    // BITCOIN PRICE - CORRIGIDO COM FALLBACK
+    // BITCOIN PRICE CONVERTER
     let currentPrice = 0;
     let pricesByMoeda = {};
     
     async function updatePrice() {
         try {
-            // Usar API que funciona com CORS
-            const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl,eur,gbp,jpy,aud,cad,chf,cny,inr,mxn,zar,sgd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true');
-            
-            if (!res.ok) throw new Error('API falhou');
-            
+            const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar,sgd';
+            const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
             const data = await res.json();
             const btc = data.bitcoin;
             
             currentPrice = btc.usd;
             pricesByMoeda = btc;
             
-            // Atualizar display
             document.getElementById('hero-price').textContent = '$' + currentPrice.toLocaleString('en-US', { maximumFractionDigits: 0 });
             document.getElementById('hero-price-brl').textContent = btc.brl.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             
-            const change = btc.usd_24h_change || 0;
+            const change = btc.usd_24h_change;
             document.getElementById('change24h').textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
             document.getElementById('marketCap').textContent = '$' + (btc.usd_market_cap / 1e12).toFixed(1) + 'T';
             document.getElementById('volume24h').textContent = '$' + (btc.usd_24h_vol / 1e9).toFixed(1) + 'B';
             
             convertCurrency();
-        } catch (error) {
-            console.error('Erro ao carregar preço:', error);
-            document.getElementById('hero-price').textContent = 'Erro ao carregar preço';
-        }
+        } catch (e) { console.error('Erro ao atualizar preço:', e); }
     }
 
     function convertCurrency() {
@@ -963,7 +956,10 @@
         document.getElementById('result').textContent = simbolo + ' ' + formatted;
     }
 
-    // Carregar preço imediatamente
+    function setLang(lang) {
+        localStorage.setItem('lang', lang);
+    }
+
     updatePrice();
     setInterval(updatePrice, 30000);
 </script>
