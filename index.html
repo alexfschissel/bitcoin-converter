@@ -30,9 +30,7 @@
 <link rel="canonical" href="https://bitcoin-converter-ten.vercel.app">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- STRIPE (INATIVO - Será ativado com sistema Premium)
 <script src="https://js.stripe.com/v3/"></script>
--->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9069537322097109" crossorigin="anonymous"></script>
 <style>
     * { 
@@ -925,7 +923,7 @@
         </div>
     </section>
 
-    <!-- PREMIUM (INATIVO - Sistema ativado depois via backend Stripe+Twilio)
+    <!-- PREMIUM - Sistema de Alertas com Pagamento Stripe + WhatsApp -->
     <section class="section">
         <div class="premium-card">
             <h2 class="premium-title">💎 Alertas Premium</h2>
@@ -982,7 +980,6 @@
             </div>
         </div>
     </section>
-    -->
 </div>
 
 <script>
@@ -1005,7 +1002,7 @@
             video_title: 'O que é Bitcoin? - Vídeo Explicativo',
             ebook_title: 'Quer Aprender Mais?',
             ebook_subtitle: 'Compre o E-book Bitcoin para Iniciantes',
-            ebook_desc: 'Descubra como funcionam as transações, como minar Bitcoin, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.',
+            ebook_desc: 'Descubra como funcionam as transações, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.',
             ebook_button: '🚀 Comprar E-book Agora',
             partners_title: 'Nossas Parceiras',
             form_whatsapp: 'WhatsApp',
@@ -1105,15 +1102,13 @@
     // ===== VARIÁVEIS GLOBAIS =====
     let currentPrice = 0;
     let pricesByMoeda = {};
-
-    // ===== PREMIUM (INATIVO - Será ativado com backend)
-    /*
     const STRIPE_KEY = 'pk_test_51TGnF5RoTlB1iZhj8XUJzO0CT4u6VSGbzi4ao9OltCl43CK4ja4hssXDDQfGzGlVW15F9XDDlYW2YSui1PsAnFs6005StCmNNL';
     const stripe = Stripe(STRIPE_KEY);
     const elements = stripe.elements();
     const cardElement = elements.create('card');
     cardElement.mount('#card-element');
     
+    // ===== FUNÇÕES PREMIUM =====
     function switchTab(tab) {
         ['dados', 'alertas', 'pagamento'].forEach(t => {
             const el = document.getElementById(t + '-tab');
@@ -1146,6 +1141,7 @@
     async function pay() {
         const btn = document.getElementById('payBtn');
         btn.disabled = true;
+        btn.textContent = 'Processando...';
         try {
             const res = await fetch('/api/create-payment', {
                 method: 'POST',
@@ -1163,9 +1159,9 @@
                 payment_method: { card: cardElement, billing_details: { email: document.getElementById('email').value } }
             });
             if (error) showMsg('Erro: ' + error.message, 'error');
-            else if (paymentIntent.status === 'succeeded') showMsg('✅ Sucesso!', 'success');
+            else if (paymentIntent.status === 'succeeded') showMsg('✅ Sucesso! Você receberá um WhatsApp em breve.', 'success');
         } catch (e) { showMsg('Erro: ' + e.message, 'error'); }
-        finally { btn.disabled = false; }
+        finally { btn.disabled = false; btn.textContent = 'Pagar R$ 2,99'; }
     }
 
     function showMsg(text, type) {
@@ -1174,7 +1170,6 @@
         msg.className = 'message show ' + type;
         setTimeout(() => msg.classList.remove('show'), 5000);
     }
-    */
         try {
             const moedas = 'usd,eur,gbp,jpy,aud,cad,chf,cny,inr,brl,mxn,zar';
             const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${moedas}&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`);
