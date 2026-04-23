@@ -276,22 +276,31 @@
 
         /* ========== CTA EBOOK ========== */
         .cta-ebook {
-            background: linear-gradient(135deg, #f8991a 0%, #fbb040 100%);
-            border: 3px solid #f8991a;
+            background: #1a2332;
+            border: 2px solid #f8991a;
             border-radius: 12px;
-            padding: 40px 24px;
+            padding: 48px 32px;
             text-align: center;
             margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(248,153,26,0.3);
+            box-shadow: 0 10px 40px rgba(248,153,26,0.15), inset 0 0 60px rgba(248,153,26,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-ebook::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f8991a, #fbb040, #f8991a, transparent);
         }
         .ebook-icon { font-size: 56px; margin-bottom: 16px; animation: bounce 2s infinite; display: block; }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        .ebook-title { font-size: clamp(24px, 5vw, 32px); font-weight: 800; color: #0f1419; margin-bottom: 8px; }
-        .ebook-subtitle { font-size: 16px; color: #0f1419; margin-bottom: 16px; font-weight: 600; }
-        .ebook-desc { font-size: 14px; color: #0f1419; margin-bottom: 24px; line-height: 1.6; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .ebook-title { font-size: clamp(24px, 5vw, 32px); font-weight: 800; color: #f8991a; margin-bottom: 8px; }
+        .ebook-subtitle { font-size: 16px; color: #e2e8f0; margin-bottom: 16px; font-weight: 600; }
+        .ebook-desc { font-size: 15px; color: #94a3b8; margin-bottom: 28px; line-height: 1.7; max-width: 500px; margin-left: auto; margin-right: auto; }
         .ebook-button {
             display: inline-block;
             padding: 16px 40px;
@@ -303,12 +312,13 @@
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            border: 3px solid #0f1419;
+            border: 2px solid #f8991a;
             cursor: pointer;
             transition: all 0.3s;
             font-family: 'Inter', sans-serif;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
         }
-        .ebook-button:hover { background: transparent; color: #0f1419; box-shadow: inset 0 0 0 3px #0f1419; }
+        .ebook-button:hover { transform: translateY(-3px); background: #1a2332; box-shadow: 0 10px 28px rgba(0,0,0,0.5); }
 
         /* Legal sections */
         .section-legal { background: rgba(248, 153, 26, 0.05); border-top: 1px solid rgba(248, 153, 26, 0.2); }
