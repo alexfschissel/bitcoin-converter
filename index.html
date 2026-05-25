@@ -428,6 +428,51 @@
         .section-legal-mid { background: rgba(248, 153, 26, 0.05); }
         .section-legal-bottom { background: rgba(248, 153, 26, 0.05); border-bottom: 1px solid rgba(248, 153, 26, 0.2); }
 
+        /* ========== NEW: HIGHLIGHT/WARNING/TABLE BOXES ========== */
+        .highlight-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22c55e;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #cbd5e1;
+        }
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #cbd5e1;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #0f1419;
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 14px;
+        }
+        .comparison-table th {
+            background: rgba(248, 153, 26, 0.2);
+            color: #f8991a;
+            padding: 12px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(248, 153, 26, 0.3);
+        }
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(248, 153, 26, 0.1);
+            color: #cbd5e1;
+        }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        @media (max-width: 640px) {
+            .comparison-table { font-size: 12px; }
+            .comparison-table th, .comparison-table td { padding: 8px; }
+        }
+
         /* ========== RESPONSIVE ========== */
         @media (max-width: 640px) {
             header { padding: 10px 16px; }
@@ -695,6 +740,511 @@
         <p data-i18n="s8_p4">Comprar e vender Bitcoin frequentemente para lucrar com flutuações de preço. Isto é muito mais arriscado e requer conhecimento técnico. 90% dos traders perdem dinheiro.</p>
     </section>
 
+    <!-- ============================================================ -->
+    <!-- NOVAS 8 SEÇÕES DE CONTEÚDO PROFUNDO PARA APROVAÇÃO ADSENSE -->
+    <!-- ============================================================ -->
+
+    <!-- SEÇÃO 1: IMPOSTO DE RENDA PARA BITCOIN (BRASIL) -->
+    <section class="section">
+        <h2 class="section-title">💰 Imposto de Renda em Bitcoin: Guia Completo Para Brasil</h2>
+        <p>Muitos iniciantes não sabem que ganhos com Bitcoin são tributados no Brasil. A Receita Federal (RFB) exige que você declare operações com criptomoedas, assim como faz com ações e outros investimentos. A falta de declaração adequada pode resultar em multa, juros e até processos judiciais. Este é um aspecto crucial e frequentemente ignorado por quem está começando.</p>
+
+        <div class="highlight-box">
+            <strong>💡 Informação Importante:</strong> A Receita Federal acompanha movimentações de criptomoedas através de inteligência artificial e cruzamento de dados com plataformas de câmbio. Declarar corretamente protege você de problemas futuros.
+        </div>
+
+        <h3>Alíquota de Imposto de Renda</h3>
+        <p>Ganhos com venda de Bitcoin são tributados como ganho de capital. A alíquota padrão é de <strong>15%</strong> sobre o lucro obtido. Importante: apenas ganhos são tributados, não o valor total da venda. Se você comprou 0.5 BTC por R$ 50.000 e vendeu por R$ 100.000, o lucro é R$ 50.000, e você paga 15% sobre R$ 50.000 = R$ 7.500.</p>
+
+        <h3>Como Calcular a Base de Custo</h3>
+        <p>A base de custo é o valor total que você pagou para adquirir seus Bitcoin. Se você fez múltiplas compras em datas diferentes e preços diferentes, use a média ponderada:</p>
+        <p style="background: rgba(248,153,26,0.05); padding: 15px; border-radius: 8px; color: #cbd5e1;"><strong>Fórmula:</strong> Base de Custo Média = (Quantidade Total de BTC × Preço Médio)<br><strong>Exemplo:</strong> Comprei 0.3 BTC por R$ 150.000 (R$ 500k/BTC) + 0.2 BTC por R$ 100.000 (R$ 500k/BTC) = 0.5 BTC total com custo de R$ 250.000. Preço médio = R$ 250.000 ÷ 0.5 = R$ 500.000 por BTC.</p>
+
+        <h3>Isenção de Impostos (R$ 20 Milhões?)</h3>
+        <p>Existe um mito de que ganhos menores que R$ 20 milhões são isentos. <strong>ISSO É FALSO.</strong> Essa regra se aplicava ao antigo mercado de ações (com limite bem menor), mas NÃO se aplica a criptomoedas. Todos os ganhos com Bitcoin devem ser declarados, independente da quantia. A Receita Federal cobra imposto de qualquer ganho, mesmo de R$ 100.</p>
+
+        <h3>Ferramentas para Calcular</h3>
+        <p>Você não precisa fazer cálculos manuais. Existem programas que automatizam o processo:</p>
+        <ul>
+            <li><strong>Blocktrader:</strong> Software gratuito que importa dados de corretoras e calcula IR automaticamente</li>
+            <li><strong>Crypto Tax Brasil:</strong> Plataforma online que gera relatórios prontos para a RFB</li>
+            <li><strong>Excel com fórmulas:</strong> Se preferir fazer manualmente, crie uma planilha com colunas de data, quantidade, preço de compra e venda</li>
+            <li><strong>Consultor Tributário:</strong> Para operações complexas, contrate um contador especializado em cripto</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ Aviso Legal:</strong> Esta é informação educacional, não consultoria legal ou tributária. Consulte um contador ou advogado tributarista para sua situação específica.
+        </div>
+
+        <h3>Exemplo Prático Completo</h3>
+        <p style="background: rgba(248,153,26,0.05); padding: 15px; border-radius: 8px; color: #cbd5e1; font-size: 14px;">
+            <strong>Cenário:</strong> Você comprou 0.5 BTC por R$ 250.000 em janeiro. Em dezembro, quando BTC=R$ 600k, você vende tudo por R$ 300.000.<br>
+            <strong>Cálculo:</strong><br>
+            - Base de Custo: R$ 250.000<br>
+            - Valor da Venda: R$ 300.000<br>
+            - Lucro: R$ 50.000<br>
+            - IR Devido: 15% × R$ 50.000 = <strong>R$ 7.500</strong><br>
+            <strong>Conclusão:</strong> Você paga R$ 7.500 em imposto e fica com R$ 292.500 líquidos.
+        </p>
+    </section>
+
+    <!-- SEÇÃO 2: CICLOS DE HALVING -->
+    <section class="section">
+        <h2 class="section-title">⛓️ Ciclos de Halving do Bitcoin: Histórico e Impacto</h2>
+        <p>O halving é um evento programado no código do Bitcoin que ocorre a cada 4 anos (aproximadamente a cada 210.000 blocos). Nesse evento, a recompensa que os mineradores recebem por validar transações é reduzida pela metade. Este é um dos eventos mais importantes para entender o ciclo de preço do Bitcoin e a escassez que sustenta seu valor.</p>
+
+        <h3>Histórico de Halvings</h3>
+        <p>Bitcoin teve 4 halvings até agora, e cada um teve impacto significativo:</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Data Halving</th>
+                    <th>Recompensa Antes</th>
+                    <th>Recompensa Depois</th>
+                    <th>Preço Antes</th>
+                    <th>Preço 1 Ano Depois</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>28 Nov 2012</td>
+                    <td>50 BTC</td>
+                    <td>25 BTC</td>
+                    <td>$13</td>
+                    <td>$1.100+</td>
+                </tr>
+                <tr>
+                    <td>9 Jul 2016</td>
+                    <td>25 BTC</td>
+                    <td>12.5 BTC</td>
+                    <td>$650</td>
+                    <td>$4.500+</td>
+                </tr>
+                <tr>
+                    <td>11 Mai 2020</td>
+                    <td>12.5 BTC</td>
+                    <td>6.25 BTC</td>
+                    <td>$9.500</td>
+                    <td>$60.000+</td>
+                </tr>
+                <tr>
+                    <td>19 Abr 2024</td>
+                    <td>6.25 BTC</td>
+                    <td>3.125 BTC</td>
+                    <td>~$63.000</td>
+                    <td>$70.000+</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Por Que o Halving Afeta o Preço?</h3>
+        <p>O halving reduz a oferta de novos Bitcoin em circulação. Com menos Bitcoin sendo criado, e a demanda se mantendo constante (ou aumentando), o preço tende a subir. É simples economia: menor oferta + mesma demanda = preço maior.</p>
+        <p>Além disso, o halving é um evento psicológico importante. Investidores institucionais e grandes players sabem do halving meses antes e começam a acumular Bitcoin, criando uma pressão de compra que afeta o preço.</p>
+
+        <h3>Ciclos de Bull e Bear Market</h3>
+        <p>Existe um padrão consistente após cada halving:</p>
+        <ul>
+            <li><strong>Meses -6 a 0:</strong> Acumulação antes do halving (preço sobe)</li>
+            <li><strong>Meses 0 a 6:</strong> Possível consolidação ou dip pequeno após halving</li>
+            <li><strong>Meses 6 a 18:</strong> Bull market explosivo (preço sobe 500-1000%)</li>
+            <li><strong>Meses 18 a 36:</strong> Bear market (correção, preço cai 70-80%)</li>
+            <li><strong>Meses 36 a 48:</strong> Acumulação novamente antes do próximo halving</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>📊 Insight Importante:</strong> Muitos traders experientes usam halvings para planejar suas estratégias. Compram antes, vendem no topo do bull market subsequente. Iniciantes devem focar em HODL de longo prazo e ignorar o timing.
+        </div>
+
+        <h3>Próximo Halving (2028)</h3>
+        <p>O próximo halving ocorrerá em abril de 2028 (aproximadamente). Nessa época, a recompensa cairá de 3.125 BTC para 1.5625 BTC. Isso reduzirá ainda mais a taxa de inflação do Bitcoin, tornando-o ainda mais escasso. Em 2140, o último Bitcoin será minerado, e nenhum novo Bitcoin entrará em circulação.</p>
+    </section>
+
+    <!-- SEÇÃO 3: LEDGER VS CARTEIRA DE SOFTWARE -->
+    <section class="section">
+        <h2 class="section-title">🔐 Ledger Hardware Wallet vs Carteira de Software: Comparação Completa</h2>
+        <p>Armazenar Bitcoin com segurança é uma decisão crítica. Existem dois tipos principais: hardware wallets (como Ledger) e software wallets (como MetaMask, Exodus, Electrum). Cada uma tem vantagens e desvantagens. Escolher a errada pode resultar em Bitcoin roubado ou perdido permanentemente.</p>
+
+        <h3>O Que é Uma Hardware Wallet (Ledger)?</h3>
+        <p>Uma hardware wallet é um dispositivo físico, geralmente do tamanho de um pen drive, que armazena suas chaves privadas offline. Sua chave privada nunca toca um computador conectado à internet, o que torna praticamente impossível um hacker roubar seu Bitcoin remotamente.</p>
+        <p><strong>Exemplos:</strong> Ledger Nano S Plus, Ledger Nano X, Trezor Model T, Coldcard</p>
+
+        <h3>O Que é Uma Carteira de Software?</h3>
+        <p>Uma software wallet é um aplicativo instalado no seu computador, smartphone, ou acessível via navegador. Sua chave privada fica no dispositivo (cifrada). É mais conveniente mas menos seguro, pois o dispositivo está conectado à internet e pode ser comprometido por malware.</p>
+        <p><strong>Exemplos:</strong> MetaMask, Exodus, Electrum, Blue Wallet, Trust Wallet</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Características</th>
+                    <th>Hardware Wallet (Ledger)</th>
+                    <th>Carteira de Software</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Segurança</strong></td>
+                    <td>⭐⭐⭐⭐⭐ Máxima (chave privada offline)</td>
+                    <td>⭐⭐⭐ Moderada (vulnerável a hacks)</td>
+                </tr>
+                <tr>
+                    <td><strong>Preço</strong></td>
+                    <td>$79-$149 USD</td>
+                    <td>Gratuita</td>
+                </tr>
+                <tr>
+                    <td><strong>Facilidade de Uso</strong></td>
+                    <td>⭐⭐⭐⭐ Fácil (plug & play)</td>
+                    <td>⭐⭐⭐⭐⭐ Muito Fácil (smartphone)</td>
+                </tr>
+                <tr>
+                    <td><strong>Transações</strong></td>
+                    <td>Rápidas (confirma no dispositivo)</td>
+                    <td>Muito Rápidas (instantâneas)</td>
+                </tr>
+                <tr>
+                    <td><strong>Suporte para Múltiplas Criptos</strong></td>
+                    <td>Bitcoin, Ethereum, 5000+ coins</td>
+                    <td>Varia por carteira</td>
+                </tr>
+                <tr>
+                    <td><strong>Recuperação se Perdido</strong></td>
+                    <td>✅ Seed phrase restaura tudo</td>
+                    <td>✅ Seed phrase restaura tudo</td>
+                </tr>
+                <tr>
+                    <td><strong>Risco de Roubo Remoto</strong></td>
+                    <td>❌ Mínimo (chave nunca online)</td>
+                    <td>⚠️ Sim (malware pode roubar chave)</td>
+                </tr>
+                <tr>
+                    <td><strong>Para Qual Quantia?</strong></td>
+                    <td>Recomendado para +R$ 10.000</td>
+                    <td>Adequado para até R$ 5.000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Quando Usar Hardware Wallet (Ledger)?</h3>
+        <p><strong>Recomendado se você:</strong></p>
+        <ul>
+            <li>Planeja manter Bitcoin por mais de 6 meses</li>
+            <li>Tem mais de R$ 10.000 investido</li>
+            <li>Quer máxima segurança e não se importa com custo</li>
+            <li>Não precisa fazer transações frequentes</li>
+            <li>Quer proteção contra malware e hacks de computador</li>
+        </ul>
+
+        <h3>Quando Usar Carteira de Software?</h3>
+        <p><strong>Adequado se você:</strong></p>
+        <ul>
+            <li>Tem menos de R$ 5.000 em Bitcoin</li>
+            <li>Faz transações frequentes (day trading)</li>
+            <li>Quer máxima conveniência (usar no smartphone)</li>
+            <li>Não pode gastar R$ 400+ em hardware</li>
+            <li>Está começando e quer aprender</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ Aviso:</strong> Nunca deixe grandes quantidades de Bitcoin em exchange (Binance, Bybit). Exchanges foram hackeadas no passado (Mt. Gox, FTX). Use exchange apenas para comprar/vender, depois transfira para sua wallet.
+        </div>
+
+        <h3>Ledger Nano S Plus vs Ledger Nano X</h3>
+        <p>A diferença principal é conectividade: Nano S Plus usa cabo USB-C, Nano X tem Bluetooth e bateria. Para 99% dos usuários, Nano S Plus é suficiente e mais barato (~$79 vs ~$149). O Nano X é melhor apenas se você pretende fazer muitas transações via smartphone Bluetooth.</p>
+
+        <h3>Como Usar Ledger com Bitcoin</h3>
+        <p>O processo é simples: (1) Compre Bitcoin em uma exchange, (2) Instale o app Ledger Live no PC/Mac, (3) Conecte o Ledger ao computador via USB, (4) Crie uma nova conta Bitcoin no Ledger Live, (5) Copie o endereço público (é seguro compartilhar), (6) Na exchange, clique em "Sacar/Withdraw", cole o endereço do Ledger, confirme a transação. Pronto! Seu Bitcoin está seguro offline.</p>
+
+        <h3>Riscos Específicos de Carteiras de Software</h3>
+        <ul>
+            <li><strong>Malware:</strong> Um vírus no seu PC pode roubar a seed phrase ou chaves privadas</li>
+            <li><strong>Phishing:</strong> Sites falsos que parecem exchanges legítimas roubam credenciais</li>
+            <li><strong>Perda do Dispositivo:</strong> Se seu PC/telefone for roubado, Bitcoin pode ir junto se não tiver backup</li>
+            <li><strong>Senhas Fracas:</strong> Se senha for hackeada, acesso total à wallet</li>
+            <li><strong>Clipboard Hijackers:</strong> Malware que troca endereço Bitcoin colado para o do criminoso</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>🔐 Recomendação Final:</strong> Para iniciantes, comece com software wallet enquanto aprende. Uma vez que tenha R$ 10.000+, transfira para hardware wallet Ledger e durma tranquilo sabendo que seu Bitcoin está 100% seguro offline.
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4: RED FLAGS & SCAMS -->
+    <section class="section">
+        <h2 class="section-title">🚨 10 Tipos de Scams em Crypto: Como Identificar e Evitar</h2>
+        <p>Bitcoin e criptomoedas atraem criminosos porque as transações são irreversíveis. Uma vez que você envia Bitcoin para um endereço errado ou fraudulento, é praticamente impossível recuperar. Este guia detalha os 10 scams mais comuns e como evitá-los.</p>
+
+        <h3>1️⃣ Phishing - O Scam Mais Comum</h3>
+        <p><strong>Como funciona:</strong> Um criminoso cria um site QUASE IDÊNTICO ao da exchange legítima (binance.com vs binаnce.com com caracteres cirílicos). Você clica em um link falso, faz login pensando ser o site real, e o criminoso rouba suas credenciais.</p>
+        <p><strong>Como evitar:</strong> Sempre digite a URL da exchange manualmente. Nunca clique em links de email ou redes sociais. Verifique o certificado SSL (🔒 no navegador). Use autenticador 2FA por aplicativo (não SMS).</p>
+
+        <h3>2️⃣ Rug Pull - Projeto de Criptomoeda Falso</h3>
+        <p><strong>Como funciona:</strong> Criminosos criam uma "nova criptomoeda" com promessas falsas de ganhos enormes. Milhares investem. Quando chegam suficientes vítimas, os criminosos "puxam o tapete" (rug pull) levando todo dinheiro e desaparecendo.</p>
+        <p><strong>Exemplos reais:</strong> Squid Game Coin (perdeu 99% do valor em minutos), Luna/Terra (US$ 40 bilhões evaporados em dias).</p>
+        <p><strong>Como evitar:</strong> Só invista em criptomoedas estabelecidas (Bitcoin, Ethereum). Evite "altcoins" desconhecidas com promessas de ganhos rápidos. Se parece bom demais para ser verdade, é.</p>
+
+        <h3>3️⃣ Pump & Dump - Manipulação de Preço</h3>
+        <p><strong>Como funciona:</strong> Um grupo grande de traders (grupo Telegram/WhatsApp) combina para comprar uma altcoin barata simultaneamente. O preço sobe (pump). Eles vendem massivamente para lucro (dump). Iniciantes que compram no pico perdem dinheiro.</p>
+        <p><strong>Como evitar:</strong> Não entre em grupos "secretos" que prometem sinais de compra. Não siga "influenciadores cripto" que recomendam altcoins desconhecidas. Você não sabe se eles estão sendo pagos para bombar.</p>
+
+        <h3>4️⃣ Ponzi / Pirâmide - Promessas de Ganhos Garantidos</h3>
+        <p><strong>Como funciona:</strong> Uma empresa promete retornos garantidos de 10-50%+ ao mês. Ganhos iniciais são pagos com dinheiro de novos membros. Eventualmente não há dinheiro suficiente para todos. Colapsa.</p>
+        <p><strong>Exemplos reais:</strong> OneCoin ($4 bilhões), PlusToken ($3 bilhões), Mining Capital Coin.</p>
+        <p><strong>Como evitar:</strong> Ninguém pode garantir 50% de retorno ao mês. Bitcoin mesmo no melhor bull market sobe 100-500% ao ANO, não ao mês. Se alguém promete ganhos garantidos, é scam.</p>
+
+        <h3>5️⃣ Fake Exchange - Exchange Falsa Online</h3>
+        <p><strong>Como funciona:</strong> Um site parece uma exchange real, você deposita dinheiro, ele some. Ou pede "taxa de saque" antes de deixar retirar (e nunca libera).</p>
+        <p><strong>Como evitar:</strong> Use apenas exchanges listadas e reguladas: Binance, Bybit, Kraken, Coinbase, Mercado Bitcoin. Pesquise o nome da exchange + "scam" no Google. Verifique licenças oficiais.</p>
+
+        <h3>6️⃣ Fake Hardware Wallet / Supply Chain Attack</h3>
+        <p><strong>Como funciona:</strong> Um criminoso revende uma Ledger/Trezor usada com chave privada já comprometida. Você coloca Bitcoin "seguro" lá. Criminoso rouba tudo mais tarde quando você acumular o suficiente.</p>
+        <p><strong>Como evitar:</strong> Compre hardware wallet APENAS do fabricante oficial (ledger.com, trezor.io) ou revendedor autorizado. Nunca compre usado. Se chegou aberto ou violado, devolva imediatamente.</p>
+
+        <h3>7️⃣ Fake Customer Support - Golpistas Posando de Suporte</h3>
+        <p><strong>Como funciona:</strong> Você faz uma pergunta no Telegram/Twitter sobre Binance. Um "suporte oficial" (que é scammer) responde por DM e pede suas credenciais ou seed phrase para "investigar o problema".</p>
+        <p><strong>Como evitar:</strong> Binance NUNCA pede senha ou seed phrase. Suporte oficial só responde dentro do site da exchange, não no Telegram/DM. Se alguém pede credenciais, é 100% scam.</p>
+
+        <h3>8️⃣ Romance Scam / "Pig Butchering"</h3>
+        <p><strong>Como funciona:</strong> Um criminoso faz amizade (às vezes "romance") com você no Tinder/Instagram. Depois de semanas/meses de conversa construindo confiança, "compartilha" uma oportunidade de investimento cripto exclusiva. Você envia Bitcoin. Desaparece.</p>
+        <p><strong>Como evitar:</strong> Não envie dinheiro para desconhecidos na internet, mesmo após meses de conversa. Se alguém oferece oportunidade de negócio perfeita, é suspeito. Casais reais não se conhecem online com investimento como tópico.</p>
+
+        <h3>9️⃣ Malware / Keylogger</h3>
+        <p><strong>Como funciona:</strong> Você baixa um arquivo que parece ser uma wallet, mining software, ou outra ferramenta cripto. Na verdade é malware que registra tudo que você digita (chaves privadas, senhas, seed phrases).</p>
+        <p><strong>Como evitar:</strong> Baixe software APENAS de sites oficiais. Mantenha antivírus atualizado. Use computador separado para cripto ou hardware wallet para grandes quantidades de Bitcoin.</p>
+
+        <h3>🔟 Clone de Pessoa Famosa / Influencer Falso</h3>
+        <p><strong>Como funciona:</strong> Criminoso cria perfil no Twitter/Instagram QUASE IGUAL ao de um influencer crypto famoso (Elon Musk, CZ Binance). Anuncia "giveaway" - envie X BTC e receba 2X de volta. Você envia. Nunca recebe.</p>
+        <p><strong>Como evitar:</strong> Verifique o checkmark azul de verificação oficial. Nunca envie Bitcoin para endereços aleatórios, mesmo que alguém famoso peça. Pessoas reais de credibilidade NUNCA pedem Bitcoin assim.</p>
+
+        <div class="highlight-box">
+            <strong>📋 Checklist de Segurança:</strong><br>
+            ✅ URL correta? (digitada manualmente, não clicada)<br>
+            ✅ Certificado SSL válido? (🔒 no navegador)<br>
+            ✅ 2FA por app (não SMS) ativado?<br>
+            ✅ Antivírus atualizado?<br>
+            ✅ Backup da seed phrase em local físico seguro?<br>
+            ✅ Bitcoin grande armazenado em hardware wallet?<br>
+            ✅ Nunca compartilhei minha seed phrase com NINGUÉM?<br>
+            ✅ Senhas únicas e fortes (gerenciador de senhas)?
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: POW VS POS -->
+    <section class="section">
+        <h2 class="section-title">⚙️ Proof of Work vs Proof of Stake: Qual é Melhor?</h2>
+        <p>Bitcoin usa Proof of Work (PoW), enquanto Ethereum mudou para Proof of Stake (PoS) em 2022. Esta é uma das diferenças técnicas mais importantes em criptomoedas. Entender a diferença ajuda você a apreciar por que Bitcoin é seguro e por que não é fácil "melhorá-lo".</p>
+
+        <h3>O Que é Proof of Work (PoW)?</h3>
+        <p>Proof of Work é o método original de validar transações, criado por Satoshi Nakamoto. Mineradores competem para resolver quebra-cabeças matemáticos complexos. O primeiro a resolver adiciona um bloco à blockchain e recebe Bitcoin como recompensa. Este processo é computacionalmente intensivo (requer muito poder de processamento e energia).</p>
+        <p><strong>Vantagens PoW:</strong> Extremamente seguro (atacar exigiria controlar 51% de toda a rede de mineradores globalmente), totalmente descentralizado, incentiva participação aberta. Comprovadamente seguro por 15+ anos sem hack.</p>
+        <p><strong>Desvantagens PoW:</strong> Usa MUITA eletricidade (~150 TWh/ano para Bitcoin), processamento lento (Bitcoin processa ~7 tx/segundo vs Visa com ~65.000 tx/segundo), hardware especializado caro (ASIC miners).</p>
+
+        <h3>O Que é Proof of Stake (PoS)?</h3>
+        <p>Proof of Stake é mais novo. Em vez de mineradores, "validadores" são escolhidos para validar blocos BASEADO em quantos coins eles "apostam" (stake) como garantia. Se validarem corretamente, ganham recompensas. Se validarem blocos falsos, perdem o stake.</p>
+        <p><strong>Vantagens PoS:</strong> Usa muito menos eletricidade (~99.95% menos que PoW), mais rápido (Ethereum faz ~12.000 tx/segundo agora), menos hardware necessário, mais ambientalmente sustentável.</p>
+        <p><strong>Desvantagens PoS:</strong> Favorece quem tem muito capital (ricos podem validar mais facilmente e ganhar mais), pode ser menos descentralizado a longo prazo, ainda relativamente novo (menos testado contra ataques sofisticados).</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Aspecto</th>
+                    <th>PoW (Bitcoin)</th>
+                    <th>PoS (Ethereum 2.0)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mecanismo</strong></td>
+                    <td>Resolver quebra-cabeças (hash power)</td>
+                    <td>Apostar coins como validador</td>
+                </tr>
+                <tr>
+                    <td><strong>Consumo de Energia</strong></td>
+                    <td>MUITO Alto (~150 TWh/ano)</td>
+                    <td>MUITO Baixo (~0.55 TWh/ano)</td>
+                </tr>
+                <tr>
+                    <td><strong>Descentralização</strong></td>
+                    <td>⭐⭐⭐⭐⭐ Qualquer um pode minerar</td>
+                    <td>⭐⭐⭐⭐ Favorece quem tem capital</td>
+                </tr>
+                <tr>
+                    <td><strong>Segurança</strong></td>
+                    <td>⭐⭐⭐⭐⭐ Comprovada por 15 anos</td>
+                    <td>⭐⭐⭐⭐ Boa, ainda testando</td>
+                </tr>
+                <tr>
+                    <td><strong>Velocidade</strong></td>
+                    <td>~7 tx/segundo</td>
+                    <td>~12.000 tx/segundo</td>
+                </tr>
+                <tr>
+                    <td><strong>Hardware</strong></td>
+                    <td>ASIC caro ($2.000-$10.000)</td>
+                    <td>Computador normal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Por Que Bitcoin NÃO Mudou Para PoS?</h3>
+        <p>Bitcoin poderia teoricamente ser mais rápido e eficiente em energia se mudasse para PoS. Mas a comunidade Bitcoin deliberadamente escolheu NÃO mudar. Razões:</p>
+        <ul>
+            <li><strong>Segurança Testada:</strong> PoW está seguro há 15 anos sem nenhum hack bem-sucedido da rede. PoS é mais novo e menos testado contra ataques sofisticados.</li>
+            <li><strong>Filosofia:</strong> Bitcoin é sobre "prova de trabalho" - se você quer validar, você trabalha (gasta energia). PoS é "quem tem dinheiro ganha mais dinheiro", o que muitos consideram uma desigualdade.</li>
+            <li><strong>Descentralização:</strong> Bitcoin PoW permite que qualquer pessoa com hardware e eletricidade barata participe. PoS favorece quem já é rico (precisa 32 ETH = ~$60k para ser validador no Ethereum).</li>
+            <li><strong>Imutabilidade:</strong> Mudar o algoritmo de consenso é uma mudança MASSIVA que requeriria quase-unanimidade da comunidade global - praticamente impossível.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>💡 Insight:</strong> Bitcoin é propositalmente lento e ineficiente em energia. Isso é um feature, não um bug. A lentidão e o custo computacional de ataque tornam Bitcoin tão seguro e valioso como reserva de valor.
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6: WHALE WATCHING -->
+    <section class="section">
+        <h2 class="section-title">🐋 Whale Watching: Rastreando Movimentações Gigantes de Bitcoin</h2>
+        <p>"Whales" (baleias) são investidores com quantidades enormes de Bitcoin (geralmente +1.000 BTC = +$60 milhões). Suas movimentações podem impactar o mercado significativamente. Aprender a "observar baleias" ajuda você a entender o sentimento do mercado e possíveis próximas mudanças de preço.</p>
+
+        <h3>O Que Significa Bitcoin "Saindo de Exchanges"?</h3>
+        <p>Quando Bitcoin sai de exchanges (Binance, Bybit, Coinbase) e vai para wallets privadas, geralmente é sinal BULLISH (otimista). Por quê? Porque significa que whales estão "acumulando" - eles acreditam que o preço subirá e estão guardando o Bitcoin em armazenamento seguro de longo prazo.</p>
+        <p><strong>Exemplo real:</strong> Em novembro de 2023, grandes quantidades de Bitcoin saíram de exchanges. Meses depois, Bitcoin subiu de $27.000 para $73.000. Whales sabiam que estava barato.</p>
+
+        <h3>Sinais Bullish (Otimistas) de Whales</h3>
+        <ul>
+            <li>Bitcoin sai de exchanges para wallets privadas → Acumulação → Preço tende a subir depois</li>
+            <li>Whales transferem para hardware wallets → Planejam manter longo prazo</li>
+            <li>Grandes ordens de compra repetidas → Investidores institucionais entrando</li>
+            <li>Bitcoin sai de wallets antigas (dormidas há anos) → Possível "smart money" se movimentando</li>
+            <li>Reservas de exchange em mínimas históricas → Pressão de venda baixa</li>
+        </ul>
+
+        <h3>Sinais Bearish (Pessimistas) de Whales</h3>
+        <ul>
+            <li>Bitcoin entra em exchanges em grande volume → Preparando para vender</li>
+            <li>Whales transferem para exchanges → Possível venda em breve</li>
+            <li>Grandes ordens de venda concentradas → Venda massiva iminente</li>
+            <li>Aumento súbito de reservas em exchanges → Pressão de venda crescendo</li>
+            <li>Wallets antigas ativando e mandando para exchange → "Old whales" realizando lucro</li>
+        </ul>
+
+        <h3>Ferramentas Para Whale Watching</h3>
+        <p><strong>Glassnode:</strong> A melhor plataforma para on-chain analysis. Mostra movimentações de Bitcoin, entradas/saídas de exchange, composição de wallets, idade dos coins movimentados.</p>
+        <p><strong>CryptoQuant:</strong> Dados real-time sobre fluxos de exchange, posições de trading, funding rates, indicadores de minerador.</p>
+        <p><strong>Whale Alert (Twitter @whale_alert):</strong> Bot que avisa transações gigantes de Bitcoin/Ethereum em tempo real. Útil para acompanhar movimentações grandes do dia.</p>
+        <p><strong>Blockchain.com Explorer:</strong> Você pode rastrear endereços específicos publicamente e ver historicamente para onde Bitcoin foi.</p>
+        <p><strong>Arkham Intelligence:</strong> Plataforma que identifica donos de wallets grandes (governos, exchanges, fundos).</p>
+
+        <div class="warning-box">
+            <strong>⚠️ Não Use Para Day Trading:</strong> Whale watching é útil para entender o mercado de LONGO PRAZO, não para timing intraday. Mesmo com dados perfeitos on-chain, o mercado de curto prazo é imprevisível. Use para educação e estratégia, não para decisões impulsivas.
+        </div>
+    </section>
+
+    <!-- SEÇÃO 7: LIGHTNING NETWORK -->
+    <section class="section">
+        <h2 class="section-title">⚡ Lightning Network: Bitcoin Instantâneo e Escalável</h2>
+        <p>Bitcoin original processa apenas ~7 transações por segundo. Lightning Network é uma "segunda camada" (Layer 2) construída em cima do Bitcoin que permite transações instantâneas e quase-gratuitas. É a solução principal para o problema de escala do Bitcoin como dinheiro do dia a dia.</p>
+
+        <h3>Como Lightning Network Funciona?</h3>
+        <p>Imagine dois amigos trocando dinheiro constantemente. Ao invés de ir ao banco cada vez, eles abrem uma "conta conjunta" (channel) com uma quantia inicial. Fazem quantas transações quiserem dentro do channel sem fees. Quando terminam, fazem apenas UM "liquidamento" final no blockchain Bitcoin.</p>
+        <p>Lightning funciona assim na prática: você abre um "canal de pagamento" com outro usuário ou nó (node), coloca Bitcoin nele, faz transações instantâneas off-chain. Quando fechar o canal, escreve apenas o estado final no blockchain Bitcoin principal.</p>
+
+        <h3>Vantagens Lightning</h3>
+        <ul>
+            <li><strong>Velocidade:</strong> Transações em milisegundos (vs 10+ minutos no Bitcoin onchain)</li>
+            <li><strong>Custo:</strong> Quase nenhuma taxa, frequentemente menos de R$ 0,01 (vs $1-$50 no Bitcoin onchain)</li>
+            <li><strong>Privacidade:</strong> Transações off-chain não ficam públicas no blockchain principal</li>
+            <li><strong>Escalabilidade:</strong> Bilhões de transações possíveis por segundo teoricamente</li>
+            <li><strong>Sem Limites:</strong> Pessoas podem fazer muitas transações antes de "finalizarem" no blockchain</li>
+        </ul>
+
+        <h3>Limitações Lightning</h3>
+        <ul>
+            <li><strong>Complexidade:</strong> Ainda não é tão fácil quanto cartão de crédito para usuários comuns</li>
+            <li><strong>Adoção:</strong> Poucas lojas físicas aceitam Lightning ainda no Brasil</li>
+            <li><strong>Liquidez:</strong> Seus canais têm limite de Bitcoin (capacidade fixa pré-determinada)</li>
+            <li><strong>Roteamento:</strong> Às vezes é difícil encontrar rota para enviar para receptor específico</li>
+            <li><strong>Online Requirement:</strong> Você precisa estar online para receber pagamentos Lightning</li>
+        </ul>
+
+        <h3>Casos de Uso de Lightning</h3>
+        <p><strong>Micropagamentos:</strong> Pagar R$ 0,01 por artigo online, gorjetas em conteúdo, pay-per-second em streaming (impossível na blockchain principal por causa das fees).</p>
+        <p><strong>Remessas Internacionais:</strong> Enviar dinheiro para outro país em segundos, com taxa de 0,1% (vs Western Union cobrando 5-10%).</p>
+        <p><strong>Gaming/Streaming:</strong> Jogadores ganhando sats (satoshis = 1 milionésimo de BTC) enquanto jogam ou criando conteúdo (Stacker News, Nostr Zaps).</p>
+        <p><strong>El Salvador:</strong> El Salvador adotou Bitcoin como moeda oficial em 2021. Lightning permite que cidadãos façam transações instantâneas em lojas locais usando o app Chivo.</p>
+        <p><strong>Pagamentos em Lojas:</strong> Cafés, restaurantes e lojas que aceitam Bitcoin usam Lightning para evitar esperar 10 minutos de confirmação.</p>
+
+        <div class="highlight-box">
+            <strong>🔮 Futuro de Bitcoin:</strong> Lightning Network é como "wi-fi do Bitcoin". A camada principal (blockchain) permanece segura, imutável e descentralizada. Lightning processa transações rápidas e baratas no topo, permitindo Bitcoin funcionar como dinheiro digital diário sem perder suas propriedades fundamentais.
+        </div>
+    </section>
+
+    <!-- SEÇÃO 8: HISTÓRICO BITCOIN 2009-2025 -->
+    <section class="section">
+        <h2 class="section-title">📜 História do Bitcoin: 2009 até 2025</h2>
+        <p>Bitcoin tem apenas 16 anos, mas uma história fascinante. De um experimento de criptografia para uma moeda de trilhões de dólares em valor de mercado. Aqui está a cronologia dos eventos mais importantes que moldaram o que Bitcoin é hoje.</p>
+
+        <h3>2009-2010: Os Primórdios</h3>
+        <p><strong>Janeiro 2009:</strong> Satoshi Nakamoto libera o código-fonte de Bitcoin. O bloco gênese (bloco 0) é criado com a mensagem famosa "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks". Bitcoin existe e vale praticamente nada.</p>
+        <p><strong>Janeiro 2010:</strong> Primeira transação Bitcoin entre humanos (Hal Finney recebe 10 BTC de Satoshi). Bitcoin cotado em ~$0.003 USD nos primeiros mercados informais.</p>
+        <p><strong>Maio 2010:</strong> A famosa "Pizza Bitcoin" - Laszlo Hanyecz paga 10.000 BTC por duas pizzas da Papa John's (primeira compra comercial registrada). Essas 10.000 BTC valeriam mais de R$ 3 bilhões hoje.</p>
+
+        <h3>2011-2012: Primeiro Boom</h3>
+        <p><strong>Junho 2011:</strong> Bitcoin atinge $32 (primeira "bolha" significativa). Depois cai para $2 em meses. Wikileaks começa a aceitar Bitcoin após bloqueio bancário.</p>
+        <p><strong>Novembro 2012:</strong> Primeiro halving. Recompensa de minerador cai de 50 para 25 BTC. Bitcoin começa a subir gradualmente. Primeiras corretoras (exchanges) modernas surgem.</p>
+
+        <h3>2013: Primeira Grande Bolha</h3>
+        <p><strong>Novembro 2013:</strong> Bitcoin atinge $1.000 pela primeira vez. Depois cai para $200 em 2014. Muitos traders perdem dinheiro entrando no topo.</p>
+        <p>China bane Bitcoin temporariamente. FED dos EUA reconhece Bitcoin como "moeda alternativa legítima". FBI fecha Silk Road e confisca 144.000 BTC.</p>
+
+        <h3>2014-2015: Consolidação e Desastre</h3>
+        <p><strong>Fevereiro 2014:</strong> Mt. Gox (maior exchange na época, com 70% do volume mundial) é hackeada. 850.000 BTC são roubados (US$ 400+ milhões na época, valeriam $50+ bilhões hoje). Mt. Gox fecha.</p>
+        <p>Bitcoin cai para $300-$500. Muitos analistas declaram que "Bitcoin está morto". Era o final do primeiro ciclo de 4 anos.</p>
+
+        <h3>2016: Segundo Halving, Bitcoin Resiste</h3>
+        <p><strong>Julho 2016:</strong> Segundo halving. Recompensa cai de 25 para 12.5 BTC. Bitcoin começa a recuperar lentamente.</p>
+        <p>Fim de 2016: Bitcoin sobe para $1.000 novamente. Investidores hedge fund começam a entrar. Tecnologia blockchain ganha reconhecimento corporativo.</p>
+
+        <h3>2017: Segunda Grande Bolha (Mania)</h3>
+        <p><strong>Dezembro 2017:</strong> Bitcoin atinge $19.666. Todos falam de Bitcoin. Sua avó quer investir. "Altcoins" explodem também (Ethereum sobe 10.000% no ano, ICOs viram fenômeno).</p>
+        <p><strong>Fevereiro 2018:</strong> Bitcoin cai para $3.500. Queda de 80% do pico. Crash brutal. Mídia declara "fim do Bitcoin" pela enésima vez.</p>
+
+        <h3>2018-2019: Inverno Crypto</h3>
+        <p>Bitcoin fica entre $3.500-$8.000 por 18 meses. Muitos projetos crypto morrem. Mas mineradores mais resilientes continuam. Desenvolvimento do blockchain avança silenciosamente. Lightning Network começa a ganhar tração.</p>
+
+        <h3>2020: Terceiro Halving e Institucionalização</h3>
+        <p><strong>Maio 2020:</strong> Terceiro halving. Recompensa cai de 12.5 para 6.25 BTC.</p>
+        <p><strong>Agosto 2020:</strong> MicroStrategy (empresa pública) anuncia compra de $250 milhões em Bitcoin como reserva de tesouraria. Início da institucionalização corporativa.</p>
+        <p><strong>Dezembro 2020:</strong> Bitcoin ultrapassa o pico anterior de $19.666. Square (atual Block) e Tesla também começam a comprar Bitcoin corporativo.</p>
+
+        <h3>2021: Mania Parte 2 e Adoção Estatal</h3>
+        <p><strong>Abril 2021:</strong> Bitcoin atinge $64.000. Coinbase abre IPO na Nasdaq, primeira grande exchange listada publicamente.</p>
+        <p><strong>Setembro 2021:</strong> El Salvador adota Bitcoin como moeda oficial - primeiro país do mundo. Lightning Network ganha visibilidade global.</p>
+        <p><strong>Novembro 2021:</strong> Bitcoin atinge $69.000 (all-time high). Memes de "compra agora ou se arrependa para sempre".</p>
+        <p><strong>Dezembro 2021:</strong> Início da correção. Cai para $35.000 em janeiro 2022.</p>
+
+        <h3>2022: Recessão Cripto e Colapso de Empresas</h3>
+        <p><strong>Maio 2022:</strong> Terra/Luna colapsa - $40 bilhões evaporam em dias. Sistema "stablecoin algorítmico" prova ser insustentável.</p>
+        <p><strong>Novembro 2022:</strong> FTX (segunda maior exchange) colapsa. Fundador Sam Bankman-Fried é preso por fraude de $8 bilhões. Investidores perdem total confiança.</p>
+        <p>Bitcoin cai para $16.000. Porém, acumuladores institucionais acham isso barato e compram agressivamente. Início silencioso do próximo ciclo.</p>
+
+        <h3>2023-2024: Recuperação e ETFs</h3>
+        <p><strong>Janeiro 2024:</strong> SEC aprova ETFs Spot Bitcoin nos EUA após anos de rejeição. BlackRock, Fidelity e outros lançam produtos. Instituições podem agora comprar Bitcoin "de forma fácil e regulada".</p>
+        <p><strong>Abril 2024:</strong> Quarto halving. Recompensa cai de 6.25 para 3.125 BTC. Começa novo ciclo de expansão.</p>
+        <p>Bitcoin sobe de $40k em janeiro para $73k+ em março, depois consolida e volta a subir no fim do ano.</p>
+
+        <h3>2025+: Futuro?</h3>
+        <p>A história de Bitcoin continua sendo escrita. Ninguém sabe se o próximo crash será 50%, 80%, ou se Bitcoin se torna verdadeira reserva de valor global comparável ao ouro.</p>
+        <p>Mas o padrão é claro: cada ciclo alcança novo all-time high. Cada crash é menos severo proporcionalmente. Mais instituições entram (governos, fundos soberanos). Bitcoin se torna mais estabelecido e regulamentado.</p>
+
+        <div class="highlight-box">
+            <strong>📊 Padrão Observado:</strong> Ciclos de 4 anos (alinhados com halvings) onde: Ano 1 = Acumulação silenciosa, Ano 2-3 = Bull Market explosivo, Ano 4 = Crash + consolidação antes do próximo halving. Próximo grande halving: 2028.
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FIM DAS 8 NOVAS SEÇÕES -->
+    <!-- ============================================================ -->
+
     <!-- ADSENSE 4 -->
     <section class="section">
         <div class="adsense-horizontal">
@@ -833,7 +1383,6 @@
 // ===================================================
 const translations = {
     pt: {
-        // Hero
         hero_title: 'Bitcoin em Tempo Real',
         hero_subtitle: 'A moeda do futuro está aqui',
         hero_description: 'Descentralizado • Seguro • Global • Sem intermediários',
@@ -845,19 +1394,16 @@ const translations = {
         api_loading: 'Carregando preço...',
         api_live: 'Preço ao vivo',
         api_error: 'Tentando reconectar...',
-        // Ads / Converter
         ads_label: 'Publicidade',
         converter_title: 'Conversor Bitcoin',
         converter_amount: 'Quantidade Bitcoin',
         converter_currency: 'Moeda',
         converter_result: 'Valor Convertido',
-        // Video / Ebook
         video_title: 'O que é Bitcoin? - Vídeo Explicativo',
         ebook_title: 'Quer Aprender Mais?',
         ebook_subtitle: 'Compre o E-book Bitcoin para Iniciantes',
         ebook_desc: 'Descubra como funcionam as transações, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.',
         ebook_button: '🚀 Comprar E-book Agora',
-        // Affiliate section
         aff_title: '🤝 Parceiros Recomendados',
         aff_subtitle: 'Exchanges para comprar Bitcoin com as menores taxas, cartão de débito cripto Kast para gastar no dia a dia, hardware wallet Ledger para máxima segurança e o e-book Bitcoin para iniciantes — tudo que você precisa para começar com segurança.',
         aff_tag_exchange: 'Exchange',
@@ -881,17 +1427,14 @@ const translations = {
         aff_btn_ebook: 'Comprar E-book — R$29,90 →',
         aff_note: 'Link de afiliado — sem custo extra para você',
         aff_note_ebook: 'Produto digital — acesso imediato após pagamento',
-        // Section 1 - O que é Bitcoin
         s1_title: 'O Que é Bitcoin? Guia Completo para Iniciantes',
         s1_p1: 'Bitcoin é a primeira criptomoeda do mundo, criada em 2009 por uma pessoa ou grupo anônimo conhecido como Satoshi Nakamoto. É uma moeda digital descentralizada que funciona sem a necessidade de bancos ou autoridades centrais. O Bitcoin utiliza a tecnologia blockchain para registrar todas as transações de forma segura e imutável.',
         s1_p2: 'A rede Bitcoin é mantida por milhares de computadores (nós) espalhados pelo mundo. Quando você faz uma transação de Bitcoin, ela é verificada por esses computadores e registrada permanentemente no blockchain. Isso torna Bitcoin praticamente impossível de fraudar ou manipular.',
         s1_p3: 'Um dos aspectos mais importantes do Bitcoin é sua escassez. Apenas 21 milhões de bitcoins serão criados no total. Essa limitação garante que o Bitcoin mantenha seu valor a longo prazo, diferente de moedas fiduciárias que podem ser impressas ilimitadamente pelos governos.',
-        // Section 2 - Blockchain
         s2_title: 'Blockchain: A Tecnologia Por Trás do Bitcoin',
         s2_p1: 'O blockchain é um registro digital descentralizado que armazena informações em blocos encadeados. Cada bloco contém dados de transações, um timestamp (data e hora), e um código criptográfico único chamado hash. Quando um novo bloco é criado, ele referencia o bloco anterior, criando uma corrente impossível de quebrar sem detectar a fraude.',
         s2_p2: 'A segurança do blockchain vem da criptografia e da descentralização. Para alterar uma transação antiga, um hacker precisaria recalcular todos os blocos subsequentes em mais de 50% da rede simultaneamente, o que é computacionalmente impossível. Esta é a razão pela qual a rede Bitcoin nunca foi hackeada desde seu lançamento em 2009.',
         s2_p3: 'O blockchain não é apenas usado para Bitcoin. Muitas outras criptomoedas e aplicações descentralizadas usam essa tecnologia. Algumas empresas estão explorando blockchain para supply chain, contratos inteligentes, e até votação eletrônica.',
-        // Section 3 - Como Comprar
         s3_title: 'Como Comprar Bitcoin em 5 Passos Simples',
         s3_h1: 'Passo 1: Escolha uma Corretora Confiável',
         s3_p1_html: 'O primeiro passo para comprar Bitcoin é escolher uma corretora de criptomoedas confiável. As duas principais opções são <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Binance</a> (a maior exchange do mundo com mais de 100 milhões de usuários) e <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank">Bybit</a> (especializada em trading com 10 milhões de usuários). Ambas são reguladas e têm excelente reputação.',
@@ -903,9 +1446,8 @@ const translations = {
         s3_p4: 'Com dinheiro na sua conta, navegue até a seção de compra de Bitcoin. Digite quanto Bitcoin deseja comprar e confirme a transação. A compra é instantânea e o Bitcoin aparecerá em sua carteira da corretora.',
         s3_h5: 'Passo 5: Transfira para uma Wallet Segura',
         s3_p5_html: 'Para máxima segurança, transfira seu Bitcoin de uma corretora para uma <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a>. Uma hardware wallet é um dispositivo físico que armazena suas chaves privadas offline, protegendo seu Bitcoin de hackers e roubo online.',
-        // Section 4 - Segurança
         s4_title: 'Segurança em Bitcoin: Proteja Seu Investimento',
-        s4_p1: 'A segurança é o aspecto mais importante ao investir em Bitcoin. Diferente de contas bancárias, não existe "recuperar" Bitcoin roubado. Portanto, proteger suas chaves privadas é essencial.',
+        s4_p1: 'A segurança é o aspecto mais importante ao investir em Bitcoin. Diferente de contas bancárias, não existe "recuperar" Bitcoin roubado. Portanto, proteger suas chaves privadas é essencial. Uma chave privada é uma sequência de números e letras que comprova a propriedade do seu Bitcoin.',
         s4_h1: 'Dicas de Segurança Essenciais:',
         s4_li1_b: 'Guarde sua seed phrase em local seguro:',
         s4_li1_t: 'A seed phrase (12 ou 24 palavras) é a chave mestre para acessar seu Bitcoin. Escreva-a em papel e guarde em um cofre ou local à prova de fogo.',
@@ -921,7 +1463,6 @@ const translations = {
         s4_li6_t: 'Phishing é comum. Sempre verifique a URL da corretora antes de fazer login. Fraudadores criam sites quase idênticos.',
         s4_li7_b: 'Use hardware wallet para Bitcoin de longo prazo:',
         s4_li7_t: 'Se pretende manter Bitcoin por mais de alguns meses, use uma hardware wallet segura.',
-        // Section 5 - Riscos
         s5_title: 'Riscos do Investimento em Bitcoin - Leia Antes de Investir',
         s5_p1: 'Bitcoin é um investimento de ALTÍSSIMO RISCO. O preço é extremamente volátil e pode subir ou cair 20-30% em um único dia. Você pode perder 100% do seu investimento. Nunca invista dinheiro que você não possa perder completamente.',
         s5_p2: 'A volatilidade do Bitcoin é causada por vários fatores:',
@@ -933,7 +1474,6 @@ const translations = {
         s5_li3_t: 'Bitcoin sobe e cai baseado em medo e ganância dos investidores.',
         s5_li4_b: 'Falta de valor intrínseco:',
         s5_li4_t: 'Diferente de ações, Bitcoin não gera lucros ou dividendos. Seu valor depende do que as pessoas estão dispostas a pagar.',
-        // Section 6 - Mineração
         s6_title: 'Mineração de Bitcoin: Como Funciona',
         s6_p1: 'Mineração de Bitcoin é o processo de validar transações e adicionar novos blocos ao blockchain. Mineradores usam computadores poderosos para resolver problemas matemáticos complexos. O primeiro minerador a resolver o problema adiciona um novo bloco e recebe uma recompensa em Bitcoin.',
         s6_p2: 'Este processo não é acessível para iniciantes. A mineração moderna requer:',
@@ -942,7 +1482,6 @@ const translations = {
         s6_li3: 'Conhecimento técnico para configurar e otimizar',
         s6_li4: 'Investimento grande com retorno incerto',
         s6_p3: 'Para a maioria dos iniciantes, comprar Bitcoin em uma corretora é muito mais simples e seguro do que tentar minerar.',
-        // Section 7 - Preço
         s7_title: 'Preço do Bitcoin: Fatores que Influenciam',
         s7_p1: 'O preço do Bitcoin é determinado inteiramente pela oferta e demanda no mercado. Vários fatores influenciam o preço:',
         s7_li1_b: 'Adoção institucional:',
@@ -956,7 +1495,6 @@ const translations = {
         s7_li5_b: 'Economia global:',
         s7_li5_t: 'Inflação, juros altos e incerteza econômica podem fazer pessoas comprarem Bitcoin como proteção.',
         s7_p2: 'Use nosso conversor no topo da página para ver o preço atual do Bitcoin em BRL, USD e outras moedas. Os preços são atualizados em tempo real a cada 30 segundos.',
-        // Section 8 - Estratégias
         s8_title: 'Estratégias de Investimento em Bitcoin',
         s8_p1: 'Existem várias estratégias que investidores usam ao lidar com Bitcoin. A melhor estratégia depende de seus objetivos financeiros, tolerância ao risco e timeline:',
         s8_h1: 'HODL (Hold On for Dear Life)',
@@ -965,15 +1503,13 @@ const translations = {
         s8_p3: 'Você investe a mesma quantia em Bitcoin regularmente (por exemplo, R$ 100 por semana) independente do preço. Isso reduz o risco de comprar no topo do mercado e é perfeito para pessoas com renda regular.',
         s8_h3: 'Trading (Para Experientes)',
         s8_p4: 'Comprar e vender Bitcoin frequentemente para lucrar com flutuações de preço. Isto é muito mais arriscado e requer conhecimento técnico. 90% dos traders perdem dinheiro.',
-        // Legal
         privacy_title: 'ℹ️ Política de Privacidade',
-        privacy_p: 'Coletamos informações de contato através do formulário apenas para responder suas mensagens. Usamos Google AdSense para exibir anúncios relevantes. Nossas páginas contêm links de afiliados para Binance, Bybit e Ledger, onde recebemos comissão se você se registrar, sem custo adicional para você.',
+        privacy_p: 'Coletamos informações de contato através do formulário apenas para responder suas mensagens. Usamos Google AdSense para exibir anúncios relevantes. Nossas páginas contêm links de afiliados para Binance, Bybit, Ledger, Kast e nosso e-book, onde recebemos comissão se você se registrar ou comprar, sem custo adicional para você.',
         terms_title: '⚖️ Termos de Uso',
         terms_strong: 'Bitcoin é um investimento de ALTO RISCO',
         terms_p: 'Este site é apenas educacional e não constitui aconselhamento financeiro. Bitcoin é um investimento de ALTO RISCO. O preço é extremamente volátil e você pode perder 100% do seu investimento. Nunca invista dinheiro que não possa perder. Não somos consultores financeiros regulados.',
         about_title: '👥 Quem Somos',
         about_p: 'Bitcoin Agora é um site educacional focado em ensinar iniciantes como comprar Bitcoin com segurança. Oferecemos um conversor em tempo real com cotação atualizada a cada 30 segundos, guias práticos e e-books para aprofundar seu conhecimento sobre criptomoedas e blockchain.',
-        // Contact
         contact_title: 'Entre em Contato',
         form_name: 'Nome',
         form_email: 'Email',
@@ -1034,7 +1570,7 @@ const translations = {
         s1_p2: 'The Bitcoin network is maintained by thousands of computers (nodes) spread around the world. When you make a Bitcoin transaction, it is verified by these computers and permanently recorded on the blockchain. This makes Bitcoin virtually impossible to defraud or manipulate.',
         s1_p3: 'One of the most important aspects of Bitcoin is its scarcity. Only 21 million bitcoins will ever be created. This limitation ensures that Bitcoin maintains its value over the long term, unlike fiat currencies that can be printed limitlessly by governments.',
         s2_title: 'Blockchain: The Technology Behind Bitcoin',
-        s2_p1: 'The blockchain is a decentralized digital ledger that stores information in chained blocks. Each block contains transaction data, a timestamp, and a unique cryptographic code called a hash. When a new block is created, it references the previous block, creating a chain that is impossible to break without detecting fraud.',
+        s2_p1: 'The blockchain is a decentralized digital ledger that stores information in chained blocks. Each block contains transaction data, a timestamp, and a unique cryptographic code called a hash. When a new block is created, it references the previous block, creating a chain impossible to break without detecting fraud.',
         s2_p2: 'Blockchain security comes from cryptography and decentralization. To alter an old transaction, a hacker would need to recalculate all subsequent blocks across more than 50% of the network simultaneously, which is computationally impossible. This is why the Bitcoin network has never been hacked since its launch in 2009.',
         s2_p3: 'Blockchain is not only used for Bitcoin. Many other cryptocurrencies and decentralized applications use this technology. Some companies are exploring blockchain for supply chain, smart contracts, and even electronic voting.',
         s3_title: 'How to Buy Bitcoin in 5 Simple Steps',
@@ -1049,7 +1585,7 @@ const translations = {
         s3_h5: 'Step 5: Transfer to a Secure Wallet',
         s3_p5_html: 'For maximum security, transfer your Bitcoin from the exchange to a <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">Ledger hardware wallet</a>. A hardware wallet is a physical device that stores your private keys offline, protecting your Bitcoin from hackers and online theft.',
         s4_title: 'Bitcoin Security: Protect Your Investment',
-        s4_p1: 'Security is the most important aspect of investing in Bitcoin. Unlike bank accounts, there is no "recovering" stolen Bitcoin. Therefore, protecting your private keys is essential.',
+        s4_p1: 'Security is the most important aspect of investing in Bitcoin. Unlike bank accounts, there is no "recovering" stolen Bitcoin. Therefore, protecting your private keys is essential. A private key is a sequence of numbers and letters that proves ownership of your Bitcoin.',
         s4_h1: 'Essential Security Tips:',
         s4_li1_b: 'Store your seed phrase safely:',
         s4_li1_t: 'The seed phrase (12 or 24 words) is the master key to access your Bitcoin. Write it on paper and store it in a safe or fireproof location.',
@@ -1106,7 +1642,7 @@ const translations = {
         s8_h3: 'Trading (For Experienced Users)',
         s8_p4: 'Frequently buying and selling Bitcoin to profit from price fluctuations. This is much riskier and requires technical knowledge. 90% of traders lose money.',
         privacy_title: 'ℹ️ Privacy Policy',
-        privacy_p: 'We collect contact information through the form only to respond to your messages. We use Google AdSense to display relevant ads. Our pages contain affiliate links for Binance, Bybit and Ledger, where we receive commission if you register, at no additional cost to you.',
+        privacy_p: 'We collect contact information through the form only to respond to your messages. We use Google AdSense to display relevant ads. Our pages contain affiliate links for Binance, Bybit, Ledger, Kast and our e-book, where we receive commission if you register or buy, at no additional cost to you.',
         terms_title: '⚖️ Terms of Use',
         terms_strong: 'Bitcoin is a HIGH RISK investment',
         terms_p: 'This site is for educational purposes only and does not constitute financial advice. Bitcoin is a HIGH RISK investment. The price is extremely volatile and you can lose 100% of your investment. Never invest money you cannot afford to lose. We are not regulated financial advisors.',
@@ -1187,7 +1723,7 @@ const translations = {
         s3_h5: 'Paso 5: Transfiere a una Wallet Segura',
         s3_p5_html: 'Para máxima seguridad, transfiere tu Bitcoin del exchange a una <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a>. Una hardware wallet es un dispositivo físico que almacena tus claves privadas sin conexión, protegiendo tu Bitcoin de hackers y robos en línea.',
         s4_title: 'Seguridad en Bitcoin: Protege tu Inversión',
-        s4_p1: 'La seguridad es el aspecto más importante al invertir en Bitcoin. A diferencia de las cuentas bancarias, no existe forma de "recuperar" Bitcoin robado. Por lo tanto, proteger tus claves privadas es esencial.',
+        s4_p1: 'La seguridad es el aspecto más importante al invertir en Bitcoin. A diferencia de las cuentas bancarias, no existe forma de "recuperar" Bitcoin robado. Por lo tanto, proteger tus claves privadas es esencial. Una clave privada es una secuencia de números y letras que comprueba la propiedad del tu Bitcoin.',
         s4_h1: 'Consejos Esenciales de Seguridad:',
         s4_li1_b: 'Guarda tu seed phrase en un lugar seguro:',
         s4_li1_t: 'La seed phrase (12 o 24 palabras) es la clave maestra para acceder a tu Bitcoin. Escríbela en papel y guárdala en una caja fuerte o lugar a prueba de fuego.',
@@ -1229,7 +1765,7 @@ const translations = {
         s7_li2_b: 'Regulación gubernamental:',
         s7_li2_t: 'Las noticias sobre regulación (positiva o negativa) afectan mucho el precio.',
         s7_li3_b: 'Halving de Bitcoin:',
-        s7_li3_t: 'Cada 4 años, la recompensa de minería se reduce a la mitad. Esto reduce la oferta y históricamente ha impulsado el precio.',
+        s7_li3_t: 'Cada 4 años, la recompensa de minería se reduce a la mitad. Esto reduce la oferta e históricamente ha impulsado el precio.',
         s7_li4_b: 'Sentimiento general:',
         s7_li4_t: 'Los períodos de "bull market" (alcista) y "bear market" (bajista) afectan drásticamente el precio.',
         s7_li5_b: 'Economía global:',
@@ -1244,12 +1780,12 @@ const translations = {
         s8_h3: 'Trading (Para Experimentados)',
         s8_p4: 'Comprar y vender Bitcoin frecuentemente para obtener ganancias con las fluctuaciones de precio. Esto es mucho más arriesgado y requiere conocimiento técnico. El 90% de los traders pierde dinero.',
         privacy_title: 'ℹ️ Política de Privacidad',
-        privacy_p: 'Recopilamos información de contacto a través del formulario solo para responder sus mensajes. Usamos Google AdSense para mostrar anuncios relevantes. Nuestras páginas contienen enlaces de afiliados para Binance, Bybit y Ledger, donde recibimos comisión si se registra, sin costo adicional para usted.',
+        privacy_p: 'Recopilamos información de contacto a través del formulario solo para responder sus mensajes. Usamos Google AdSense para mostrar anuncios relevantes. Nuestras páginas contienen enlaces de afiliados para Binance, Bybit, Ledger, Kast y nuestro e-book, donde recibimos comisión si se registra o compra, sin costo adicional para usted.',
         terms_title: '⚖️ Términos de Uso',
         terms_strong: 'Bitcoin es una inversión de ALTO RIESGO',
         terms_p: 'Este sitio es solo educativo y no constituye asesoramiento financiero. Bitcoin es una inversión de ALTO RIESGO. El precio es extremadamente volátil y puede perder el 100% de su inversión. Nunca invierta dinero que no pueda perder. No somos asesores financieros regulados.',
         about_title: '👥 Quiénes Somos',
-        about_p: 'Bitcoin Agora es un sitio educativo enfocado en enseñar a principiantes cómo comprar Bitcoin de forma segura. Ofrecemos un conversor en tiempo real con cotización actualizada cada 30 segundos, guías prácticas y e-books para profundizar su conocimiento sobre criptomonedas y blockchain.',
+        about_p: 'Bitcoin Agora es un sitio educativo enfocado en enseñar a principiantes cómo comprar Bitcoin de forma segura. Ofrecemos un conversor en tiempo real con cotización actualizada cada 30 segundos, guías prácticas y e-books para profundizar su conocimiento sobre criptomoedas y blockchain.',
         contact_title: 'Contáctanos',
         form_name: 'Nombre',
         form_email: 'Correo electrónico',
@@ -1261,41 +1797,439 @@ const translations = {
     }
 };
 
+        stat_volume: 'Volume 24h',
+        cta_explore: 'Explorar Agora ↓',
+        api_loading: 'Carregando preço...',
+        api_live: 'Preço ao vivo',
+        api_error: 'Tentando reconectar...',
+        ads_label: 'Publicidade',
+        converter_title: 'Conversor Bitcoin',
+        converter_amount: 'Quantidade Bitcoin',
+        converter_currency: 'Moeda',
+        converter_result: 'Valor Convertido',
+        video_title: 'O que é Bitcoin? - Vídeo Explicativo',
+        ebook_title: 'Quer Aprender Mais?',
+        ebook_subtitle: 'Compre o E-book Bitcoin para Iniciantes',
+        ebook_desc: 'Descubra como funcionam as transações, como armazenar com segurança, estratégias de investimento e muito mais! Um guia completo para iniciantes que querem entender o futuro do dinheiro.',
+        ebook_button: '🚀 Comprar E-book Agora',
+        aff_title: '🤝 Parceiros Recomendados',
+        aff_subtitle: 'Exchanges para comprar Bitcoin com as menores taxas, cartão de débito cripto Kast para gastar no dia a dia, hardware wallet Ledger para máxima segurança e o e-book Bitcoin para iniciantes — tudo que você precisa para começar com segurança.',
+        aff_tag_exchange: 'Exchange',
+        aff_tag_wallet: 'Hardware Wallet',
+        aff_tag_kast: 'Cartão Cripto',
+        aff_tag_ebook: 'Guia Completo',
+        aff_binance_desc: 'A maior exchange de criptomoedas do mundo. Mais de 100 milhões de usuários, taxas baixas, suporte em português e compra via PIX.',
+        aff_binance_bonus: '🎁 Bônus exclusivo no cadastro',
+        aff_bybit_desc: 'Exchange especializada em trading avançado. Interface intuitiva, alta liquidez e ferramentas profissionais para todos os níveis.',
+        aff_bybit_bonus: '🎁 Até $30.000 em bônus de boas-vindas',
+        aff_ledger_desc: 'A hardware wallet mais segura do mundo. Guarde seu Bitcoin offline e proteja seus ativos de hackers e ataques online.',
+        aff_ledger_bonus: '🔒 Segurança máxima para seu Bitcoin',
+        aff_kast_desc: 'O cartão de débito cripto Kast que permite gastar seu Bitcoin e outras criptomoedas no dia a dia em qualquer estabelecimento do mundo. Sem conversão manual.',
+        aff_kast_bonus: '💳 Gaste cripto como dinheiro comum',
+        aff_ebook_name: 'E-book Bitcoin',
+        aff_ebook_desc: 'O guia definitivo Bitcoin para iniciantes. Aprenda blockchain, carteiras digitais, como comprar com segurança, estratégias de investimento e proteção dos seus ativos.',
+        aff_ebook_bonus: '⭐ Tudo que você precisa saber em um só lugar',
+        aff_btn_exchange: 'Abrir Conta Grátis →',
+        aff_btn_wallet: 'Comprar Ledger →',
+        aff_btn_kast: 'Obter Cartão Kast Grátis →',
+        aff_btn_ebook: 'Comprar E-book — R$29,90 →',
+        aff_note: 'Link de afiliado — sem custo extra para você',
+        aff_note_ebook: 'Produto digital — acesso imediato após pagamento',
+        s1_title: 'O Que é Bitcoin? Guia Completo para Iniciantes',
+        s1_p1: 'Bitcoin é a primeira criptomoeda do mundo, criada em 2009 por uma pessoa ou grupo anônimo conhecido como Satoshi Nakamoto. É uma moeda digital descentralizada que funciona sem a necessidade de bancos ou autoridades centrais. O Bitcoin utiliza a tecnologia blockchain para registrar todas as transações de forma segura e imutável.',
+        s1_p2: 'A rede Bitcoin é mantida por milhares de computadores (nós) espalhados pelo mundo. Quando você faz uma transação de Bitcoin, ela é verificada por esses computadores e registrada permanentemente no blockchain. Isso torna Bitcoin praticamente impossível de fraudar ou manipular.',
+        s1_p3: 'Um dos aspectos mais importantes do Bitcoin é sua escassez. Apenas 21 milhões de bitcoins serão criados no total. Essa limitação garante que o Bitcoin mantenha seu valor a longo prazo, diferente de moedas fiduciárias que podem ser impressas ilimitadamente pelos governos.',
+        s2_title: 'Blockchain: A Tecnologia Por Trás do Bitcoin',
+        s2_p1: 'O blockchain é um registro digital descentralizado que armazena informações em blocos encadeados. Cada bloco contém dados de transações, um timestamp (data e hora), e um código criptográfico único chamado hash. Quando um novo bloco é criado, ele referencia o bloco anterior, criando uma corrente impossível de quebrar sem detectar a fraude.',
+        s2_p2: 'A segurança do blockchain vem da criptografia e da descentralização. Para alterar uma transação antiga, um hacker precisaria recalcular todos os blocos subsequentes em mais de 50% da rede simultaneamente, o que é computacionalmente impossível. Esta é a razão pela qual a rede Bitcoin nunca foi hackeada desde seu lançamento em 2009.',
+        s2_p3: 'O blockchain não é apenas usado para Bitcoin. Muitas outras criptomoedas e aplicações descentralizadas usam essa tecnologia. Algumas empresas estão explorando blockchain para supply chain, contratos inteligentes, e até votação eletrônica.',
+        s3_title: 'Como Comprar Bitcoin em 5 Passos Simples',
+        s3_h1: 'Passo 1: Escolha uma Corretora Confiável',
+        s3_p1_html: 'O primeiro passo para comprar Bitcoin é escolher uma corretora de criptomoedas confiável. As duas principais opções são <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Binance</a> (a maior exchange do mundo com mais de 100 milhões de usuários) e <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank">Bybit</a> (especializada em trading com 10 milhões de usuários). Ambas são reguladas e têm excelente reputação.',
+        s3_h2: 'Passo 2: Registre-se e Verifique sua Identidade',
+        s3_p2: 'Crie uma conta na corretora escolhida. Você precisará fornecer seu nome, email e criar uma senha forte. Após isso, a corretora pedirá para você verificar sua identidade enviando uma cópia do seu CPF e uma selfie. Este processo é obrigatório por lei (KYC - Know Your Customer) e geralmente leva 5-15 minutos.',
+        s3_h3: 'Passo 3: Deposite Dinheiro',
+        s3_p3: 'Após verificação, você pode depositar dinheiro. A maioria das corretoras aceita transferência bancária, PIX (no Brasil, é instantâneo!) e cartão de crédito. Recomendamos começar com um pequeno valor para testar o processo antes de investir quantias maiores.',
+        s3_h4: 'Passo 4: Compre Bitcoin',
+        s3_p4: 'Com dinheiro na sua conta, navegue até a seção de compra de Bitcoin. Digite quanto Bitcoin deseja comprar e confirme a transação. A compra é instantânea e o Bitcoin aparecerá em sua carteira da corretora.',
+        s3_h5: 'Passo 5: Transfira para uma Wallet Segura',
+        s3_p5_html: 'Para máxima segurança, transfira seu Bitcoin de uma corretora para uma <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">hardware wallet Ledger</a>. Uma hardware wallet é um dispositivo físico que armazena suas chaves privadas offline, protegendo seu Bitcoin de hackers e roubo online.',
+        s4_title: 'Segurança em Bitcoin: Proteja Seu Investimento',
+        s4_p1: 'A segurança é o aspecto mais importante ao investir em Bitcoin. Diferente de contas bancárias, não existe "recuperar" Bitcoin roubado. Portanto, proteger suas chaves privadas é essencial.',
+        s4_h1: 'Dicas de Segurança Essenciais:',
+        s4_li1_b: 'Guarde sua seed phrase em local seguro:',
+        s4_li1_t: 'A seed phrase (12 ou 24 palavras) é a chave mestre para acessar seu Bitcoin. Escreva-a em papel e guarde em um cofre ou local à prova de fogo.',
+        s4_li2_b: 'Nunca compartilhe sua seed phrase:',
+        s4_li2_t: 'Ninguém legítimo jamais pedirá sua seed phrase. Se alguém pedir, é uma fraude.',
+        s4_li3_b: 'Ative autenticação de dois fatores (2FA):',
+        s4_li3_t: 'Adicione uma camada extra de segurança às suas contas usando 2FA (código por SMS ou app como Google Authenticator).',
+        s4_li4_b: 'Use senhas fortes e únicas:',
+        s4_li4_t: 'Para cada conta de cripto, use uma senha diferente e complexa. Considere usar um gerenciador de senhas como Bitwarden.',
+        s4_li5_b: 'Evite redes WiFi públicas:',
+        s4_li5_t: 'Não acesse suas contas em redes WiFi públicas. Use apenas sua conexão pessoal ou dados móveis.',
+        s4_li6_b: 'Verifique URLs antes de clicar:',
+        s4_li6_t: 'Phishing é comum. Sempre verifique a URL da corretora antes de fazer login. Fraudadores criam sites quase idênticos.',
+        s4_li7_b: 'Use hardware wallet para Bitcoin de longo prazo:',
+        s4_li7_t: 'Se pretende manter Bitcoin por mais de alguns meses, use uma hardware wallet segura.',
+        s5_title: 'Riscos do Investimento em Bitcoin - Leia Antes de Investir',
+        s5_p1: 'Bitcoin é um investimento de ALTÍSSIMO RISCO. O preço é extremamente volátil e pode subir ou cair 20-30% em um único dia. Você pode perder 100% do seu investimento. Nunca invista dinheiro que você não possa perder completamente.',
+        s5_p2: 'A volatilidade do Bitcoin é causada por vários fatores:',
+        s5_li1_b: 'Notícias e eventos:',
+        s5_li1_t: 'Declarações de políticos, regulações governamentais, ou hacks podem causar quedas abruptas.',
+        s5_li2_b: 'Manipulação de mercado:',
+        s5_li2_t: '"Whales" (investidores com grandes quantidades) podem influenciar o preço.',
+        s5_li3_b: 'Sentimento do mercado:',
+        s5_li3_t: 'Bitcoin sobe e cai baseado em medo e ganância dos investidores.',
+        s5_li4_b: 'Falta de valor intrínseco:',
+        s5_li4_t: 'Diferente de ações, Bitcoin não gera lucros ou dividendos. Seu valor depende do que as pessoas estão dispostas a pagar.',
+        s6_title: 'Mineração de Bitcoin: Como Funciona',
+        s6_p1: 'Mineração de Bitcoin é o processo de validar transações e adicionar novos blocos ao blockchain. Mineradores usam computadores poderosos para resolver problemas matemáticos complexos. O primeiro minerador a resolver o problema adiciona um novo bloco e recebe uma recompensa em Bitcoin.',
+        s6_p2: 'Este processo não é acessível para iniciantes. A mineração moderna requer:',
+        s6_li1: 'Hardware especializado (ASIC miners) que custam milhares de dólares',
+        s6_li2: 'Eletricidade barata (muitos mineradores estão em países com energia hidrelétrica)',
+        s6_li3: 'Conhecimento técnico para configurar e otimizar',
+        s6_li4: 'Investimento grande com retorno incerto',
+        s6_p3: 'Para a maioria dos iniciantes, comprar Bitcoin em uma corretora é muito mais simples e seguro do que tentar minerar.',
+        s7_title: 'Preço do Bitcoin: Fatores que Influenciam',
+        s7_p1: 'O preço do Bitcoin é determinado inteiramente pela oferta e demanda no mercado. Vários fatores influenciam o preço:',
+        s7_li1_b: 'Adoção institucional:',
+        s7_li1_t: 'Quando grandes empresas (como Tesla, MicroStrategy) compram Bitcoin, o preço sobe.',
+        s7_li2_b: 'Regulação governamental:',
+        s7_li2_t: 'Notícias sobre regulação (positiva ou negativa) afetam muito o preço.',
+        s7_li3_b: 'Halving do Bitcoin:',
+        s7_li3_t: 'A cada 4 anos, a recompensa de mineração é reduzida em 50%. Isso reduz a oferta e historicamente impulsiona o preço.',
+        s7_li4_b: 'Sentimento geral:',
+        s7_li4_t: 'Períodos de "bull market" (alta) e "bear market" (baixa) afetam o preço drasticamente.',
+        s7_li5_b: 'Economia global:',
+        s7_li5_t: 'Inflação, juros altos e incerteza econômica podem fazer pessoas comprarem Bitcoin como proteção.',
+        s7_p2: 'Use nosso conversor no topo da página para ver o preço atual do Bitcoin em BRL, USD e outras moedas. Os preços são atualizados em tempo real a cada 30 segundos.',
+        s8_title: 'Estratégias de Investimento em Bitcoin',
+        s8_p1: 'Existem várias estratégias que investidores usam ao lidar com Bitcoin. A melhor estratégia depende de seus objetivos financeiros, tolerância ao risco e timeline:',
+        s8_h1: 'HODL (Hold On for Dear Life)',
+        s8_p2: 'A estratégia mais comum entre iniciantes. Você compra Bitcoin e mantém por anos, ignorando as flutuações de preço. Histórico mostra que Bitcoin se valoriza a longo prazo (10+ anos). Esta é a estratégia mais segura para iniciantes.',
+        s8_h2: 'Dollar Cost Averaging (DCA)',
+        s8_p3: 'Você investe a mesma quantia em Bitcoin regularmente (por exemplo, R$ 100 por semana) independente do preço. Isso reduz o risco de comprar no topo do mercado e é perfeito para pessoas com renda regular.',
+        s8_h3: 'Trading (Para Experientes)',
+        s8_p4: 'Comprar e vender Bitcoin frequentemente para lucrar com flutuações de preço. Isto é muito mais arriscado e requer conhecimento técnico. 90% dos traders perdem dinheiro.',
+        privacy_title: 'ℹ️ Política de Privacidade',
+        privacy_p: 'Coletamos informações de contato através do formulário apenas para responder suas mensagens. Usamos Google AdSense para exibir anúncios relevantes. Nossas páginas contêm links de afiliados para Binance, Bybit, Ledger, Kast e nosso e-book, onde recebemos comissão se você se registrar ou comprar, sem custo adicional para você.',
+        terms_title: '⚖️ Termos de Uso',
+        terms_strong: 'Bitcoin é um investimento de ALTO RISCO',
+        terms_p: 'Este site é apenas educacional e não constitui aconselhamento financeiro. Bitcoin é um investimento de ALTO RISCO. O preço é extremamente volátil e você pode perder 100% do seu investimento. Nunca invista dinheiro que não possa perder. Não somos consultores financeiros regulados.',
+        about_title: '👥 Quem Somos',
+        about_p: 'Bitcoin Agora é um site educacional focado em ensinar iniciantes como comprar Bitcoin com segurança. Oferecemos um conversor em tempo real com cotação atualizada a cada 30 segundos, guias práticos e e-books para aprofundar seu conhecimento sobre criptomoedas e blockchain.',
+        contact_title: 'Entre em Contato',
+        form_name: 'Nome',
+        form_email: 'Email',
+        form_subject: 'Assunto',
+        form_message: 'Mensagem',
+        btn_send: 'Enviar Mensagem',
+        msg_success: 'Mensagem enviada com sucesso!',
+        msg_error: 'Erro ao enviar mensagem. Tente novamente.'
+    },
+
+    en: {
+        hero_title: 'Bitcoin in Real Time',
+        hero_subtitle: 'The currency of the future is here',
+        hero_description: 'Decentralized • Secure • Global • No intermediaries',
+        ticker_label: 'Current Price',
+        stat_change: '24h Change',
+        stat_market: 'Market Cap',
+        stat_volume: '24h Volume',
+        cta_explore: 'Explore Now ↓',
+        api_loading: 'Loading price...',
+        api_live: 'Live price',
+        api_error: 'Trying to reconnect...',
+        ads_label: 'Advertisement',
+        converter_title: 'Bitcoin Converter',
+        converter_amount: 'Bitcoin Amount',
+        converter_currency: 'Currency',
+        converter_result: 'Converted Value',
+        video_title: 'What is Bitcoin? - Explainer Video',
+        ebook_title: 'Want to Learn More?',
+        ebook_subtitle: 'Buy the Bitcoin for Beginners E-book',
+        ebook_desc: 'Discover how transactions work, how to store Bitcoin safely, investment strategies and much more! A complete guide for beginners who want to understand the future of money.',
+        ebook_button: '🚀 Buy E-book Now',
+        aff_title: '🤝 Recommended Partners',
+        aff_subtitle: 'Exchanges to buy Bitcoin with the lowest fees, Kast crypto debit card to spend crypto daily, Ledger hardware wallet for maximum security, and the Bitcoin beginner e-book — everything you need to get started safely.',
+        aff_tag_exchange: 'Exchange',
+        aff_tag_wallet: 'Hardware Wallet',
+        aff_tag_kast: 'Crypto Card',
+        aff_tag_ebook: 'Complete Guide',
+        aff_binance_desc: 'The world\'s largest crypto exchange. Over 100 million users, low fees, and easy bank transfer deposits.',
+        aff_binance_bonus: '🎁 Exclusive sign-up bonus',
+        aff_bybit_desc: 'Exchange specialized in advanced trading. Intuitive interface, high liquidity and professional tools for all levels.',
+        aff_bybit_bonus: '🎁 Up to $30,000 in welcome bonuses',
+        aff_ledger_desc: 'The world\'s most secure hardware wallet. Store your Bitcoin offline and protect your assets from hackers.',
+        aff_ledger_bonus: '🔒 Maximum security for your Bitcoin',
+        aff_kast_desc: 'The Kast crypto debit card lets you spend Bitcoin and other cryptocurrencies anywhere in the world, every day — no manual conversion needed.',
+        aff_kast_bonus: '💳 Spend crypto like regular money',
+        aff_ebook_name: 'Bitcoin E-book',
+        aff_ebook_desc: 'The definitive Bitcoin guide for beginners. Learn blockchain, digital wallets, how to buy safely, investment strategies and how to protect your assets.',
+        aff_ebook_bonus: '⭐ Everything you need to know in one place',
+        aff_btn_exchange: 'Open Free Account →',
+        aff_btn_wallet: 'Buy Ledger →',
+        aff_btn_kast: 'Get Kast Card Free →',
+        aff_btn_ebook: 'Buy E-book — R$29.90 →',
+        aff_note: 'Affiliate link — no extra cost to you',
+        aff_note_ebook: 'Digital product — instant access after payment',
+        s1_title: 'What is Bitcoin? Complete Guide for Beginners',
+        s1_p1: 'Bitcoin is the world\'s first cryptocurrency, created in 2009 by an anonymous person or group known as Satoshi Nakamoto. It is a decentralized digital currency that operates without the need for banks or central authorities.',
+        s1_p2: 'The Bitcoin network is maintained by thousands of computers (nodes) spread around the world. When you make a Bitcoin transaction, it is verified by these computers and permanently recorded on the blockchain.',
+        s1_p3: 'One of the most important aspects of Bitcoin is its scarcity. Only 21 million bitcoins will ever be created. This limitation ensures that Bitcoin maintains its value over the long term.',
+        s2_title: 'Blockchain: The Technology Behind Bitcoin',
+        s2_p1: 'The blockchain is a decentralized digital ledger that stores information in chained blocks. Each block contains transaction data, a timestamp, and a unique cryptographic code called a hash.',
+        s2_p2: 'Blockchain security comes from cryptography and decentralization. To alter an old transaction, a hacker would need to recalculate all subsequent blocks across more than 50% of the network simultaneously.',
+        s2_p3: 'Blockchain is not only used for Bitcoin. Many other cryptocurrencies and decentralized applications use this technology.',
+        s3_title: 'How to Buy Bitcoin in 5 Simple Steps',
+        s3_h1: 'Step 1: Choose a Reliable Exchange',
+        s3_p1_html: 'The first step to buying Bitcoin is choosing a reliable cryptocurrency exchange. The two main options are <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Binance</a> and <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank">Bybit</a>.',
+        s3_h2: 'Step 2: Register and Verify Your Identity',
+        s3_p2: 'Create an account on your chosen exchange. You will need to provide your name, email, and create a strong password. The exchange will then ask you to verify your identity.',
+        s3_h3: 'Step 3: Deposit Money',
+        s3_p3: 'After verification, you can deposit money. Most exchanges accept bank transfers, credit cards, and other local payment methods.',
+        s3_h4: 'Step 4: Buy Bitcoin',
+        s3_p4: 'With money in your account, navigate to the Bitcoin purchase section. Enter how much Bitcoin you want to buy and confirm the transaction.',
+        s3_h5: 'Step 5: Transfer to a Secure Wallet',
+        s3_p5_html: 'For maximum security, transfer your Bitcoin from the exchange to a <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">Ledger hardware wallet</a>.',
+        s4_title: 'Bitcoin Security: Protect Your Investment',
+        s4_p1: 'Security is the most important aspect of investing in Bitcoin. Unlike bank accounts, there is no "recovering" stolen Bitcoin.',
+        s4_h1: 'Essential Security Tips:',
+        s4_li1_b: 'Store your seed phrase safely:',
+        s4_li1_t: 'The seed phrase (12 or 24 words) is the master key to access your Bitcoin.',
+        s4_li2_b: 'Never share your seed phrase:',
+        s4_li2_t: 'No legitimate person will ever ask for your seed phrase. If anyone asks, it\'s a scam.',
+        s4_li3_b: 'Enable two-factor authentication (2FA):',
+        s4_li3_t: 'Add an extra layer of security to your accounts using 2FA.',
+        s4_li4_b: 'Use strong, unique passwords:',
+        s4_li4_t: 'For each crypto account, use a different and complex password.',
+        s4_li5_b: 'Avoid public WiFi networks:',
+        s4_li5_t: 'Do not access your accounts on public WiFi. Use only your personal connection or mobile data.',
+        s4_li6_b: 'Verify URLs before clicking:',
+        s4_li6_t: 'Phishing is common. Always verify the exchange URL before logging in.',
+        s4_li7_b: 'Use a hardware wallet for long-term Bitcoin:',
+        s4_li7_t: 'If you plan to hold Bitcoin for more than a few months, use a secure hardware wallet.',
+        s5_title: 'Risks of Bitcoin Investment - Read Before Investing',
+        s5_p1: 'Bitcoin is a VERY HIGH RISK investment. The price is extremely volatile and can rise or fall 20-30% in a single day. You can lose 100% of your investment.',
+        s5_p2: 'Bitcoin\'s volatility is caused by several factors:',
+        s5_li1_b: 'News and events:',
+        s5_li1_t: 'Political statements, government regulations, or hacks can cause abrupt drops.',
+        s5_li2_b: 'Market manipulation:',
+        s5_li2_t: '"Whales" can influence the price.',
+        s5_li3_b: 'Market sentiment:',
+        s5_li3_t: 'Bitcoin rises and falls based on investor fear and greed.',
+        s5_li4_b: 'Lack of intrinsic value:',
+        s5_li4_t: 'Unlike stocks, Bitcoin generates no profits or dividends.',
+        s6_title: 'Bitcoin Mining: How It Works',
+        s6_p1: 'Bitcoin mining is the process of validating transactions and adding new blocks to the blockchain.',
+        s6_p2: 'This process is not accessible for beginners. Modern mining requires:',
+        s6_li1: 'Specialized hardware (ASIC miners) costing thousands of dollars',
+        s6_li2: 'Cheap electricity',
+        s6_li3: 'Technical knowledge to configure and optimize',
+        s6_li4: 'Large investment with uncertain return',
+        s6_p3: 'For most beginners, buying Bitcoin on an exchange is much simpler and safer than trying to mine.',
+        s7_title: 'Bitcoin Price: Influencing Factors',
+        s7_p1: 'Bitcoin\'s price is determined entirely by supply and demand in the market.',
+        s7_li1_b: 'Institutional adoption:',
+        s7_li1_t: 'When large companies buy Bitcoin, the price rises.',
+        s7_li2_b: 'Government regulation:',
+        s7_li2_t: 'News about regulation greatly affects the price.',
+        s7_li3_b: 'Bitcoin Halving:',
+        s7_li3_t: 'Every 4 years, the mining reward is cut in half.',
+        s7_li4_b: 'General sentiment:',
+        s7_li4_t: 'Bull and bear market periods drastically affect the price.',
+        s7_li5_b: 'Global economy:',
+        s7_li5_t: 'Inflation and economic uncertainty can drive Bitcoin demand.',
+        s7_p2: 'Use our converter at the top of the page to see the current Bitcoin price.',
+        s8_title: 'Bitcoin Investment Strategies',
+        s8_p1: 'There are several strategies investors use when dealing with Bitcoin:',
+        s8_h1: 'HODL (Hold On for Dear Life)',
+        s8_p2: 'The most common strategy among beginners. You buy Bitcoin and hold for years.',
+        s8_h2: 'Dollar Cost Averaging (DCA)',
+        s8_p3: 'You invest the same amount in Bitcoin regularly regardless of the price.',
+        s8_h3: 'Trading (For Experienced Users)',
+        s8_p4: 'Frequently buying and selling Bitcoin to profit from price fluctuations. 90% of traders lose money.',
+        privacy_title: 'ℹ️ Privacy Policy',
+        privacy_p: 'We collect contact information through the form only to respond to your messages. We use Google AdSense.',
+        terms_title: '⚖️ Terms of Use',
+        terms_strong: 'Bitcoin is a HIGH RISK investment',
+        terms_p: 'This site is for educational purposes only and does not constitute financial advice. Bitcoin is a HIGH RISK investment.',
+        about_title: '👥 Who We Are',
+        about_p: 'Bitcoin Agora is an educational website focused on teaching beginners how to buy Bitcoin safely.',
+        contact_title: 'Contact Us',
+        form_name: 'Name',
+        form_email: 'Email',
+        form_subject: 'Subject',
+        form_message: 'Message',
+        btn_send: 'Send Message',
+        msg_success: 'Message sent successfully!',
+        msg_error: 'Error sending message. Please try again.'
+    },
+
+    es: {
+        hero_title: 'Bitcoin en Tiempo Real',
+        hero_subtitle: 'La moneda del futuro está aquí',
+        hero_description: 'Descentralizado • Seguro • Global • Sin intermediarios',
+        ticker_label: 'Precio Actual',
+        stat_change: 'Cambio 24h',
+        stat_market: 'Cap. de Mercado',
+        stat_volume: 'Volumen 24h',
+        cta_explore: 'Explorar Ahora ↓',
+        api_loading: 'Cargando precio...',
+        api_live: 'Precio en vivo',
+        api_error: 'Intentando reconectar...',
+        ads_label: 'Publicidad',
+        converter_title: 'Conversor Bitcoin',
+        converter_amount: 'Cantidad Bitcoin',
+        converter_currency: 'Moneda',
+        converter_result: 'Valor Convertido',
+        video_title: '¿Qué es Bitcoin? - Video Explicativo',
+        ebook_title: '¿Quieres Aprender Más?',
+        ebook_subtitle: 'Compra el eBook Bitcoin para Principiantes',
+        ebook_desc: '¡Descubre cómo funcionan las transacciones, cómo almacenarlo de forma segura, estrategias de inversión y mucho más!',
+        ebook_button: '🚀 Comprar eBook Ahora',
+        aff_title: '🤝 Socios Recomendados',
+        aff_subtitle: 'Exchanges para comprar Bitcoin con las tarifas más bajas, tarjeta de débito cripto Kast, hardware wallet Ledger y el e-book Bitcoin para principiantes.',
+        aff_tag_exchange: 'Exchange',
+        aff_tag_wallet: 'Hardware Wallet',
+        aff_tag_kast: 'Tarjeta Cripto',
+        aff_tag_ebook: 'Guía Completa',
+        aff_binance_desc: 'El exchange de criptomonedas más grande del mundo.',
+        aff_binance_bonus: '🎁 Bono exclusivo al registrarse',
+        aff_bybit_desc: 'Exchange especializado en trading avanzado.',
+        aff_bybit_bonus: '🎁 Hasta $30.000 en bonos de bienvenida',
+        aff_ledger_desc: 'La hardware wallet más segura del mundo.',
+        aff_ledger_bonus: '🔒 Seguridad máxima para tu Bitcoin',
+        aff_kast_desc: 'La tarjeta de débito cripto Kast te permite gastar Bitcoin en cualquier lugar.',
+        aff_kast_bonus: '💳 Gasta cripto como dinero normal',
+        aff_ebook_name: 'E-book Bitcoin',
+        aff_ebook_desc: 'La guía definitiva Bitcoin para principiantes.',
+        aff_ebook_bonus: '⭐ Todo lo que necesitas saber en un solo lugar',
+        aff_btn_exchange: 'Abrir Cuenta Gratis →',
+        aff_btn_wallet: 'Comprar Ledger →',
+        aff_btn_kast: 'Obtener Tarjeta Kast Gratis →',
+        aff_btn_ebook: 'Comprar E-book — R$29,90 →',
+        aff_note: 'Enlace de afiliado — sin costo adicional para ti',
+        aff_note_ebook: 'Producto digital — acceso inmediato tras el pago',
+        s1_title: '¿Qué es Bitcoin? Guía Completa para Principiantes',
+        s1_p1: 'Bitcoin es la primera criptomoneda del mundo, creada en 2009 por Satoshi Nakamoto.',
+        s1_p2: 'La red Bitcoin es mantenida por miles de computadoras distribuidas por todo el mundo.',
+        s1_p3: 'Uno de los aspectos más importantes de Bitcoin es su escasez: solo 21 millones.',
+        s2_title: 'Blockchain: La Tecnología Detrás de Bitcoin',
+        s2_p1: 'El blockchain es un registro digital descentralizado que almacena información en bloques encadenados.',
+        s2_p2: 'La seguridad del blockchain proviene de la criptografía y la descentralización.',
+        s2_p3: 'El blockchain no solo se usa para Bitcoin.',
+        s3_title: 'Cómo Comprar Bitcoin en 5 Pasos Simples',
+        s3_h1: 'Paso 1: Elige un Exchange Confiable',
+        s3_p1_html: 'Las dos principales opciones son <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=pt&ref=GRO_28502_8H8KI&utm_source=bitcoinagora" target="_blank">Binance</a> y <a href="https://www.bybit.com/invite?ref=RKKGRO" target="_blank">Bybit</a>.',
+        s3_h2: 'Paso 2: Regístrate y Verifica tu Identidad',
+        s3_p2: 'Crea una cuenta en el exchange elegido.',
+        s3_h3: 'Paso 3: Deposita Dinero',
+        s3_p3: 'La mayoría de los exchanges aceptan transferencias bancarias.',
+        s3_h4: 'Paso 4: Compra Bitcoin',
+        s3_p4: 'Con dinero en tu cuenta, compra Bitcoin instantáneamente.',
+        s3_h5: 'Paso 5: Transfiere a una Wallet Segura',
+        s3_p5_html: 'Para máxima seguridad, transfiere a una <a href="https://shop.ledger.com/pt/pages/referral-program?referral_code=KX6C02RWJNBKE" target="_blank">Ledger</a>.',
+        s4_title: 'Seguridad en Bitcoin',
+        s4_p1: 'La seguridad es el aspecto más importante.',
+        s4_h1: 'Consejos Esenciales:',
+        s4_li1_b: 'Guarda tu seed phrase en un lugar seguro:',
+        s4_li1_t: 'La seed phrase es la clave maestra.',
+        s4_li2_b: 'Nunca compartas tu seed phrase:',
+        s4_li2_t: 'Si alguien la pide, es una estafa.',
+        s4_li3_b: 'Activa 2FA:',
+        s4_li3_t: 'Agrega una capa extra de seguridad.',
+        s4_li4_b: 'Usa contraseñas fuertes:',
+        s4_li4_t: 'Una contraseña diferente para cada cuenta.',
+        s4_li5_b: 'Evita WiFi público:',
+        s4_li5_t: 'Usa solo tu conexión personal.',
+        s4_li6_b: 'Verifica URLs:',
+        s4_li6_t: 'Siempre verifica antes de iniciar sesión.',
+        s4_li7_b: 'Usa hardware wallet:',
+        s4_li7_t: 'Para Bitcoin a largo plazo.',
+        s5_title: 'Riesgos de Invertir en Bitcoin',
+        s5_p1: 'Bitcoin es una inversión de MUY ALTO RIESGO.',
+        s5_p2: 'La volatilidad es causada por varios factores:',
+        s5_li1_b: 'Noticias y eventos:',
+        s5_li1_t: 'Pueden causar caídas abruptas.',
+        s5_li2_b: 'Manipulación del mercado:',
+        s5_li2_t: 'Las "ballenas" pueden influir.',
+        s5_li3_b: 'Sentimiento del mercado:',
+        s5_li3_t: 'Miedo y codicia.',
+        s5_li4_b: 'Falta de valor intrínseco:',
+        s5_li4_t: 'No genera dividendos.',
+        s6_title: 'Minería de Bitcoin',
+        s6_p1: 'La minería es el proceso de validar transacciones.',
+        s6_p2: 'Requiere:',
+        s6_li1: 'Hardware especializado',
+        s6_li2: 'Electricidad barata',
+        s6_li3: 'Conocimiento técnico',
+        s6_li4: 'Gran inversión',
+        s6_p3: 'Para principiantes, comprar es más simple.',
+        s7_title: 'Precio de Bitcoin',
+        s7_p1: 'Determinado por oferta y demanda.',
+        s7_li1_b: 'Adopción institucional:',
+        s7_li1_t: 'Empresas grandes comprando.',
+        s7_li2_b: 'Regulación:',
+        s7_li2_t: 'Afecta mucho el precio.',
+        s7_li3_b: 'Halving:',
+        s7_li3_t: 'Cada 4 años se reduce a la mitad.',
+        s7_li4_b: 'Sentimiento general:',
+        s7_li4_t: 'Bull y bear markets.',
+        s7_li5_b: 'Economía global:',
+        s7_li5_t: 'Inflación y tipos de interés.',
+        s7_p2: 'Usa nuestro conversor arriba.',
+        s8_title: 'Estrategias de Inversión',
+        s8_p1: 'Varias estrategias disponibles:',
+        s8_h1: 'HODL',
+        s8_p2: 'Compra y mantén a largo plazo.',
+        s8_h2: 'DCA (Promedio de Costo)',
+        s8_p3: 'Invierte la misma cantidad regularmente.',
+        s8_h3: 'Trading',
+        s8_p4: 'Solo para experimentados.',
+        privacy_title: 'ℹ️ Política de Privacidad',
+        privacy_p: 'Recopilamos información solo para responder mensajes.',
+        terms_title: '⚖️ Términos de Uso',
+        terms_strong: 'Bitcoin es una inversión de ALTO RIESGO',
+        terms_p: 'Este sitio es solo educativo.',
+        about_title: '👥 Quiénes Somos',
+        about_p: 'Bitcoin Agora es un sitio educativo.',
+        contact_title: 'Contáctanos',
+        form_name: 'Nombre',
+        form_email: 'Correo electrónico',
+        form_subject: 'Asunto',
+        form_message: 'Mensaje',
+        btn_send: 'Enviar Mensaje',
+        msg_success: '¡Mensaje enviado con éxito!',
+        msg_error: 'Error al enviar el mensaje.'
+    }
+};
+
 // ===================================================
 // LANGUAGE SYSTEM
 // ===================================================
 let currentLang = localStorage.getItem('lang') || 'pt';
-
-// Keys that use innerHTML (contain HTML links)
 const htmlKeys = ['s3_p1_html', 's3_p5_html', 'terms_p'];
 
 function setLang(lang) {
     currentLang = lang;
     localStorage.setItem('lang', lang);
-
-    // Update buttons
     document.querySelectorAll('.lang button').forEach(b => {
         b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
-
-    // Update all translated elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         const t = translations[lang];
         if (!t || !t[key]) return;
-
         if (htmlKeys.includes(key)) {
             el.innerHTML = t[key];
         } else {
             el.textContent = t[key];
         }
     });
-
-    // Update html lang attribute
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
 }
 
-// Initialize language on load
 document.addEventListener('DOMContentLoaded', () => {
     setLang(currentLang);
 });
@@ -1344,40 +2278,33 @@ function updateDisplay(usd, brl, change24h, marketCapUsd, vol24hUsd) {
     priceLoaded = true;
 }
 
-// Method 1: CoinGecko (has all currencies)
 async function fetchCoinGecko() {
     const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd,brl,eur,gbp,jpy,aud,cad,chf,cny,inr,mxn,zar&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true';
     const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
     if (!res.ok) throw new Error('CoinGecko error ' + res.status);
     const data = await res.json();
     const btc = data.bitcoin;
-
     pricesByMoeda = {
         usd: btc.usd, brl: btc.brl, eur: btc.eur, gbp: btc.gbp,
         jpy: btc.jpy, aud: btc.aud, cad: btc.cad, chf: btc.chf,
         cny: btc.cny, inr: btc.inr, mxn: btc.mxn, zar: btc.zar
     };
-
     updateDisplay(btc.usd, btc.brl, btc.usd_24h_change, btc.usd_market_cap, btc.usd_24h_vol);
     console.log('✅ Preço via CoinGecko: $' + btc.usd);
 }
 
-// Method 2: Binance (USD) + AwesomeAPI (BRL + rates)
 async function fetchBinanceFallback() {
     const [binanceRes, awesomeRes] = await Promise.all([
         fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT', { signal: AbortSignal.timeout(8000) }),
         fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,USD-EUR,USD-GBP,USD-JPY,USD-AUD,USD-CAD,USD-CHF,USD-CNY,USD-INR,USD-MXN,USD-ZAR', { signal: AbortSignal.timeout(8000) })
     ]);
-
     if (!binanceRes.ok) throw new Error('Binance error');
     const binance = await binanceRes.json();
     const usd = parseFloat(binance.lastPrice);
     const change24h = parseFloat(binance.priceChangePercent);
     const vol24h = parseFloat(binance.volume) * usd;
-
-    let brl = usd * 5.7; // fallback rate
+    let brl = usd * 5.7;
     const rates = { usd: 1, brl: 5.7, eur: 0.93, gbp: 0.79, jpy: 150, aud: 1.55, cad: 1.36, chf: 0.9, cny: 7.2, inr: 83, mxn: 17, zar: 18.5 };
-
     if (awesomeRes.ok) {
         try {
             const awesome = await awesomeRes.json();
@@ -1395,90 +2322,53 @@ async function fetchBinanceFallback() {
             brl = usd * rates.brl;
         } catch(e) { console.warn('AwesomeAPI parse error', e); }
     }
-
     pricesByMoeda = {};
-    for (const [k, rate] of Object.entries(rates)) {
-        pricesByMoeda[k] = usd * rate;
-    }
+    for (const [k, rate] of Object.entries(rates)) { pricesByMoeda[k] = usd * rate; }
     pricesByMoeda.usd = usd;
-
     updateDisplay(usd, brl, change24h, null, vol24h);
     console.log('✅ Preço via Binance: $' + usd);
 }
 
-// Method 3: CoinGecko alternative endpoint
 async function fetchCoinGeckoAlt() {
-    const res = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false', {
-        signal: AbortSignal.timeout(10000)
-    });
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false', { signal: AbortSignal.timeout(10000) });
     if (!res.ok) throw new Error('CoinGecko alt error');
     const data = await res.json();
     const mkt = data.market_data;
     const usd = mkt.current_price.usd;
-
     pricesByMoeda = {
-        usd: mkt.current_price.usd || 0,
-        brl: mkt.current_price.brl || 0,
-        eur: mkt.current_price.eur || 0,
-        gbp: mkt.current_price.gbp || 0,
-        jpy: mkt.current_price.jpy || 0,
-        aud: mkt.current_price.aud || 0,
-        cad: mkt.current_price.cad || 0,
-        chf: mkt.current_price.chf || 0,
-        cny: mkt.current_price.cny || 0,
-        inr: mkt.current_price.inr || 0,
-        mxn: mkt.current_price.mxn || 0,
-        zar: mkt.current_price.zar || 0
+        usd: mkt.current_price.usd || 0, brl: mkt.current_price.brl || 0,
+        eur: mkt.current_price.eur || 0, gbp: mkt.current_price.gbp || 0,
+        jpy: mkt.current_price.jpy || 0, aud: mkt.current_price.aud || 0,
+        cad: mkt.current_price.cad || 0, chf: mkt.current_price.chf || 0,
+        cny: mkt.current_price.cny || 0, inr: mkt.current_price.inr || 0,
+        mxn: mkt.current_price.mxn || 0, zar: mkt.current_price.zar || 0
     };
-
-    updateDisplay(
-        usd,
-        pricesByMoeda.brl,
-        mkt.price_change_percentage_24h,
-        mkt.market_cap.usd,
-        mkt.total_volume.usd
-    );
+    updateDisplay(usd, pricesByMoeda.brl, mkt.price_change_percentage_24h, mkt.market_cap.usd, mkt.total_volume.usd);
     console.log('✅ Preço via CoinGecko alt: $' + usd);
 }
 
 async function updatePrice() {
     setApiStatus('loading');
-
-    // Try each method in order
     const methods = [fetchCoinGecko, fetchBinanceFallback, fetchCoinGeckoAlt];
-
     for (const method of methods) {
-        try {
-            await method();
-            return; // Success - stop trying
-        } catch (e) {
-            console.warn(`⚠️ ${method.name} falhou:`, e.message);
-        }
+        try { await method(); return; }
+        catch (e) { console.warn(`⚠️ ${method.name} falhou:`, e.message); }
     }
-
-    // All methods failed
     setApiStatus('error');
     console.error('❌ Todas as APIs falharam');
 }
 
-// ===================================================
-// CONVERTER
-// ===================================================
 function convertCurrency() {
     const amount = parseFloat(document.getElementById('btcAmount').value) || 0;
     const moeda = document.getElementById('currency').value.toLowerCase();
     const resultEl = document.getElementById('result');
-
     if (!resultEl) return;
     if (amount <= 0 || !pricesByMoeda[moeda] || pricesByMoeda[moeda] === 0) {
-        resultEl.textContent = '—';
-        return;
+        resultEl.textContent = '—'; return;
     }
-
     const resultado = amount * pricesByMoeda[moeda];
     const simbolos = { usd:'$', eur:'€', gbp:'£', jpy:'¥', aud:'A$', cad:'CA$', chf:'CHF', cny:'¥', inr:'₹', brl:'R$', mxn:'MX$', zar:'R' };
     const simbolo = simbolos[moeda] || moeda.toUpperCase();
-
     let formatted;
     if (moeda === 'jpy' || moeda === 'inr') {
         formatted = Math.round(resultado).toLocaleString('en-US');
@@ -1487,34 +2377,22 @@ function convertCurrency() {
     } else {
         formatted = resultado.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
-
     resultEl.textContent = simbolo + ' ' + formatted;
 }
 
-// ===================================================
-// EMAIL
-// ===================================================
 async function sendEmail() {
     const name = document.getElementById('contact_name').value.trim();
     const email = document.getElementById('contact_email').value.trim();
     const subject = document.getElementById('contact_subject').value.trim();
     const message = document.getElementById('contact_message').value.trim();
-
     if (!name || !email || !subject || !message) {
-        const t = translations[currentLang];
-        alert(t ? (t.form_name + ', ' + t.form_email + ', ' + t.form_subject + ', ' + t.form_message) : 'Preencha todos os campos!');
-        return;
+        alert('Preencha todos os campos!'); return;
     }
-
-    // EmailJS integration (configure your keys)
     if (typeof emailjs !== 'undefined') {
         try {
             const response = await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
                 to_email: 'alexpromptia@gmail.com',
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message
+                from_name: name, from_email: email, subject: subject, message: message
             });
             if (response.status === 200) {
                 showFormMessage('success');
@@ -1523,11 +2401,8 @@ async function sendEmail() {
                 document.getElementById('contact_subject').value = '';
                 document.getElementById('contact_message').value = '';
             }
-        } catch (error) {
-            showFormMessage('error');
-        }
+        } catch (error) { showFormMessage('error'); }
     } else {
-        // Fallback: open mail client
         const mailto = `mailto:alexpromptia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('De: ' + name + ' <' + email + '>\n\n' + message)}`;
         window.open(mailto);
         showFormMessage('success');
@@ -1538,19 +2413,14 @@ function showFormMessage(type) {
     const success = document.getElementById('successMessage');
     const error = document.getElementById('errorMessage');
     if (type === 'success') {
-        success.style.display = 'block';
-        error.style.display = 'none';
+        success.style.display = 'block'; error.style.display = 'none';
         setTimeout(() => { success.style.display = 'none'; }, 5000);
     } else {
-        error.style.display = 'block';
-        success.style.display = 'none';
+        error.style.display = 'block'; success.style.display = 'none';
         setTimeout(() => { error.style.display = 'none'; }, 5000);
     }
 }
 
-// ===================================================
-// INIT
-// ===================================================
 updatePrice();
 setInterval(updatePrice, 30000);
 </script>
