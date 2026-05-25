@@ -510,19 +510,6 @@
             box-shadow: 0 0 0 3px rgba(248,153,26,0.1);
         }
     </style>
-    <!-- ADSTERRA POPUNDER -->
-    <script type="text/javascript">
-        var placements = [29449197];
-        (function() {
-            var d = document;
-            var s = d.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = '//cdn.adblade.com/ads/static/r.js';
-            var n = d.getElementsByTagName('script')[0];
-            n.parentNode.insertBefore(s, n);
-        })();
-    </script>
 </head>
 <body>
 
@@ -2439,36 +2426,52 @@ setInterval(updatePrice, 30000);
 </script>
 
 
-<!-- ADSTERRA MONETIZATION -->
-
-<!-- BANNER 728x90 (Rodapé Principal) -->
-<div style="text-align: center; margin: 30px 0 20px 0; padding: 20px 0; border-top: 1px solid var(--color-border-tertiary);">
-  <p style="font-size: 12px; color: var(--color-text-secondary); margin: 0 0 15px 0;">Publicidade • Advertisement</p>
-  <script type="text/javascript">
-  atOptions = {
-    'key': '29449202',
-    'format': 'iframe',
-    'height': 90,
-    'width': 728,
-    'params': {}
-  };
-  document.write('<scr'+'ipt type="text/javascript" src="//'+atOptions.key+'.com/advert.js"><\/scr'+'ipt>');
-  </script>
+<!-- ADSTERRA - BANNERS SIMPLES -->
+<div style="text-align: center; margin: 30px 0 20px 0; padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.1);">
+  <p style="font-size: 12px; color: rgba(255,255,255,0.4); margin: 0 0 15px 0;">Publicidade • Advertisement</p>
+  
+  <!-- Banner 728x90 -->
+  <div id="ad-728x90" style="display: inline-block; min-height: 100px;">
+    <script type="text/javascript">
+    atOptions = {
+      'key': '29449202',
+      'format': 'iframe',
+      'height': 90,
+      'width': 728,
+      'params': {}
+    };
+    document.write('<scr'+'ipt type="text/javascript" src="//'+atOptions.key+'.com/advert.js"><\/scr'+'ipt>');
+    </script>
+  </div>
 </div>
 
 <!-- BANNER 320x50 (Mobile) -->
-<div style="text-align: center; margin: 20px 0;">
-  <script type="text/javascript">
-  atOptions = {
-    'key': '29449200',
-    'format': 'iframe',
-    'height': 50,
-    'width': 320,
-    'params': {}
-  };
-  document.write('<scr'+'ipt type="text/javascript" src="//'+atOptions.key+'.com/advert.js"><\/scr'+'ipt>');
-  </script>
+<div style="text-align: center; margin: 15px 0;">
+  <div id="ad-320x50" style="display: inline-block; min-height: 60px;">
+    <script type="text/javascript">
+    atOptions = {
+      'key': '29449200',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+    document.write('<scr'+'ipt type="text/javascript" src="//'+atOptions.key+'.com/advert.js"><\/scr'+'ipt>');
+    </script>
+  </div>
 </div>
+
+<!-- POPUNDER (carrega ao final, não quebra o site) -->
+<script type="text/javascript" async>
+setTimeout(function() {
+  var placements = [29449197];
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  script.src = '//cdn.adblade.com/ads/static/r.js';
+  document.body.appendChild(script);
+}, 3000);
+</script>
 
 </body>
 </html>
