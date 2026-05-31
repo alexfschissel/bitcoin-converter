@@ -620,12 +620,18 @@
 <!-- HEADER -->
 <header>
     <div class="header-content">
-        <div class="logo">₿ Bitcoin Agora</div>
-        <div class="lang">
-            <button class="active" onclick="setLang('pt')" data-lang="pt">PT</button>
-            <button onclick="setLang('en')" data-lang="en">EN</button>
-            <button onclick="setLang('es')" data-lang="es">ES</button>
-        </div>
+        <a href="/" class="logo" style="text-decoration:none;">₿ Bitcoin Agora</a>
+        <nav style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+            <a href="/converter-bitcoin-real" style="padding:6px 10px;background:rgba(248,153,26,0.1);border:1px solid rgba(248,153,26,0.3);color:#94a3b8;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(248,153,26,0.2)';this.style.color='#f8991a'" onmouseout="this.style.background='rgba(248,153,26,0.1)';this.style.color='#94a3b8'">BTC→BRL</a>
+            <a href="/converter-bitcoin-dolar" style="padding:6px 10px;background:rgba(248,153,26,0.1);border:1px solid rgba(248,153,26,0.3);color:#94a3b8;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(248,153,26,0.2)';this.style.color='#f8991a'" onmouseout="this.style.background='rgba(248,153,26,0.1)';this.style.color='#94a3b8'">BTC→USD</a>
+            <a href="/quanto-vale-1-bitcoin" style="padding:6px 10px;background:rgba(248,153,26,0.1);border:1px solid rgba(248,153,26,0.3);color:#94a3b8;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(248,153,26,0.2)';this.style.color='#f8991a'" onmouseout="this.style.background='rgba(248,153,26,0.1)';this.style.color='#94a3b8'">Preço</a>
+            <a href="/contato" style="padding:6px 10px;background:rgba(248,153,26,0.1);border:1px solid rgba(248,153,26,0.3);color:#94a3b8;border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.background='rgba(248,153,26,0.2)';this.style.color='#f8991a'" onmouseout="this.style.background='rgba(248,153,26,0.1)';this.style.color='#94a3b8'">Contato</a>
+            <div class="lang">
+                <button class="active" onclick="setLang('pt')" data-lang="pt">PT</button>
+                <button onclick="setLang('en')" data-lang="en">EN</button>
+                <button onclick="setLang('es')" data-lang="es">ES</button>
+            </div>
+        </nav>
     </div>
 </header>
 
@@ -1465,51 +1471,23 @@
         </div>
     </section>
 
-    <!-- CONTATO -->
-    <section class="section">
-        <h2 class="section-title" data-i18n="contact_title">Entre em Contato</h2>
-        <div class="converter-card">
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label" data-i18n="form_name">Nome</label>
-                    <input type="text" class="form-input" id="contact_name" placeholder="Seu nome completo">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" data-i18n="form_email">Email</label>
-                    <input type="email" class="form-input" id="contact_email" placeholder="seu@email.com">
-                </div>
-            </div>
-            <div class="form-group" style="margin-bottom:16px;">
-                <label class="form-label" data-i18n="form_subject">Assunto</label>
-                <input type="text" class="form-input" id="contact_subject" placeholder="Qual é sua dúvida?">
-            </div>
-            <div class="form-group">
-                <label class="form-label" data-i18n="form_message">Mensagem</label>
-                <textarea id="contact_message" placeholder="Descreva sua mensagem..."></textarea>
-            </div>
-            <button onclick="sendEmail()" class="cta-button" style="margin-top:16px;" data-i18n="btn_send">Enviar Mensagem</button>
-            <div id="successMessage">✅ <span data-i18n="msg_success">Mensagem enviada com sucesso!</span></div>
-            <div id="errorMessage">❌ <span data-i18n="msg_error">Erro ao enviar mensagem. Tente novamente.</span></div>
-        </div>
-    </section>
-
-    <!-- LEGAL — ÚLTIMO -->
-    <section class="section section-legal">
-        <h2 class="section-title" data-i18n="about_title">👥 Quem Somos</h2>
-        <p data-i18n="about_p">Bitcoin Agora é um site educacional focado em ensinar iniciantes como comprar Bitcoin com segurança. Oferecemos um conversor em tempo real com cotação atualizada a cada 30 segundos, guias práticos e e-books para aprofundar seu conhecimento sobre criptomoedas e blockchain.</p>
-    </section>
-
-    <section class="section section-legal-mid">
-        <h2 class="section-title" data-i18n="terms_title">⚖️ Termos de Uso</h2>
-        <p data-i18n="terms_p">Este site é apenas educacional e não constitui aconselhamento financeiro. <strong data-i18n="terms_strong">Bitcoin é um investimento de ALTO RISCO</strong>. O preço é extremamente volátil e você pode perder 100% do seu investimento. Nunca invista dinheiro que não possa perder. Não somos consultores financeiros regulados.</p>
-    </section>
-
-    <section class="section section-legal-bottom">
-        <h2 class="section-title" data-i18n="privacy_title">ℹ️ Política de Privacidade</h2>
-        <p data-i18n="privacy_p">Coletamos informações de contato através do formulário apenas para responder suas mensagens. Usamos Google AdSense para exibir anúncios relevantes. Nossas páginas contêm links de afiliados para Binance, Bybit, Ledger, Kast e nosso e-book, onde recebemos comissão se você se registrar ou comprar, sem custo adicional para você.</p>
-    </section>
-
 </div>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid rgba(248,153,26,0.15);padding:32px 20px;text-align:center;background:#0f1419;">
+    <div style="max-width:900px;margin:0 auto;">
+        <div style="font-size:20px;font-weight:800;color:#f8991a;margin-bottom:16px;">₿ Bitcoin Agora</div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:20px;">
+            <a href="/" style="color:#94a3b8;text-decoration:none;font-size:14px;font-weight:600;" onmouseover="this.style.color='#f8991a'" onmouseout="this.style.color='#94a3b8'">Início</a>
+            <a href="/converter-bitcoin-real" style="color:#94a3b8;text-decoration:none;font-size:14px;font-weight:600;" onmouseover="this.style.color='#f8991a'" onmouseout="this.style.color='#94a3b8'">BTC → Real</a>
+            <a href="/converter-bitcoin-dolar" style="color:#94a3b8;text-decoration:none;font-size:14px;font-weight:600;" onmouseover="this.style.color='#f8991a'" onmouseout="this.style.color='#94a3b8'">BTC → Dólar</a>
+            <a href="/quanto-vale-1-bitcoin" style="color:#94a3b8;text-decoration:none;font-size:14px;font-weight:600;" onmouseover="this.style.color='#f8991a'" onmouseout="this.style.color='#94a3b8'">Preço Atual</a>
+            <a href="/contato" style="color:#94a3b8;text-decoration:none;font-size:14px;font-weight:600;" onmouseover="this.style.color='#f8991a'" onmouseout="this.style.color='#94a3b8'">Entre em Contato</a>
+            <a href="/sobre" style="color:#94a3b8;text-decoration:none;font-size:14px;font-weight:600;" onmouseover="this.style.color='#f8991a'" onmouseout="this.style.color='#94a3b8'">Sobre & Legal</a>
+        </div>
+        <div style="font-size:12px;color:#475569;">© 2026 Bitcoin Agora — Dados em tempo real. Não é conselho financeiro.</div>
+    </div>
+</footer>
 
 <!-- SCHEMA.ORG -->
 <script type="application/ld+json">

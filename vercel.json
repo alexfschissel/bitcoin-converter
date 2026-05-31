@@ -17,6 +17,8 @@
     {"src": "/converter-bitcoin-real", "dest": "/converter-bitcoin-real.html"},
     {"src": "/converter-bitcoin-dolar", "dest": "/converter-bitcoin-dolar.html"},
     {"src": "/quanto-vale-1-bitcoin", "dest": "/quanto-vale-1-bitcoin.html"},
+    {"src": "/contato", "dest": "/contato.html"},
+    {"src": "/sobre", "dest": "/sobre.html"},
     {"src": "/", "dest": "/index.html"}
   ],
   "headers": [
