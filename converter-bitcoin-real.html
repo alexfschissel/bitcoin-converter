@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter Bitcoin para Real (BRL) - Cotação ao Vivo | Bitcoin Agora</title>
+    <meta name="description" content="Converta Bitcoin para Real brasileiro em tempo real. Veja quanto vale 1 BTC, 0,1 BTC, 0,01 BTC em reais agora. Cotação atualizada a cada 30 segundos.">
+    <meta name="keywords" content="converter bitcoin para real, bitcoin em real, quanto vale bitcoin em reais, BTC BRL, cotação bitcoin real, 1 bitcoin em reais">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bitcoin-converter-ten.vercel.app/converter-bitcoin-real">
+    <meta property="og:title" content="Converter Bitcoin para Real - Cotação ao Vivo">
+    <meta property="og:description" content="Conversor Bitcoin → Real em tempo real. Veja o preço do BTC em BRL agora.">
+    <meta property="og:url" content="https://bitcoin-converter-ten.vercel.app/converter-bitcoin-real">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f8991a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Conversor Bitcoin para Real",
+      "url": "https://bitcoin-converter-ten.vercel.app/converter-bitcoin-real",
+      "description": "Converta Bitcoin para Real (BRL) em tempo real com cotação atualizada.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto vale 1 Bitcoin em reais hoje?",
+          "acceptedAnswer": { "@type": "Answer", "text": "O valor de 1 Bitcoin em reais muda a cada segundo. Use o conversor acima para ver o valor exato agora. Em 2025-2026, o preço tem oscilado entre R$ 300.000 e R$ 600.000." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto é 0,001 Bitcoin em reais?",
+          "acceptedAnswer": { "@type": "Answer", "text": "0,001 BTC equivale a cerca de R$ 500 a R$ 600 dependendo da cotação atual. Use o conversor para o valor exato." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto é 100 reais em Bitcoin?",
+          "acceptedAnswer": { "@type": "Answer", "text": "R$ 100 compra aproximadamente 0,00020 a 0,00030 BTC dependendo da cotação do dia. Use o conversor para o valor preciso." }
+        }
+      ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f1419; color: #e2e8f0; line-height: 1.6; }
+        header { background: #0f1419; border-bottom: 1px solid rgba(248,153,26,0.15); padding: 12px 20px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 18px; font-weight: 800; color: #f8991a; text-decoration: none; }
+        nav a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        nav a:hover { color: #f8991a; }
+        .hero { max-width: 900px; margin: 0 auto; padding: 50px 20px 30px; text-align: center; }
+        h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 800; color: #f8991a; margin-bottom: 12px; }
+        .subtitle { color: #94a3b8; font-size: 16px; margin-bottom: 40px; }
+        .converter-card { background: #1a2332; border: 2px solid rgba(248,153,26,0.3); border-radius: 16px; padding: 32px; max-width: 600px; margin: 0 auto 40px; }
+        .price-live { font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .price-big { font-size: clamp(32px, 8vw, 52px); font-weight: 800; color: #f8991a; margin-bottom: 4px; }
+        .price-change { font-size: 14px; color: #22c55e; margin-bottom: 24px; }
+        .input-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .input-row { grid-template-columns: 1fr; } .arrow { display: none; } }
+        .input-group { display: flex; flex-direction: column; gap: 6px; }
+        label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        input, select { padding: 14px; background: #0f1419; border: 1px solid rgba(248,153,26,0.3); border-radius: 8px; color: #e2e8f0; font-size: 18px; font-family: 'Inter', sans-serif; width: 100%; }
+        input:focus, select:focus { outline: none; border-color: #f8991a; }
+        .arrow { font-size: 24px; color: #f8991a; text-align: center; }
+        .result-display { background: rgba(248,153,26,0.08); border: 1px solid rgba(248,153,26,0.2); border-radius: 8px; padding: 16px; text-align: center; font-size: clamp(22px, 5vw, 32px); font-weight: 800; color: #f8991a; margin-top: 8px; }
+        .api-status { font-size: 11px; color: #64748b; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .table-section { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; }
+        h2 { font-size: clamp(20px, 4vw, 28px); font-weight: 700; color: #f1f5f9; margin-bottom: 16px; }
+        table { width: 100%; border-collapse: collapse; background: #1a2332; border-radius: 12px; overflow: hidden; }
+        th { background: rgba(248,153,26,0.15); color: #f8991a; padding: 12px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 12px 16px; border-bottom: 1px solid rgba(248,153,26,0.1); color: #cbd5e1; font-size: 15px; }
+        tr:last-child td { border-bottom: none; }
+        .faq-section { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+        .faq-item { background: #1a2332; border: 1px solid rgba(248,153,26,0.15); border-radius: 10px; padding: 20px; margin-bottom: 12px; }
+        .faq-q { font-weight: 700; color: #f1f5f9; margin-bottom: 8px; font-size: 16px; }
+        .faq-a { color: #94a3b8; font-size: 14px; }
+        footer { border-top: 1px solid rgba(248,153,26,0.1); padding: 24px 20px; text-align: center; color: #64748b; font-size: 13px; }
+        footer a { color: #f8991a; text-decoration: none; }
+        .back-link { display: inline-block; margin-top: 8px; color: #f8991a; text-decoration: none; font-size: 14px; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <a href="/" class="logo">₿ Bitcoin Agora</a>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/converter-bitcoin-dolar">BTC → USD</a>
+            <a href="/quanto-vale-1-bitcoin">Preço Atual</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <h1>Converter Bitcoin para Real (BRL)</h1>
+        <p class="subtitle">Cotação Bitcoin → Real atualizada a cada 30 segundos. Dados ao vivo de múltiplas exchanges.</p>
+    </div>
+
+    <div class="converter-card">
+        <div class="price-live">Preço do Bitcoin agora</div>
+        <div class="price-big" id="btcPrice">Carregando...</div>
+        <div class="price-change" id="priceChange">atualizando...</div>
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="btcInput">Bitcoin (BTC)</label>
+                <input type="number" id="btcInput" value="1" min="0" step="0.001" oninput="calcBtcToReal()">
+            </div>
+            <div class="arrow">⇄</div>
+            <div class="input-group">
+                <label for="brlInput">Real (BRL)</label>
+                <input type="number" id="brlInput" placeholder="R$" oninput="calcRealToBtc()">
+            </div>
+        </div>
+
+        <div class="result-display" id="mainResult">—</div>
+        <div class="api-status"><span class="dot" id="statusDot"></span><span id="statusText">Conectando...</span></div>
+    </div>
+
+    <div class="table-section">
+        <h2>Tabela de Conversão Bitcoin → Real</h2>
+        <table id="convTable">
+            <thead><tr><th>Bitcoin (BTC)</th><th>Real (BRL)</th></tr></thead>
+            <tbody id="convBody">
+                <tr><td colspan="2" style="text-align:center;color:#64748b">Carregando preços...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-section">
+        <h2>Tabela de Conversão Real → Bitcoin</h2>
+        <table>
+            <thead><tr><th>Real (BRL)</th><th>Bitcoin (BTC)</th></tr></thead>
+            <tbody id="revBody">
+                <tr><td colspan="2" style="text-align:center;color:#64748b">Carregando preços...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="faq-section">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-item">
+            <div class="faq-q">Quanto vale 1 Bitcoin em reais hoje?</div>
+            <div class="faq-a">O valor de 1 Bitcoin em reais muda a cada segundo. Veja o preço ao vivo no conversor acima. O preço é buscado diretamente de exchanges como Binance e Bybit.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Quanto é 0,001 Bitcoin em reais?</div>
+            <div class="faq-a">0,001 BTC é a menor fração popular do Bitcoin (1 milésimo). Digite 0.001 no campo BTC acima para ver o valor exato em reais agora.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Quanto é R$ 100 em Bitcoin?</div>
+            <div class="faq-a">Digite 100 no campo Real acima e veja quanto Bitcoin você consegue comprar com R$ 100. O resultado é calculado com a cotação ao vivo.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Onde comprar Bitcoin com reais?</div>
+            <div class="faq-a">As principais exchanges para comprar Bitcoin no Brasil são Binance, Bybit e Mercado Bitcoin. Todas aceitam PIX e transferência bancária em reais.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">O conversor é gratuito?</div>
+            <div class="faq-a">Sim, o conversor é 100% gratuito e não requer cadastro. Os preços são atualizados a cada 30 segundos usando APIs públicas de exchanges.</div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Bitcoin Agora — Dados em tempo real. Não é conselho financeiro.</p>
+    <p style="margin-top:8px"><a href="/">← Voltar para o site completo</a> · <a href="/converter-bitcoin-dolar">Conversor BTC → USD</a> · <a href="/quanto-vale-1-bitcoin">Preço atual do Bitcoin</a></p>
+</footer>
+
+<script>
+let priceBrl = 0;
+let lastInput = 'btc';
+
+async function fetchPrice() {
+    const apis = [
+        { url: 'https://api.binance.com/api/v3/ticker/24hr?symbol=BTCBRL', parse: d => ({ price: parseFloat(d.lastPrice), change: parseFloat(d.priceChangePercent) }) },
+        { url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=brl&include_24hr_change=true', parse: d => ({ price: d.bitcoin.brl, change: d.bitcoin.brl_24h_change }) }
+    ];
+    for (const api of apis) {
+        try {
+            const r = await fetch(api.url);
+            if (!r.ok) continue;
+            const d = await r.json();
+            const { price, change } = api.parse(d);
+            if (price > 0) {
+                priceBrl = price;
+                updateUI(price, change);
+                return;
+            }
+        } catch(e) {}
+    }
+}
+
+function updateUI(price, change) {
+    document.getElementById('btcPrice').textContent = 'R$ ' + price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const changeEl = document.getElementById('priceChange');
+    const sign = change >= 0 ? '+' : '';
+    changeEl.textContent = sign + change.toFixed(2) + '% (24h)';
+    changeEl.style.color = change >= 0 ? '#22c55e' : '#ef4444';
+    document.getElementById('statusText').textContent = 'Ao vivo — atualizado às ' + new Date().toLocaleTimeString('pt-BR');
+    if (lastInput === 'btc') calcBtcToReal();
+    updateTables(price);
+}
+
+function calcBtcToReal() {
+    lastInput = 'btc';
+    const btc = parseFloat(document.getElementById('btcInput').value) || 0;
+    if (!priceBrl || btc <= 0) { document.getElementById('mainResult').textContent = '—'; return; }
+    const val = btc * priceBrl;
+    document.getElementById('mainResult').textContent = 'R$ ' + val.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('brlInput').value = '';
+}
+
+function calcRealToBtc() {
+    lastInput = 'brl';
+    const brl = parseFloat(document.getElementById('brlInput').value) || 0;
+    if (!priceBrl || brl <= 0) { document.getElementById('mainResult').textContent = '—'; return; }
+    const val = brl / priceBrl;
+    document.getElementById('mainResult').textContent = val.toFixed(8) + ' BTC';
+    document.getElementById('btcInput').value = '';
+}
+
+function updateTables(price) {
+    const btcAmounts = [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10];
+    document.getElementById('convBody').innerHTML = btcAmounts.map(a =>
+        `<tr><td>${a} BTC</td><td>R$ ${(a * price).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td></tr>`
+    ).join('');
+    const brlAmounts = [50, 100, 250, 500, 1000, 2500, 5000, 10000, 50000, 100000];
+    document.getElementById('revBody').innerHTML = brlAmounts.map(a =>
+        `<tr><td>R$ ${a.toLocaleString('pt-BR')}</td><td>${(a / price).toFixed(8)} BTC</td></tr>`
+    ).join('');
+}
+
+fetchPrice();
+setInterval(fetchPrice, 30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter Bitcoin para Dólar (USD) - Cotação ao Vivo | Bitcoin Agora</title>
+    <meta name="description" content="Converta Bitcoin para Dólar americano em tempo real. Veja quanto vale 1 BTC em USD agora. Cotação BTC/USD atualizada a cada 30 segundos de exchanges globais.">
+    <meta name="keywords" content="converter bitcoin para dolar, bitcoin em dolar, quanto vale bitcoin em dolar, BTC USD, cotação bitcoin dolar, 1 bitcoin em dolar">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bitcoin-converter-ten.vercel.app/converter-bitcoin-dolar">
+    <meta property="og:title" content="Converter Bitcoin para Dólar (USD) - Cotação ao Vivo">
+    <meta property="og:description" content="Conversor Bitcoin → Dólar em tempo real. Preço BTC/USD atualizado agora.">
+    <meta property="og:url" content="https://bitcoin-converter-ten.vercel.app/converter-bitcoin-dolar">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f8991a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Conversor Bitcoin para Dólar",
+      "url": "https://bitcoin-converter-ten.vercel.app/converter-bitcoin-dolar",
+      "description": "Converta Bitcoin para Dólar (USD) em tempo real com cotação atualizada.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto vale 1 Bitcoin em dólares hoje?",
+          "acceptedAnswer": { "@type": "Answer", "text": "O preço do Bitcoin em dólares muda constantemente. Use o conversor acima para ver o valor exato de 1 BTC em USD agora. O preço é buscado diretamente da Binance e outras exchanges." }
+        },
+        {
+          "@type": "Question",
+          "name": "Como converter Bitcoin para dólar?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Digite a quantidade de Bitcoin no campo BTC e o resultado em dólares aparece automaticamente. Nossa cotação é atualizada a cada 30 segundos usando dados ao vivo." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto é $1.000 dólares em Bitcoin?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Digite 1000 no campo USD para ver quanto Bitcoin você consegue comprar com mil dólares. O resultado é calculado com o preço atual de mercado." }
+        }
+      ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f1419; color: #e2e8f0; line-height: 1.6; }
+        header { background: #0f1419; border-bottom: 1px solid rgba(248,153,26,0.15); padding: 12px 20px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 18px; font-weight: 800; color: #f8991a; text-decoration: none; }
+        nav a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        nav a:hover { color: #f8991a; }
+        .hero { max-width: 900px; margin: 0 auto; padding: 50px 20px 30px; text-align: center; }
+        h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 800; color: #f8991a; margin-bottom: 12px; }
+        .subtitle { color: #94a3b8; font-size: 16px; margin-bottom: 40px; }
+        .converter-card { background: #1a2332; border: 2px solid rgba(248,153,26,0.3); border-radius: 16px; padding: 32px; max-width: 600px; margin: 0 auto 40px; }
+        .price-live { font-size: 13px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .price-big { font-size: clamp(32px, 8vw, 52px); font-weight: 800; color: #f8991a; margin-bottom: 4px; }
+        .price-change { font-size: 14px; color: #22c55e; margin-bottom: 24px; }
+        .input-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin-bottom: 16px; }
+        @media (max-width: 500px) { .input-row { grid-template-columns: 1fr; } .arrow { display: none; } }
+        .input-group { display: flex; flex-direction: column; gap: 6px; }
+        label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        input { padding: 14px; background: #0f1419; border: 1px solid rgba(248,153,26,0.3); border-radius: 8px; color: #e2e8f0; font-size: 18px; font-family: 'Inter', sans-serif; width: 100%; }
+        input:focus { outline: none; border-color: #f8991a; }
+        .arrow { font-size: 24px; color: #f8991a; text-align: center; }
+        .result-display { background: rgba(248,153,26,0.08); border: 1px solid rgba(248,153,26,0.2); border-radius: 8px; padding: 16px; text-align: center; font-size: clamp(22px, 5vw, 32px); font-weight: 800; color: #f8991a; margin-top: 8px; }
+        .api-status { font-size: 11px; color: #64748b; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .table-section { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; }
+        h2 { font-size: clamp(20px, 4vw, 28px); font-weight: 700; color: #f1f5f9; margin-bottom: 16px; }
+        table { width: 100%; border-collapse: collapse; background: #1a2332; border-radius: 12px; overflow: hidden; }
+        th { background: rgba(248,153,26,0.15); color: #f8991a; padding: 12px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 12px 16px; border-bottom: 1px solid rgba(248,153,26,0.1); color: #cbd5e1; font-size: 15px; }
+        tr:last-child td { border-bottom: none; }
+        .faq-section { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+        .faq-item { background: #1a2332; border: 1px solid rgba(248,153,26,0.15); border-radius: 10px; padding: 20px; margin-bottom: 12px; }
+        .faq-q { font-weight: 700; color: #f1f5f9; margin-bottom: 8px; font-size: 16px; }
+        .faq-a { color: #94a3b8; font-size: 14px; }
+        footer { border-top: 1px solid rgba(248,153,26,0.1); padding: 24px 20px; text-align: center; color: #64748b; font-size: 13px; }
+        footer a { color: #f8991a; text-decoration: none; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <a href="/" class="logo">₿ Bitcoin Agora</a>
+        <nav>
+            <a href="/">Início</a>
+            <a href="/converter-bitcoin-real">BTC → BRL</a>
+            <a href="/quanto-vale-1-bitcoin">Preço Atual</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <h1>Converter Bitcoin para Dólar (USD)</h1>
+        <p class="subtitle">Cotação BTC/USD atualizada ao vivo. Dados diretos da Binance e CoinGecko.</p>
+    </div>
+
+    <div class="converter-card">
+        <div class="price-live">Preço Bitcoin em Dólar</div>
+        <div class="price-big" id="btcPrice">Carregando...</div>
+        <div class="price-change" id="priceChange">atualizando...</div>
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="btcInput">Bitcoin (BTC)</label>
+                <input type="number" id="btcInput" value="1" min="0" step="0.001" oninput="calcBtcToUsd()">
+            </div>
+            <div class="arrow">⇄</div>
+            <div class="input-group">
+                <label for="usdInput">Dólar (USD)</label>
+                <input type="number" id="usdInput" placeholder="$" oninput="calcUsdToBtc()">
+            </div>
+        </div>
+
+        <div class="result-display" id="mainResult">—</div>
+        <div class="api-status"><span class="dot"></span><span id="statusText">Conectando...</span></div>
+    </div>
+
+    <div class="table-section">
+        <h2>Tabela de Conversão Bitcoin → Dólar</h2>
+        <table>
+            <thead><tr><th>Bitcoin (BTC)</th><th>Dólar (USD)</th></tr></thead>
+            <tbody id="convBody"><tr><td colspan="2" style="text-align:center;color:#64748b">Carregando...</td></tr></tbody>
+        </table>
+    </div>
+
+    <div class="table-section">
+        <h2>Tabela de Conversão Dólar → Bitcoin</h2>
+        <table>
+            <thead><tr><th>Dólar (USD)</th><th>Bitcoin (BTC)</th></tr></thead>
+            <tbody id="revBody"><tr><td colspan="2" style="text-align:center;color:#64748b">Carregando...</td></tr></tbody>
+        </table>
+    </div>
+
+    <div class="faq-section">
+        <h2>Perguntas Frequentes</h2>
+        <div class="faq-item">
+            <div class="faq-q">Quanto vale 1 Bitcoin em dólares hoje?</div>
+            <div class="faq-a">O preço exato está no conversor ao vivo acima. Bitcoin tem negociado entre $60.000 e $110.000 em 2025-2026. Use o conversor para o valor preciso agora.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Como converter BTC para USD?</div>
+            <div class="faq-a">Digite qualquer quantidade de Bitcoin no campo BTC acima e o valor em dólares aparece instantaneamente com o preço atual de mercado.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Qual exchange usa para a cotação?</div>
+            <div class="faq-a">Usamos dados da Binance como fonte primária (maior exchange do mundo por volume) com fallback para CoinGecko. Atualização automática a cada 30 segundos.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Qual a diferença entre BTC/USD e BTC/BRL?</div>
+            <div class="faq-a">BTC/USD é o par mais negociado globalmente. BTC/BRL é o par em reais, usado principalmente por brasileiros. O site também tem o <a href="/converter-bitcoin-real" style="color:#f8991a">conversor BTC → Real</a>.</div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>© 2026 Bitcoin Agora — Dados em tempo real. Não é conselho financeiro.</p>
+    <p style="margin-top:8px"><a href="/">← Voltar para o site completo</a> · <a href="/converter-bitcoin-real">Conversor BTC → BRL</a> · <a href="/quanto-vale-1-bitcoin">Preço atual do Bitcoin</a></p>
+</footer>
+
+<script>
+let priceUsd = 0;
+let lastInput = 'btc';
+
+async function fetchPrice() {
+    const apis = [
+        { url: 'https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT', parse: d => ({ price: parseFloat(d.lastPrice), change: parseFloat(d.priceChangePercent) }) },
+        { url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true', parse: d => ({ price: d.bitcoin.usd, change: d.bitcoin.usd_24h_change }) }
+    ];
+    for (const api of apis) {
+        try {
+            const r = await fetch(api.url);
+            if (!r.ok) continue;
+            const d = await r.json();
+            const { price, change } = api.parse(d);
+            if (price > 0) { priceUsd = price; updateUI(price, change); return; }
+        } catch(e) {}
+    }
+}
+
+function updateUI(price, change) {
+    document.getElementById('btcPrice').textContent = '$ ' + price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const changeEl = document.getElementById('priceChange');
+    changeEl.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '% (24h)';
+    changeEl.style.color = change >= 0 ? '#22c55e' : '#ef4444';
+    document.getElementById('statusText').textContent = 'Ao vivo — ' + new Date().toLocaleTimeString('pt-BR');
+    if (lastInput === 'btc') calcBtcToUsd();
+    const btcAmounts = [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10];
+    document.getElementById('convBody').innerHTML = btcAmounts.map(a =>
+        `<tr><td>${a} BTC</td><td>$ ${(a * price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td></tr>`
+    ).join('');
+    const usdAmounts = [100, 500, 1000, 2500, 5000, 10000, 25000, 50000, 100000];
+    document.getElementById('revBody').innerHTML = usdAmounts.map(a =>
+        `<tr><td>$ ${a.toLocaleString('en-US')}</td><td>${(a / price).toFixed(8)} BTC</td></tr>`
+    ).join('');
+}
+
+function calcBtcToUsd() {
+    lastInput = 'btc';
+    const btc = parseFloat(document.getElementById('btcInput').value) || 0;
+    if (!priceUsd || btc <= 0) { document.getElementById('mainResult').textContent = '—'; return; }
+    document.getElementById('mainResult').textContent = '$ ' + (btc * priceUsd).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('usdInput').value = '';
+}
+
+function calcUsdToBtc() {
+    lastInput = 'usd';
+    const usd = parseFloat(document.getElementById('usdInput').value) || 0;
+    if (!priceUsd || usd <= 0) { document.getElementById('mainResult').textContent = '—'; return; }
+    document.getElementById('mainResult').textContent = (usd / priceUsd).toFixed(8) + ' BTC';
+    document.getElementById('btcInput').value = '';
+}
+
+fetchPrice();
+setInterval(fetchPrice, 30000);
+</script>
+</body>
+</html>
