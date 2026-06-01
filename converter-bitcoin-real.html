@@ -28,37 +28,17 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
     }
     </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Quanto vale 1 Bitcoin em reais hoje?",
-          "acceptedAnswer": { "@type": "Answer", "text": "O valor de 1 Bitcoin em reais muda a cada segundo. Use o conversor acima para ver o valor exato agora. Em 2025-2026, o preço tem oscilado entre R$ 300.000 e R$ 600.000." }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto é 0,001 Bitcoin em reais?",
-          "acceptedAnswer": { "@type": "Answer", "text": "0,001 BTC equivale a cerca de R$ 500 a R$ 600 dependendo da cotação atual. Use o conversor para o valor exato." }
-        },
-        {
-          "@type": "Question",
-          "name": "Quanto é 100 reais em Bitcoin?",
-          "acceptedAnswer": { "@type": "Answer", "text": "R$ 100 compra aproximadamente 0,00020 a 0,00030 BTC dependendo da cotação do dia. Use o conversor para o valor preciso." }
-        }
-      ]
-    }
-    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #0f1419; color: #e2e8f0; line-height: 1.6; }
         header { background: #0f1419; border-bottom: 1px solid rgba(248,153,26,0.15); padding: 12px 20px; position: sticky; top: 0; z-index: 100; }
-        .header-content { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .header-content { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .logo { font-size: 18px; font-weight: 800; color: #f8991a; text-decoration: none; }
-        nav a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+        nav a { color: #94a3b8; text-decoration: none; padding: 5px 10px; font-size: 13px; font-weight: 600; }
         nav a:hover { color: #f8991a; }
+        .lang-btn { padding: 6px 12px; background: rgba(248,153,26,0.1); border: 1px solid rgba(248,153,26,0.3); color: #94a3b8; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600; font-family: 'Inter', sans-serif; }
+        .lang-btn.active { background: #f8991a; color: #0f1419; border-color: #f8991a; }
         .hero { max-width: 900px; margin: 0 auto; padding: 50px 20px 30px; text-align: center; }
         h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 800; color: #f8991a; margin-bottom: 12px; }
         .subtitle { color: #94a3b8; font-size: 16px; margin-bottom: 40px; }
@@ -89,8 +69,6 @@
         .faq-a { color: #94a3b8; font-size: 14px; }
         footer { border-top: 1px solid rgba(248,153,26,0.1); padding: 24px 20px; text-align: center; color: #64748b; font-size: 13px; }
         footer a { color: #f8991a; text-decoration: none; }
-        .back-link { display: inline-block; margin-top: 8px; color: #f8991a; text-decoration: none; font-size: 14px; }
-        .back-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -98,91 +76,206 @@
     <div class="header-content">
         <a href="/" class="logo">₿ Bitcoin Agora</a>
         <nav>
-            <a href="/">Início</a>
-            <a href="/converter-bitcoin-dolar">BTC → USD</a>
-            <a href="/quanto-vale-1-bitcoin">Preço Atual</a>
+            <a href="/" data-i18n="nav_home">Início</a>
+            <a href="/converter-bitcoin-dolar" data-i18n="nav_usd">BTC → USD</a>
+            <a href="/quanto-vale-1-bitcoin" data-i18n="nav_price">Preço Atual</a>
+            <a href="/contato" data-i18n="nav_contact">Contato</a>
+            <div style="display:flex;gap:4px;margin-left:6px">
+                <button class="lang-btn active" data-lang="pt" onclick="setLang('pt')">PT</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+            </div>
         </nav>
     </div>
 </header>
 
 <main>
     <div class="hero">
-        <h1>Converter Bitcoin para Real (BRL)</h1>
-        <p class="subtitle">Cotação Bitcoin → Real atualizada a cada 30 segundos. Dados ao vivo de múltiplas exchanges.</p>
+        <h1 data-i18n="page_title">Converter Bitcoin para Real (BRL)</h1>
+        <p class="subtitle" data-i18n="page_sub">Cotação Bitcoin → Real atualizada a cada 30 segundos. Dados ao vivo de múltiplas exchanges.</p>
     </div>
 
     <div class="converter-card">
-        <div class="price-live">Preço do Bitcoin agora</div>
+        <div class="price-live" data-i18n="price_now">Preço do Bitcoin agora</div>
         <div class="price-big" id="btcPrice">Carregando...</div>
         <div class="price-change" id="priceChange">atualizando...</div>
 
         <div class="input-row">
             <div class="input-group">
-                <label for="btcInput">Bitcoin (BTC)</label>
+                <label for="btcInput" data-i18n="label_btc">Bitcoin (BTC)</label>
                 <input type="number" id="btcInput" value="1" min="0" step="0.001" oninput="calcBtcToReal()">
             </div>
             <div class="arrow">⇄</div>
             <div class="input-group">
-                <label for="brlInput">Real (BRL)</label>
+                <label for="brlInput" data-i18n="label_brl">Real (BRL)</label>
                 <input type="number" id="brlInput" placeholder="R$" oninput="calcRealToBtc()">
             </div>
         </div>
 
         <div class="result-display" id="mainResult">—</div>
-        <div class="api-status"><span class="dot" id="statusDot"></span><span id="statusText">Conectando...</span></div>
+        <div class="api-status"><span class="dot" id="statusDot"></span><span id="statusText" data-i18n="connecting">Conectando...</span></div>
     </div>
 
     <div class="table-section">
-        <h2>Tabela de Conversão Bitcoin → Real</h2>
+        <h2 data-i18n="table1_title">Tabela de Conversão Bitcoin → Real</h2>
         <table id="convTable">
-            <thead><tr><th>Bitcoin (BTC)</th><th>Real (BRL)</th></tr></thead>
+            <thead><tr><th data-i18n="label_btc">Bitcoin (BTC)</th><th data-i18n="label_brl">Real (BRL)</th></tr></thead>
             <tbody id="convBody">
-                <tr><td colspan="2" style="text-align:center;color:#64748b">Carregando preços...</td></tr>
+                <tr><td colspan="2" style="text-align:center;color:#64748b" data-i18n="loading">Carregando preços...</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="table-section">
-        <h2>Tabela de Conversão Real → Bitcoin</h2>
+        <h2 data-i18n="table2_title">Tabela de Conversão Real → Bitcoin</h2>
         <table>
-            <thead><tr><th>Real (BRL)</th><th>Bitcoin (BTC)</th></tr></thead>
+            <thead><tr><th data-i18n="label_brl">Real (BRL)</th><th data-i18n="label_btc">Bitcoin (BTC)</th></tr></thead>
             <tbody id="revBody">
-                <tr><td colspan="2" style="text-align:center;color:#64748b">Carregando preços...</td></tr>
+                <tr><td colspan="2" style="text-align:center;color:#64748b" data-i18n="loading">Carregando preços...</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="faq-section">
-        <h2>Perguntas Frequentes</h2>
+        <h2 data-i18n="faq_title">Perguntas Frequentes</h2>
         <div class="faq-item">
-            <div class="faq-q">Quanto vale 1 Bitcoin em reais hoje?</div>
-            <div class="faq-a">O valor de 1 Bitcoin em reais muda a cada segundo. Veja o preço ao vivo no conversor acima. O preço é buscado diretamente de exchanges como Binance e Bybit.</div>
+            <div class="faq-q" data-i18n="faq1_q">Quanto vale 1 Bitcoin em reais hoje?</div>
+            <div class="faq-a" data-i18n="faq1_a">O valor de 1 Bitcoin em reais muda a cada segundo. Veja o preço ao vivo no conversor acima. O preço é buscado diretamente de exchanges como Binance e Bybit.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">Quanto é 0,001 Bitcoin em reais?</div>
-            <div class="faq-a">0,001 BTC é a menor fração popular do Bitcoin (1 milésimo). Digite 0.001 no campo BTC acima para ver o valor exato em reais agora.</div>
+            <div class="faq-q" data-i18n="faq2_q">Quanto é 0,001 Bitcoin em reais?</div>
+            <div class="faq-a" data-i18n="faq2_a">0,001 BTC é a menor fração popular do Bitcoin (1 milésimo). Digite 0.001 no campo BTC acima para ver o valor exato em reais agora.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">Quanto é R$ 100 em Bitcoin?</div>
-            <div class="faq-a">Digite 100 no campo Real acima e veja quanto Bitcoin você consegue comprar com R$ 100. O resultado é calculado com a cotação ao vivo.</div>
+            <div class="faq-q" data-i18n="faq3_q">Quanto é R$ 100 em Bitcoin?</div>
+            <div class="faq-a" data-i18n="faq3_a">Digite 100 no campo Real acima e veja quanto Bitcoin você consegue comprar com R$ 100. O resultado é calculado com a cotação ao vivo.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">Onde comprar Bitcoin com reais?</div>
-            <div class="faq-a">As principais exchanges para comprar Bitcoin no Brasil são Binance, Bybit e Mercado Bitcoin. Todas aceitam PIX e transferência bancária em reais.</div>
+            <div class="faq-q" data-i18n="faq4_q">Onde comprar Bitcoin com reais?</div>
+            <div class="faq-a" data-i18n="faq4_a">As principais exchanges para comprar Bitcoin no Brasil são Binance, Bybit e Mercado Bitcoin. Todas aceitam PIX e transferência bancária em reais.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">O conversor é gratuito?</div>
-            <div class="faq-a">Sim, o conversor é 100% gratuito e não requer cadastro. Os preços são atualizados a cada 30 segundos usando APIs públicas de exchanges.</div>
+            <div class="faq-q" data-i18n="faq5_q">O conversor é gratuito?</div>
+            <div class="faq-a" data-i18n="faq5_a">Sim, o conversor é 100% gratuito e não requer cadastro. Os preços são atualizados a cada 30 segundos usando APIs públicas de exchanges.</div>
         </div>
     </div>
 </main>
 
 <footer>
-    <p>© 2026 Bitcoin Agora — Dados em tempo real. Não é conselho financeiro.</p>
-    <p style="margin-top:8px"><a href="/">← Voltar para o site completo</a> · <a href="/converter-bitcoin-dolar">Conversor BTC → USD</a> · <a href="/quanto-vale-1-bitcoin">Preço atual do Bitcoin</a></p>
+    <p data-i18n="footer_copy">© 2026 Bitcoin Agora — Dados em tempo real. Não é conselho financeiro.</p>
+    <p style="margin-top:8px">
+        <a href="/" data-i18n="footer_home">← Voltar para o site completo</a> ·
+        <a href="/converter-bitcoin-dolar" data-i18n="footer_usd">Conversor BTC → USD</a> ·
+        <a href="/quanto-vale-1-bitcoin" data-i18n="footer_price">Preço atual do Bitcoin</a> ·
+        <a href="/inovacao" data-i18n="footer_innov">Inovação</a>
+    </p>
 </footer>
 
 <script>
+const i18n = {
+    pt: {
+        nav_home: 'Início', nav_usd: 'BTC → USD', nav_price: 'Preço Atual', nav_contact: 'Contato',
+        page_title: 'Converter Bitcoin para Real (BRL)',
+        page_sub: 'Cotação Bitcoin → Real atualizada a cada 30 segundos. Dados ao vivo de múltiplas exchanges.',
+        price_now: 'Preço do Bitcoin agora',
+        label_btc: 'Bitcoin (BTC)', label_brl: 'Real (BRL)',
+        connecting: 'Conectando...',
+        table1_title: 'Tabela de Conversão Bitcoin → Real',
+        table2_title: 'Tabela de Conversão Real → Bitcoin',
+        loading: 'Carregando preços...',
+        faq_title: 'Perguntas Frequentes',
+        faq1_q: 'Quanto vale 1 Bitcoin em reais hoje?',
+        faq1_a: 'O valor de 1 Bitcoin em reais muda a cada segundo. Veja o preço ao vivo no conversor acima. O preço é buscado diretamente de exchanges como Binance e Bybit.',
+        faq2_q: 'Quanto é 0,001 Bitcoin em reais?',
+        faq2_a: '0,001 BTC é a menor fração popular do Bitcoin (1 milésimo). Digite 0.001 no campo BTC acima para ver o valor exato em reais agora.',
+        faq3_q: 'Quanto é R$ 100 em Bitcoin?',
+        faq3_a: 'Digite 100 no campo Real acima e veja quanto Bitcoin você consegue comprar com R$ 100. O resultado é calculado com a cotação ao vivo.',
+        faq4_q: 'Onde comprar Bitcoin com reais?',
+        faq4_a: 'As principais exchanges para comprar Bitcoin no Brasil são Binance, Bybit e Mercado Bitcoin. Todas aceitam PIX e transferência bancária em reais.',
+        faq5_q: 'O conversor é gratuito?',
+        faq5_a: 'Sim, o conversor é 100% gratuito e não requer cadastro. Os preços são atualizados a cada 30 segundos usando APIs públicas de exchanges.',
+        footer_copy: '© 2026 Bitcoin Agora — Dados em tempo real. Não é conselho financeiro.',
+        footer_home: '← Voltar para o site completo',
+        footer_usd: 'Conversor BTC → USD',
+        footer_price: 'Preço atual do Bitcoin',
+        footer_innov: 'Inovação',
+        live_label: 'Ao vivo — atualizado às '
+    },
+    en: {
+        nav_home: 'Home', nav_usd: 'BTC → USD', nav_price: 'Live Price', nav_contact: 'Contact',
+        page_title: 'Convert Bitcoin to Brazilian Real (BRL) - Live Rate',
+        page_sub: 'Live BTC/BRL rate updated every 30 seconds. Data from multiple exchanges.',
+        price_now: 'Bitcoin price now',
+        label_btc: 'Bitcoin (BTC)', label_brl: 'Brazilian Real (BRL)',
+        connecting: 'Connecting...',
+        table1_title: 'Bitcoin → BRL Conversion Table',
+        table2_title: 'BRL → Bitcoin Conversion Table',
+        loading: 'Loading prices...',
+        faq_title: 'Frequently Asked Questions',
+        faq1_q: 'How much is 1 Bitcoin in Brazilian Real today?',
+        faq1_a: 'The value of 1 Bitcoin in BRL changes every second. See the live price in the converter above. The price is fetched directly from exchanges like Binance and Bybit.',
+        faq2_q: 'How much is 0.001 Bitcoin in BRL?',
+        faq2_a: '0.001 BTC is the most popular small fraction of Bitcoin (one thousandth). Enter 0.001 in the BTC field above to see the exact value in Brazilian Reals right now.',
+        faq3_q: 'How much BTC can I get for R$ 100?',
+        faq3_a: 'Enter 100 in the Real field above and see how much Bitcoin you can buy with R$ 100. The result is calculated with the live exchange rate.',
+        faq4_q: 'Where can I buy Bitcoin with BRL?',
+        faq4_a: 'The main exchanges to buy Bitcoin in Brazil are Binance, Bybit, and Mercado Bitcoin. All accept PIX and bank transfers in Brazilian Reals.',
+        faq5_q: 'Is the converter free?',
+        faq5_a: 'Yes, the converter is 100% free and requires no registration. Prices are updated every 30 seconds using public exchange APIs.',
+        footer_copy: '© 2026 Bitcoin Agora — Real-time data. Not financial advice.',
+        footer_home: '← Back to the full site',
+        footer_usd: 'BTC → USD Converter',
+        footer_price: 'Current Bitcoin Price',
+        footer_innov: 'Innovation',
+        live_label: 'Live — updated at '
+    },
+    es: {
+        nav_home: 'Inicio', nav_usd: 'BTC → USD', nav_price: 'Precio', nav_contact: 'Contacto',
+        page_title: 'Convertir Bitcoin a Real Brasileño (BRL) - Cotización en Vivo',
+        page_sub: 'Cotización BTC/BRL actualizada cada 30 segundos. Datos en vivo de múltiples exchanges.',
+        price_now: 'Precio del Bitcoin ahora',
+        label_btc: 'Bitcoin (BTC)', label_brl: 'Real Brasileño (BRL)',
+        connecting: 'Conectando...',
+        table1_title: 'Tabla de Conversión Bitcoin → BRL',
+        table2_title: 'Tabla de Conversión BRL → Bitcoin',
+        loading: 'Cargando precios...',
+        faq_title: 'Preguntas Frecuentes',
+        faq1_q: '¿Cuánto vale 1 Bitcoin en reales hoy?',
+        faq1_a: 'El valor de 1 Bitcoin en reales cambia cada segundo. Consulta el precio en vivo en el convertidor de arriba. El precio se obtiene directamente de exchanges como Binance y Bybit.',
+        faq2_q: '¿Cuánto son 0,001 Bitcoin en reales?',
+        faq2_a: '0,001 BTC es la fracción más popular del Bitcoin (una milésima parte). Escribe 0.001 en el campo BTC para ver el valor exacto en reales ahora.',
+        faq3_q: '¿Cuánto BTC obtengo con R$ 100?',
+        faq3_a: 'Escribe 100 en el campo Real y ve cuánto Bitcoin puedes comprar con R$ 100. El resultado se calcula con la cotización en vivo.',
+        faq4_q: '¿Dónde comprar Bitcoin con reales?',
+        faq4_a: 'Los principales exchanges para comprar Bitcoin en Brasil son Binance, Bybit y Mercado Bitcoin. Todos aceptan PIX y transferencia bancaria en reales.',
+        faq5_q: '¿El convertidor es gratuito?',
+        faq5_a: 'Sí, el convertidor es 100% gratuito y no requiere registro. Los precios se actualizan cada 30 segundos usando APIs públicas de exchanges.',
+        footer_copy: '© 2026 Bitcoin Agora — Datos en tiempo real. No es asesoramiento financiero.',
+        footer_home: '← Volver al sitio completo',
+        footer_usd: 'Conversor BTC → USD',
+        footer_price: 'Precio actual del Bitcoin',
+        footer_innov: 'Innovación',
+        live_label: 'En vivo — actualizado a las '
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'pt';
+
+function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key]) el.textContent = i18n[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+}
+
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+
 let priceBrl = 0;
 let lastInput = 'btc';
 
@@ -212,7 +305,8 @@ function updateUI(price, change) {
     const sign = change >= 0 ? '+' : '';
     changeEl.textContent = sign + change.toFixed(2) + '% (24h)';
     changeEl.style.color = change >= 0 ? '#22c55e' : '#ef4444';
-    document.getElementById('statusText').textContent = 'Ao vivo — atualizado às ' + new Date().toLocaleTimeString('pt-BR');
+    const liveLabel = (i18n[currentLang] && i18n[currentLang].live_label) || 'Ao vivo — atualizado às ';
+    document.getElementById('statusText').textContent = liveLabel + new Date().toLocaleTimeString('pt-BR');
     if (lastInput === 'btc') calcBtcToReal();
     updateTables(price);
 }

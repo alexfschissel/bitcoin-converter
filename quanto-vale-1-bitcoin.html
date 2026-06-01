@@ -30,16 +30,6 @@
           "@type": "Question",
           "name": "Quanto vale 1 Bitcoin em dólares?",
           "acceptedAnswer": { "@type": "Answer", "text": "O valor de 1 BTC em dólares (USD) está exibido ao vivo nesta página. Bitcoin tem negociado entre $60.000 e $110.000 em 2025-2026." }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual foi o maior preço do Bitcoin já registrado?",
-          "acceptedAnswer": { "@type": "Answer", "text": "O maior preço histórico do Bitcoin (ATH) foi aproximadamente $109.000 USD em janeiro de 2025. Em reais, chegou a cerca de R$ 650.000." }
-        },
-        {
-          "@type": "Question",
-          "name": "O preço do Bitcoin vai subir?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Ninguém pode prever com certeza o preço futuro do Bitcoin. Analistas técnicos observam padrões históricos, halvings e adoção institucional, mas criptomoedas são altamente voláteis. Invista apenas o que pode perder." }
         }
       ]
     }
@@ -48,10 +38,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #0f1419; color: #e2e8f0; line-height: 1.6; }
         header { background: #0f1419; border-bottom: 1px solid rgba(248,153,26,0.15); padding: 12px 20px; position: sticky; top: 0; z-index: 100; }
-        .header-content { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .header-content { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .logo { font-size: 18px; font-weight: 800; color: #f8991a; text-decoration: none; }
-        nav a { color: #94a3b8; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+        nav a { color: #94a3b8; text-decoration: none; padding: 5px 10px; font-size: 13px; font-weight: 600; }
         nav a:hover { color: #f8991a; }
+        .lang-btn { padding: 6px 12px; background: rgba(248,153,26,0.1); border: 1px solid rgba(248,153,26,0.3); color: #94a3b8; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600; font-family: 'Inter', sans-serif; }
+        .lang-btn.active { background: #f8991a; color: #0f1419; border-color: #f8991a; }
         .main { max-width: 900px; margin: 0 auto; padding: 50px 20px 60px; }
         h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 800; color: #f8991a; margin-bottom: 12px; text-align: center; }
         .subtitle { color: #94a3b8; font-size: 16px; margin-bottom: 40px; text-align: center; }
@@ -84,85 +77,206 @@
     <div class="header-content">
         <a href="/" class="logo">₿ Bitcoin Agora</a>
         <nav>
-            <a href="/">Início</a>
-            <a href="/converter-bitcoin-real">BTC → BRL</a>
-            <a href="/converter-bitcoin-dolar">BTC → USD</a>
+            <a href="/" data-i18n="nav_home">Início</a>
+            <a href="/converter-bitcoin-real" data-i18n="nav_brl">BTC → BRL</a>
+            <a href="/converter-bitcoin-dolar" data-i18n="nav_usd">BTC → USD</a>
+            <a href="/contato" data-i18n="nav_contact">Contato</a>
+            <div style="display:flex;gap:4px;margin-left:6px">
+                <button class="lang-btn active" data-lang="pt" onclick="setLang('pt')">PT</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+            </div>
         </nav>
     </div>
 </header>
 
 <main class="main">
-    <h1>Quanto Vale 1 Bitcoin Hoje?</h1>
-    <p class="subtitle">Preço ao vivo em reais e dólares. Atualizado automaticamente a cada 30 segundos.</p>
+    <h1 data-i18n="page_title">Quanto Vale 1 Bitcoin Hoje?</h1>
+    <p class="subtitle" data-i18n="page_sub">Preço ao vivo em reais e dólares. Atualizado automaticamente a cada 30 segundos.</p>
 
     <div class="price-grid">
         <div class="price-card">
-            <div class="currency-label">1 Bitcoin em Real (BRL)</div>
+            <div class="currency-label" data-i18n="card_brl_label">1 Bitcoin em Real (BRL)</div>
             <div class="price-value" id="priceBrl">—</div>
             <div class="price-change" id="changeBrl">—</div>
             <div class="price-meta">
-                <div class="meta-box"><div class="meta-label">Máx. 24h</div><div class="meta-val" id="highBrl">—</div></div>
-                <div class="meta-box"><div class="meta-label">Mín. 24h</div><div class="meta-val" id="lowBrl">—</div></div>
+                <div class="meta-box"><div class="meta-label" data-i18n="high24h">Máx. 24h</div><div class="meta-val" id="highBrl">—</div></div>
+                <div class="meta-box"><div class="meta-label" data-i18n="low24h">Mín. 24h</div><div class="meta-val" id="lowBrl">—</div></div>
             </div>
         </div>
         <div class="price-card">
-            <div class="currency-label">1 Bitcoin em Dólar (USD)</div>
+            <div class="currency-label" data-i18n="card_usd_label">1 Bitcoin em Dólar (USD)</div>
             <div class="price-value" id="priceUsd">—</div>
             <div class="price-change" id="changeUsd">—</div>
             <div class="price-meta">
-                <div class="meta-box"><div class="meta-label">Máx. 24h</div><div class="meta-val" id="highUsd">—</div></div>
-                <div class="meta-box"><div class="meta-label">Mín. 24h</div><div class="meta-val" id="lowUsd">—</div></div>
+                <div class="meta-box"><div class="meta-label" data-i18n="high24h">Máx. 24h</div><div class="meta-val" id="highUsd">—</div></div>
+                <div class="meta-box"><div class="meta-label" data-i18n="low24h">Mín. 24h</div><div class="meta-val" id="lowUsd">—</div></div>
             </div>
         </div>
     </div>
 
-    <div class="status-bar"><span class="dot"></span><span id="statusText">Conectando...</span></div>
+    <div class="status-bar"><span class="dot"></span><span id="statusText" data-i18n="connecting">Conectando...</span></div>
 
     <div style="margin-bottom:40px">
-        <h2>Conversor Rápido</h2>
+        <h2 data-i18n="quick_title">Conversor Rápido</h2>
         <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
             <input type="number" id="quickBtc" value="1" step="0.001" oninput="quickConvert()"
                 style="padding:14px;background:#1a2332;border:1px solid rgba(248,153,26,0.3);border-radius:8px;color:#e2e8f0;font-size:18px;font-family:'Inter',sans-serif;width:160px">
             <span style="color:#94a3b8;font-size:14px">BTC =</span>
             <div style="background:rgba(248,153,26,0.08);border:1px solid rgba(248,153,26,0.2);border-radius:8px;padding:14px;font-size:18px;font-weight:700;color:#f8991a;min-width:200px" id="quickResult">—</div>
         </div>
-        <div style="margin-top:8px;font-size:12px;color:#64748b">Resultado em reais (BRL)</div>
+        <div style="margin-top:8px;font-size:12px;color:#64748b" data-i18n="quick_desc">Resultado em reais (BRL)</div>
     </div>
 
     <div style="margin-bottom:40px">
-        <h2>Explore outros conversores</h2>
+        <h2 data-i18n="explore_title">Explore outros conversores</h2>
         <div class="links-grid">
-            <a href="/converter-bitcoin-real" class="link-card">₿ Bitcoin → Real (BRL)</a>
-            <a href="/converter-bitcoin-dolar" class="link-card">₿ Bitcoin → Dólar (USD)</a>
-            <a href="/" class="link-card">📚 Guia completo Bitcoin</a>
+            <a href="/converter-bitcoin-real" class="link-card" data-i18n="link_brl">₿ Bitcoin → Real (BRL)</a>
+            <a href="/converter-bitcoin-dolar" class="link-card" data-i18n="link_usd">₿ Bitcoin → Dólar (USD)</a>
+            <a href="/" class="link-card" data-i18n="link_guide">📚 Guia completo Bitcoin</a>
         </div>
     </div>
 
-    <h2>Perguntas Frequentes</h2>
+    <h2 data-i18n="faq_title">Perguntas Frequentes</h2>
     <div class="faq-item">
-        <div class="faq-q">Quanto vale 1 Bitcoin hoje em reais?</div>
-        <div class="faq-a">O valor exato está sendo exibido ao vivo acima. Em 2025-2026, 1 Bitcoin tem valido entre R$ 350.000 e R$ 650.000. O preço muda a cada segundo conforme as negociações nas exchanges.</div>
+        <div class="faq-q" data-i18n="faq1_q">Quanto vale 1 Bitcoin hoje em reais?</div>
+        <div class="faq-a" data-i18n="faq1_a">O valor exato está sendo exibido ao vivo acima. Em 2025-2026, 1 Bitcoin tem valido entre R$ 350.000 e R$ 650.000. O preço muda a cada segundo conforme as negociações nas exchanges.</div>
     </div>
     <div class="faq-item">
-        <div class="faq-q">Por que o preço do Bitcoin muda tanto?</div>
-        <div class="faq-a">Bitcoin é negociado 24 horas por dia, 7 dias por semana, em exchanges globais. O preço é definido pela oferta e demanda em tempo real. Notícias, regulações, grandes compras/vendas e sentimento do mercado afetam o preço constantemente.</div>
+        <div class="faq-q" data-i18n="faq2_q">Por que o preço do Bitcoin muda tanto?</div>
+        <div class="faq-a" data-i18n="faq2_a">Bitcoin é negociado 24 horas por dia, 7 dias por semana, em exchanges globais. O preço é definido pela oferta e demanda em tempo real. Notícias, regulações, grandes compras/vendas e sentimento do mercado afetam o preço constantemente.</div>
     </div>
     <div class="faq-item">
-        <div class="faq-q">Qual foi o maior preço do Bitcoin já registrado?</div>
-        <div class="faq-a">O ATH (All-Time High) do Bitcoin foi aproximadamente $109.000 USD em janeiro de 2025. Em reais, chegou a cerca de R$ 650.000 na mesma época.</div>
+        <div class="faq-q" data-i18n="faq3_q">Qual foi o maior preço do Bitcoin já registrado?</div>
+        <div class="faq-a" data-i18n="faq3_a">O ATH (All-Time High) do Bitcoin foi aproximadamente $109.000 USD em janeiro de 2025. Em reais, chegou a cerca de R$ 650.000 na mesma época.</div>
     </div>
     <div class="faq-item">
-        <div class="faq-q">Vale a pena comprar Bitcoin agora?</div>
-        <div class="faq-a">Isso depende do seu perfil de investidor, horizonte de tempo e tolerância ao risco. Bitcoin é um ativo volátil. Muitos especialistas recomendam investir apenas uma pequena parcela do patrimônio (5-10%) e usar a estratégia DCA (comprar regularmente pequenas quantias). Não é conselho financeiro.</div>
+        <div class="faq-q" data-i18n="faq4_q">Vale a pena comprar Bitcoin agora?</div>
+        <div class="faq-a" data-i18n="faq4_a">Isso depende do seu perfil de investidor, horizonte de tempo e tolerância ao risco. Bitcoin é um ativo volátil. Muitos especialistas recomendam investir apenas uma pequena parcela (5-10%) e usar a estratégia DCA. Não é conselho financeiro.</div>
     </div>
 </main>
 
 <footer>
-    <p>© 2026 Bitcoin Agora — Dados ao vivo. Não é conselho financeiro.</p>
-    <p style="margin-top:8px"><a href="/">← Voltar para o site completo</a> · <a href="/converter-bitcoin-real">BTC → BRL</a> · <a href="/converter-bitcoin-dolar">BTC → USD</a></p>
+    <p data-i18n="footer_copy">© 2026 Bitcoin Agora — Dados ao vivo. Não é conselho financeiro.</p>
+    <p style="margin-top:8px">
+        <a href="/" data-i18n="footer_home">← Voltar para o site completo</a> ·
+        <a href="/converter-bitcoin-real" data-i18n="footer_brl">BTC → BRL</a> ·
+        <a href="/converter-bitcoin-dolar" data-i18n="footer_usd">BTC → USD</a> ·
+        <a href="/inovacao" data-i18n="footer_innov">Inovação</a>
+    </p>
 </footer>
 
 <script>
+const i18n = {
+    pt: {
+        nav_home: 'Início', nav_brl: 'BTC → BRL', nav_usd: 'BTC → USD', nav_contact: 'Contato',
+        page_title: 'Quanto Vale 1 Bitcoin Hoje?',
+        page_sub: 'Preço ao vivo em reais e dólares. Atualizado automaticamente a cada 30 segundos.',
+        card_brl_label: '1 Bitcoin em Real (BRL)',
+        card_usd_label: '1 Bitcoin em Dólar (USD)',
+        high24h: 'Máx. 24h', low24h: 'Mín. 24h',
+        connecting: 'Conectando...',
+        quick_title: 'Conversor Rápido',
+        quick_desc: 'Resultado em reais (BRL)',
+        explore_title: 'Explore outros conversores',
+        link_brl: '₿ Bitcoin → Real (BRL)',
+        link_usd: '₿ Bitcoin → Dólar (USD)',
+        link_guide: '📚 Guia completo Bitcoin',
+        faq_title: 'Perguntas Frequentes',
+        faq1_q: 'Quanto vale 1 Bitcoin hoje em reais?',
+        faq1_a: 'O valor exato está sendo exibido ao vivo acima. Em 2025-2026, 1 Bitcoin tem valido entre R$ 350.000 e R$ 650.000. O preço muda a cada segundo conforme as negociações nas exchanges.',
+        faq2_q: 'Por que o preço do Bitcoin muda tanto?',
+        faq2_a: 'Bitcoin é negociado 24 horas por dia, 7 dias por semana, em exchanges globais. O preço é definido pela oferta e demanda em tempo real. Notícias, regulações, grandes compras/vendas e sentimento do mercado afetam o preço constantemente.',
+        faq3_q: 'Qual foi o maior preço do Bitcoin já registrado?',
+        faq3_a: 'O ATH (All-Time High) do Bitcoin foi aproximadamente $109.000 USD em janeiro de 2025. Em reais, chegou a cerca de R$ 650.000 na mesma época.',
+        faq4_q: 'Vale a pena comprar Bitcoin agora?',
+        faq4_a: 'Isso depende do seu perfil de investidor, horizonte de tempo e tolerância ao risco. Bitcoin é um ativo volátil. Muitos especialistas recomendam investir apenas uma pequena parcela (5-10%) e usar a estratégia DCA. Não é conselho financeiro.',
+        footer_copy: '© 2026 Bitcoin Agora — Dados ao vivo. Não é conselho financeiro.',
+        footer_home: '← Voltar para o site completo',
+        footer_brl: 'BTC → BRL',
+        footer_usd: 'BTC → USD',
+        footer_innov: 'Inovação',
+        live_label: 'Ao vivo — atualizado às '
+    },
+    en: {
+        nav_home: 'Home', nav_brl: 'BTC → BRL', nav_usd: 'BTC → USD', nav_contact: 'Contact',
+        page_title: 'How Much is 1 Bitcoin Worth Today?',
+        page_sub: 'Live price in Brazilian Reals and US Dollars. Automatically updated every 30 seconds.',
+        card_brl_label: '1 Bitcoin in Brazilian Real (BRL)',
+        card_usd_label: '1 Bitcoin in Dollar (USD)',
+        high24h: 'High 24h', low24h: 'Low 24h',
+        connecting: 'Connecting...',
+        quick_title: 'Quick Converter',
+        quick_desc: 'Result in Brazilian Reals (BRL)',
+        explore_title: 'Explore other converters',
+        link_brl: '₿ Bitcoin → Real (BRL)',
+        link_usd: '₿ Bitcoin → Dollar (USD)',
+        link_guide: '📚 Complete Bitcoin Guide',
+        faq_title: 'Frequently Asked Questions',
+        faq1_q: 'How much is 1 Bitcoin worth in BRL today?',
+        faq1_a: 'The exact value is displayed live above. In 2025-2026, 1 Bitcoin has been worth between R$ 350,000 and R$ 650,000. The price changes every second as trades occur on exchanges.',
+        faq2_q: 'Why does the Bitcoin price fluctuate so much?',
+        faq2_a: 'Bitcoin trades 24 hours a day, 7 days a week, on global exchanges. The price is determined by supply and demand in real time. News, regulations, large purchases/sales, and market sentiment constantly affect the price.',
+        faq3_q: 'What was the highest Bitcoin price ever recorded?',
+        faq3_a: 'Bitcoin\'s ATH (All-Time High) was approximately $109,000 USD in January 2025. In Brazilian Reals, it reached around R$ 650,000 at the same time.',
+        faq4_q: 'Is it worth buying Bitcoin now?',
+        faq4_a: 'It depends on your investor profile, time horizon, and risk tolerance. Bitcoin is a volatile asset. Many experts recommend investing only a small portion (5-10%) and using the DCA strategy. This is not financial advice.',
+        footer_copy: '© 2026 Bitcoin Agora — Live data. Not financial advice.',
+        footer_home: '← Back to the full site',
+        footer_brl: 'BTC → BRL',
+        footer_usd: 'BTC → USD',
+        footer_innov: 'Innovation',
+        live_label: 'Live — updated at '
+    },
+    es: {
+        nav_home: 'Inicio', nav_brl: 'BTC → BRL', nav_usd: 'BTC → USD', nav_contact: 'Contacto',
+        page_title: '¿Cuánto Vale 1 Bitcoin Hoy?',
+        page_sub: 'Precio en vivo en reales brasileños y dólares. Actualizado automáticamente cada 30 segundos.',
+        card_brl_label: '1 Bitcoin en Real Brasileño (BRL)',
+        card_usd_label: '1 Bitcoin en Dólar (USD)',
+        high24h: 'Máx. 24h', low24h: 'Mín. 24h',
+        connecting: 'Conectando...',
+        quick_title: 'Convertidor Rápido',
+        quick_desc: 'Resultado en reales brasileños (BRL)',
+        explore_title: 'Explora otros convertidores',
+        link_brl: '₿ Bitcoin → Real (BRL)',
+        link_usd: '₿ Bitcoin → Dólar (USD)',
+        link_guide: '📚 Guía completa de Bitcoin',
+        faq_title: 'Preguntas Frecuentes',
+        faq1_q: '¿Cuánto vale 1 Bitcoin en reales hoy?',
+        faq1_a: 'El valor exacto se muestra en vivo arriba. En 2025-2026, 1 Bitcoin ha valido entre R$ 350.000 y R$ 650.000. El precio cambia cada segundo según las negociaciones en los exchanges.',
+        faq2_q: '¿Por qué fluctúa tanto el precio del Bitcoin?',
+        faq2_a: 'Bitcoin se negocia 24 horas al día, 7 días a la semana, en exchanges globales. El precio está determinado por la oferta y la demanda en tiempo real. Noticias, regulaciones, grandes compras/ventas y el sentimiento del mercado afectan constantemente el precio.',
+        faq3_q: '¿Cuál fue el precio más alto del Bitcoin registrado?',
+        faq3_a: 'El ATH (máximo histórico) del Bitcoin fue aproximadamente $109.000 USD en enero de 2025. En reales brasileños, llegó a cerca de R$ 650.000 en la misma época.',
+        faq4_q: '¿Vale la pena comprar Bitcoin ahora?',
+        faq4_a: 'Depende de tu perfil de inversor, horizonte temporal y tolerancia al riesgo. Bitcoin es un activo volátil. Muchos expertos recomiendan invertir solo una pequeña parte (5-10%) y usar la estrategia DCA. No es asesoramiento financiero.',
+        footer_copy: '© 2026 Bitcoin Agora — Datos en vivo. No es asesoramiento financiero.',
+        footer_home: '← Volver al sitio completo',
+        footer_brl: 'BTC → BRL',
+        footer_usd: 'BTC → USD',
+        footer_innov: 'Innovación',
+        live_label: 'En vivo — actualizado a las '
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'pt';
+
+function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key]) el.textContent = i18n[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+}
+
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+
 async function fetchPrices() {
     try {
         const [brl, usd] = await Promise.all([
@@ -190,7 +304,8 @@ async function fetchPrices() {
 
         window._priceBrl = parseFloat(brl.lastPrice);
         quickConvert();
-        document.getElementById('statusText').textContent = 'Ao vivo — atualizado às ' + new Date().toLocaleTimeString('pt-BR');
+        const liveLabel = (i18n[currentLang] && i18n[currentLang].live_label) || 'Ao vivo — atualizado às ';
+        document.getElementById('statusText').textContent = liveLabel + new Date().toLocaleTimeString('pt-BR');
     } catch(e) {
         document.getElementById('statusText').textContent = 'Erro ao buscar preço. Tentando novamente...';
     }

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inovações do Bitcoin — 12 Formas de Transformar o Dinheiro | Bitcoin Agora</title>
+    <meta name="description" content="Descubra as 12 principais inovações do Bitcoin: proteção contra fraudes, micropagamentos, contratos inteligentes, rede descentralizada e muito mais.">
+    <meta name="keywords" content="inovações bitcoin, bitcoin tecnologia, contratos inteligentes bitcoin, micropagamentos bitcoin, blockchain inovação">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://bitcoin-converter-ten.vercel.app/inovacao">
+    <meta property="og:title" content="Inovações do Bitcoin — 12 Formas de Transformar o Dinheiro">
+    <meta property="og:description" content="Proteção contra fraudes, acesso global, micropagamentos, contratos inteligentes e mais. As 12 inovações que fazem o Bitcoin único.">
+    <meta property="og:url" content="https://bitcoin-converter-ten.vercel.app/inovacao">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f8991a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0f1419; color: #e2e8f0; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+
+        /* HEADER */
+        header { background: #0f1419; border-bottom: 1px solid rgba(248,153,26,0.15); padding: 12px 20px; position: sticky; top: 0; z-index: 1000; }
+        .header-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .logo { font-size: 20px; font-weight: 800; color: #f8991a; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+        nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+        nav a { color: #94a3b8; text-decoration: none; padding: 6px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
+        nav a:hover { color: #f8991a; }
+        nav a.active { color: #f8991a; }
+        .lang-btn { padding: 6px 12px; background: rgba(248,153,26,0.1); border: 1px solid rgba(248,153,26,0.3); color: #94a3b8; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+        .lang-btn.active { background: #f8991a; color: #0f1419; border-color: #f8991a; }
+        .lang-btn:hover:not(.active) { background: rgba(248,153,26,0.2); color: #f8991a; }
+
+        /* HERO */
+        .hero { background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%); padding: 60px 20px 50px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 40%, rgba(248,153,26,0.07) 0%, transparent 65%); pointer-events: none; }
+        .hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+        .hero-badge { display: inline-block; background: rgba(248,153,26,0.12); border: 1px solid rgba(248,153,26,0.35); color: #f8991a; border-radius: 20px; padding: 5px 16px; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+        h1 { font-size: clamp(30px, 6vw, 52px); font-weight: 800; color: #f8991a; margin-bottom: 16px; line-height: 1.15; }
+        .hero-sub { font-size: clamp(15px, 3vw, 18px); color: #94a3b8; max-width: 600px; margin: 0 auto; }
+
+        /* MAIN CONTENT */
+        main { flex: 1; max-width: 1100px; margin: 0 auto; padding: 50px 20px 60px; width: 100%; }
+
+        /* SECTION GRID */
+        .sections-grid { display: grid; gap: 20px; }
+
+        /* CARD */
+        .innov-card { background: #1a2332; border: 1px solid rgba(248,153,26,0.18); border-radius: 12px; padding: 28px 28px 28px 24px; display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; transition: border-color 0.25s, transform 0.25s; }
+        .innov-card:hover { border-color: rgba(248,153,26,0.45); transform: translateY(-2px); }
+
+        @media (max-width: 680px) {
+            .innov-card { grid-template-columns: 1fr; gap: 14px; padding: 22px 20px; }
+            .card-left { display: flex; align-items: center; gap: 14px; }
+            .card-icon { font-size: 32px; margin-bottom: 0; }
+        }
+
+        .card-left { }
+        .card-icon { font-size: 44px; display: block; margin-bottom: 10px; }
+        .card-num { font-size: 10px; color: #475569; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .card-title { font-size: clamp(15px, 2.5vw, 18px); font-weight: 700; color: #f1f5f9; margin-top: 4px; line-height: 1.3; }
+
+        .card-right { }
+        .card-p { color: #94a3b8; font-size: 14px; line-height: 1.75; }
+        .card-p + .card-p { margin-top: 10px; }
+
+        /* FOOTER */
+        footer { border-top: 1px solid rgba(248,153,26,0.1); padding: 28px 20px; text-align: center; color: #64748b; font-size: 13px; }
+        footer a { color: #f8991a; text-decoration: none; margin: 0 6px; transition: opacity 0.2s; }
+        footer a:hover { opacity: 0.8; }
+        .footer-links { margin-top: 10px; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <a href="/" class="logo">₿ Bitcoin Agora</a>
+        <nav>
+            <a href="/converter-bitcoin-real" data-i18n="nav_brl">BTC → BRL</a>
+            <a href="/converter-bitcoin-dolar" data-i18n="nav_usd">BTC → USD</a>
+            <a href="/quanto-vale-1-bitcoin" data-i18n="nav_price">Preço</a>
+            <a href="/contato" data-i18n="nav_contact">Contato</a>
+            <a href="/inovacao" class="active" data-i18n="nav_innov">Inovação</a>
+            <div style="display:flex;gap:4px;margin-left:8px">
+                <button class="lang-btn active" data-lang="pt" onclick="setLang('pt')">PT</button>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge" data-i18n="badge">Tecnologia</div>
+        <h1 data-i18n="hero_title">12 Inovações que Fazem o Bitcoin Único</h1>
+        <p class="hero-sub" data-i18n="hero_sub">Muito além de um simples pagamento — descubra as revoluções silenciosas que o Bitcoin está trazendo para as finanças globais.</p>
+    </div>
+</div>
+
+<main>
+    <div class="sections-grid" id="sectionsGrid"></div>
+</main>
+
+<footer>
+    <p>© 2026 Bitcoin Agora — <span data-i18n="footer_disclaimer">Conteúdo educacional. Não é conselho financeiro.</span></p>
+    <div class="footer-links">
+        <a href="/" data-i18n="footer_home">Início</a> ·
+        <a href="/converter-bitcoin-real" data-i18n="nav_brl">BTC→BRL</a> ·
+        <a href="/converter-bitcoin-dolar" data-i18n="nav_usd">BTC→USD</a> ·
+        <a href="/quanto-vale-1-bitcoin" data-i18n="nav_price">Preço</a> ·
+        <a href="/contato" data-i18n="nav_contact">Contato</a> ·
+        <a href="/sobre" data-i18n="footer_about">Sobre &amp; Legal</a> ·
+        <a href="/inovacao" data-i18n="nav_innov">Inovação</a>
+    </div>
+</footer>
+
+<script>
+const i18n = {
+    pt: {
+        badge: 'Tecnologia',
+        hero_title: '12 Inovações que Fazem o Bitcoin Único',
+        hero_sub: 'Muito além de um simples pagamento — descubra as revoluções silenciosas que o Bitcoin está trazendo para as finanças globais.',
+        nav_brl: 'BTC → BRL',
+        nav_usd: 'BTC → USD',
+        nav_price: 'Preço',
+        nav_contact: 'Contato',
+        nav_innov: 'Inovação',
+        footer_home: 'Início',
+        footer_about: 'Sobre & Legal',
+        footer_disclaimer: 'Conteúdo educacional. Não é conselho financeiro.',
+        sections: [
+            {
+                icon: '🛡️',
+                title: 'Proteção Contra Fraudes',
+                p1: 'Toda transação em Bitcoin é irreversível após confirmação na blockchain. Isso elimina completamente o problema dos chargebacks — devoluções fraudulentas que custam às empresas globais bilhões de dólares todo ano. Quem vende produtos ou serviços tem a garantia matemática de que o pagamento não será desfeito.',
+                p2: 'A verificação criptográfica garante que apenas o legítimo dono das moedas pode autorizar um gasto. Falsificar uma assinatura digital Bitcoin exigiria resolver problemas matemáticos além da capacidade computacional conhecida, tornando a fraude praticamente impossível sem a chave privada correta.'
+            },
+            {
+                icon: '🌍',
+                title: 'Acesso Global Sem Fronteiras',
+                p1: 'Qualquer pessoa com um smartphone e conexão à internet pode criar uma carteira Bitcoin em segundos, sem precisar de documentos, aprovação bancária ou endereço fixo. Isso é transformador em regiões onde mais da metade da população adulta não tem conta em banco.',
+                p2: 'Enviar Bitcoin de São Paulo para Lagos, Manila ou Buenos Aires leva minutos e custa centavos, independentemente do valor. As remessas internacionais tradicionais cobram entre 5% e 10% de taxa e podem levar dias. Bitcoin derruba essa barreira, devolvendo poder econômico a trabalhadores migrantes e suas famílias.'
+            },
+            {
+                icon: '💸',
+                title: 'Taxas Mínimas',
+                p1: 'Ao remover os intermediários financeiros, o Bitcoin reduz dramaticamente o custo das transações. Enquanto operadoras de cartão de crédito cobram entre 1,5% e 3,5% por operação — fora taxas fixas e mensalidades —, uma transação Bitcoin pode custar menos de US$ 0,05 independente do valor transferido.',
+                p2: 'Para negócios com margens apertadas, como restaurantes, mercados e pequenos comércios, essa diferença representa lucro real no fim do mês. Para pagamentos internacionais de alto valor, como contratos empresariais ou compra de imóveis, a economia pode ser de dezenas de milhares de dólares em uma única operação.'
+            },
+            {
+                icon: '🎁',
+                title: 'Gorjetas e Doações Instantâneas',
+                p1: 'Com Bitcoin, especialmente via Lightning Network, é possível enviar uma gorjeta de R$ 0,50 diretamente ao criador de um vídeo, podcast ou artigo sem passar por plataformas intermediárias. O criador recebe o valor integral, sem que a plataforma retenha 30% ou mais do pagamento.',
+                p2: 'Para ONGs e projetos humanitários, as doações em Bitcoin chegam diretamente ao destinatário final em qualquer país, sem risco de bloqueio por sanções financeiras ou burocracia bancária. Um QR code é suficiente para que qualquer pessoa no mundo contribua em segundos, 24 horas por dia.'
+            },
+            {
+                icon: '🤝',
+                title: 'Crowdfunding Transparente',
+                p1: 'Campanhas de financiamento coletivo baseadas em Bitcoin permitem que qualquer pessoa verifique publicamente quanto foi arrecadado, quando e por quem — sem depender da palavra da plataforma. Cada transação fica gravada permanentemente na blockchain, auditável por qualquer pessoa no mundo.',
+                p2: 'Esse modelo aumenta a confiança dos doadores, pois elimina dúvidas sobre desvio de recursos. Projetos de código aberto, pesquisas científicas, jornalismo independente e causas sociais podem captar recursos globalmente com total transparência, sem conta bancária e sem intermediários que retêm parcelas do total.'
+            },
+            {
+                icon: '⚡',
+                title: 'Micropagamentos Viáveis',
+                p1: 'Antes do Bitcoin e da Lightning Network, cobrar US$ 0,01 por um artigo, uma música ou um minuto de streaming era tecnicamente inviável — as taxas bancárias superavam o valor do produto. Agora é possível criar modelos de negócio onde o usuário paga exatamente pelo que consumiu, sem assinaturas mensais forçadas.',
+                p2: 'Imagine pagar R$ 0,10 para ler uma reportagem exclusiva, R$ 0,02 por minuto de áudio ou R$ 0,005 por chamada de API. Esses modelos de pagamento granular abrem mercados completamente novos para conteúdo digital, software como serviço e economia da atenção, beneficiando tanto criadores quanto consumidores.'
+            },
+            {
+                icon: '⚖️',
+                title: 'Resolução de Disputas',
+                p1: 'Transações Bitcoin com multi-assinatura permitem designar um árbitro neutro para casos de disputa sem envolver bancos, advogados ou tribunais. Em uma transação 2-de-3, o comprador, o vendedor e o árbitro cada um guarda uma chave. O dinheiro só é liberado quando dois dos três concordam com o resultado.',
+                p2: 'Esse mecanismo já é usado em marketplaces descentralizados e acordos freelance internacionais. O árbitro nunca toca no dinheiro diretamente — ele apenas assina para desempate. Isso torna a resolução mais rápida, barata e menos suscetível a corrupção do que sistemas judiciários tradicionais.'
+            },
+            {
+                icon: '🔐',
+                title: 'Contas Multi-Assinatura',
+                p1: 'Para empresas, fundações e fundos de investimento, a multi-assinatura (multisig) do Bitcoin oferece governança financeira sem precedentes. Uma conta pode exigir, por exemplo, 3 das 5 assinaturas de diretores para mover qualquer valor — eliminando o risco de desvio por um único funcionário comprometido.',
+                p2: 'Diferente de contas bancárias corporativas, onde o controle real depende de contratos e confiança, o multisig do Bitcoin é executado no protocolo. Nenhuma autoridade externa pode contornar a regra ou alterar o quórum necessário. Isso traz segurança de nível institucional mesmo para pequenas organizações.'
+            },
+            {
+                icon: '📋',
+                title: 'Contratos Inteligentes',
+                p1: 'Bitcoin suporta contratos que se auto-executam com base em condições pré-definidas e verificáveis. Um pagamento pode ser programado para ser liberado automaticamente quando uma determinada data chega, quando uma encomenda é confirmada na blockchain logística, ou quando múltiplas partes assinam o acordo.',
+                p2: 'Esses contratos eliminam a necessidade de confiar no bom senso de intermediários — o código executa exatamente o que foi combinado, sem possibilidade de alteração unilateral. Contratos de aluguel, seguros paramétricos, acordos de parceria e pagamentos condicionais são apenas alguns dos casos de uso já em produção.'
+            },
+            {
+                icon: '🌐',
+                title: 'Rede Descentralizada',
+                p1: 'A rede Bitcoin é mantida por mais de 15.000 nós independentes espalhados por dezenas de países. Não existe um servidor central para desligar, uma empresa para pressionar ou um ponto único de falha. Governos que tentaram proibir o Bitcoin viram usuários migrar para VPNs e redes privadas, mantendo o acesso.',
+                p2: 'Essa resiliência é única entre os sistemas financeiros. Bancos fecham nos fins de semana e feriados. Sistemas de pagamento caem. O Bitcoin funciona 24 horas por dia, 365 dias por ano, com uptime histórico superior a 99,98%. Qualquer pessoa pode rodar um nó completo em um computador comum e participar da validação da rede.'
+            },
+            {
+                icon: '👁️',
+                title: 'Transparência Flexível',
+                p1: 'No Bitcoin, todas as transações são públicas e verificáveis por qualquer pessoa — mas a identidade dos participantes não é revelada automaticamente. Os endereços são pseudônimos: você pode auditar o fluxo de fundos de uma organização sem saber quem controla cada endereço, a menos que essa informação seja divulgada voluntariamente.',
+                p2: 'Esse equilíbrio entre transparência e privacidade é valioso para organizações que precisam prestar contas ao público (como ONGs ou DAOs) sem expor dados sensíveis dos colaboradores. Ferramentas adicionais como CoinJoin e Lightning aumentam ainda mais a privacidade quando necessário, mantendo o usuário no controle.'
+            },
+            {
+                icon: '🤖',
+                title: 'Pagamentos Automatizados',
+                p1: 'Máquinas de venda, carregadores de veículos elétricos, sensores IoT e softwares podem pagar e receber Bitcoin de forma completamente autônoma, sem intervenção humana. Uma máquina pode comprar energia elétrica em microtransações a cada segundo, ou um dispositivo IoT pode vender dados climáticos por frações de centavo.',
+                p2: 'Essa capacidade cria a base para uma economia máquina-a-máquina (M2M) que era impossível antes do Bitcoin. Com a Lightning Network, esses micropagamentos automáticos chegam a ser processados em milissegundos com taxa zero. O resultado é uma nova camada de automação econômica que vai muito além do que os sistemas financeiros tradicionais podem oferecer.'
+            }
+        ]
+    },
+    en: {
+        badge: 'Technology',
+        hero_title: '12 Innovations That Make Bitcoin Unique',
+        hero_sub: 'Far beyond a simple payment — discover the silent revolutions Bitcoin is bringing to global finance.',
+        nav_brl: 'BTC → BRL',
+        nav_usd: 'BTC → USD',
+        nav_price: 'Price',
+        nav_contact: 'Contact',
+        nav_innov: 'Innovation',
+        footer_home: 'Home',
+        footer_about: 'About & Legal',
+        footer_disclaimer: 'Educational content. Not financial advice.',
+        sections: [
+            {
+                icon: '🛡️',
+                title: 'Fraud Protection',
+                p1: 'Every Bitcoin transaction is irreversible once confirmed on the blockchain. This completely eliminates the chargeback problem — fraudulent reversals that cost global businesses billions of dollars every year. Merchants selling products or services have the mathematical guarantee that payment will never be undone.',
+                p2: 'Cryptographic verification ensures that only the legitimate owner of the coins can authorize a spend. Forging a Bitcoin digital signature would require solving mathematical problems beyond known computational capacity, making fraud practically impossible without the correct private key.'
+            },
+            {
+                icon: '🌍',
+                title: 'Global Access Without Borders',
+                p1: 'Anyone with a smartphone and internet connection can create a Bitcoin wallet in seconds — no documents, bank approval, or fixed address required. This is transformative in regions where more than half the adult population has no bank account.',
+                p2: 'Sending Bitcoin from São Paulo to Lagos, Manila, or Buenos Aires takes minutes and costs pennies, regardless of the amount. Traditional international remittances charge 5–10% in fees and can take days. Bitcoin dismantles this barrier, restoring economic power to migrant workers and their families.'
+            },
+            {
+                icon: '💸',
+                title: 'Minimal Fees',
+                p1: 'By removing financial intermediaries, Bitcoin dramatically reduces transaction costs. While credit card processors charge between 1.5% and 3.5% per transaction — on top of flat fees and monthly charges — a Bitcoin transaction can cost less than $0.05 regardless of the transferred value.',
+                p2: 'For businesses with thin margins, such as restaurants, markets, and small retailers, this difference represents real profit at the end of the month. For high-value international payments like corporate contracts or real estate purchases, the savings can reach tens of thousands of dollars in a single operation.'
+            },
+            {
+                icon: '🎁',
+                title: 'Instant Tips and Donations',
+                p1: 'With Bitcoin, especially via the Lightning Network, it is possible to send a $0.05 tip directly to a video, podcast, or article creator without passing through intermediary platforms. The creator receives the full amount without the platform taking 30% or more of the payment.',
+                p2: 'For NGOs and humanitarian projects, Bitcoin donations reach the final recipient in any country directly, without the risk of being blocked by financial sanctions or banking bureaucracy. A QR code is all that is needed for anyone in the world to contribute in seconds, 24 hours a day.'
+            },
+            {
+                icon: '🤝',
+                title: 'Transparent Crowdfunding',
+                p1: 'Bitcoin-based crowdfunding campaigns allow anyone to publicly verify how much was raised, when and by whom — without relying on the platform\'s word. Each transaction is permanently recorded on the blockchain, auditable by anyone in the world.',
+                p2: 'This model increases donor trust by eliminating doubts about misappropriation of funds. Open-source projects, scientific research, independent journalism, and social causes can raise funds globally with full transparency, without a bank account and without intermediaries taking a cut.'
+            },
+            {
+                icon: '⚡',
+                title: 'Viable Micropayments',
+                p1: 'Before Bitcoin and the Lightning Network, charging $0.01 for an article, a song, or a minute of streaming was technically unfeasible — banking fees exceeded the product\'s value. Now it is possible to create business models where users pay exactly for what they consumed, without forced monthly subscriptions.',
+                p2: 'Imagine paying $0.02 to read an exclusive article, $0.005 per minute of audio, or $0.001 per API call. These granular payment models open entirely new markets for digital content, software as a service, and the attention economy, benefiting both creators and consumers.'
+            },
+            {
+                icon: '⚖️',
+                title: 'Dispute Resolution',
+                p1: 'Multi-signature Bitcoin transactions allow designating a neutral arbitrator for disputes without involving banks, lawyers, or courts. In a 2-of-3 transaction, the buyer, seller, and arbitrator each hold a key. Funds are only released when two of the three agree on the outcome.',
+                p2: 'This mechanism is already used in decentralized marketplaces and international freelance agreements. The arbitrator never touches the funds directly — they only sign to break a tie. This makes resolution faster, cheaper, and less susceptible to corruption than traditional judicial systems.'
+            },
+            {
+                icon: '🔐',
+                title: 'Multi-Signature Accounts',
+                p1: 'For companies, foundations, and investment funds, Bitcoin multisig offers unprecedented financial governance. An account can require, for example, 3 of 5 directors\' signatures to move any funds — eliminating the risk of embezzlement by a single compromised employee.',
+                p2: 'Unlike corporate bank accounts where real control depends on contracts and trust, Bitcoin multisig is enforced at the protocol level. No external authority can bypass the rule or alter the required quorum. This brings institutional-level security even to small organizations.'
+            },
+            {
+                icon: '📋',
+                title: 'Smart Contracts',
+                p1: 'Bitcoin supports contracts that self-execute based on pre-defined, verifiable conditions. A payment can be programmed to be released automatically when a specific date arrives, when a shipment is confirmed on the logistics blockchain, or when multiple parties have signed the agreement.',
+                p2: 'These contracts eliminate the need to trust intermediaries\' good judgment — the code executes exactly what was agreed upon, with no possibility of unilateral modification. Rental contracts, parametric insurance, partnership agreements, and conditional payments are just a few use cases already in production.'
+            },
+            {
+                icon: '🌐',
+                title: 'Decentralized Network',
+                p1: 'The Bitcoin network is maintained by over 15,000 independent nodes spread across dozens of countries. There is no central server to shut down, no company to pressure, and no single point of failure. Governments that tried to ban Bitcoin saw users migrate to VPNs and private networks, maintaining access.',
+                p2: 'This resilience is unique among financial systems. Banks close on weekends and holidays. Payment systems go down. Bitcoin operates 24 hours a day, 365 days a year, with a historical uptime above 99.98%. Anyone can run a full node on a regular computer and participate in network validation.'
+            },
+            {
+                icon: '👁️',
+                title: 'Flexible Transparency',
+                p1: 'On Bitcoin, all transactions are public and verifiable by anyone — but the identity of participants is not automatically revealed. Addresses are pseudonymous: you can audit the fund flow of an organization without knowing who controls each address, unless that information is voluntarily disclosed.',
+                p2: 'This balance between transparency and privacy is valuable for organizations that need to be publicly accountable (like NGOs or DAOs) without exposing sensitive contributor data. Additional tools like CoinJoin and Lightning further enhance privacy when needed, keeping the user in control.'
+            },
+            {
+                icon: '🤖',
+                title: 'Automated Payments',
+                p1: 'Vending machines, electric vehicle chargers, IoT sensors, and software can pay and receive Bitcoin completely autonomously, without human intervention. A machine can buy electrical energy in microtransactions every second, or an IoT device can sell weather data for fractions of a cent.',
+                p2: 'This capability creates the foundation for a machine-to-machine (M2M) economy that was impossible before Bitcoin. With the Lightning Network, these automatic micropayments can be processed in milliseconds with zero fees. The result is a new layer of economic automation that goes far beyond what traditional financial systems can offer.'
+            }
+        ]
+    },
+    es: {
+        badge: 'Tecnología',
+        hero_title: '12 Innovaciones que Hacen al Bitcoin Único',
+        hero_sub: 'Mucho más que un simple pago — descubre las revoluciones silenciosas que Bitcoin está trayendo a las finanzas globales.',
+        nav_brl: 'BTC → BRL',
+        nav_usd: 'BTC → USD',
+        nav_price: 'Precio',
+        nav_contact: 'Contacto',
+        nav_innov: 'Innovación',
+        footer_home: 'Inicio',
+        footer_about: 'Sobre & Legal',
+        footer_disclaimer: 'Contenido educativo. No es asesoramiento financiero.',
+        sections: [
+            {
+                icon: '🛡️',
+                title: 'Protección Contra el Fraude',
+                p1: 'Cada transacción de Bitcoin es irreversible una vez confirmada en la blockchain. Esto elimina por completo el problema de los chargebacks — devoluciones fraudulentas que cuestan a las empresas globales miles de millones de dólares cada año. Quien vende productos o servicios tiene la garantía matemática de que el pago no será deshecho.',
+                p2: 'La verificación criptográfica garantiza que solo el legítimo dueño de las monedas puede autorizar un gasto. Falsificar una firma digital de Bitcoin requeriría resolver problemas matemáticos más allá de la capacidad computacional conocida, haciendo el fraude prácticamente imposible sin la clave privada correcta.'
+            },
+            {
+                icon: '🌍',
+                title: 'Acceso Global Sin Fronteras',
+                p1: 'Cualquier persona con un smartphone y conexión a internet puede crear una billetera Bitcoin en segundos, sin necesitar documentos, aprobación bancaria ni dirección fija. Esto es transformador en regiones donde más de la mitad de la población adulta no tiene cuenta bancaria.',
+                p2: 'Enviar Bitcoin de São Paulo a Lagos, Manila o Buenos Aires tarda minutos y cuesta centavos, independientemente del monto. Las remesas internacionales tradicionales cobran entre el 5% y 10% en comisiones y pueden tardar días. Bitcoin derriba esta barrera, devolviendo poder económico a los trabajadores migrantes y sus familias.'
+            },
+            {
+                icon: '💸',
+                title: 'Comisiones Mínimas',
+                p1: 'Al eliminar los intermediarios financieros, Bitcoin reduce drásticamente los costos de las transacciones. Mientras que las operadoras de tarjetas de crédito cobran entre el 1,5% y el 3,5% por operación — además de tarifas fijas y mensualidades —, una transacción Bitcoin puede costar menos de $0,05 independientemente del valor transferido.',
+                p2: 'Para negocios con márgenes ajustados, como restaurantes, mercados y pequeños comercios, esta diferencia representa ganancia real a fin de mes. Para pagamentos internacionales de alto valor, como contratos empresariales o compra de inmuebles, el ahorro puede ser de decenas de miles de dólares en una sola operación.'
+            },
+            {
+                icon: '🎁',
+                title: 'Propinas y Donaciones Instantáneas',
+                p1: 'Con Bitcoin, especialmente a través de la Lightning Network, es posible enviar una propina de $0,05 directamente al creador de un video, podcast o artículo sin pasar por plataformas intermediarias. El creador recibe el monto completo, sin que la plataforma retenga el 30% o más del pago.',
+                p2: 'Para ONGs y proyectos humanitarios, las donaciones en Bitcoin llegan directamente al destinatario final en cualquier país, sin riesgo de bloqueo por sanciones financieras o burocracia bancaria. Un código QR es suficiente para que cualquier persona en el mundo contribuya en segundos, las 24 horas del día.'
+            },
+            {
+                icon: '🤝',
+                title: 'Crowdfunding Transparente',
+                p1: 'Las campañas de financiamiento colectivo basadas en Bitcoin permiten que cualquier persona verifique públicamente cuánto se ha recaudado, cuándo y por quién — sin depender de la palabra de la plataforma. Cada transacción queda grabada permanentemente en la blockchain, auditable por cualquier persona en el mundo.',
+                p2: 'Este modelo aumenta la confianza de los donantes, ya que elimina dudas sobre la malversación de fondos. Proyectos de código abierto, investigaciones científicas, periodismo independiente y causas sociales pueden captar fondos globalmente con total transparencia, sin cuenta bancaria y sin intermediarios que se queden con una parte.'
+            },
+            {
+                icon: '⚡',
+                title: 'Micropagos Viables',
+                p1: 'Antes de Bitcoin y la Lightning Network, cobrar $0,01 por un artículo, una canción o un minuto de streaming era técnicamente inviable — las tarifas bancarias superaban el valor del producto. Ahora es posible crear modelos de negocio donde el usuario paga exactamente por lo que consumió, sin suscripciones mensuales forzadas.',
+                p2: 'Imagina pagar $0,02 para leer un artículo exclusivo, $0,005 por minuto de audio o $0,001 por llamada a una API. Estos modelos de pago granular abren mercados completamente nuevos para el contenido digital, el software como servicio y la economía de la atención, beneficiando tanto a creadores como a consumidores.'
+            },
+            {
+                icon: '⚖️',
+                title: 'Resolución de Disputas',
+                p1: 'Las transacciones Bitcoin con multi-firma permiten designar un árbitro neutral para casos de disputa sin involucrar bancos, abogados o tribunales. En una transacción 2-de-3, el comprador, el vendedor y el árbitro cada uno guarda una clave. El dinero solo se libera cuando dos de los tres están de acuerdo con el resultado.',
+                p2: 'Este mecanismo ya se usa en marketplaces descentralizados y acuerdos freelance internacionales. El árbitro nunca toca el dinero directamente — solo firma para el desempate. Esto hace que la resolución sea más rápida, económica y menos susceptible a la corrupción que los sistemas judiciales tradicionales.'
+            },
+            {
+                icon: '🔐',
+                title: 'Cuentas Multi-Firma',
+                p1: 'Para empresas, fundaciones y fondos de inversión, el multisig de Bitcoin ofrece una gobernanza financiera sin precedentes. Una cuenta puede requerir, por ejemplo, 3 de las 5 firmas de directores para mover cualquier valor — eliminando el riesgo de malversación por parte de un único empleado comprometido.',
+                p2: 'A diferencia de las cuentas bancarias corporativas, donde el control real depende de contratos y confianza, el multisig de Bitcoin se ejecuta en el protocolo. Ninguna autoridad externa puede eludir la regla o alterar el quórum necesario. Esto brinda seguridad de nivel institucional incluso a pequeñas organizaciones.'
+            },
+            {
+                icon: '📋',
+                title: 'Contratos Inteligentes',
+                p1: 'Bitcoin soporta contratos que se auto-ejecutan basados en condiciones predefinidas y verificables. Un pago puede programarse para liberarse automáticamente cuando llega una fecha determinada, cuando un envío se confirma en la blockchain logística, o cuando múltiples partes han firmado el acuerdo.',
+                p2: 'Estos contratos eliminan la necesidad de confiar en el buen juicio de los intermediarios — el código ejecuta exactamente lo que se acordó, sin posibilidad de modificación unilateral. Contratos de alquiler, seguros paramétricos, acuerdos de asociación y pagos condicionales son solo algunos casos de uso ya en producción.'
+            },
+            {
+                icon: '🌐',
+                title: 'Red Descentralizada',
+                p1: 'La red Bitcoin está mantenida por más de 15.000 nodos independientes distribuidos en decenas de países. No existe un servidor central para apagar, ninguna empresa a la que presionar y ningún punto único de falla. Los gobiernos que intentaron prohibir Bitcoin vieron a los usuarios migrar a VPNs y redes privadas, manteniendo el acceso.',
+                p2: 'Esta resiliencia es única entre los sistemas financieros. Los bancos cierran los fines de semana y feriados. Los sistemas de pago se caen. Bitcoin funciona 24 horas al día, 365 días al año, con un historial de disponibilidad superior al 99,98%. Cualquier persona puede ejecutar un nodo completo en una computadora común y participar en la validación de la red.'
+            },
+            {
+                icon: '👁️',
+                title: 'Transparencia Flexible',
+                p1: 'En Bitcoin, todas las transacciones son públicas y verificables por cualquier persona — pero la identidad de los participantes no se revela automáticamente. Las direcciones son seudónimas: puedes auditar el flujo de fondos de una organización sin saber quién controla cada dirección, a menos que esa información se divulgue voluntariamente.',
+                p2: 'Este equilibrio entre transparencia y privacidad es valioso para organizaciones que necesitan rendir cuentas al público (como ONGs o DAOs) sin exponer datos sensibles de sus colaboradores. Herramientas adicionales como CoinJoin y Lightning aumentan aún más la privacidad cuando es necesario, manteniendo al usuario en control.'
+            },
+            {
+                icon: '🤖',
+                title: 'Pagos Automatizados',
+                p1: 'Máquinas expendedoras, cargadores de vehículos eléctricos, sensores IoT y software pueden pagar y recibir Bitcoin de forma completamente autónoma, sin intervención humana. Una máquina puede comprar energía eléctrica en microtransacciones cada segundo, o un dispositivo IoT puede vender datos climáticos por fracciones de centavo.',
+                p2: 'Esta capacidad crea la base para una economía máquina a máquina (M2M) que era imposible antes de Bitcoin. Con la Lightning Network, estos micropagos automáticos se procesan en milisegundos con comisión cero. El resultado es una nueva capa de automatización económica que va mucho más allá de lo que los sistemas financieros tradicionales pueden ofrecer.'
+            }
+        ]
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'pt';
+
+function renderSections(lang) {
+    const data = i18n[lang];
+    const grid = document.getElementById('sectionsGrid');
+    grid.innerHTML = data.sections.map((s, i) => `
+        <div class="innov-card">
+            <div class="card-left">
+                <span class="card-icon">${s.icon}</span>
+                <div class="card-num">${String(i + 1).padStart(2, '0')} / 12</div>
+                <div class="card-title">${s.title}</div>
+            </div>
+            <div class="card-right">
+                <p class="card-p">${s.p1}</p>
+                <p class="card-p">${s.p2}</p>
+            </div>
+        </div>
+    `).join('');
+}
+
+function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (i18n[lang][key]) el.textContent = i18n[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+    renderSections(lang);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setLang(currentLang);
+});
+</script>
+</body>
+</html>
