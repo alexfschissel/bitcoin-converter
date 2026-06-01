@@ -19,6 +19,7 @@
     {"src": "/quanto-vale-1-bitcoin", "dest": "/quanto-vale-1-bitcoin.html"},
     {"src": "/contato", "dest": "/contato.html"},
     {"src": "/sobre", "dest": "/sobre.html"},
+    {"src": "/inovacao", "dest": "/inovacao.html"},
     {"src": "/", "dest": "/index.html"}
   ],
   "headers": [
